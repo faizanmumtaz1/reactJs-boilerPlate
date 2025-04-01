@@ -1,21 +1,21 @@
-import { Box } from "@mui/material"
-import Sidebar from "./Sidebar/Sidebar"
-import Header from "./Header/Header"
-import React from "react"
+import { Box } from "@mui/material";
+import Sidebar from "./Sidebar/Sidebar";
+import Header from "./Header/Header";
+import React from "react";
 
 interface dashboardLayoutProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 const DashboardLayout: React.FC<dashboardLayoutProps> = ({ children }) => {
   return (
-    <Box>
+    <Box className="dashboard-layout-wrapper">
       <Sidebar />
-      <Box>
+      <Box className="dashboard-layout-content">
         <Header />
         {children}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default DashboardLayout
+export default DashboardLayout;
