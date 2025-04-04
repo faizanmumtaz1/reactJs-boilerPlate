@@ -14,10 +14,10 @@ import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_ADD_DEVICE } from "../../utils/constant";
+import { ROUTE_ADD_NEW_CLIENT } from "../../utils/constant";
 // import "./style.scss";
 
-const DeviceManagementListing = () => {
+const ClinetManagment = () => {
   const navigate = useNavigate();
   const columns = [
     {
@@ -35,43 +35,34 @@ const DeviceManagementListing = () => {
       sortable: true,
     },
     {
-      name: <Typography>Current Client</Typography>,
+      name: <Typography>Email</Typography>,
       selector: (row: any) => row.client,
       sortable: true,
     },
     {
-      name: <Typography>All Jobs</Typography>,
+      name: <Typography>Remaining Miles</Typography>,
       selector: (row: any) => row.allJob,
       sortable: true,
     },
     {
-      name: <Typography>Region</Typography>,
+      name: <Typography>Invite Status</Typography>,
       selector: (row: any) => row.region,
       sortable: true,
     },
     {
-      name: <Typography>Defects</Typography>,
+      name: <Typography>No. of Registered Devices</Typography>,
       selector: (row: any) => row.defects,
       sortable: true,
     },
     {
-      name: <Typography>Status</Typography>,
+      name: <Typography>Assigned Region</Typography>,
       selector: (row: any) => row.status,
       sortable: true,
     },
     {
-      name: <Typography>Last seen</Typography>,
+      name: <Typography>Actions</Typography>,
       selector: (row: any) => row.lastSeen,
       sortable: true,
-    },
-    {
-      name: <Typography>Recent GPS</Typography>,
-      selector: (row: any) => row.recentGps,
-      sortable: true,
-    },
-    {
-      name: <Typography>Actions</Typography>,
-      selector: (row: any) => row.actions,
     },
   ];
 
@@ -230,108 +221,6 @@ const DeviceManagementListing = () => {
       ),
       // actions: <EditIcon />,
     },
-    {
-      name: (
-        <>
-          <Typography variant="body2">Arma Eye</Typography>
-          <Typography variant="body2">#71913</Typography>
-        </>
-      ),
-      deviceId: <Typography variant="body2">MT7915</Typography>,
-      client: (
-        <Stack direction="row" spacing={0.5} alignItems="center">
-          <Typography variant="body2">James</Typography>
-          <Chip color="default" sx={{ height: "25px" }} label="#1001" />
-        </Stack>
-      ),
-      allJob: <Typography variant="body2">73</Typography>,
-      region: <Typography variant="body2">UK</Typography>,
-      defects: <Typography variant="body2">73</Typography>,
-      status: (
-        <Chip
-          variant="outlined"
-          sx={{
-            height: "18px",
-            p: "10px",
-          }}
-          label="Active"
-          color="success"
-        />
-      ),
-      lastSeen: <Typography variant="body2">Jan 2, 15, 9:00 am</Typography>,
-      recentGps: <Typography variant="body2">53.380822, -2.901932</Typography>,
-      actions: (
-        <Stack direction="row" spacing={2}>
-          <IconButton>
-            <ModeEditOutlineIcon
-              sx={{
-                width: "18px",
-                color: "var(--text-active)",
-              }}
-            />
-          </IconButton>
-          <IconButton>
-            <DeleteIcon
-              sx={{
-                width: "18px",
-                color: "var(--text-active)",
-              }}
-            />
-          </IconButton>
-        </Stack>
-      ),
-    },
-    {
-      name: (
-        <>
-          <Typography variant="body2">Arma Eye</Typography>
-          <Typography variant="body2">Arma Eye</Typography>
-        </>
-      ),
-      deviceId: <Typography variant="body2">MT7915</Typography>,
-      client: (
-        <Stack direction="row" spacing={0.5} alignItems="center">
-          <Typography variant="body2">James</Typography>
-          <Chip color="default" sx={{ height: "25px" }} label="#1001" />
-        </Stack>
-      ),
-      allJob: <Typography variant="body2">73</Typography>,
-      region: <Typography variant="body2">UK</Typography>,
-      defects: <Typography variant="body2">73</Typography>,
-      status: (
-        <Chip
-          variant="outlined"
-          sx={{
-            height: "18px",
-            p: "10px",
-          }}
-          label="Active"
-          color="success"
-        />
-      ),
-      lastSeen: <Typography variant="body2">Jan 2, 15, 9:00 am</Typography>,
-      recentGps: <Typography variant="body2">53.380822, -2.901932</Typography>,
-      actions: (
-        <Stack direction="row" spacing={2}>
-          <IconButton>
-            <ModeEditOutlineIcon
-              sx={{
-                width: "18px",
-                color: "var(--text-active)",
-              }}
-            />
-          </IconButton>
-          <IconButton>
-            <DeleteIcon
-              sx={{
-                width: "18px",
-                color: "var(--text-active)",
-              }}
-            />
-          </IconButton>
-        </Stack>
-      ),
-    },
   ];
 
   const severityOptions = [
@@ -349,7 +238,7 @@ const DeviceManagementListing = () => {
       }}
     >
       <Stack direction="row" justifyContent="space-between">
-        <Typography variant="h4">Device Management</Typography>
+        <Typography variant="h4">Client Management</Typography>
         <Button
           sx={{
             borderRadius: "30px",
@@ -359,9 +248,9 @@ const DeviceManagementListing = () => {
           startIcon={<AddIcon />}
           variant="contained"
           color="primary"
-          onClick={() => navigate(ROUTE_ADD_DEVICE)}
+          onClick={() => navigate(ROUTE_ADD_NEW_CLIENT)}
         >
-          Add New Device
+          Add New Client
         </Button>
       </Stack>
 
@@ -421,4 +310,4 @@ const DeviceManagementListing = () => {
   );
 };
 
-export default DeviceManagementListing;
+export default ClinetManagment;

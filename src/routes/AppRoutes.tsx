@@ -6,6 +6,9 @@ import {
   ROUTE_MAP,
   ROUTE_DEFECT_LISTING,
   ROUTE_DEVICE_MANAGEMENT_LISTING,
+  ROUTE_ADD_DEVICE,
+  ROUTE_CLIENT_MANAGEMENT,
+  ROUTE_ADD_NEW_CLIENT,
 } from "../utils/constant";
 import Login from "../components/auth/Login/Login";
 import ForgotPassword from "../components/auth/ForgotPassword/ForgotPassword";
@@ -13,7 +16,10 @@ import CreateNewPassword from "../components/auth/CreateNewPassword/CreateNewPas
 import DashboardLayout from "../components/Layout/DashboardLayout";
 import MapContainer from "../features/MapContainer/MapContainer";
 import DefectListing from "../features/DefectListing/DefectListing";
+import AddDevice from "../features/DeviceManagement/AddDevice";
+import ClinetManagment from "../features/ClientManagment/ClinetManagment";
 import DeviceManagementListing from "../features/DeviceManagement/DeviceManagementListing";
+import AddNewClient from "../features/ClientManagment/AddNewClient";
 
 const AppRoutes = () => {
   return (
@@ -46,6 +52,30 @@ const AppRoutes = () => {
           element={
             <DashboardLayout>
               <DeviceManagementListing />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_ADD_DEVICE}
+          element={
+            <DashboardLayout>
+              <AddDevice />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_CLIENT_MANAGEMENT}
+          element={
+            <DashboardLayout>
+              <ClinetManagment />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_ADD_NEW_CLIENT}
+          element={
+            <DashboardLayout>
+              <AddNewClient />
             </DashboardLayout>
           }
         />
