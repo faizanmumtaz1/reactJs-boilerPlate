@@ -5,6 +5,7 @@ import {
   ROUTE_HOME,
   ROUTE_MAP,
   ROUTE_DEFECT_LISTING,
+  ROUTE_DEVICE_MANAGEMENT_LISTING,
 } from "../utils/constant";
 import Login from "../components/auth/Login/Login";
 import ForgotPassword from "../components/auth/ForgotPassword/ForgotPassword";
@@ -12,6 +13,7 @@ import CreateNewPassword from "../components/auth/CreateNewPassword/CreateNewPas
 import DashboardLayout from "../components/Layout/DashboardLayout";
 import MapContainer from "../features/MapContainer/MapContainer";
 import DefectListing from "../features/DefectListing/DefectListing";
+import DeviceManagementListing from "../features/DeviceManagement/DeviceManagementListing";
 
 const AppRoutes = () => {
   return (
@@ -39,6 +41,14 @@ const AppRoutes = () => {
             </DashboardLayout>
           }
         ></Route>
+        <Route
+          path={ROUTE_DEVICE_MANAGEMENT_LISTING}
+          element={
+            <DashboardLayout>
+              <DeviceManagementListing />
+            </DashboardLayout>
+          }
+        />
       </Routes>
     </>
   );

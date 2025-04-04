@@ -20,6 +20,8 @@ interface CustomSelectProps {
   WrapperClassName?: string;
   placeholder?: string;
   size?: "small" | "medium";
+  sx?: object;
+  value?: string | number;
 }
 
 const CustomSelect = ({
@@ -36,6 +38,8 @@ const CustomSelect = ({
   WrapperClassName,
   placeholder = "Select",
   size = "medium",
+  sx = {},
+  value = "",
 }: CustomSelectProps) => {
   return (
     <FormControl
@@ -48,12 +52,15 @@ const CustomSelect = ({
         variant={variant}
         label={"label"}
         onChange={onChange}
-        value={"defaultValue"}
+        value={value || defaultValue}
         displayEmpty
         className={`dashboard-dropdown ${className} select-${size} select-rounded-${rounded}`}
         inputProps={{
           name: name,
           id: id,
+        }}
+        sx={{
+          ...sx,
         }}
         // IconComponent={FieldDropdownIcon}
       >

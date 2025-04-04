@@ -13,6 +13,7 @@ interface SearchBarProps {
   rounded?: "full" | "none" | "medium";
   size?: "small" | "medium";
   startAdornment?: React.ReactNode;
+  sx?: object;
 }
 
 const SearchBar = ({
@@ -26,6 +27,7 @@ const SearchBar = ({
   className = "",
   floatingLabel = false,
   startAdornment,
+  sx = {},
 }: SearchBarProps) => {
   return (
     <Box
@@ -52,7 +54,9 @@ const SearchBar = ({
         className={`search-bar-input search-rounded-${rounded} search-${size}`}
         sx={{
           width: "100%",
+          ...sx,
         }}
+        placeholder={placeholder}
       />
     </Box>
   );
