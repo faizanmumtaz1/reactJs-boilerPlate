@@ -46,7 +46,7 @@ const Sidebar = () => {
       ],
     },
     {
-      name: "Scaner",
+      name: "Device Management",
       path: ROUTE_DEVICE_MANAGEMENT_LISTING,
       icon: <ScanerFilledIcon />,
       activePaths: [
@@ -56,8 +56,8 @@ const Sidebar = () => {
       ],
     },
     {
-      name: "Notification",
-      path: "/notification",
+      name: "Alert Creation",
+      path: "/alert-creation",
       icon: <NotificationEditIcon />,
       activePaths: ["/notification"],
     },

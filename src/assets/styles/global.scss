@@ -44,3 +44,12 @@ li {
     color: var(--text-secondary);
   }
 }
+.gray-container-table {
+  border-radius: 24px;
+  overflow: hidden;
+  margin-top: 16px;
+  .rdt_TableHeadRow,
+  .rdt_TableRow {
+    background-color: #f8f9fb;
+  }
+}

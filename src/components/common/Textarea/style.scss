@@ -1,0 +1,31 @@
+@import "../../../assets/styles/typography.scss";
+
+.custom-textarea {
+  .MuiInputLabel-root.textarea-label {
+    @include body1;
+    color: var(--text-secondary);
+  }
+
+  .textarea-input {
+    @include body1;
+    .MuiOutlinedInput-notchedOutline {
+      border-color: var(--input-outlined-enabled-border);
+      border-width: 1px;
+    }
+    &.textarea-medium {
+      border-radius: 12px;
+    }
+    &.textarea-large {
+      .MuiInputBase-root {
+        border-radius: 16px;
+      }
+    }
+
+    &::placeholder {
+      color: #666;
+      opacity: 0.7;
+      @include body1;
+      transform: translate(16px, -3px) scale(0.75);
+    }
+  }
+}
