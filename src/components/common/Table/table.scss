@@ -16,9 +16,13 @@
         padding: 16px 16px;
 
         @include subtitle2;
+
+       
       }
     }
+    
   }
+    
   .rdt_Pagination {
     @include text-xxs;
     .gKTQzt {
@@ -29,4 +33,5 @@
       display: none;
     }
   }
+    
 }

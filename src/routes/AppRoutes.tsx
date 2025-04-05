@@ -9,6 +9,11 @@ import {
   ROUTE_ADD_DEVICE,
   ROUTE_CLIENT_MANAGEMENT,
   ROUTE_ADD_NEW_CLIENT,
+  ROUTE_EDIT_OR_VIEW_DEVICE,
+  ROUTE_EDIT_OR_VIEW_CLIENT,
+  ROUTE_REQUEST_PUSH_DATA_LISTING,
+  ROUTE_CREATE_NEW_REQUEST,
+  ROUTE_VIEW_REQUEST,
 } from "../utils/constant";
 import Login from "../components/auth/Login/Login";
 import ForgotPassword from "../components/auth/ForgotPassword/ForgotPassword";
@@ -20,6 +25,11 @@ import AddDevice from "../features/DeviceManagement/AddDevice";
 import ClinetManagment from "../features/ClientManagment/ClinetManagment";
 import DeviceManagementListing from "../features/DeviceManagement/DeviceManagementListing";
 import AddNewClient from "../features/ClientManagment/AddNewClient";
+import EditOrViewDevice from "../features/DeviceManagement/EditOrViewDevice";
+import EditOrViewClient from "../features/ClientManagment/EditOrViewClient";
+import RequestPushDataListing from "../features/RequestPushData/RequestPushDataListing";
+import CreateNewRequest from "../features/RequestPushData/CreateNewRequest";
+import ViewRequest from "../features/RequestPushData/ViewRequest";
 
 const AppRoutes = () => {
   return (
@@ -64,6 +74,14 @@ const AppRoutes = () => {
           }
         />
         <Route
+          path={ROUTE_EDIT_OR_VIEW_DEVICE}
+          element={
+            <DashboardLayout>
+              <EditOrViewDevice />
+            </DashboardLayout>
+          }
+        />
+        <Route
           path={ROUTE_CLIENT_MANAGEMENT}
           element={
             <DashboardLayout>
@@ -76,6 +94,38 @@ const AppRoutes = () => {
           element={
             <DashboardLayout>
               <AddNewClient />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_EDIT_OR_VIEW_CLIENT}
+          element={
+            <DashboardLayout>
+              <EditOrViewClient />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_REQUEST_PUSH_DATA_LISTING}
+          element={
+            <DashboardLayout>
+              <RequestPushDataListing />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_CREATE_NEW_REQUEST}
+          element={
+            <DashboardLayout>
+              <CreateNewRequest />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_VIEW_REQUEST}
+          element={
+            <DashboardLayout>
+              <ViewRequest />
             </DashboardLayout>
           }
         />

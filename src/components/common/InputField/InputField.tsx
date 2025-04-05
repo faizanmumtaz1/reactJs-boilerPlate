@@ -39,6 +39,7 @@ const InputField = <T extends FieldValues>({
                 borderColor: "#000000",
               },
             },
+            borderRadius: "16px",
             ...otherProps.sx,
           }}
         />

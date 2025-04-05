@@ -1,22 +1,17 @@
-import {
-  Box,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Typography,
-} from "@mui/material";
+import { Box, Chip, Typography } from "@mui/material";
 import { IconButton, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useNavigate } from "react-router-dom";
-import {
-  ROUTE_CLIENT_MANAGEMENT,
-  ROUTE_DEVICE_MANAGEMENT_LISTING,
-} from "../../utils/constant";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { ROUTE_CLIENT_MANAGEMENT } from "../../utils/constant";
 import InputField from "../../components/common/InputField/InputField";
 import { useForm } from "react-hook-form";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import Button from "../../components/common/Button/Button";
+import RegisteredDeviceTable from "./RegisteredDeviceTable";
+import SearchBar from "../../components/common/SearchBar/SearchBar";
+import { useEffect, useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
+import EditIcon from "@mui/icons-material/Edit";
 
 const clientData = [
   {
@@ -65,9 +60,21 @@ const clientOptions = [
     value: "client1",
   },
 ];
-const AddNewClient = () => {
+const EditOrViewClient = () => {
   const navigate = useNavigate();
   const { control } = useForm();
+
+  const [isEdit, setIsEdit] = useState(false);
+
+  const [searchParams] = useSearchParams();
+  const paramsEdit = searchParams.get("edit") === "true";
+
+  useEffect(() => {
+    if (paramsEdit) {
+      setIsEdit(true);
+    }
+  }, [paramsEdit]);
+
   return (
     <Box bgcolor="#F8F9FB" width="100%" height="calc(100vh - 64px)">
       <Stack
@@ -77,6 +84,10 @@ const AddNewClient = () => {
         p="16px 24px"
         width="100%"
         alignItems="center"
+        sx={{
+          flex: 1,
+          minHeight: "75px",
+        }}
       >
         <IconButton
           onClick={() => navigate(ROUTE_CLIENT_MANAGEMENT)}
@@ -90,19 +101,49 @@ const AddNewClient = () => {
         >
           <ArrowBackIcon sx={{ color: "#000000" }} />
         </IconButton>
-        <Typography variant="h6">Create New Client</Typography>
+
+        <Typography variant="h6">
+          {isEdit ? "Edit Client Details" : "Client Details"}
+          {!isEdit && (
+            <Box sx={{ marginLeft: 1, display: "inline" }}>
+              <Chip size="small" color="default" label="Archived" />
+            </Box>
+          )}
+        </Typography>
+        <Box
+          sx={{
+            flex: 1,
+            display: "inline-flex",
+            justifyContent: "flex-end",
+          }}
+        >
+          {!isEdit && (
+            <Button
+              size="small"
+              variant="outline"
+              color="inherit"
+              startIcon={<EditIcon />}
+              sx={{
+                border: "none",
+                padding: "0",
+                "&:hover": {
+                  background: "transparent",
+                },
+              }}
+              onClick={() => setIsEdit(true)}
+            >
+              Edit
+            </Button>
+          )}
+          {isEdit && (
+            <IconButton onClick={() => setIsEdit(false)}>
+              <CloseIcon />
+            </IconButton>
+          )}
+        </Box>
       </Stack>
 
-      <Box maxWidth="828px" width="100%" margin="0 auto" mt="36px">
-        <Typography
-          variant="h6"
-          fontSize="24px"
-          fontWeight="450"
-          lineHeight="133.4%"
-          color="#000000"
-        >
-          Device Configuration
-        </Typography>
+      <Box maxWidth="900px" width="100%" margin="0 auto" mt="36px">
         <Stack direction="row" flexWrap="wrap" gap="12px" mt="16px">
           {clientData.map((item) => (
             <>
@@ -120,12 +161,14 @@ const AddNewClient = () => {
                     width: "100%",
                     maxWidth: "calc(50% - 6px)",
                   }}
-                  // sx={{
-                  //   minHeight: "60px !important",
-                  // }}
-                  // labelStyling={{
-                  //   background: "red !important",
-                  // }}
+                  sx={{
+                    // minHeight: "60px !important",
+                    background: "white",
+                  }}
+                  labelStyling={{
+                    marginTop: "5px",
+                  }}
+                  disabled={!isEdit}
                 />
               ) : (
                 <InputField
@@ -134,7 +177,12 @@ const AddNewClient = () => {
                   control={control}
                   label={item.label}
                   type={item.type}
-                  sx={{ width: "100%", maxWidth: "calc(50% - 6px)" }}
+                  sx={{
+                    width: "100%",
+                    maxWidth: "calc(50% - 6px)",
+                    background: "white",
+                  }}
+                  disabled={!isEdit}
                 />
               )}
             </>
@@ -151,6 +199,10 @@ const AddNewClient = () => {
             variant="outlined"
             size="large"
             fullWidth={true}
+            sx={{
+              background: "white",
+            }}
+            disabled={!isEdit}
           />
         </Box>
         <Box mt="12px">
@@ -164,8 +216,46 @@ const AddNewClient = () => {
             variant="outlined"
             size="large"
             fullWidth={true}
+            sx={{
+              background: "white",
+            }}
+            disabled={!isEdit}
           />
         </Box>
+
+        <Typography my={2} variant="h6">
+          Registered Device Details
+        </Typography>
+
+        <Stack direction="row" gap="12px" mb={2}>
+          <SearchBar
+            placeholder="Device name, ID"
+            label="Search"
+            variant="outlined"
+            width="100%"
+            rounded="medium"
+            className="container-search-bar"
+            sx={{
+              maxWidth: "300px",
+            }}
+          />
+          <CustomSelect
+            label="Showing"
+            options={clientOptions}
+            onChange={() => {}}
+            name="assignedDevice"
+            id="status-select"
+            rounded="medium"
+            variant="outlined"
+            size="medium"
+            fullWidth={true}
+            formControlStyling={{
+              maxWidth: "130px",
+            }}
+          />
+        </Stack>
+
+        <RegisteredDeviceTable />
       </Box>
 
       <Stack
@@ -184,11 +274,11 @@ const AddNewClient = () => {
           Cancel
         </Button>
         <Button variant="primary" color="primary" sx={{ borderRadius: "80px" }}>
-          Invite Client
+          Save Changes
         </Button>
       </Stack>
     </Box>
   );
 };
 
-export default AddNewClient;
+export default EditOrViewClient;
