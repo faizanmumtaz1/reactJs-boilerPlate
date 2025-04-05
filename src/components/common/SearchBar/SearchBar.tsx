@@ -1,5 +1,4 @@
 import { Box, InputAdornment, TextField } from "@mui/material";
-import { SearchIcon } from "../../../assets/Images/svg";
 import "./style.scss";
 
 interface SearchBarProps {
@@ -25,7 +24,6 @@ const SearchBar = ({
   rounded = "full",
   size = "medium",
   className = "",
-  floatingLabel = false,
   startAdornment,
   sx = {},
 }: SearchBarProps) => {

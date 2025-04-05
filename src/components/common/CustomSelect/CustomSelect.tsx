@@ -1,6 +1,5 @@
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import "./style.scss";
-
 interface Option {
   value: string;
   label: string;
@@ -19,7 +18,7 @@ interface CustomSelectProps {
   variant?: "standard" | "filled" | "outlined";
   WrapperClassName?: string;
   placeholder?: string;
-  size?: "small" | "medium";
+  size?: "small" | "medium" | "large";
   sx?: object;
   value?: string | number;
 }
@@ -36,41 +35,45 @@ const CustomSelect = ({
   rounded = "full",
   variant = "standard",
   WrapperClassName,
-  placeholder = "Select",
   size = "medium",
   sx = {},
   value = "",
 }: CustomSelectProps) => {
   return (
-    <FormControl
-      fullWidth={fullWidth}
-      className={`${WrapperClassName} dropdown-wrapper`}
-    >
-      <InputLabel id={id}>{label}</InputLabel>
-      <Select
-        defaultValue={defaultValue || "Select age"}
-        variant={variant}
-        label={"label"}
-        onChange={onChange}
-        value={value || defaultValue}
-        displayEmpty
-        className={`dashboard-dropdown ${className} select-${size} select-rounded-${rounded}`}
-        inputProps={{
-          name: name,
-          id: id,
-        }}
-        sx={{
-          ...sx,
-        }}
-        // IconComponent={FieldDropdownIcon}
+    <>
+      <FormControl
+        fullWidth={fullWidth}
+        className={`${WrapperClassName} select-wrapper`}
       >
-        {options.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
+        <InputLabel id={id} className={`select-label select-${size}`}>
+          {label}
+        </InputLabel>
+        <Select
+          labelId={id}
+          label={label}
+          variant={variant}
+          onChange={onChange}
+          value={value || defaultValue}
+          className={`select-common ${className} select-${size} select-rounded-${rounded}`}
+          inputProps={{
+            name: name,
+            id: id,
+          }}
+          sx={{
+            ...sx,
+            "& .MuiOutlinedInput-notchedOutline": {
+              textOverflow: "ellipsis",
+            },
+          }}
+        >
+          {options.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </>
   );
 };
 

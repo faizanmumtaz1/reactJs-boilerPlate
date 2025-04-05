@@ -24,19 +24,23 @@ const InputField = <T extends FieldValues>({
           helperText={error?.message ? error?.message : otherProps.helperText}
           fullWidth
           sx={{
+            "& .MuiFormLabel-root": {
+              fontSize: "16px",
+              color: "var(--text-secondary)",
+            },
             "& .MuiOutlinedInput-root": {
               borderRadius: "16px",
               "& fieldset": {
                 borderWidth: "1px",
-                borderColor: "",
+                borderColor: "rgba(0, 0, 0, 0.23)",
               },
               "&:hover fieldset": {
                 borderWidth: "1px",
-                borderColor: "rgba(53, 50, 109, 1)",
+                borderColor: "rgba(0, 0, 0, 0.23)",
               },
               "&.Mui-focused fieldset": {
                 borderWidth: "1px",
-                borderColor: "#000000",
+                borderColor: "rgba(0, 0, 0, 0.23)",
               },
             },
             ...otherProps.sx,

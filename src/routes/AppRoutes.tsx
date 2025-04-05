@@ -9,6 +9,8 @@ import {
   ROUTE_ADD_DEVICE,
   ROUTE_CLIENT_MANAGEMENT,
   ROUTE_ADD_NEW_CLIENT,
+  ROUTE_ALERT_CREATION,
+  ROUTE_ADD_ALERT,
 } from "../utils/constant";
 import Login from "../components/auth/Login/Login";
 import ForgotPassword from "../components/auth/ForgotPassword/ForgotPassword";
@@ -20,7 +22,8 @@ import AddDevice from "../features/DeviceManagement/AddDevice";
 import ClinetManagment from "../features/ClientManagment/ClinetManagment";
 import DeviceManagementListing from "../features/DeviceManagement/DeviceManagementListing";
 import AddNewClient from "../features/ClientManagment/AddNewClient";
-
+import AlertCreation from "../features/AlertCreation/AlertCreation";
+import AddAlert from "../features/AlertCreation/AddAlert";
 const AppRoutes = () => {
   return (
     <>
@@ -76,6 +79,22 @@ const AppRoutes = () => {
           element={
             <DashboardLayout>
               <AddNewClient />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_ALERT_CREATION}
+          element={
+            <DashboardLayout>
+              <AlertCreation />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_ADD_ALERT}
+          element={
+            <DashboardLayout>
+              <AddAlert />
             </DashboardLayout>
           }
         />

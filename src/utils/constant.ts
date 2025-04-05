@@ -8,3 +8,5 @@ export const ROUTE_DEVICE_MANAGEMENT_LISTING = "/device-management-listing";
 export const ROUTE_ADD_DEVICE = "/add-device";
 export const ROUTE_CLIENT_MANAGEMENT = "/client-management";
 export const ROUTE_ADD_NEW_CLIENT = "/add-new-client";
+export const ROUTE_ALERT_CREATION = "/alert-creation";
+export const ROUTE_ADD_ALERT = "/add-alert";

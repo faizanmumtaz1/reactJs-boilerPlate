@@ -35,8 +35,8 @@ const Sidebar = () => {
       icon: <ScanerFilledIcon />,
     },
     {
-      name: "Notification",
-      path: "/notification",
+      name: "Alert Creation",
+      path: "/alert-creation",
       icon: <NotificationEditIcon />,
     },
     {

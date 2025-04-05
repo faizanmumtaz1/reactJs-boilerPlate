@@ -1,5 +1,5 @@
 import DataTable, { TableColumn } from "react-data-table-component";
-import { Box, Chip } from "@mui/material";
+import { Box } from "@mui/material";
 import "./table.scss";
 import DashboardChip from "../CustomChip/CustomChip";
 interface TableProps<T> {
