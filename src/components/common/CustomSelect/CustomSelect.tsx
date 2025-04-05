@@ -1,4 +1,11 @@
-import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import {
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Box,
+  Chip,
+} from "@mui/material";
 import "./style.scss";
 
 interface Option {
@@ -19,9 +26,13 @@ interface CustomSelectProps {
   variant?: "standard" | "filled" | "outlined";
   WrapperClassName?: string;
   placeholder?: string;
-  size?: "small" | "medium";
+  size?: "small" | "medium" | "large";
   sx?: object;
   value?: string | number;
+  labelStyling?: object;
+  disabled?: boolean;
+  formControlStyling?: object;
+  multiple?: boolean;
 }
 
 const CustomSelect = ({
@@ -40,17 +51,33 @@ const CustomSelect = ({
   size = "medium",
   sx = {},
   value = "",
+  labelStyling = {},
+  disabled = false,
+  formControlStyling = {},
+  multiple = false,
 }: CustomSelectProps) => {
   return (
     <FormControl
       fullWidth={fullWidth}
       className={`${WrapperClassName} dropdown-wrapper`}
+      sx={{
+        ...formControlStyling,
+      }}
     >
-      <InputLabel id={id}>{label}</InputLabel>
+      <InputLabel
+        sx={{
+          ...labelStyling,
+        }}
+        id={id}
+      >
+        {label}
+      </InputLabel>
       <Select
+        labelId={id}
+        id={id}
         defaultValue={defaultValue || "Select age"}
         variant={variant}
-        label={"label"}
+        label={label}
         onChange={onChange}
         value={value || defaultValue}
         displayEmpty
@@ -62,6 +89,8 @@ const CustomSelect = ({
         sx={{
           ...sx,
         }}
+        disabled={disabled}
+
         // IconComponent={FieldDropdownIcon}
       >
         {options.map((option) => (

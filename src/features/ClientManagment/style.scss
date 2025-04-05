@@ -1,0 +1,19 @@
+.client-management-table {
+
+    & .rdt_TableCol,
+    & .rdt_Pagination,
+    & .rdt_TableCell {
+        background-color: var(--background-default) !important;
+    }
+
+}
+
+.client-registered-device-table {
+
+    & .rdt_TableCol,
+    & .rdt_Pagination,
+    & .rdt_TableCell {
+        background-color: var(--background-default) !important;
+    }
+
+}

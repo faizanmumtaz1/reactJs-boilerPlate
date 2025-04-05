@@ -4,6 +4,8 @@ import {
   Chip,
   IconButton,
   Stack,
+  Tab,
+  Tabs,
   Typography,
 } from "@mui/material";
 import { ArrowBackIcon, SearchIcon } from "../../assets/Images/svg";
@@ -15,10 +17,14 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_ADD_NEW_CLIENT } from "../../utils/constant";
-// import "./style.scss";
+import "./style.scss";
+import { useState } from "react";
 
 const ClinetManagment = () => {
   const navigate = useNavigate();
+
+  const [tabValue, setTabValue] = useState(0);
+
   const columns = [
     {
       name: (
@@ -36,35 +42,37 @@ const ClinetManagment = () => {
     },
     {
       name: <Typography>Email</Typography>,
-      selector: (row: any) => row.client,
+      selector: (row: any) => row.email,
       sortable: true,
     },
     {
       name: <Typography>Remaining Miles</Typography>,
-      selector: (row: any) => row.allJob,
+      selector: (row: any) => row.remainingMiles,
       sortable: true,
     },
     {
       name: <Typography>Invite Status</Typography>,
-      selector: (row: any) => row.region,
+      selector: (row: any) => row.inviteStatus,
       sortable: true,
     },
     {
       name: <Typography>No. of Registered Devices</Typography>,
-      selector: (row: any) => row.defects,
+      selector: (row: any) => row.registeredDevices,
       sortable: true,
     },
     {
       name: <Typography>Assigned Region</Typography>,
-      selector: (row: any) => row.status,
+      selector: (row: any) => row.assignedRegion,
       sortable: true,
     },
     {
       name: <Typography>Actions</Typography>,
-      selector: (row: any) => row.lastSeen,
+      selector: (row: any) => row.actions,
       sortable: true,
     },
   ];
+
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const data = [
     {
@@ -74,44 +82,46 @@ const ClinetManagment = () => {
           <Typography variant="body2">#71913</Typography>
         </>
       ),
-      deviceId: <Typography variant="body2">MT7915</Typography>,
+      email: <Typography variant="body2">john@gmail.com</Typography>,
       client: (
         <Stack direction="row" spacing={0.5} alignItems="center">
           <Typography variant="body2">James</Typography>
           <Chip color="default" sx={{ height: "25px" }} label="#1001" />
         </Stack>
       ),
-      allJob: <Typography variant="body2">73</Typography>,
-      region: <Typography variant="body2">UK</Typography>,
-      defects: <Typography variant="body2">75</Typography>,
-      status: (
+      remainingMiles: <Typography variant="body2">73</Typography>,
+      inviteStatus: (
         <Chip
           variant="outlined"
           sx={{
             height: "18px",
             p: "10px",
           }}
-          label="Inactive"
-          color="error"
+          label={tabValue === 0 ? "Invite Sent" : "Archived"}
+          color={tabValue === 0 ? "warning" : "error"}
         />
       ),
-      lastSeen: <Typography variant="body2">Jan 2, 15, 9:00 am</Typography>,
-      recentGps: <Typography variant="body2">53.380822, -2.901932</Typography>,
+      registeredDevices: <Typography variant="body2">75</Typography>,
+      assignedRegion: <Typography variant="body2">Nottingham</Typography>,
       actions: (
         <Stack direction="row" spacing={2}>
-          <IconButton>
+          <IconButton
+            onClick={() => navigate(`/edit-or-view-client/123?edit=true`)}
+          >
             <ModeEditOutlineIcon
               sx={{
                 width: "18px",
                 color: "var(--text-active)",
+                height: "18px",
               }}
             />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={() => setShowDeleteModal(true)}>
             <DeleteIcon
               sx={{
                 width: "18px",
                 color: "var(--text-active)",
+                height: "18px",
               }}
             />
           </IconButton>
@@ -125,44 +135,46 @@ const ClinetManagment = () => {
           <Typography variant="body2">#71913</Typography>
         </>
       ),
-      deviceId: <Typography variant="body2">MT7915</Typography>,
+      email: <Typography variant="body2">john@gmail.com</Typography>,
       client: (
         <Stack direction="row" spacing={0.5} alignItems="center">
           <Typography variant="body2">James</Typography>
           <Chip color="default" sx={{ height: "25px" }} label="#1001" />
         </Stack>
       ),
-      allJob: <Typography variant="body2">72</Typography>,
-      region: <Typography variant="body2">UK</Typography>,
-      defects: <Typography variant="body2">73</Typography>,
-      status: (
+      remainingMiles: <Typography variant="body2">72</Typography>,
+      inviteStatus: (
         <Chip
           variant="outlined"
           sx={{
             height: "18px",
             p: "10px",
           }}
-          label="Inactive"
-          color="error"
+          label={tabValue === 0 ? "Active" : "Archived"}
+          color={tabValue === 0 ? "success" : "error"}
         />
       ),
-      lastSeen: <Typography variant="body2">Jan 2, 15, 9:00 am</Typography>,
-      recentGps: <Typography variant="body2">53.380822, -2.901932</Typography>,
+      registeredDevices: <Typography variant="body2">73</Typography>,
+      assignedRegion: <Typography variant="body2">Nottingham</Typography>,
       actions: (
         <Stack direction="row" spacing={2}>
-          <IconButton>
+          <IconButton
+            onClick={() => navigate(`/edit-or-view-client/123?edit=true`)}
+          >
             <ModeEditOutlineIcon
               sx={{
                 width: "18px",
                 color: "var(--text-active)",
+                height: "18px",
               }}
             />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={() => setShowDeleteModal(true)}>
             <DeleteIcon
               sx={{
                 width: "18px",
                 color: "var(--text-active)",
+                height: "18px",
               }}
             />
           </IconButton>
@@ -176,44 +188,46 @@ const ClinetManagment = () => {
           <Typography variant="body2">#71913</Typography>
         </>
       ),
-      deviceId: <Typography variant="body2">MT7915</Typography>,
+      email: <Typography variant="body2">john@gmail.com</Typography>,
       client: (
         <Stack direction="row" spacing={0.5} alignItems="center">
           <Typography variant="body2">James</Typography>
           <Chip color="default" sx={{ height: "25px" }} label="#1001" />
         </Stack>
       ),
-      allJob: <Typography variant="body2">73</Typography>,
-      region: <Typography variant="body2">UK</Typography>,
-      defects: <Typography variant="body2">73</Typography>,
-      status: (
+      remainingMiles: <Typography variant="body2">73</Typography>,
+      inviteStatus: (
         <Chip
           variant="outlined"
           sx={{
             height: "18px",
             p: "10px",
           }}
-          label="Active"
-          color="success"
+          label={tabValue === 0 ? "Invite Sent" : "Archived"}
+          color={tabValue === 0 ? "warning" : "error"}
         />
       ),
-      lastSeen: <Typography variant="body2">Jan 2, 15, 9:00 am</Typography>,
-      recentGps: <Typography variant="body2">53.380822, -2.901932</Typography>,
+      registeredDevices: <Typography variant="body2">73</Typography>,
+      assignedRegion: <Typography variant="body2">Nottingham</Typography>,
       actions: (
         <Stack direction="row" spacing={2}>
-          <IconButton>
+          <IconButton
+            onClick={() => navigate(`/edit-or-view-client/123?edit=true`)}
+          >
             <ModeEditOutlineIcon
               sx={{
                 width: "18px",
                 color: "var(--text-active)",
+                height: "18px",
               }}
             />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={() => setShowDeleteModal(true)}>
             <DeleteIcon
               sx={{
                 width: "18px",
                 color: "var(--text-active)",
+                height: "18px",
               }}
             />
           </IconButton>
@@ -254,57 +268,102 @@ const ClinetManagment = () => {
         </Button>
       </Stack>
 
-      <Stack mt={4} direction="row" justifyContent="start" spacing={2}>
-        <SearchBar
-          label="Search"
-          variant="outlined"
-          rounded="medium"
-          width="300px"
-          placeholder="Name, client, ID..."
-        />
-        <CustomSelect
-          label="Status"
-          options={severityOptions}
-          onChange={() => {}}
-          name="status"
-          id="status-select"
-          rounded="medium"
-          variant="outlined"
-          size="medium"
-          sx={{
-            minWidth: "180px",
-            height: "40px",
-          }}
-          fullWidth={false}
-        />
-        <CustomSelect
-          label="Region"
-          options={severityOptions}
-          onChange={() => {}}
-          name="region"
-          id="region-select"
-          rounded="medium"
-          variant="outlined"
-          size="medium"
-          sx={{
-            minWidth: "180px",
-            height: "40px",
-          }}
-          fullWidth={false}
-        />
-      </Stack>
-      <Box mt={2}>
-        <Table
-          columns={columns}
-          data={data}
-          progressPending={false}
-          pagination
-          paginationPerPage={10}
-          paginationRowsPerPageOptions={[10, 20, 30, 40, 50]}
-          selectableRows
-          onSelectedRowsChange={() => {}}
-          onSort={() => {}}
-        />
+      <Box sx={{ borderBottom: 1, borderColor: "var(--divider)" }}>
+        <Tabs
+          value={tabValue}
+          onChange={(_, newValue) => setTabValue(newValue)}
+          aria-label="basic tabs example"
+        >
+          <Tab
+            sx={{
+              textTransform: "capitalize !important",
+              fontWeight: 500,
+            }}
+            label="Active/Invited"
+          />
+          <Tab
+            sx={{
+              textTransform: "capitalize !important",
+              fontWeight: 500,
+            }}
+            label="Archived"
+          />
+        </Tabs>
+      </Box>
+
+      <Box
+        sx={{
+          backgroundColor: "background.default",
+          padding: 2,
+          borderRadius: 3,
+          mt: 2,
+          paddingBottom: 0,
+        }}
+      >
+        <Stack mt={4} direction="row" justifyContent="start" spacing={2}>
+          <SearchBar
+            label="Search"
+            variant="outlined"
+            rounded="medium"
+            width="300px"
+            placeholder="Name, client, ID..."
+          />
+          <CustomSelect
+            label="Status"
+            options={severityOptions}
+            onChange={() => {}}
+            name="status"
+            id="status-select"
+            rounded="medium"
+            variant="outlined"
+            size="medium"
+            sx={{
+              minWidth: "180px",
+              height: "40px",
+            }}
+            fullWidth={false}
+            labelStyling={{
+              marginTop: "5px",
+              background: "var(--background-default) !important",
+            }}
+          />
+          <CustomSelect
+            label="Region"
+            options={severityOptions}
+            onChange={() => {}}
+            name="region"
+            id="region-select"
+            rounded="medium"
+            variant="outlined"
+            size="medium"
+            sx={{
+              minWidth: "180px",
+              height: "40px",
+            }}
+            fullWidth={false}
+            labelStyling={{
+              marginTop: "5px",
+              background: "var(--background-default) !important",
+            }}
+          />
+        </Stack>
+        <Box mt={2}>
+          <Table
+            columns={columns}
+            data={data}
+            progressPending={false}
+            pagination
+            paginationPerPage={10}
+            paginationRowsPerPageOptions={[10, 20, 30, 40, 50]}
+            selectableRows
+            onSelectedRowsChange={() => {}}
+            onSort={() => {}}
+            className="client-management-table"
+            onRowClicked={(row) => {
+              navigate(`/edit-or-view-client/123`);
+            }}
+          />
+        </Box>
       </Box>
     </Box>
   );
