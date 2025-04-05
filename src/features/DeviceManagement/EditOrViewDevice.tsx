@@ -1,12 +1,15 @@
 import { Box, Typography } from "@mui/material";
 import { IconButton, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { ROUTE_DEVICE_MANAGEMENT_LISTING } from "../../utils/constant";
 import InputField from "../../components/common/InputField/InputField";
 import { useForm } from "react-hook-form";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import Button from "../../components/common/Button/Button";
+import EditIcon from "@mui/icons-material/Edit";
+import { useEffect, useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
 
 const deviceData = [
   {
@@ -102,9 +105,20 @@ const clientOptions = [
     value: "client1",
   },
 ];
-const AddDevice = () => {
+const EditOrViewDevice = () => {
   const navigate = useNavigate();
   const { control } = useForm();
+  const [isEdit, setIsEdit] = useState(false);
+
+  const [searchParams] = useSearchParams();
+  const paramsEdit = searchParams.get("edit") === "true";
+
+  useEffect(() => {
+    if (paramsEdit) {
+      setIsEdit(true);
+    }
+  }, [paramsEdit]);
+
   return (
     <Box bgcolor="#F8F9FB" width="100%" height="calc(100vh - 64px)">
       <Stack
@@ -114,6 +128,10 @@ const AddDevice = () => {
         p="16px 24px"
         width="100%"
         alignItems="center"
+        sx={{
+          flex: 1,
+          minHeight: "75px",
+        }}
       >
         <IconButton
           onClick={() => navigate(ROUTE_DEVICE_MANAGEMENT_LISTING)}
@@ -127,7 +145,38 @@ const AddDevice = () => {
         >
           <ArrowBackIcon sx={{ color: "#000000" }} />
         </IconButton>
-        <Typography variant="h6">Create New Device</Typography>
+        <Typography variant="h6">Device Details</Typography>
+        <Box
+          sx={{
+            flex: 1,
+            display: "inline-flex",
+            justifyContent: "flex-end",
+          }}
+        >
+          {!isEdit && (
+            <Button
+              size="small"
+              variant="outline"
+              color="inherit"
+              startIcon={<EditIcon />}
+              sx={{
+                border: "none",
+                padding: "0",
+                "&:hover": {
+                  background: "transparent",
+                },
+              }}
+              onClick={() => setIsEdit(true)}
+            >
+              Edit
+            </Button>
+          )}
+          {isEdit && (
+            <IconButton onClick={() => setIsEdit(false)}>
+              <CloseIcon />
+            </IconButton>
+          )}
+        </Box>
       </Stack>
 
       <Box maxWidth="828px" width="100%" margin="0 auto" mt="36px">
@@ -149,6 +198,7 @@ const AddDevice = () => {
               label={item.label}
               type={item.type}
               sx={{ width: "100%", maxWidth: "calc(50% - 12px)" }}
+              disabled={!isEdit}
             />
           ))}
         </Stack>
@@ -177,31 +227,42 @@ const AddDevice = () => {
               backgroundColor: "var(--background-default) !important",
               marginTop: "2px",
             }}
+            disabled={!isEdit}
           />
         </Box>
       </Box>
 
-      <Stack
-        direction="row"
-        justifyContent="end"
-        mt="24px"
-        gap="12px"
-        bgcolor="#fff"
-        p="16px 24px"
-        width="calc(100% - 88px)"
-        position="fixed"
-        bottom="0"
-        // left="0"
-      >
-        <Button variant="outline" color="inherit" sx={{ borderRadius: "80px" }}>
-          Cancel
-        </Button>
-        <Button variant="primary" color="primary" sx={{ borderRadius: "80px" }}>
-          Add New Device
-        </Button>
-      </Stack>
+      {isEdit && (
+        <Stack
+          direction="row"
+          justifyContent="end"
+          mt="24px"
+          gap="12px"
+          bgcolor="#fff"
+          p="16px 24px"
+          width="calc(100% - 88px)"
+          position="fixed"
+          bottom="0"
+          // left="0"
+        >
+          <Button
+            variant="outline"
+            color="inherit"
+            sx={{ borderRadius: "80px" }}
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="primary"
+            color="primary"
+            sx={{ borderRadius: "80px" }}
+          >
+            Save Changes
+          </Button>
+        </Stack>
+      )}
     </Box>
   );
 };
 
-export default AddDevice;
+export default EditOrViewDevice;

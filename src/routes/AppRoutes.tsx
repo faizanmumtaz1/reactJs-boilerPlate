@@ -11,6 +11,10 @@ import {
   ROUTE_ADD_NEW_CLIENT,
   ROUTE_ALERT_CREATION,
   ROUTE_ADD_ALERT,
+  ROUTE_EDIT_OR_VIEW_DEVICE,
+  ROUTE_VIEW_REQUEST,
+  ROUTE_CREATE_NEW_REQUEST,
+  ROUTE_EDIT_OR_VIEW_CLIENT,
 } from "../utils/constant";
 import Login from "../components/auth/Login/Login";
 import ForgotPassword from "../components/auth/ForgotPassword/ForgotPassword";
@@ -24,6 +28,11 @@ import DeviceManagementListing from "../features/DeviceManagement/DeviceManageme
 import AddNewClient from "../features/ClientManagment/AddNewClient";
 import AlertCreation from "../features/AlertCreation/AlertCreation";
 import AddAlert from "../features/AlertCreation/AddAlert";
+import EditOrViewClient from "../features/ClientManagment/EditOrViewClient";
+import EditOrViewDevice from "../features/DeviceManagement/EditOrViewDevice";
+import CreateNewRequest from "../features/RequestPushData/CreateNewRequest";
+import ViewRequest from "../features/RequestPushData/ViewRequest";
+
 const AppRoutes = () => {
   return (
     <>
@@ -67,6 +76,14 @@ const AppRoutes = () => {
           }
         />
         <Route
+          path={ROUTE_EDIT_OR_VIEW_DEVICE}
+          element={
+            <DashboardLayout>
+              <EditOrViewDevice />
+            </DashboardLayout>
+          }
+        />
+        <Route
           path={ROUTE_CLIENT_MANAGEMENT}
           element={
             <DashboardLayout>
@@ -91,10 +108,34 @@ const AppRoutes = () => {
           }
         />
         <Route
+          path={ROUTE_EDIT_OR_VIEW_CLIENT}
+          element={
+            <DashboardLayout>
+              <EditOrViewClient />
+            </DashboardLayout>
+          }
+        />
+        <Route
           path={ROUTE_ADD_ALERT}
           element={
             <DashboardLayout>
               <AddAlert />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_CREATE_NEW_REQUEST}
+          element={
+            <DashboardLayout>
+              <CreateNewRequest />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_VIEW_REQUEST}
+          element={
+            <DashboardLayout>
+              <ViewRequest />
             </DashboardLayout>
           }
         />

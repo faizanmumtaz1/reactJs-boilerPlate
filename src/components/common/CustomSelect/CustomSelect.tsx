@@ -1,4 +1,11 @@
-import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import {
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Box,
+  Chip,
+} from "@mui/material";
 import "./style.scss";
 interface Option {
   value: string;
@@ -21,6 +28,10 @@ interface CustomSelectProps {
   size?: "small" | "medium" | "large";
   sx?: object;
   value?: string | number;
+  labelStyling?: object;
+  disabled?: boolean;
+  formControlStyling?: object;
+  multiple?: boolean;
 }
 
 const CustomSelect = ({
@@ -38,6 +49,10 @@ const CustomSelect = ({
   size = "medium",
   sx = {},
   value = "",
+  labelStyling = {},
+  disabled = false,
+  formControlStyling = {},
+  multiple = false,
 }: CustomSelectProps) => {
   return (
     <>

@@ -14,6 +14,7 @@ interface TableProps<T> {
   onSort?: (column: TableColumn<T>, sortDirection: string) => void;
   customStyles?: any;
   className?: string;
+  onRowClicked?: (row: T) => void | null;
 }
 
 const getSeverityColor = (severity: string) => {
@@ -53,6 +54,7 @@ const Table = <T extends object>({
   onSort,
   customStyles,
   className,
+  onRowClicked,
 }: TableProps<T>) => {
   // Transform columns to handle severity chip rendering
   const transformedColumns = columns.map((column) => {
@@ -90,9 +92,15 @@ const Table = <T extends object>({
         className="table-common"
         customStyles={{
           ...customStyles,
+          rows: {
+            style: {
+              cursor: onRowClicked !== null ? "pointer" : "default",
+            },
+          },
         }}
         responsive
         persistTableHead
+        onRowClicked={onRowClicked}
       />
     </Box>
   );

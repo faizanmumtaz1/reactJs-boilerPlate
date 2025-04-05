@@ -13,6 +13,7 @@ interface SearchBarProps {
   size?: "small" | "medium";
   startAdornment?: React.ReactNode;
   sx?: object;
+  disabled?: boolean;
 }
 
 const SearchBar = ({
@@ -26,6 +27,7 @@ const SearchBar = ({
   className = "",
   startAdornment,
   sx = {},
+  disabled = false,
 }: SearchBarProps) => {
   return (
     <Box
@@ -55,6 +57,7 @@ const SearchBar = ({
           ...sx,
         }}
         placeholder={placeholder}
+        disabled={disabled}
       />
     </Box>
   );

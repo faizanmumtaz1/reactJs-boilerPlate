@@ -14,11 +14,18 @@ import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_ADD_DEVICE } from "../../utils/constant";
-// import "./style.scss";
+import {
+  ROUTE_ADD_DEVICE,
+  ROUTE_EDIT_OR_VIEW_DEVICE,
+} from "../../utils/constant";
+import "./style.scss";
+import { useState } from "react";
+import Modal from "../../components/common/Modal/Modal";
 
 const DeviceManagementListing = () => {
   const navigate = useNavigate();
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+
   const columns = [
     {
       name: (
@@ -110,15 +117,18 @@ const DeviceManagementListing = () => {
         <Stack direction="row" spacing={2}>
           <IconButton>
             <ModeEditOutlineIcon
+              onClick={() => navigate(`/edit-or-view-device/123?edit=true`)}
               sx={{
+                height: "18px",
                 width: "18px",
                 color: "var(--text-active)",
               }}
             />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={() => setOpenDeleteModal(true)}>
             <DeleteIcon
               sx={{
+                height: "18px",
                 width: "18px",
                 color: "var(--text-active)",
               }}
@@ -161,15 +171,18 @@ const DeviceManagementListing = () => {
         <Stack direction="row" spacing={2}>
           <IconButton>
             <ModeEditOutlineIcon
+              onClick={() => navigate(`/edit-or-view-device/123?edit=true`)}
               sx={{
+                height: "18px",
                 width: "18px",
                 color: "var(--text-active)",
               }}
             />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={() => setOpenDeleteModal(true)}>
             <DeleteIcon
               sx={{
+                height: "18px",
                 width: "18px",
                 color: "var(--text-active)",
               }}
@@ -212,15 +225,18 @@ const DeviceManagementListing = () => {
         <Stack direction="row" spacing={2}>
           <IconButton>
             <ModeEditOutlineIcon
+              onClick={() => navigate(`/edit-or-view-device/123?edit=true`)}
               sx={{
+                height: "18px",
                 width: "18px",
                 color: "var(--text-active)",
               }}
             />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={() => setOpenDeleteModal(true)}>
             <DeleteIcon
               sx={{
+                height: "18px",
                 width: "18px",
                 color: "var(--text-active)",
               }}
@@ -264,15 +280,18 @@ const DeviceManagementListing = () => {
         <Stack direction="row" spacing={2}>
           <IconButton>
             <ModeEditOutlineIcon
+              onClick={() => navigate(`/edit-or-view-device/123?edit=true`)}
               sx={{
+                height: "18px",
                 width: "18px",
                 color: "var(--text-active)",
               }}
             />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={() => setOpenDeleteModal(true)}>
             <DeleteIcon
               sx={{
+                height: "18px",
                 width: "18px",
                 color: "var(--text-active)",
               }}
@@ -315,15 +334,18 @@ const DeviceManagementListing = () => {
         <Stack direction="row" spacing={2}>
           <IconButton>
             <ModeEditOutlineIcon
+              onClick={() => navigate(`/edit-or-view-device/123?edit=true`)}
               sx={{
+                height: "18px",
                 width: "18px",
                 color: "var(--text-active)",
               }}
             />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={() => setOpenDeleteModal(true)}>
             <DeleteIcon
               sx={{
+                height: "18px",
                 width: "18px",
                 color: "var(--text-active)",
               }}
@@ -365,58 +387,86 @@ const DeviceManagementListing = () => {
         </Button>
       </Stack>
 
-      <Stack mt={4} direction="row" justifyContent="start" spacing={2}>
-        <SearchBar
-          label="Search"
-          variant="outlined"
-          rounded="medium"
-          width="300px"
-          placeholder="Name, client, ID..."
-        />
-        <CustomSelect
-          label="Status"
-          options={severityOptions}
-          onChange={() => {}}
-          name="status"
-          id="status-select"
-          rounded="medium"
-          variant="outlined"
-          size="medium"
-          sx={{
-            minWidth: "180px",
-            height: "40px",
-          }}
-          fullWidth={false}
-        />
-        <CustomSelect
-          label="Region"
-          options={severityOptions}
-          onChange={() => {}}
-          name="region"
-          id="region-select"
-          rounded="medium"
-          variant="outlined"
-          size="medium"
-          sx={{
-            minWidth: "180px",
-            height: "40px",
-          }}
-          fullWidth={false}
-        />
-      </Stack>
-      <Box mt={2}>
-        <Table
-          columns={columns}
-          data={data}
-          progressPending={false}
-          pagination
-          paginationPerPage={10}
-          paginationRowsPerPageOptions={[10, 20, 30, 40, 50]}
-          selectableRows
-          onSelectedRowsChange={() => {}}
-          onSort={() => {}}
-        />
+      <Box
+        sx={{
+          backgroundColor: "background.default",
+          padding: 2,
+          borderRadius: 3,
+          mt: 2,
+          paddingBottom: 0,
+        }}
+      >
+        <Stack direction="row" justifyContent="start" spacing={2}>
+          <SearchBar
+            label="Search"
+            variant="outlined"
+            rounded="medium"
+            width="300px"
+            placeholder="Name, client, ID..."
+          />
+          <CustomSelect
+            label="Status"
+            options={severityOptions}
+            onChange={() => {}}
+            name="status"
+            id="status-select"
+            rounded="medium"
+            variant="outlined"
+            size="medium"
+            sx={{
+              minWidth: "180px",
+              height: "40px",
+            }}
+            fullWidth={false}
+            labelStyling={{
+              marginTop: "5px",
+              backgroundColor: "var(--background-default) !important",
+            }}
+          />
+          <CustomSelect
+            label="Region"
+            options={severityOptions}
+            onChange={() => {}}
+            name="region"
+            id="region-select"
+            rounded="medium"
+            variant="outlined"
+            size="medium"
+            sx={{
+              minWidth: "180px",
+              height: "40px",
+            }}
+            fullWidth={false}
+            labelStyling={{
+              marginTop: "5px",
+              backgroundColor: "var(--background-default) !important",
+            }}
+          />
+        </Stack>
+        <Box mt={2}>
+          <Table
+            columns={columns}
+            data={data}
+            progressPending={false}
+            pagination
+            paginationPerPage={10}
+            paginationRowsPerPageOptions={[10, 20, 30, 40, 50]}
+            selectableRows
+            onSort={() => {}}
+            className="device-management-table"
+            onRowClicked={(row) => {
+              navigate(`/edit-or-view-device/123`);
+            }}
+          />
+        </Box>
       </Box>
+      <Modal
+        open={openDeleteModal}
+        onClose={() => setOpenDeleteModal(false)}
+        onConfirm={() => {}}
+        title="Delete device?"
+        subtitle="Are you sure you would like to remove this device?"
+      />
     </Box>
   );
 };

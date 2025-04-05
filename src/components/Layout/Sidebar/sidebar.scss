@@ -28,7 +28,7 @@
         gap: 16px;
         align-self: stretch;
         border-radius: 8px;
-        &:hover {
+        &:hover, &.active {
           svg {
             path {
               fill: var(--secondary-200);
