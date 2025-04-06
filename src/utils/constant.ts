@@ -22,3 +22,6 @@ export const ROUTE_ADD_NEW_SERVICE = "/add-new-service";
 export const ROUTE_ADD_NEW_CLIENT_SERVICE = "/add-new-client-service";
 export const ROUTE_EDIT_OR_VIEW_ALERT = "/edit-or-view-alert/:id";
 export const ROUTE_DASHBOARD = "/dashboard";
+export const ROUTE_ROLES_AND_PERMISSIONS_LISTING =
+  "/roles-and-permissions-listing";
+export const ROUTE_ADD_NEW_USER = "/add-new-user";
