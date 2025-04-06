@@ -11,7 +11,11 @@ import { Box } from "@mui/material";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import SearchBar from "../../components/common/SearchBar/SearchBar";
 import DefectsList from "./DefectsList/DefectsList";
+import MapView from "./Map";
+import Button from "../../components/common/Button/Button";
+import { useState } from "react";
 const MapContainer = () => {
+  const [isDefectsListOpen, setIsDefectsListOpen] = useState(false);
   const pathDetails = [
     {
       icon: <AltRouteIcon />,
@@ -39,6 +43,9 @@ const MapContainer = () => {
       value: "8877",
     },
   ];
+  const handleDefectsListClose = () => {
+    setIsDefectsListOpen(false);
+  };
   // Severity data
   const severityData = [
     { label: "1 - 250", percentage: 5, color: "severity-high" },
@@ -138,7 +145,39 @@ const MapContainer = () => {
         />
       </div>
       <div className="map-container">
-        <DefectsList />
+        {!isDefectsListOpen && (
+          <Button
+            variant="contained"
+            className="view-defects-button"
+            sx={{
+              marginBottom: "16px",
+              position: "absolute",
+              top: "16px",
+              left: "48px",
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              zIndex: 1000,
+              borderRadius: "100px",
+              padding: "12px 24px",
+              color: "rgba(0, 0, 0, 0.87)",
+              fontSize: "15px",
+              fontStyle: "normal",
+              fontWeight: "500",
+              lineHeight: "26px",
+              letterSpacing: "0.46px",
+              textTransform: "capitalize",
+            }}
+            onClick={() => setIsDefectsListOpen(!isDefectsListOpen)}
+          >
+            <span>View Defects</span>
+          </Button>
+        )}
+
+        {isDefectsListOpen && (
+          <DefectsList handleDefectsListClose={handleDefectsListClose} />
+        )}
+        <MapView />
       </div>
       <div className="map-controls-container">
         <div className="path-details-container">

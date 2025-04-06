@@ -8,8 +8,12 @@ import {
 import SearchBar from "../../../components/common/SearchBar/SearchBar";
 import "./style.scss";
 import DashboardChip from "../../../components/common/CustomChip/CustomChip";
-
-const DefectsList = () => {
+import Button from "../../../components/common/Button/Button";
+const DefectsList = ({
+  handleDefectsListClose,
+}: {
+  handleDefectsListClose: () => void;
+}) => {
   const issues = [
     {
       type: "Pothole",
@@ -58,7 +62,21 @@ const DefectsList = () => {
       <div className="defects-list-header">
         <div className="header-top">
           <div className="defects-list-header-left">
-            <CrossSmIcon />
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "transparent",
+                background: "transparent",
+                boxShadow: "none",
+                border: "none",
+                padding: "0px",
+                width: "32px",
+                height: "32px",
+              }}
+              onClick={handleDefectsListClose}
+            >
+              <CrossSmIcon />
+            </Button>
             <h5>Defects</h5>
           </div>
           <ExplandArrowIcon />

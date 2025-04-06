@@ -6,7 +6,7 @@ import {
 import { ReactNode } from "react";
 
 // Define the variant types
-type ButtonVariant = "primary" | "secondary" | "outline";
+type ButtonVariant = "primary" | "secondary" | "outline" | "contained";
 
 // Extend MUI's ButtonProps to include our custom props
 interface ButtonProps extends Omit<MuiButtonProps, "variant"> {
@@ -47,6 +47,14 @@ const StyledButton = styled(MuiButton)(({ theme, variant = "primary" }) => ({
   ...(variant === "outline" && {
     backgroundColor: "transparent",
     border: `2px solid ${theme.palette.primary.main}`,
+    color: theme.palette.primary.main,
+    "&:hover": {
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.common.white,
+    },
+  }),
+  ...(variant === "contained" && {
+    backgroundColor: "white",
     color: theme.palette.primary.main,
     "&:hover": {
       backgroundColor: theme.palette.primary.main,

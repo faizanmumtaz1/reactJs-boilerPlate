@@ -21,3 +21,4 @@ export const ROUTE_ACTIVE_SERVICE = "/active-service";
 export const ROUTE_ADD_NEW_SERVICE = "/add-new-service";
 export const ROUTE_ADD_NEW_CLIENT_SERVICE = "/add-new-client-service";
 export const ROUTE_EDIT_OR_VIEW_ALERT = "/edit-or-view-alert/:id";
+export const ROUTE_DASHBOARD = "/dashboard";
