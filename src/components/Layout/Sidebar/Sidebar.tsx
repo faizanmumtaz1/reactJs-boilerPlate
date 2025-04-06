@@ -23,6 +23,8 @@ import {
   ROUTE_REPORTS,
   ROUTE_REQUEST_PUSH_DATA_LISTING,
   ROUTE_ACTIVE_SERVICE,
+  ROUTE_ROLES_AND_PERMISSIONS_LISTING,
+  ROUTE_ADD_NEW_USER,
 } from "../../../utils/constant";
 const Sidebar = () => {
   const linksList = [
@@ -65,9 +67,9 @@ const Sidebar = () => {
     },
     {
       name: "Lock",
-      path: "/lock",
+      path: ROUTE_ROLES_AND_PERMISSIONS_LISTING,
       icon: <LockPersonIcon />,
-      activePaths: ["/lock"],
+      activePaths: [ROUTE_ROLES_AND_PERMISSIONS_LISTING, ROUTE_ADD_NEW_USER],
     },
     {
       name: "Reports",

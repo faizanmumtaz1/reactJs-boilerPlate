@@ -14,6 +14,10 @@ function App() {
       background: {
         default: "#f8f9fb",
       },
+      text: {
+        primary: "rgba(0, 0, 0, 0.87)",
+        secondary: "rgba(0, 0, 0, 0.6)",
+      },
     },
   });
   return (
