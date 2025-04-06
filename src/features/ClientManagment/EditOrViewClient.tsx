@@ -82,7 +82,13 @@ const EditOrViewClient = () => {
   }, [paramsEdit]);
 
   return (
-    <Box bgcolor="#F8F9FB" width="100%" height="calc(100vh - 64px)">
+    <Box
+      bgcolor="#F8F9FB"
+      width="100%"
+      height="calc(100vh - 142px)"
+      pb="24px"
+      overflow="auto"
+    >
       <Stack
         direction="row"
         gap="16px"
@@ -108,7 +114,7 @@ const EditOrViewClient = () => {
           <ArrowBackIcon sx={{ color: "#000000" }} />
         </IconButton>
 
-        <Typography variant="h6">
+        <Typography variant="h5">
           {isEdit ? "Edit Client Details" : "Client Details"}
           {!isEdit && (
             <Box sx={{ marginLeft: 1, display: "inline" }}>
@@ -126,16 +132,10 @@ const EditOrViewClient = () => {
           {!isEdit && (
             <Button
               size="small"
-              variant="outline"
-              color="inherit"
+              variant="text"
+              color="secondary"
               startIcon={<EditIcon />}
-              sx={{
-                border: "none",
-                padding: "0",
-                "&:hover": {
-                  background: "transparent",
-                },
-              }}
+              className="rounded-full-button"
               onClick={() => setIsEdit(true)}
             >
               Edit
@@ -149,18 +149,7 @@ const EditOrViewClient = () => {
         </Box>
       </Stack>
 
-      <Box
-        maxWidth="900px"
-        width="100%"
-        margin="0 auto"
-        pt="36px"
-        sx={{
-          maxHeight: "calc(100vh - 200px)",
-          overflowY: "auto",
-          pb: 5,
-          pr: 5,
-        }}
-      >
+      <Box maxWidth="900px" width="100%" margin="0 auto" mt="36px">
         <Stack direction="row" flexWrap="wrap" gap="12px" mt="16px">
           {clientData.map((item) => (
             <>
@@ -298,10 +287,18 @@ const EditOrViewClient = () => {
         bottom="0"
         // left="0"
       >
-        <Button variant="outline" color="inherit" sx={{ borderRadius: "80px" }}>
+        <Button
+          variant="outlined"
+          color="secondary"
+          className="rounded-full-button"
+        >
           Cancel
         </Button>
-        <Button variant="primary" color="primary" sx={{ borderRadius: "80px" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          className="rounded-full-button"
+        >
           Save Changes
         </Button>
       </Stack>

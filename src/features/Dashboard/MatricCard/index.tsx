@@ -1,4 +1,4 @@
-import { Paper, Typography } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 
 const MetricCard = ({
   title,
@@ -9,32 +9,41 @@ const MetricCard = ({
   value: string | number;
   change: string;
 }) => {
-  const isPositive = change.startsWith("+");
-
   return (
     <Paper
       sx={{
         p: 3,
-        borderRadius: 2,
+        borderRadius: 4,
         height: "100%",
-        backgroundColor: "#F8F9FA",
+        backgroundColor: "var(--primary-states-selected)",
+        border: "none",
+        boxShadow: "none",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
+        gap: 2,
+        maxHeight: "155px",
       }}
     >
-      <Typography variant="subtitle1" sx={{ mb: 2, color: "#757575" }}>
-        {title}
-      </Typography>
-      <Typography variant="h4" sx={{ fontWeight: "bold", mb: 1 }}>
-        {value}
-      </Typography>
-      <Typography
-        variant="body2"
+      <Typography className="initialsLg">{title}</Typography>
+      <Box
         sx={{
-          color: isPositive ? "#4CAF50" : "#F44336",
-          fontWeight: "medium",
+          display: "flex",
+          alignItems: "start",
+          flexDirection: "column",
+          gap: 1,
         }}
       >
-        {change}
-      </Typography>
+        <Typography variant="h4">{value}</Typography>
+        <Typography
+          className={`text-xs`}
+          sx={{
+            color: "var(--secondary-500) !important",
+          }}
+        >
+          {change}
+        </Typography>
+      </Box>
     </Paper>
   );
 };

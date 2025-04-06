@@ -6,7 +6,6 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { ArrowBackIcon, SearchIcon } from "../../assets/Images/svg";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import SearchBar from "../../components/common/SearchBar/SearchBar";
 import Table from "../../components/common/Table/Table";
@@ -14,10 +13,7 @@ import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
-import {
-  ROUTE_ADD_DEVICE,
-  ROUTE_EDIT_OR_VIEW_DEVICE,
-} from "../../utils/constant";
+import { ROUTE_ADD_DEVICE } from "../../utils/constant";
 import "./style.scss";
 import { useState } from "react";
 import Modal from "../../components/common/Modal/Modal";
@@ -367,17 +363,13 @@ const DeviceManagementListing = () => {
       sx={{
         width: "100%",
         px: 3,
-        mt: 2,
+        my: 2,
       }}
     >
-      <Stack direction="row" justifyContent="space-between">
+      <Stack direction="row" justifyContent="space-between" pb={2}>
         <Typography variant="h4">Device Management</Typography>
         <Button
-          sx={{
-            borderRadius: "30px",
-            textTransform: "capitalize",
-            minWidth: 191,
-          }}
+          className="rounded-full-button"
           startIcon={<AddIcon />}
           variant="contained"
           color="primary"
@@ -455,7 +447,7 @@ const DeviceManagementListing = () => {
             selectableRows
             onSort={() => {}}
             className="device-management-table"
-            onRowClicked={(row) => {
+            onRowClicked={() => {
               navigate(`/edit-or-view-device/123`);
             }}
           />

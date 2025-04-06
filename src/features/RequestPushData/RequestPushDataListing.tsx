@@ -138,14 +138,15 @@ const RequestPushDataListing = () => {
         mt: 2,
       }}
     >
-      <Stack direction="row" justifyContent="space-between">
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        pb={2}
+      >
         <Typography variant="h4">Request To Push DATA to Service</Typography>
         <Button
-          sx={{
-            borderRadius: "30px",
-            textTransform: "capitalize",
-            minWidth: 191,
-          }}
+          className="rounded-full-button"
           startIcon={<AddIcon />}
           variant="contained"
           color="primary"

@@ -16,7 +16,7 @@ import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_ADD_NEW_CLIENT } from "../../utils/constant";
+import { ROUTE_ADD_NEW_USER } from "../../utils/constant";
 import "./style.scss";
 import { useState } from "react";
 import Modal from "../../components/common/Modal/Modal";
@@ -224,15 +224,11 @@ const RolesAndPermissionsListing = () => {
       <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Typography variant="h4">Roles and Permissions</Typography>
         <Button
-          sx={{
-            borderRadius: "30px",
-            textTransform: "capitalize",
-            minWidth: 174,
-          }}
+          className="rounded-full-button"
           startIcon={<AddIcon />}
           variant="contained"
           color="primary"
-          onClick={() => navigate(ROUTE_ADD_NEW_CLIENT)}
+          onClick={() => navigate(ROUTE_ADD_NEW_USER)}
         >
           Add New User
         </Button>

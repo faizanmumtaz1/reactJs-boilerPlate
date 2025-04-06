@@ -2,7 +2,6 @@ import { Box } from "@mui/material";
 import Sidebar from "./Sidebar/Sidebar";
 import Header from "./Header/Header";
 import React from "react";
-
 interface dashboardLayoutProps {
   children: React.ReactNode;
 }
@@ -12,7 +11,7 @@ const DashboardLayout: React.FC<dashboardLayoutProps> = ({ children }) => {
       <Sidebar />
       <Box className="dashboard-layout-content">
         <Header />
-        {children}
+        <div className="dashboard-layout-content-wrapper">{children}</div>
       </Box>
     </Box>
   );

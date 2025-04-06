@@ -106,7 +106,7 @@ const AddDevice = () => {
   const navigate = useNavigate();
   const { control } = useForm();
   return (
-    <Box bgcolor="#F8F9FB" width="100%" height="calc(100vh - 64px)">
+    <Box bgcolor="#F8F9FB" width="100%" pb="102px">
       <Stack
         direction="row"
         gap="16px"
@@ -127,7 +127,7 @@ const AddDevice = () => {
         >
           <ArrowBackIcon sx={{ color: "#000000" }} />
         </IconButton>
-        <Typography variant="h6">Create New Device</Typography>
+        <Typography variant="h5">Create New Device</Typography>
       </Stack>
 
       <Box maxWidth="828px" width="100%" margin="0 auto" mt="36px">
@@ -196,10 +196,18 @@ const AddDevice = () => {
         bottom="0"
         // left="0"
       >
-        <Button variant="outline" color="inherit" sx={{ borderRadius: "80px" }}>
+        <Button
+          variant="outlined"
+          color="secondary"
+          className="rounded-full-button"
+        >
           Cancel
         </Button>
-        <Button variant="primary" color="primary" sx={{ borderRadius: "80px" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          className="rounded-full-button"
+        >
           Add New Device
         </Button>
       </Stack>

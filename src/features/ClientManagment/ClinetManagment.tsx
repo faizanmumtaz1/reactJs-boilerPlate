@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Chip,
   IconButton,
   Stack,
@@ -8,7 +7,6 @@ import {
   Tabs,
   Typography,
 } from "@mui/material";
-import { ArrowBackIcon, SearchIcon } from "../../assets/Images/svg";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import SearchBar from "../../components/common/SearchBar/SearchBar";
 import Table from "../../components/common/Table/Table";
@@ -20,6 +18,7 @@ import { ROUTE_ADD_NEW_CLIENT } from "../../utils/constant";
 import "./style.scss";
 import { useState } from "react";
 import Modal from "../../components/common/Modal/Modal";
+import Button from "../../components/common/Button/Button";
 
 const ClinetManagment = () => {
   const navigate = useNavigate();
@@ -252,18 +251,19 @@ const ClinetManagment = () => {
         mt: 2,
       }}
     >
-      <Stack direction="row" justifyContent="space-between" alignItems="center">
+      <Stack
+        direction="row"
+        justifyContent="space-between"
+        alignItems="center"
+        pb={2}
+      >
         <Typography variant="h4">Client Management</Typography>
         <Button
-          sx={{
-            borderRadius: "30px",
-            textTransform: "capitalize",
-            minWidth: 191,
-          }}
           startIcon={<AddIcon />}
           variant="contained"
           color="primary"
           onClick={() => navigate(ROUTE_ADD_NEW_CLIENT)}
+          className="rounded-full-button"
         >
           Add New Client
         </Button>
@@ -358,7 +358,7 @@ const ClinetManagment = () => {
             onSelectedRowsChange={() => {}}
             onSort={() => {}}
             className="client-management-table"
-            onRowClicked={(row) => {
+            onRowClicked={() => {
               navigate(`/edit-or-view-client/123`);
             }}
           />

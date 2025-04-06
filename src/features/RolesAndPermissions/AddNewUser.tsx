@@ -95,10 +95,18 @@ const AddNewUser = () => {
         bottom="0"
         // left="0"
       >
-        <Button variant="outline" color="inherit" sx={{ borderRadius: "80px" }}>
+        <Button
+          variant="outlined"
+          color="secondary"
+          className="rounded-full-button"
+        >
           Cancel
         </Button>
-        <Button variant="primary" color="primary" sx={{ borderRadius: "80px" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          className="rounded-full-button"
+        >
           Invite User
         </Button>
       </Stack>

@@ -1,11 +1,10 @@
-import { Box, Grid, Stack, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Stack, Tab, Tabs, Typography } from "@mui/material";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import Table from "../../components/common/Table/Table";
 import MetricCard from "./MatricCard";
 import { useState } from "react";
 import DashboardChip from "../../components/common/CustomChip/CustomChip";
 import Button from "../../components/common/Button/Button";
-import PeriodSelector from "./PeriodSelector";
 import TrendChart from "./TrendChart";
 import { Chart, registerables } from "chart.js";
 import StatusBadge from "./StatusBadge";
@@ -16,7 +15,7 @@ Chart.register(...registerables);
 const Dashboard = () => {
   const [tabValue, setTabValue] = useState(0);
 
-  const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
   };
   const classificationData = [
@@ -86,25 +85,10 @@ const Dashboard = () => {
       status: <StatusBadge status="Submitted" />,
       pushData: (
         <Button
-          variant="outline"
-          sx={{
-            display: "flex",
-            padding: "4px 10px",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "4px",
-            alignSelf: "stretch",
-            flexShrink: 0,
-            borderRadius: "100px",
-            border: "1px solid rgba(71, 57, 116, 0.5)",
-            color: "var(--primary-main)",
-            fontStyle: "normal",
-            fontWeight: "500",
-            lineHeight: "22px",
-            letterSpacing: "0.46px",
-            textTransform: "capitalize",
-          }}
+          variant="outlined"
+          color="primary"
+          size="small"
+          className="rounded-full-button"
         >
           Push Data to "{"3rd Party name here"}"
         </Button>
@@ -125,25 +109,10 @@ const Dashboard = () => {
       status: <StatusBadge status="QA" />,
       pushData: (
         <Button
-          variant="outline"
-          sx={{
-            display: "flex",
-            padding: "4px 10px",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "4px",
-            alignSelf: "stretch",
-            flexShrink: 0,
-            borderRadius: "100px",
-            border: "1px solid rgba(71, 57, 116, 0.5)",
-            color: "var(--primary-main)",
-            fontStyle: "normal",
-            fontWeight: "500",
-            lineHeight: "22px",
-            letterSpacing: "0.46px",
-            textTransform: "capitalize",
-          }}
+          variant="outlined"
+          color="primary"
+          size="small"
+          className="rounded-full-button"
         >
           Push Data to "{"3rd Party name here"}"
         </Button>
@@ -164,25 +133,10 @@ const Dashboard = () => {
       status: <StatusBadge status="Completed" />,
       pushData: (
         <Button
-          variant="outline"
-          sx={{
-            display: "flex",
-            padding: "4px 10px",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "4px",
-            alignSelf: "stretch",
-            flexShrink: 0,
-            borderRadius: "100px",
-            border: "1px solid rgba(71, 57, 116, 0.5)",
-            color: "var(--primary-main)",
-            fontStyle: "normal",
-            fontWeight: "500",
-            lineHeight: "22px",
-            letterSpacing: "0.46px",
-            textTransform: "capitalize",
-          }}
+          variant="outlined"
+          color="primary"
+          size="small"
+          className="rounded-full-button"
         >
           Push Data to "{"3rd Party name here"}"
         </Button>
@@ -217,6 +171,7 @@ const Dashboard = () => {
     {
       name: <DownloadSmIcon />,
       selector: (row: any) => row.download,
+      width: "60px",
     },
   ];
 
@@ -248,18 +203,7 @@ const Dashboard = () => {
           <Typography variant="body2">12</Typography>
         </Stack>
       ),
-      download: (
-        <Button
-          variant="outline"
-          sx={{
-            padding: "0px",
-            border: "none",
-            color: "var(--primary-main)",
-          }}
-        >
-          <DownloadSmIcon />
-        </Button>
-      ),
+      download: <DownloadSmIcon />,
     },
   ];
   const jobDetailsColumns = [
@@ -305,23 +249,7 @@ const Dashboard = () => {
       classification: <SvarityItem data={classificationData} />,
       severity: <SvarityItem data={classificationData} />,
       noOfDefects: (
-        <Button
-          variant="outline"
-          sx={{
-            display: "flex",
-            padding: "0px",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            border: "none",
-            color: "var(--primary-main)",
-            fontStyle: "normal",
-            fontWeight: "500",
-            lineHeight: "22px",
-            letterSpacing: "0.46px",
-            textTransform: "capitalize",
-          }}
-        >
+        <Button variant="text" color="primary" size="small">
           View on Map
         </Button>
       ),
@@ -358,6 +286,7 @@ const Dashboard = () => {
               minWidth: "180px",
             }}
             fullWidth={false}
+            className="white-select"
           />
           <CustomSelect
             label="Created by"
@@ -375,24 +304,28 @@ const Dashboard = () => {
           />
         </Stack>
       </Stack>
-      <Grid container spacing={2} sx={{ mb: 3 }}>
-        <Grid item xs={12} sm={6} md={3}>
-          <MetricCard title="Total Scanned Km" value="1,024" change="+5%" />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <MetricCard title="Active Clients" value="87" change="+3%" />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <MetricCard title="Devices in Use" value="12" change="-2%" />
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <MetricCard title="Discovered Defects" value="1903" change="+10%" />
-        </Grid>
-      </Grid>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr 1fr 1fr",
+          gap: 2,
+          mb: 3,
+          mt: 2,
+        }}
+      >
+        <MetricCard title="Total Scanned Km" value="1,024" change="+5%" />
+        <MetricCard title="Active Clients" value="87" change="+3%" />
+        <MetricCard title="Devices in Use" value="12" change="-2%" />
+        <MetricCard title="Discovered Defects" value="1903" change="+10%" />
+      </Box>
       <Box sx={{ display: "grid", gridTemplateColumns: "3fr 2fr", gap: 2 }}>
         <Stack
           direction={"column"}
           className="gray-container-table dashboard-table"
+          sx={{
+            height: "100%",
+            mt: 0,
+          }}
         >
           <Stack direction="row" justifyContent="space-between" p={3}>
             <Typography variant="h6">Data Push Request</Typography>
@@ -408,6 +341,7 @@ const Dashboard = () => {
                 size="medium"
                 sx={{
                   minWidth: "180px",
+                  backgroundColor: "var(--white)",
                 }}
                 fullWidth={false}
               />
@@ -446,7 +380,21 @@ const Dashboard = () => {
             <Typography variant="h6" sx={{ fontWeight: "bold" }}>
               Trends
             </Typography>
-            <PeriodSelector label="Showing" value="This year" />
+            <CustomSelect
+              label="Showing"
+              options={severityOptions}
+              onChange={() => {}}
+              name="month"
+              id="month-select"
+              rounded="medium"
+              variant="outlined"
+              size="medium"
+              sx={{
+                minWidth: "180px",
+                backgroundColor: "var(--white)",
+              }}
+              fullWidth={false}
+            />
           </Box>
           <Tabs
             value={tabValue}
@@ -475,19 +423,10 @@ const Dashboard = () => {
           </Tabs>
 
           <Box sx={{ mb: 2, width: "100%" }}>
+            <Typography variant="h4">1,024</Typography>
             <Typography
-              variant="h4"
-              sx={{ fontWeight: "bold", display: "inline-block", mr: 1 }}
-            >
-              1,024
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{
-                color: "#4CAF50",
-                fontWeight: "medium",
-                display: "inline-block",
-              }}
+              className="text-xs"
+              sx={{ color: "#4CAF50 !important" }}
             >
               +5%
             </Typography>
@@ -516,6 +455,7 @@ const Dashboard = () => {
                 size="medium"
                 sx={{
                   minWidth: "180px",
+                  backgroundColor: "var(--white)",
                 }}
                 fullWidth={false}
               />
@@ -548,6 +488,7 @@ const Dashboard = () => {
                 size="medium"
                 sx={{
                   minWidth: "180px",
+                  backgroundColor: "var(--white)",
                 }}
                 fullWidth={false}
               />

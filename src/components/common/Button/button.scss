@@ -1,0 +1,135 @@
+@import "../../../assets/styles/typography.scss";
+.MuiButton-root {
+  // Variant styles
+  &.MuiButton-contained {
+    text-transform: capitalize;
+    &.MuiButton-containedPrimary {
+      box-shadow: none;
+      background-color: var(--primary-main);
+      color: white;
+      &:hover {
+        background-color: var(--primary-main);
+      }
+      &:disabled {
+        background-color: var(--gray-300);
+        color: var(--gray-500);
+      }
+    }
+    &.MuiButton-containedSecondary {
+      background-color: #011c2a;
+      color: white;
+      &:hover {
+        background-color: #011c2a;
+      }
+    }
+  }
+
+  &.MuiButton-outlined {
+    text-transform: capitalize;
+    gap: 10px;
+    &.MuiButton-outlinedPrimary {
+      box-shadow: none;
+      border: 1px solid var(--primary-states-outlinedBorder);
+      background-color: transparent;
+      color: var(--primary-main);
+      &:hover {
+        background-color: var(--primary-states-selected);
+      }
+      &:disabled {
+        background-color: var(--gray-300);
+        color: var(--gray-500);
+      }
+    }
+    &.MuiButton-outlinedSecondary {
+      box-shadow: none;
+      border: 1px solid var(--input-outlined-enabled-border);
+      background-color: transparent;
+      color: var(--text-primary);
+      &:hover {
+        background-color: var(--primary-states-selected);
+      }
+      &:disabled {
+        background-color: var(--gray-300);
+        color: var(--gray-500);
+      }
+    }
+    &.MuiButton-outlinedInfo {
+      border: none;
+      background-color: var(--white);
+      color: var(--text-primary);
+      box-shadow: 0px 4px 8px -2px rgba(16, 24, 40, 0.1),
+        0px 2px 4px -2px rgba(16, 24, 40, 0.06);
+      &:hover {
+        background-color: var(--blueGrey-50);
+      }
+      &:disabled {
+        background-color: var(--gray-300);
+        color: var(--gray-500);
+      }
+    }
+    &.icon-button {
+      padding: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      background-color: transparent;
+      &.MuiButton-sizeSmall {
+        height: 36px;
+        min-width: 36px;
+        max-width: 36px;
+        min-height: 36px;
+        max-height: 36px;
+      }
+      &.MuiButton-sizeMedium {
+        height: 42px;
+        min-width: 42px;
+        max-width: 42px;
+        min-height: 42px;
+        max-height: 42px;
+      }
+    }
+  }
+  &.MuiButton-text {
+    color: var(--primary-main);
+    &:hover {
+      background-color: var(--secondary-100);
+    }
+    &:disabled {
+      color: var(--gray-500);
+    }
+    &.MuiButton-textSecondary {
+      color: var(--text-primary);
+    }
+  }
+
+  // Size styles
+  &.MuiButton-sizeSmall {
+    padding: 4px 10px;
+    @include text-xs;
+  }
+
+  &.MuiButton-sizeMedium {
+    padding: 8px 22px;
+    @include medium-button-text;
+  }
+
+  &.MuiButton-sizeLarge {
+    padding: 10px 24px;
+    font-size: 1.125rem;
+  }
+
+  // Full width style
+  &.MuiButton-fullWidth {
+    width: 100%;
+  }
+
+  // Disabled state
+  &.Mui-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  &.rounded-full-button {
+    border-radius: 100px;
+  }
+}

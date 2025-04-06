@@ -1,92 +1,58 @@
 import {
   Button as MuiButton,
   ButtonProps as MuiButtonProps,
-  styled,
 } from "@mui/material";
-import { ReactNode } from "react";
+import "./button.scss";
 
-// Define the variant types
-type ButtonVariant = "primary" | "secondary" | "outline" | "contained";
-
-// Extend MUI's ButtonProps to include our custom props
-interface ButtonProps extends Omit<MuiButtonProps, "variant"> {
-  variant?: ButtonVariant;
-  children: ReactNode;
+interface ButtonProps extends MuiButtonProps {
+  children: React.ReactNode;
+  variant?: "contained" | "text" | "outlined";
+  color?: "primary" | "secondary" | "success" | "error" | "info" | "warning";
+  size?: "small" | "medium" | "large";
+  fullWidth?: boolean;
+  disabled?: boolean;
+  startIcon?: React.ReactNode;
+  endIcon?: React.ReactNode;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
+  sx?: object;
 }
 
-// Create styled button with variant-specific styles
-const StyledButton = styled(MuiButton)(({ theme, variant = "primary" }) => ({
-  borderRadius: "8px",
-  padding: "10px 24px",
-  textTransform: "none",
-  fontWeight: 600,
-
-  // Variant-specific styles
-  ...(variant === "primary" && {
-    backgroundColor: "rgba(53, 50, 109, 1)",
-    color: theme.palette.common.white,
-    boxShadow: `
-      0px 3px 1px -2px rgba(0, 0, 0, 0.2),
-      0px 2px 2px 0px rgba(0, 0, 0, 0.14),
-      0px 1px 5px 0px rgba(0, 0, 0, 0.12),
-    `,
-    "&:hover": {
-      backgroundColor: "rgb(22, 18, 86)",
-    },
-  }),
-
-  ...(variant === "secondary" && {
-    backgroundColor: theme.palette.secondary.main,
-    color: theme.palette.common.white,
-    "&:hover": {
-      backgroundColor: theme.palette.secondary.dark,
-    },
-  }),
-
-  ...(variant === "outline" && {
-    backgroundColor: "transparent",
-    border: `2px solid ${theme.palette.primary.main}`,
-    color: theme.palette.primary.main,
-    "&:hover": {
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.common.white,
-    },
-  }),
-  ...(variant === "contained" && {
-    backgroundColor: "white",
-    color: theme.palette.primary.main,
-    "&:hover": {
-      backgroundColor: theme.palette.primary.main,
-      color: theme.palette.common.white,
-    },
-  }),
-}));
-
 const Button = ({
-  variant = "primary",
   children,
+  variant = "contained",
+  color = "primary",
+  size = "medium",
+  fullWidth = false,
+  disabled = false,
+  startIcon,
+  endIcon,
+  onClick,
   className,
+  sx,
   ...props
 }: ButtonProps) => {
   return (
-    <StyledButton
-      variant={variant as MuiButtonProps["variant"]}
+    <MuiButton
+      variant={variant}
+      color={color}
+      size={size}
+      fullWidth={fullWidth}
+      disabled={disabled}
+      startIcon={startIcon}
+      endIcon={endIcon}
+      disableRipple
+      onClick={onClick}
       className={className}
-      {...props}
       sx={{
-        ...(props.color === "inherit" && {
-          color: "black !important",
-          border: "1px solid rgba(0,0,0,0.23) !important",
-          "&:hover": {
-            color: "white !important",
-          },
-        }),
-        ...props.sx,
+        textTransform: "none",
+        borderRadius: "8px",
+        ...sx,
       }}
+      {...props}
     >
       {children}
-    </StyledButton>
+    </MuiButton>
   );
 };
 

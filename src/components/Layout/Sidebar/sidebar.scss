@@ -8,6 +8,11 @@
   gap: 32px;
   border-radius: 0px 16px 16px 0px;
   background: var(--sidenav-base);
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  z-index: 2;
   .sidebar-header {
     display: flex;
     flex-direction: column;

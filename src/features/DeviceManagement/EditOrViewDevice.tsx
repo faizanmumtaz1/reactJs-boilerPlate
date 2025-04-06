@@ -120,7 +120,7 @@ const EditOrViewDevice = () => {
   }, [paramsEdit]);
 
   return (
-    <Box bgcolor="#F8F9FB" width="100%" height="calc(100vh - 64px)">
+    <Box bgcolor="#F8F9FB" width="100%" pb="102px">
       <Stack
         direction="row"
         gap="16px"
@@ -145,7 +145,7 @@ const EditOrViewDevice = () => {
         >
           <ArrowBackIcon sx={{ color: "#000000" }} />
         </IconButton>
-        <Typography variant="h6">Device Details</Typography>
+        <Typography variant="h5">Device Details</Typography>
         <Box
           sx={{
             flex: 1,
@@ -156,16 +156,10 @@ const EditOrViewDevice = () => {
           {!isEdit && (
             <Button
               size="small"
-              variant="outline"
-              color="inherit"
+              variant="text"
+              color="secondary"
+              className="rounded-full-button"
               startIcon={<EditIcon />}
-              sx={{
-                border: "none",
-                padding: "0",
-                "&:hover": {
-                  background: "transparent",
-                },
-              }}
               onClick={() => setIsEdit(true)}
             >
               Edit
@@ -246,19 +240,20 @@ const EditOrViewDevice = () => {
           width="calc(100% - 88px)"
           position="fixed"
           bottom="0"
+          zIndex={1}
           // left="0"
         >
           <Button
-            variant="outline"
-            color="inherit"
-            sx={{ borderRadius: "80px" }}
+            variant="outlined"
+            color="secondary"
+            className="rounded-full-button"
           >
             Cancel
           </Button>
           <Button
-            variant="primary"
+            variant="contained"
             color="primary"
-            sx={{ borderRadius: "80px" }}
+            className="rounded-full-button"
           >
             Save Changes
           </Button>

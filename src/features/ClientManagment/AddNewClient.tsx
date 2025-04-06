@@ -1,11 +1,4 @@
-import {
-  Box,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Typography,
-} from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { IconButton, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
@@ -74,7 +67,7 @@ const AddNewClient = () => {
   const [associatedServices, setAssociatedServices] = useState([]);
   const { control } = useForm();
   return (
-    <Box bgcolor="#F8F9FB" width="100%" height="calc(100vh - 64px)">
+    <Box bgcolor="#F8F9FB" width="100%" pb="102px" height="100%">
       <Stack
         direction="row"
         gap="16px"
@@ -95,7 +88,7 @@ const AddNewClient = () => {
         >
           <ArrowBackIcon sx={{ color: "#000000" }} />
         </IconButton>
-        <Typography variant="h6">Create New Client</Typography>
+        <Typography variant="h5">Create New Client</Typography>
       </Stack>
 
       <Box maxWidth="828px" width="100%" margin="0 auto" mt="36px">
@@ -200,10 +193,18 @@ const AddNewClient = () => {
         bottom="0"
         // left="0"
       >
-        <Button variant="outline" color="inherit" sx={{ borderRadius: "80px" }}>
+        <Button
+          variant="outlined"
+          color="secondary"
+          sx={{ borderRadius: "80px" }}
+        >
           Cancel
         </Button>
-        <Button variant="primary" color="primary" sx={{ borderRadius: "80px" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          sx={{ borderRadius: "80px" }}
+        >
           Invite Client
         </Button>
       </Stack>

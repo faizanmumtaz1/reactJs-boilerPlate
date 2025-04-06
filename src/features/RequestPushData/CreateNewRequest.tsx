@@ -3,7 +3,6 @@ import { IconButton, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_REQUEST_PUSH_DATA_LISTING } from "../../utils/constant";
-import { useForm } from "react-hook-form";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import Button from "../../components/common/Button/Button";
 import DatePicker from "../../components/common/DatePicker/DatePicker";
@@ -20,12 +19,11 @@ const clientOptions = [
 
 const CreateNewRequest = () => {
   const navigate = useNavigate();
-  const { control } = useForm();
 
   const [associatedServices, setAssociatedServices] = useState([]);
   const [selectDevice, setSelectDevice] = useState([]);
   return (
-    <Box bgcolor="#F8F9FB" width="100%" height="calc(100vh - 64px)">
+    <Box bgcolor="#F8F9FB" width="100%" height="100%" pb="100px">
       <Stack
         direction="row"
         gap="16px"
@@ -53,9 +51,6 @@ const CreateNewRequest = () => {
         <Stack flexWrap="wrap" gap="12px" mt="16px">
           <DatePicker
             label="Select Scanned Data Date Range"
-            // sx={{
-            //   background: "white",
-            // }}
             sx={{
               background: "white",
             }}
@@ -136,10 +131,18 @@ const CreateNewRequest = () => {
         bottom="0"
         // left="0"
       >
-        <Button variant="outline" color="inherit" sx={{ borderRadius: "80px" }}>
+        <Button
+          variant="outlined"
+          color="secondary"
+          className="rounded-full-button"
+        >
           Cancel
         </Button>
-        <Button variant="primary" color="primary" sx={{ borderRadius: "80px" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          className="rounded-full-button"
+        >
           Submit Request
         </Button>
       </Stack>

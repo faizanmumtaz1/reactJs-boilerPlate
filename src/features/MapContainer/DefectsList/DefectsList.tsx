@@ -63,17 +63,10 @@ const DefectsList = ({
         <div className="header-top">
           <div className="defects-list-header-left">
             <Button
-              variant="contained"
-              sx={{
-                backgroundColor: "transparent",
-                background: "transparent",
-                boxShadow: "none",
-                border: "none",
-                padding: "0px",
-                width: "32px",
-                height: "32px",
-              }}
+              className="icon-button"
+              size="small"
               onClick={handleDefectsListClose}
+              variant="outlined"
             >
               <CrossSmIcon />
             </Button>

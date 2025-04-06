@@ -4,15 +4,21 @@
   align-items: center;
   align-self: stretch;
   height: 64px;
-  border-radius: 16px;
   background: var(--white);
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  max-width: calc(100% - 88px);
+  width: 100%;
+  border-bottom: 1px solid var(--divider);
+
   .header-content {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     align-self: stretch;
-    border-bottom: 1px solid var(--divider);
     width: 100%;
     .header-left {
       display: flex;

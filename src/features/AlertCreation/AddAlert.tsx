@@ -49,7 +49,7 @@ const AddAlert = () => {
   const navigate = useNavigate();
   const { control } = useForm();
   return (
-    <Box bgcolor="#F8F9FB" width="100%" height="calc(100vh - 64px)">
+    <Box bgcolor="#F8F9FB" width="100%" height="100%" pb="102px">
       <Stack
         direction="row"
         gap="16px"
@@ -70,7 +70,7 @@ const AddAlert = () => {
         >
           <ArrowBackIcon sx={{ color: "#000000" }} />
         </IconButton>
-        <Typography variant="h6">Create New Alert</Typography>
+        <Typography variant="h5">Create New Alert</Typography>
       </Stack>
 
       <Box

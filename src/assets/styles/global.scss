@@ -36,6 +36,13 @@ li {
   flex-direction: column;
   width: 100%;
   align-items: center;
+  margin-left: 88px;
+}
+.dashboard-layout-content-wrapper {
+  width: 100%;
+  margin-top: 64px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
 }
 .profile-wrapper {
   display: flex;

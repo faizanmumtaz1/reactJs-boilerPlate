@@ -11,7 +11,7 @@ import {
   TimerIcon,
   DefectIcon,
 } from "../../assets/Images/svg";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import SearchBar from "../../components/common/SearchBar/SearchBar";
 import DefectsList from "./DefectsList/DefectsList";
@@ -75,7 +75,7 @@ const MapContainer = () => {
   return (
     <div className="map-wrapper">
       <div className="title-container">
-        <h4>Map</h4>
+        <Typography variant="h4">Map</Typography>
       </div>
       <div className="filters-container">
         <SearchBar
@@ -151,115 +151,47 @@ const MapContainer = () => {
       <div className="map-container">
         <div className="buttons-wrapper">
           <Button
-            variant="contained"
-            className="view-defects-button"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              zIndex: 1000,
-              borderRadius: "100px",
-              padding: "12px 24px",
-              color: "rgba(0, 0, 0, 0.87)",
-              fontSize: "15px",
-              fontStyle: "normal",
-              fontWeight: "500",
-              lineHeight: "26px",
-              letterSpacing: "0.46px",
-              textTransform: "capitalize",
-            }}
+            variant="outlined"
+            color="info"
+            className="rounded-full-button"
           >
-            <span>All</span>
+            All
           </Button>
           <Button
-            variant="contained"
-            className="view-defects-button"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              zIndex: 1000,
-              borderRadius: "100px",
-              padding: "12px 24px",
-              color: "rgba(0, 0, 0, 0.87)",
-              fontSize: "15px",
-              fontStyle: "normal",
-              fontWeight: "500",
-              lineHeight: "26px",
-              letterSpacing: "0.46px",
-              textTransform: "capitalize",
-            }}
+            variant="outlined"
+            color="info"
+            className="rounded-full-button"
             startIcon={<ExtremelySvereIcon />}
           >
-            <span>Extremely Svere</span>
+            Extremely Svere
           </Button>
           <Button
-            variant="contained"
-            className="view-defects-button"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              zIndex: 1000,
-              borderRadius: "100px",
-              padding: "12px 24px",
-              color: "rgba(0, 0, 0, 0.87)",
-              fontSize: "15px",
-              fontStyle: "normal",
-              fontWeight: "500",
-              lineHeight: "26px",
-              letterSpacing: "0.46px",
-              textTransform: "capitalize",
-            }}
+            variant="outlined"
+            color="info"
+            className="rounded-full-button"
             startIcon={<ModerateIcon />}
           >
-            <span>Moderate</span>
+            Moderate
           </Button>
           <Button
-            variant="contained"
-            className="view-defects-button"
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              zIndex: 1000,
-              borderRadius: "100px",
-              padding: "12px 24px",
-              color: "rgba(0, 0, 0, 0.87)",
-              fontSize: "15px",
-              fontStyle: "normal",
-              fontWeight: "500",
-              lineHeight: "26px",
-              letterSpacing: "0.46px",
-              textTransform: "capitalize",
-            }}
+            variant="outlined"
+            color="info"
+            className="rounded-full-button"
             startIcon={<MildIcon />}
           >
-            <span>Mild</span>
+            Mild
           </Button>
         </div>
         {!isDefectsListOpen && (
           <Button
-            variant="contained"
-            className="view-defects-button"
+            variant="outlined"
+            color="info"
+            className="rounded-full-button"
             sx={{
-              marginBottom: "16px",
               position: "absolute",
               top: "16px",
               left: "48px",
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
               zIndex: 1000,
-              borderRadius: "100px",
-              padding: "12px 24px",
-              color: "rgba(0, 0, 0, 0.87)",
-              fontSize: "15px",
-              fontStyle: "normal",
-              fontWeight: "500",
-              lineHeight: "26px",
-              letterSpacing: "0.46px",
-              textTransform: "capitalize",
             }}
             onClick={() => setIsDefectsListOpen(!isDefectsListOpen)}
             endIcon={<DefectIcon />}
