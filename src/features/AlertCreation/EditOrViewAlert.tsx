@@ -1,16 +1,18 @@
 import { Box, Typography } from "@mui/material";
 import { IconButton, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { ROUTE_ALERT_CREATION } from "../../utils/constant";
 import InputField from "../../components/common/InputField/InputField";
 import { useForm } from "react-hook-form";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import Button from "../../components/common/Button/Button";
-import CommonMultiSelect from "../../components/common/CommonMultiSelect";
-import React from "react";
-import CustomTextArea from "../../components/common/Textarea";
+import { useEffect, useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
+import EditIcon from "@mui/icons-material/Edit";
 import CommonCheckbox from "../../components/common/CommonCheckbox/idex";
+import CustomTextArea from "../../components/common/Textarea";
+import CommonMultiSelect from "../../components/common/CommonMultiSelect";
 const clientOptions = [
   {
     id: 1,
@@ -18,36 +20,38 @@ const clientOptions = [
     value: "client1",
   },
 ];
-const defectTypeOptions = [
-  {
-    id: 1,
-    label: "Defect Type 1",
-    value: "defectType1",
-  },
-  {
-    id: 2,
-    label: "Defect Type 2",
-    value: "defectType2",
-  },
-  {
-    id: 3,
-    label: "Defect Type 3",
-    value: "defectType3",
-  },
-];
-
-const AddAlert = () => {
-  const [defectType, setDefectType] = React.useState<string[]>([]);
-  const [defectSeverity, setDefectSeverity] = React.useState<string>("");
-
-  const handleDefectTypeChange = (value: string[]) => {
-    setDefectType(value);
-  };
-  const handleDefectSeverityChange = (value: string) => {
-    setDefectSeverity(value);
-  };
+const EditOrViewAlert = () => {
+  const defectTypeOptions = [
+    {
+      id: 1,
+      label: "Defect Type 1",
+      value: "defectType1",
+    },
+    {
+      id: 2,
+      label: "Defect Type 2",
+      value: "defectType2",
+    },
+    {
+      id: 3,
+      label: "Defect Type 3",
+      value: "defectType3",
+    },
+  ];
   const navigate = useNavigate();
   const { control } = useForm();
+
+  const [isEdit, setIsEdit] = useState(false);
+
+  const [searchParams] = useSearchParams();
+  const paramsEdit = searchParams.get("edit") === "true";
+
+  useEffect(() => {
+    if (paramsEdit) {
+      setIsEdit(true);
+    }
+  }, [paramsEdit]);
+
   return (
     <Box bgcolor="#F8F9FB" width="100%" height="calc(100vh - 64px)">
       <Stack
@@ -57,6 +61,10 @@ const AddAlert = () => {
         p="16px 24px"
         width="100%"
         alignItems="center"
+        sx={{
+          flex: 1,
+          minHeight: "75px",
+        }}
       >
         <IconButton
           onClick={() => navigate(ROUTE_ALERT_CREATION)}
@@ -70,7 +78,41 @@ const AddAlert = () => {
         >
           <ArrowBackIcon sx={{ color: "#000000" }} />
         </IconButton>
-        <Typography variant="h6">Create New Alert</Typography>
+
+        <Typography variant="h6">
+          {isEdit ? "Edit Alert Details" : "Alert Details"}
+        </Typography>
+        <Box
+          sx={{
+            flex: 1,
+            display: "inline-flex",
+            justifyContent: "flex-end",
+          }}
+        >
+          {!isEdit && (
+            <Button
+              size="small"
+              variant="outline"
+              color="inherit"
+              startIcon={<EditIcon />}
+              sx={{
+                border: "none",
+                padding: "0",
+                "&:hover": {
+                  background: "transparent",
+                },
+              }}
+              onClick={() => setIsEdit(true)}
+            >
+              Edit
+            </Button>
+          )}
+          {isEdit && (
+            <IconButton onClick={() => setIsEdit(false)}>
+              <CloseIcon />
+            </IconButton>
+          )}
+        </Box>
       </Stack>
 
       <Box
@@ -88,6 +130,7 @@ const AddAlert = () => {
           label="Title"
           type="text"
           fullWidth={true}
+          disabled={!isEdit}
         />
         <CustomTextArea
           label="Description"
@@ -102,7 +145,7 @@ const AddAlert = () => {
           error={false}
           helperText=""
           fullWidth={true}
-          disabled={false}
+          disabled={!isEdit}
           required={false}
           variant="outlined"
           rounded="medium"
@@ -110,10 +153,11 @@ const AddAlert = () => {
         <CommonMultiSelect
           label="Defect Type"
           options={defectTypeOptions.map((option) => option.label)}
-          value={defectType}
-          onChange={handleDefectTypeChange}
+          value={[]}
+          onChange={() => {}}
           name="defectType"
           id="defect-type-select"
+          disabled={!isEdit}
           fullWidth={true}
           className=""
           rounded="medium"
@@ -133,21 +177,25 @@ const AddAlert = () => {
             variant="outlined"
             size="large"
             fullWidth={true}
+            disabled={!isEdit}
           />
           <CustomSelect
             label="Defect Severity"
             options={clientOptions}
-            onChange={handleDefectSeverityChange}
+            onChange={() => {}}
             name="defectSeverity"
             id="defect-severity-select"
             rounded="medium"
-            value={defectSeverity}
             variant="outlined"
             size="large"
             fullWidth={true}
+            disabled={!isEdit}
           />
         </Stack>
-        <CommonCheckbox label="Send this alert whenever the criteria are met." />
+        <CommonCheckbox
+          label="Send this alert whenever the criteria are met."
+          disabled={!isEdit}
+        />
       </Box>
 
       <Stack
@@ -162,15 +210,15 @@ const AddAlert = () => {
         bottom="0"
         // left="0"
       >
-        <Button variant="outline" color="primary" sx={{ borderRadius: "80px" }}>
+        <Button variant="outline" color="inherit" sx={{ borderRadius: "80px" }}>
           Cancel
         </Button>
         <Button variant="primary" color="primary" sx={{ borderRadius: "80px" }}>
-          Add New Alert
+          Save Changes
         </Button>
       </Stack>
     </Box>
   );
 };
 
-export default AddAlert;
+export default EditOrViewAlert;

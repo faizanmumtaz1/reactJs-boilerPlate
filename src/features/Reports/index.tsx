@@ -6,9 +6,9 @@ import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_ADD_ALERT } from "../../utils/constant";
+import { ROUTE_ADD_NEW_REPORT } from "../../utils/constant";
 
-const AlertCreation = () => {
+const ReportsListing = () => {
   const navigate = useNavigate();
   const columns = [
     {
@@ -19,36 +19,27 @@ const AlertCreation = () => {
           }}
           variant="body2"
         >
-          Title
+          Name
         </Typography>
       ),
       selector: (row: any) => row.name,
       sortable: true,
     },
     {
-      name: <Typography>Alert Message</Typography>,
-      selector: (row: any) => row.alertMessage,
+      name: <Typography>Region</Typography>,
+      selector: (row: any) => row.region,
       width: "500px",
       sortable: true,
     },
     {
-      name: <Typography>Type of Issue</Typography>,
-      selector: (row: any) => row.typeOfIssue,
-      sortable: true,
-    },
-    {
-      name: <Typography>Device</Typography>,
-      selector: (row: any) => row.device,
-      sortable: true,
-    },
-    {
-      name: <Typography>Date Added</Typography>,
-      selector: (row: any) => row.dateAdded,
+      name: <Typography>Created Date</Typography>,
+      selector: (row: any) => row.createdDate,
       sortable: true,
     },
     {
       name: <Typography>Actions</Typography>,
       selector: (row: any) => row.actions,
+      width: "180px",
     },
   ];
 
@@ -56,10 +47,12 @@ const AlertCreation = () => {
     {
       name: (
         <>
-          <Typography variant="body2">Repair warning</Typography>
+          <Typography variant="body2">
+            Report for Report trend in China
+          </Typography>
         </>
       ),
-      alertMessage: (
+      region: (
         <Stack direction="row" spacing={0.5} alignItems="center">
           <Typography
             variant="body2"
@@ -71,14 +64,11 @@ const AlertCreation = () => {
               whiteSpace: "pre-wrap",
             }}
           >
-            Please check your system settings. An issue has been detected that
-            requires your attention.
+            UK, UK North, UK South, UK Wests,
           </Typography>
         </Stack>
       ),
-      typeOfIssue: <Typography variant="body2">Pothole</Typography>,
-      device: <Typography variant="body2">Arres Eye</Typography>,
-      dateAdded: <Typography variant="body2">Jun 23, 23</Typography>,
+      createdDate: <Typography variant="body2">Jun 23, 23</Typography>,
       actions: (
         <Stack direction="row" spacing={2}>
           <IconButton>
@@ -304,8 +294,8 @@ const AlertCreation = () => {
         my: 2,
       }}
     >
-      <Stack direction="row" justifyContent="space-between" pb="16px">
-        <Typography variant="h4">Alert Creation</Typography>
+      <Stack direction="row" justifyContent="space-between">
+        <Typography variant="h4">Reports</Typography>
         <Button
           sx={{
             borderRadius: "30px",
@@ -315,9 +305,9 @@ const AlertCreation = () => {
           startIcon={<AddIcon />}
           variant="contained"
           color="primary"
-          onClick={() => navigate(ROUTE_ADD_ALERT)}
+          onClick={() => navigate(ROUTE_ADD_NEW_REPORT)}
         >
-          Create New Alert
+          Configure New Report
         </Button>
       </Stack>
       <Stack direction={"column"} className="gray-container-table">
@@ -339,25 +329,11 @@ const AlertCreation = () => {
               placeholder="Name, client, ID..."
             />
             <CustomSelect
-              label="Type Of Issues"
+              label="Created by"
               options={severityOptions}
               onChange={() => {}}
               name="status"
               id="status-select"
-              rounded="medium"
-              variant="outlined"
-              size="medium"
-              sx={{
-                minWidth: "180px",
-              }}
-              fullWidth={false}
-            />
-            <CustomSelect
-              label="Devices"
-              options={severityOptions}
-              onChange={() => {}}
-              name="region"
-              id="region-select"
               rounded="medium"
               variant="outlined"
               size="medium"
@@ -371,8 +347,8 @@ const AlertCreation = () => {
             label="Month"
             options={severityOptions}
             onChange={() => {}}
-            name="month"
-            id="month-select  "
+            name="region"
+            id="region-select"
             rounded="medium"
             variant="outlined"
             size="medium"
@@ -393,9 +369,6 @@ const AlertCreation = () => {
             selectableRows
             onSelectedRowsChange={() => {}}
             onSort={() => {}}
-            onRowClicked={() => {
-              navigate(`/edit-or-view-alert/123`);
-            }}
           />
         </Box>
       </Stack>
@@ -403,4 +376,4 @@ const AlertCreation = () => {
   );
 };
 
-export default AlertCreation;
+export default ReportsListing;

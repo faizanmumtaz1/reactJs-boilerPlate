@@ -4,10 +4,7 @@ import SearchBar from "../../components/common/SearchBar/SearchBar";
 import Table from "../../components/common/Table/Table";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
-import {
-  ROUTE_ADD_DEVICE,
-  ROUTE_CREATE_NEW_REQUEST,
-} from "../../utils/constant";
+import { ROUTE_CREATE_NEW_REQUEST } from "../../utils/constant";
 import "./style.scss";
 import { useState } from "react";
 import Modal from "../../components/common/Modal/Modal";
@@ -254,7 +251,7 @@ const RequestPushDataListing = () => {
             selectableRows
             onSort={() => {}}
             className="request-push-data-table"
-            onRowClicked={(row) => {
+            onRowClicked={() => {
               navigate(`/view-request/123`);
             }}
           />

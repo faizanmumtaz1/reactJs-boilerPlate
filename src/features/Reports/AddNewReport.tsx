@@ -2,15 +2,14 @@ import { Box, Typography } from "@mui/material";
 import { IconButton, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_ALERT_CREATION } from "../../utils/constant";
+import { ROUTE_REPORTS } from "../../utils/constant";
 import InputField from "../../components/common/InputField/InputField";
 import { useForm } from "react-hook-form";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import Button from "../../components/common/Button/Button";
 import CommonMultiSelect from "../../components/common/CommonMultiSelect";
 import React from "react";
-import CustomTextArea from "../../components/common/Textarea";
-import CommonCheckbox from "../../components/common/CommonCheckbox/idex";
+import DatePicker from "../../components/common/DatePicker/DatePicker";
 const clientOptions = [
   {
     id: 1,
@@ -36,7 +35,7 @@ const defectTypeOptions = [
   },
 ];
 
-const AddAlert = () => {
+const AddNewReport = () => {
   const [defectType, setDefectType] = React.useState<string[]>([]);
   const [defectSeverity, setDefectSeverity] = React.useState<string>("");
 
@@ -59,7 +58,7 @@ const AddAlert = () => {
         alignItems="center"
       >
         <IconButton
-          onClick={() => navigate(ROUTE_ALERT_CREATION)}
+          onClick={() => navigate(ROUTE_REPORTS)}
           sx={{
             width: "32px",
             height: "32px",
@@ -70,7 +69,7 @@ const AddAlert = () => {
         >
           <ArrowBackIcon sx={{ color: "#000000" }} />
         </IconButton>
-        <Typography variant="h6">Create New Alert</Typography>
+        <Typography variant="h6">New Report</Typography>
       </Stack>
 
       <Box
@@ -82,38 +81,38 @@ const AddAlert = () => {
         flexDirection="column"
         gap="12px"
       >
-        <InputField
-          name="Title"
-          control={control}
-          label="Title"
-          type="text"
-          fullWidth={true}
-        />
-        <CustomTextArea
-          label="Description"
-          id="description"
-          name="Description"
-          placeholder="Enter description"
-          value=""
-          onChange={() => {}}
-          rows={3}
-          maxRows={5}
-          className=""
-          error={false}
-          helperText=""
-          fullWidth={true}
-          disabled={false}
-          required={false}
-          variant="outlined"
-          rounded="medium"
-        />
+        <Stack direction="row" gap="12px">
+          <InputField
+            name="Report Name"
+            placeholder="Enter here"
+            control={control}
+            label="Report Name"
+            type="text"
+            fullWidth={true}
+          />
+          <DatePicker label="Select Date Range" />
+        </Stack>
         <CommonMultiSelect
-          label="Defect Type"
+          label="Select  Region "
           options={defectTypeOptions.map((option) => option.label)}
           value={defectType}
           onChange={handleDefectTypeChange}
-          name="defectType"
-          id="defect-type-select"
+          name="region"
+          id="region-select"
+          fullWidth={true}
+          className=""
+          rounded="medium"
+          variant="outlined"
+          size="large"
+          sx={{}}
+        />
+        <CommonMultiSelect
+          label="Select Client (optional)"
+          options={defectTypeOptions.map((option) => option.label)}
+          value={defectType}
+          onChange={handleDefectTypeChange}
+          name="client"
+          id="client-select"
           fullWidth={true}
           className=""
           rounded="medium"
@@ -124,22 +123,22 @@ const AddAlert = () => {
 
         <Stack mt="24px" direction="row" gap="12px">
           <CustomSelect
-            label="Defect Type"
+            label="Select Scanned Device (optional)"
             options={clientOptions}
             onChange={() => {}}
-            name="defectType"
-            id="defect-type-select"
+            name="scannedDevice"
+            id="scanned-device-select"
             rounded="medium"
             variant="outlined"
             size="large"
             fullWidth={true}
           />
           <CustomSelect
-            label="Defect Severity"
+            label="Select Report Format"
             options={clientOptions}
             onChange={handleDefectSeverityChange}
-            name="defectSeverity"
-            id="defect-severity-select"
+            name="reportFormat"
+            id="report-format-select"
             rounded="medium"
             value={defectSeverity}
             variant="outlined"
@@ -147,7 +146,6 @@ const AddAlert = () => {
             fullWidth={true}
           />
         </Stack>
-        <CommonCheckbox label="Send this alert whenever the criteria are met." />
       </Box>
 
       <Stack
@@ -166,11 +164,11 @@ const AddAlert = () => {
           Cancel
         </Button>
         <Button variant="primary" color="primary" sx={{ borderRadius: "80px" }}>
-          Add New Alert
+          Create Report
         </Button>
       </Stack>
     </Box>
   );
 };
 
-export default AddAlert;
+export default AddNewReport;

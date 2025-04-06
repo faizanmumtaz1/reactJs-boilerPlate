@@ -12,9 +12,15 @@ import {
   ROUTE_ALERT_CREATION,
   ROUTE_ADD_ALERT,
   ROUTE_EDIT_OR_VIEW_DEVICE,
-  ROUTE_VIEW_REQUEST,
   ROUTE_CREATE_NEW_REQUEST,
   ROUTE_EDIT_OR_VIEW_CLIENT,
+  ROUTE_REPORTS,
+  ROUTE_REQUEST_PUSH_DATA_LISTING,
+  ROUTE_ADD_NEW_REPORT,
+  ROUTE_ACTIVE_SERVICE,
+  ROUTE_ADD_NEW_SERVICE,
+  ROUTE_ADD_NEW_CLIENT_SERVICE,
+  ROUTE_EDIT_OR_VIEW_ALERT,
 } from "../utils/constant";
 import Login from "../components/auth/Login/Login";
 import ForgotPassword from "../components/auth/ForgotPassword/ForgotPassword";
@@ -31,8 +37,13 @@ import AddAlert from "../features/AlertCreation/AddAlert";
 import EditOrViewClient from "../features/ClientManagment/EditOrViewClient";
 import EditOrViewDevice from "../features/DeviceManagement/EditOrViewDevice";
 import CreateNewRequest from "../features/RequestPushData/CreateNewRequest";
-import ViewRequest from "../features/RequestPushData/ViewRequest";
-
+import ReportsListing from "../features/Reports/index";
+import RequestPushDataListing from "../features/RequestPushData/RequestPushDataListing";
+import AddNewReport from "../features/Reports/AddNewReport";
+import ActiveServiceListing from "../features/ActiveService";
+import AddNewService from "../features/ActiveService/AddNewService";
+import EditOrViewAlert from "../features/AlertCreation/EditOrViewAlert";
+import AddNewClientService from "../features/ActiveService/AddNewServiceClient";
 const AppRoutes = () => {
   return (
     <>
@@ -100,6 +111,14 @@ const AppRoutes = () => {
           }
         />
         <Route
+          path={ROUTE_EDIT_OR_VIEW_CLIENT}
+          element={
+            <DashboardLayout>
+              <EditOrViewClient />
+            </DashboardLayout>
+          }
+        />
+        <Route
           path={ROUTE_ALERT_CREATION}
           element={
             <DashboardLayout>
@@ -108,7 +127,14 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path={ROUTE_EDIT_OR_VIEW_CLIENT}
+          path={ROUTE_EDIT_OR_VIEW_ALERT}
+          element={
+            <DashboardLayout>
+              <EditOrViewAlert />
+            </DashboardLayout>
+          }
+        />
+        <Route
           element={
             <DashboardLayout>
               <EditOrViewClient />
@@ -132,10 +158,50 @@ const AppRoutes = () => {
           }
         />
         <Route
-          path={ROUTE_VIEW_REQUEST}
+          path={ROUTE_REQUEST_PUSH_DATA_LISTING}
           element={
             <DashboardLayout>
-              <ViewRequest />
+              <RequestPushDataListing />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_REPORTS}
+          element={
+            <DashboardLayout>
+              <ReportsListing />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_ADD_NEW_REPORT}
+          element={
+            <DashboardLayout>
+              <AddNewReport />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_ACTIVE_SERVICE}
+          element={
+            <DashboardLayout>
+              <ActiveServiceListing />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_ADD_NEW_SERVICE}
+          element={
+            <DashboardLayout>
+              <AddNewService />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_ADD_NEW_CLIENT_SERVICE}
+          element={
+            <DashboardLayout>
+              <AddNewClientService />
             </DashboardLayout>
           }
         />

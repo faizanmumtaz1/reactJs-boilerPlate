@@ -1,11 +1,4 @@
-import {
-  FormControl,
-  InputLabel,
-  Select,
-  MenuItem,
-  Box,
-  Chip,
-} from "@mui/material";
+import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
 import "./style.scss";
 interface Option {
   value: string;
@@ -67,6 +60,7 @@ const CustomSelect = ({
           labelId={id}
           label={label}
           variant={variant}
+          disabled={disabled}
           onChange={onChange}
           value={value || defaultValue}
           className={`select-common ${className} select-${size} select-rounded-${rounded}`}

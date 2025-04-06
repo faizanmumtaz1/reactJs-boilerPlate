@@ -24,6 +24,7 @@ interface CommonMultiSelectProps {
   rounded?: "full" | "none" | "medium" | "small";
   variant?: "standard" | "filled" | "outlined";
   size?: "small" | "medium" | "large";
+  disabled?: boolean;
   sx?: object;
 }
 
@@ -50,6 +51,7 @@ export default function CommonMultiSelect({
   rounded = "full",
   variant = "outlined",
   size = "medium",
+  disabled = false,
   sx = {},
 }: CommonMultiSelectProps) {
   const handleChange = (event: SelectChangeEvent<typeof value>) => {
@@ -71,6 +73,7 @@ export default function CommonMultiSelect({
         id={`${id}-select`}
         multiple
         value={value}
+        disabled={disabled}
         onChange={handleChange}
         input={<OutlinedInput label={label} />}
         renderValue={(selected) => (

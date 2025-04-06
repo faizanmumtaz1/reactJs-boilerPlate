@@ -20,7 +20,9 @@ import {
   ROUTE_DEVICE_MANAGEMENT_LISTING,
   ROUTE_EDIT_OR_VIEW_CLIENT,
   ROUTE_EDIT_OR_VIEW_DEVICE,
+  ROUTE_REPORTS,
   ROUTE_REQUEST_PUSH_DATA_LISTING,
+  ROUTE_ACTIVE_SERVICE,
 } from "../../../utils/constant";
 const Sidebar = () => {
   const linksList = [
@@ -68,16 +70,16 @@ const Sidebar = () => {
       activePaths: ["/lock"],
     },
     {
-      name: "Setting",
-      path: "/setting",
+      name: "Reports",
+      path: ROUTE_REPORTS,
       icon: <SettingInputIcon />,
-      activePaths: ["/setting"],
+      activePaths: [ROUTE_REPORTS],
     },
     {
-      name: "Add Link",
-      path: "/add-link",
+      name: "Active Service",
+      path: ROUTE_ACTIVE_SERVICE,
       icon: <AddLinkIcon />,
-      activePaths: ["/add-link"],
+      activePaths: [ROUTE_ACTIVE_SERVICE],
     },
     {
       name: "Cloud Upload",
