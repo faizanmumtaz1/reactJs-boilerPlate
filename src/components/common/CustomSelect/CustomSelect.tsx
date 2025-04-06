@@ -52,6 +52,9 @@ const CustomSelect = ({
       <FormControl
         fullWidth={fullWidth}
         className={`${WrapperClassName} select-wrapper`}
+        sx={{
+          ...formControlStyling,
+        }}
       >
         <InputLabel id={id} className={`select-label select-${size}`}>
           {label}

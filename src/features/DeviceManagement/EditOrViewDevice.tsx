@@ -197,7 +197,11 @@ const EditOrViewDevice = () => {
               control={control}
               label={item.label}
               type={item.type}
-              sx={{ width: "100%", maxWidth: "calc(50% - 12px)" }}
+              sx={{
+                width: "100%",
+                maxWidth: "calc(50% - 12px)",
+                background: "white",
+              }}
               disabled={!isEdit}
             />
           ))}
@@ -223,11 +227,10 @@ const EditOrViewDevice = () => {
             variant="outlined"
             size="large"
             fullWidth={true}
-            labelStyling={{
-              backgroundColor: "var(--background-default) !important",
-              marginTop: "2px",
-            }}
             disabled={!isEdit}
+            sx={{
+              background: "white",
+            }}
           />
         </Box>
       </Box>

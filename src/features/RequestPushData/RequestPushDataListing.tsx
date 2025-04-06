@@ -171,6 +171,9 @@ const RequestPushDataListing = () => {
             rounded="medium"
             width="300px"
             placeholder="Name, client, ID..."
+            sx={{
+              background: "white",
+            }}
           />
           <CustomSelect
             label="Created by"
@@ -184,12 +187,9 @@ const RequestPushDataListing = () => {
             sx={{
               minWidth: "180px",
               height: "40px",
+              background: "white",
             }}
             fullWidth={false}
-            labelStyling={{
-              marginTop: "5px",
-              backgroundColor: "var(--background-default) !important",
-            }}
           />
           <CustomSelect
             label="Status"
@@ -203,12 +203,9 @@ const RequestPushDataListing = () => {
             sx={{
               minWidth: "180px",
               height: "40px",
+              background: "white",
             }}
             fullWidth={false}
-            labelStyling={{
-              marginTop: "5px",
-              backgroundColor: "var(--background-default) !important",
-            }}
           />
           <Box
             sx={{
@@ -231,12 +228,9 @@ const RequestPushDataListing = () => {
               sx={{
                 minWidth: "180px",
                 height: "40px",
+                background: "white",
               }}
               fullWidth={false}
-              labelStyling={{
-                marginTop: "5px",
-                backgroundColor: "var(--background-default) !important",
-              }}
             />
           </Box>
         </Stack>

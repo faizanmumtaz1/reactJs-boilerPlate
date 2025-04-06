@@ -9,14 +9,13 @@ import {
 import { IconButton, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
-import {
-  ROUTE_CLIENT_MANAGEMENT,
-  ROUTE_DEVICE_MANAGEMENT_LISTING,
-} from "../../utils/constant";
+import { ROUTE_CLIENT_MANAGEMENT } from "../../utils/constant";
 import InputField from "../../components/common/InputField/InputField";
 import { useForm } from "react-hook-form";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import Button from "../../components/common/Button/Button";
+import CommonMultiSelect from "../../components/common/CommonMultiSelect";
+import { useState } from "react";
 
 const clientData = [
   {
@@ -64,9 +63,15 @@ const clientOptions = [
     label: "Client 1",
     value: "client1",
   },
+  {
+    id: 2,
+    label: "Client 2",
+    value: "client2",
+  },
 ];
 const AddNewClient = () => {
   const navigate = useNavigate();
+  const [associatedServices, setAssociatedServices] = useState([]);
   const { control } = useForm();
   return (
     <Box bgcolor="#F8F9FB" width="100%" height="calc(100vh - 64px)">
@@ -120,6 +125,9 @@ const AddNewClient = () => {
                     width: "100%",
                     maxWidth: "calc(50% - 6px)",
                   }}
+                  sx={{
+                    background: "white",
+                  }}
                   // sx={{
                   //   minHeight: "60px !important",
                   // }}
@@ -134,23 +142,32 @@ const AddNewClient = () => {
                   control={control}
                   label={item.label}
                   type={item.type}
-                  sx={{ width: "100%", maxWidth: "calc(50% - 6px)" }}
+                  sx={{
+                    width: "100%",
+                    maxWidth: "calc(50% - 6px)",
+                    background: "white",
+                  }}
                 />
               )}
             </>
           ))}
         </Stack>
         <Box mt="12px">
-          <CustomSelect
+          <CommonMultiSelect
             label="Associated Services"
-            options={clientOptions}
-            onChange={() => {}}
+            options={clientOptions.map((option) => option.label)}
+            value={associatedServices} // <- Pass your state here
+            onChange={(newValue: any) => setAssociatedServices(newValue)} // <- Update state on change
             name="associatedServices"
-            id="status-select"
+            id="associated-services-select"
+            fullWidth={true}
+            className=""
             rounded="medium"
             variant="outlined"
             size="large"
-            fullWidth={true}
+            sx={{
+              background: "white",
+            }}
           />
         </Box>
         <Box mt="12px">
@@ -164,6 +181,9 @@ const AddNewClient = () => {
             variant="outlined"
             size="large"
             fullWidth={true}
+            sx={{
+              background: "white",
+            }}
           />
         </Box>
       </Box>
