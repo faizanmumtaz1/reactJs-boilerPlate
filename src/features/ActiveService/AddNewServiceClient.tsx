@@ -2,7 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { IconButton, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
-import { ROUTE_DEVICE_MANAGEMENT_LISTING } from "../../utils/constant";
+import { ROUTE_ADD_NEW_SERVICE } from "../../utils/constant";
 import InputField from "../../components/common/InputField/InputField";
 
 import { useForm } from "react-hook-form";
@@ -47,7 +47,7 @@ const AddNewClientService = () => {
         alignItems="center"
       >
         <IconButton
-          onClick={() => navigate(ROUTE_DEVICE_MANAGEMENT_LISTING)}
+          onClick={() => navigate(ROUTE_ADD_NEW_SERVICE)}
           sx={{
             width: "32px",
             height: "32px",

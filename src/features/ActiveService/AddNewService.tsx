@@ -4,7 +4,7 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 import {
   ROUTE_ADD_NEW_CLIENT_SERVICE,
-  ROUTE_DEVICE_MANAGEMENT_LISTING,
+  ROUTE_ACTIVE_SERVICE,
 } from "../../utils/constant";
 import InputField from "../../components/common/InputField/InputField";
 import { useForm } from "react-hook-form";
@@ -149,7 +149,7 @@ const AddNewService = () => {
         alignItems="center"
       >
         <IconButton
-          onClick={() => navigate(ROUTE_DEVICE_MANAGEMENT_LISTING)}
+          onClick={() => navigate(ROUTE_ACTIVE_SERVICE)}
           sx={{
             width: "32px",
             height: "32px",
