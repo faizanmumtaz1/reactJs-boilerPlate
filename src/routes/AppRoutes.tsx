@@ -22,6 +22,8 @@ import {
   ROUTE_ADD_NEW_CLIENT_SERVICE,
   ROUTE_EDIT_OR_VIEW_ALERT,
   ROUTE_VIEW_REQUEST,
+  ROUTE_ROLES_AND_PERMISSIONS_LISTING,
+  ROUTE_ADD_NEW_USER,
 } from "../utils/constant";
 import Login from "../components/auth/Login/Login";
 import ForgotPassword from "../components/auth/ForgotPassword/ForgotPassword";
@@ -46,6 +48,8 @@ import ActiveServiceListing from "../features/ActiveService";
 import AddNewService from "../features/ActiveService/AddNewService";
 import EditOrViewAlert from "../features/AlertCreation/EditOrViewAlert";
 import AddNewClientService from "../features/ActiveService/AddNewServiceClient";
+import RolesAndPermissionsListing from "../features/RolesAndPermissions/RolesAndPermissionsListing";
+import AddNewUser from "../features/RolesAndPermissions/AddNewUser";
 const AppRoutes = () => {
   return (
     <>
@@ -213,6 +217,22 @@ const AppRoutes = () => {
           element={
             <DashboardLayout>
               <AddNewClientService />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_ROLES_AND_PERMISSIONS_LISTING}
+          element={
+            <DashboardLayout>
+              <RolesAndPermissionsListing />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_ADD_NEW_USER}
+          element={
+            <DashboardLayout>
+              <AddNewUser />
             </DashboardLayout>
           }
         />
