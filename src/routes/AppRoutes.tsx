@@ -22,6 +22,7 @@ import {
   ROUTE_ADD_NEW_CLIENT_SERVICE,
   ROUTE_EDIT_OR_VIEW_ALERT,
   ROUTE_VIEW_REQUEST,
+  ROUTE_DASHBOARD,
   ROUTE_ROLES_AND_PERMISSIONS_LISTING,
   ROUTE_ADD_NEW_USER,
 } from "../utils/constant";
@@ -48,6 +49,7 @@ import ActiveServiceListing from "../features/ActiveService";
 import AddNewService from "../features/ActiveService/AddNewService";
 import EditOrViewAlert from "../features/AlertCreation/EditOrViewAlert";
 import AddNewClientService from "../features/ActiveService/AddNewServiceClient";
+import Dashboard from "../features/Dashboard";
 import RolesAndPermissionsListing from "../features/RolesAndPermissions/RolesAndPermissionsListing";
 import AddNewUser from "../features/RolesAndPermissions/AddNewUser";
 const AppRoutes = () => {
@@ -217,6 +219,14 @@ const AppRoutes = () => {
           element={
             <DashboardLayout>
               <AddNewClientService />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_DASHBOARD}
+          element={
+            <DashboardLayout>
+              <Dashboard />
             </DashboardLayout>
           }
         />

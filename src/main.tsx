@@ -5,6 +5,7 @@ import App from "./App.tsx";
 import "./assets/styles/global.scss";
 import "./assets/styles/typography.scss";
 import "./assets/styles/variable.scss";
+import "leaflet/dist/leaflet.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

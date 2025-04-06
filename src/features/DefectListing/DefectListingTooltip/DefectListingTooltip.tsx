@@ -60,19 +60,6 @@ const defectList = [
 
 const DefectListingTooltip = () => {
   return (
-    <TooltipCustom
-      body={<TooltipBody />}
-      placement="top"
-      customClass="defect-listing-tooltip"
-    >
-      <span>DefectListingTooltip</span>
-    </TooltipCustom>
-  );
-};
-
-export default DefectListingTooltip;
-const TooltipBody = () => {
-  return (
     <div className="defect-listing-tooltip-wrapper">
       <div className="defect-listing-tooltip-header">
         <div className="image-wrapper">
@@ -114,6 +101,8 @@ const TooltipBody = () => {
     </div>
   );
 };
+
+export default DefectListingTooltip;
 const DefectListItem = ({
   icon,
   name,
