@@ -576,3 +576,100 @@ export const DownloadSmIcon = () => {
     </svg>
   );
 };
+export const ExtremelySvereIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="23"
+      height="24"
+      viewBox="0 0 23 24"
+      fill="none"
+    >
+      <circle
+        opacity="0.2"
+        cx="11.2921"
+        cy="12.2481"
+        r="11.2667"
+        fill="#BE1E2D"
+      />
+      <circle
+        cx="11.2923"
+        cy="12.2486"
+        r="3.32879"
+        fill="#BE1E2D"
+        stroke="white"
+        stroke-width="1.02424"
+      />
+    </svg>
+  );
+};
+export const ModerateIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="23"
+      height="23"
+      viewBox="0 0 23 23"
+      fill="none"
+    >
+      <circle
+        opacity="0.2"
+        cx="11.5284"
+        cy="11.3212"
+        r="11.2667"
+        fill="#07AF4A"
+      />
+      <circle
+        cx="11.5286"
+        cy="11.3215"
+        r="3.32879"
+        fill="#07AF4A"
+        stroke="white"
+        stroke-width="1.02424"
+      />
+    </svg>
+  );
+};
+export const MildIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="23"
+      viewBox="0 0 24 23"
+      fill="none"
+    >
+      <circle
+        opacity="0.2"
+        cx="12.0782"
+        cy="11.4974"
+        r="11.2667"
+        fill="#FF912C"
+      />
+      <circle
+        cx="12.0784"
+        cy="11.4976"
+        r="3.32879"
+        fill="#FF912C"
+        stroke="white"
+        stroke-width="1.02424"
+      />
+    </svg>
+  );
+};
+export const DefectIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <path
+        d="M11.9999 3.08563C7.40989 3.08563 3.85989 4.61563 0.889888 6.67563C0.399888 7.00563 0.299888 7.67563 0.669888 8.13563L10.4499 20.1756C11.2499 21.1556 12.7499 21.1656 13.5499 20.1756L23.3299 8.15563C23.6999 7.69563 23.5999 7.02563 23.1099 6.69563C20.1399 4.62563 16.5899 3.08563 11.9999 3.08563ZM11.9999 16.0856C11.4499 16.0856 10.9999 15.6356 10.9999 15.0856V11.0856C10.9999 10.5356 11.4499 10.0856 11.9999 10.0856C12.5499 10.0856 12.9999 10.5356 12.9999 11.0856V15.0856C12.9999 15.6356 12.5499 16.0856 11.9999 16.0856ZM10.9999 8.08563V6.08563H12.9999V8.08563H10.9999Z"
+        fill="#35326D"
+      />
+    </svg>
+  );
+};

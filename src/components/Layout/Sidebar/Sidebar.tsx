@@ -25,17 +25,20 @@ import {
   ROUTE_ACTIVE_SERVICE,
   ROUTE_ROLES_AND_PERMISSIONS_LISTING,
   ROUTE_ADD_NEW_USER,
+  ROUTE_MAP,
+  ROUTE_DASHBOARD,
+  ROUTE_ALERT_CREATION,
 } from "../../../utils/constant";
 const Sidebar = () => {
   const linksList = [
     {
       name: "Home",
-      path: "/",
+      path: ROUTE_MAP,
       icon: <ExploreIcon />,
     },
     {
       name: "Dashboard",
-      path: "/dashboard",
+      path: ROUTE_DASHBOARD,
       icon: <DashboardFillIcon />,
       activePaths: ["/dashboard"],
     },
@@ -61,9 +64,9 @@ const Sidebar = () => {
     },
     {
       name: "Alert Creation",
-      path: "/alert-creation",
+      path: ROUTE_ALERT_CREATION,
       icon: <NotificationEditIcon />,
-      activePaths: ["/notification"],
+      activePaths: [ROUTE_ALERT_CREATION],
     },
     {
       name: "Lock",

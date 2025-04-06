@@ -2,10 +2,14 @@ import "./mapContainer.scss";
 import {
   AddPathIcon,
   AltRouteIcon,
+  ExtremelySvereIcon,
+  ModerateIcon,
+  MildIcon,
   ScanWifiIcon,
   SearchIcon,
   StraightLineIcon,
   TimerIcon,
+  DefectIcon,
 } from "../../assets/Images/svg";
 import { Box } from "@mui/material";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
@@ -145,6 +149,95 @@ const MapContainer = () => {
         />
       </div>
       <div className="map-container">
+        <div className="buttons-wrapper">
+          <Button
+            variant="contained"
+            className="view-defects-button"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              zIndex: 1000,
+              borderRadius: "100px",
+              padding: "12px 24px",
+              color: "rgba(0, 0, 0, 0.87)",
+              fontSize: "15px",
+              fontStyle: "normal",
+              fontWeight: "500",
+              lineHeight: "26px",
+              letterSpacing: "0.46px",
+              textTransform: "capitalize",
+            }}
+          >
+            <span>All</span>
+          </Button>
+          <Button
+            variant="contained"
+            className="view-defects-button"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              zIndex: 1000,
+              borderRadius: "100px",
+              padding: "12px 24px",
+              color: "rgba(0, 0, 0, 0.87)",
+              fontSize: "15px",
+              fontStyle: "normal",
+              fontWeight: "500",
+              lineHeight: "26px",
+              letterSpacing: "0.46px",
+              textTransform: "capitalize",
+            }}
+            startIcon={<ExtremelySvereIcon />}
+          >
+            <span>Extremely Svere</span>
+          </Button>
+          <Button
+            variant="contained"
+            className="view-defects-button"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              zIndex: 1000,
+              borderRadius: "100px",
+              padding: "12px 24px",
+              color: "rgba(0, 0, 0, 0.87)",
+              fontSize: "15px",
+              fontStyle: "normal",
+              fontWeight: "500",
+              lineHeight: "26px",
+              letterSpacing: "0.46px",
+              textTransform: "capitalize",
+            }}
+            startIcon={<ModerateIcon />}
+          >
+            <span>Moderate</span>
+          </Button>
+          <Button
+            variant="contained"
+            className="view-defects-button"
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              zIndex: 1000,
+              borderRadius: "100px",
+              padding: "12px 24px",
+              color: "rgba(0, 0, 0, 0.87)",
+              fontSize: "15px",
+              fontStyle: "normal",
+              fontWeight: "500",
+              lineHeight: "26px",
+              letterSpacing: "0.46px",
+              textTransform: "capitalize",
+            }}
+            startIcon={<MildIcon />}
+          >
+            <span>Mild</span>
+          </Button>
+        </div>
         {!isDefectsListOpen && (
           <Button
             variant="contained"
@@ -169,6 +262,7 @@ const MapContainer = () => {
               textTransform: "capitalize",
             }}
             onClick={() => setIsDefectsListOpen(!isDefectsListOpen)}
+            endIcon={<DefectIcon />}
           >
             <span>View Defects</span>
           </Button>

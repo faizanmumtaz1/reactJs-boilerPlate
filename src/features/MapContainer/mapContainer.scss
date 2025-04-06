@@ -30,6 +30,27 @@
     position: relative;
     border-radius: 24px;
     overflow: hidden;
+    .buttons-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 1000;
+      .view-defects-button {
+        &:hover {
+          background-color: var(--blueGrey-50);
+          color: var(--text-primary);
+        }
+      }
+    }
+    .view-defects-button {
+      &:hover {
+        background-color: var(--blueGrey-50);
+        color: var(--text-primary);
+      }
+    }
   }
   .map-controls-container {
     display: flex;
