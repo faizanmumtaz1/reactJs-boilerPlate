@@ -7,6 +7,8 @@ import { useForm } from "react-hook-form";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import Button from "../../components/common/Button/Button";
 import DatePicker from "../../components/common/DatePicker/DatePicker";
+import { useState } from "react";
+import CommonMultiSelect from "../../components/common/CommonMultiSelect";
 
 const clientOptions = [
   {
@@ -19,6 +21,9 @@ const clientOptions = [
 const ViewRequest = () => {
   const navigate = useNavigate();
   const { control } = useForm();
+
+  const [associatedServices, setAssociatedServices] = useState([]);
+  const [selectDevice, setSelectDevice] = useState([]);
   return (
     <Box bgcolor="#F8F9FB" width="100%" height="calc(100vh - 64px)">
       <Stack
@@ -54,8 +59,13 @@ const ViewRequest = () => {
 
       <Box maxWidth="828px" width="100%" margin="0 auto" mt="36px">
         <Stack flexWrap="wrap" gap="12px" mt="16px">
-          <DatePicker label="Select Scanned Data Date Range" />
-          <CustomSelect
+          <DatePicker
+            label="Select Scanned Data Date Range"
+            sx={{
+              background: "white",
+            }}
+          />
+          {/* <CustomSelect
             label="Select Region"
             options={clientOptions}
             onChange={() => {}}
@@ -64,6 +74,25 @@ const ViewRequest = () => {
             rounded="medium"
             variant="outlined"
             size="large"
+            sx={{
+              background: "white",
+            }}
+          /> */}
+          <CommonMultiSelect
+            label="Select Region"
+            options={clientOptions.map((option) => option.label)}
+            value={associatedServices}
+            onChange={(newValue: any) => setAssociatedServices(newValue)} // <- Update state on change
+            name="associatedServices"
+            id="associated-services-select"
+            fullWidth={true}
+            className=""
+            rounded="medium"
+            variant="outlined"
+            size="large"
+            sx={{
+              background: "white",
+            }}
           />
         </Stack>
         <Stack direction="row" gap="12px" mt="16px">
@@ -76,8 +105,11 @@ const ViewRequest = () => {
             rounded="medium"
             variant="outlined"
             size="large"
+            sx={{
+              background: "white",
+            }}
           />
-          <CustomSelect
+          {/* <CustomSelect
             label="Select Device"
             options={clientOptions}
             onChange={() => {}}
@@ -86,6 +118,25 @@ const ViewRequest = () => {
             rounded="medium"
             variant="outlined"
             size="large"
+            sx={{
+              background: "white",
+            }}
+          /> */}
+          <CommonMultiSelect
+            label="Select Device"
+            options={clientOptions.map((option) => option.label)}
+            value={selectDevice}
+            onChange={(newValue: any) => setSelectDevice(newValue)} // <- Update state on change
+            name="selectDevice"
+            id="selectDevice"
+            fullWidth={true}
+            className=""
+            rounded="medium"
+            variant="outlined"
+            size="large"
+            sx={{
+              background: "white",
+            }}
           />
         </Stack>
       </Box>

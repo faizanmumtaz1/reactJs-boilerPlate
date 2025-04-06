@@ -75,7 +75,6 @@ export default function RegisteredDeviceTable() {
       paginationRowsPerPageOptions={[10, 20, 30, 40, 50]}
       onSelectedRowsChange={() => {}}
       onSort={() => {}}
-      className="client-registered-device-table"
     />
   );
 }

@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import { ROUTE_ADD_NEW_CLIENT } from "../../utils/constant";
 import "./style.scss";
 import { useState } from "react";
+import Modal from "../../components/common/Modal/Modal";
 
 const ClinetManagment = () => {
   const navigate = useNavigate();
@@ -251,7 +252,7 @@ const ClinetManagment = () => {
         mt: 2,
       }}
     >
-      <Stack direction="row" justifyContent="space-between">
+      <Stack direction="row" justifyContent="space-between" alignItems="center">
         <Typography variant="h4">Client Management</Typography>
         <Button
           sx={{
@@ -298,15 +299,19 @@ const ClinetManagment = () => {
           borderRadius: 3,
           mt: 2,
           paddingBottom: 0,
+          pt: 3,
         }}
       >
-        <Stack mt={4} direction="row" justifyContent="start" spacing={2}>
+        <Stack direction="row" justifyContent="start" spacing={2}>
           <SearchBar
             label="Search"
             variant="outlined"
             rounded="medium"
             width="300px"
             placeholder="Name, client, ID..."
+            sx={{
+              background: "white",
+            }}
           />
           <CustomSelect
             label="Status"
@@ -320,12 +325,9 @@ const ClinetManagment = () => {
             sx={{
               minWidth: "180px",
               height: "40px",
+              background: "white",
             }}
             fullWidth={false}
-            labelStyling={{
-              marginTop: "5px",
-              background: "var(--background-default) !important",
-            }}
           />
           <CustomSelect
             label="Region"
@@ -339,12 +341,9 @@ const ClinetManagment = () => {
             sx={{
               minWidth: "180px",
               height: "40px",
+              background: "white",
             }}
             fullWidth={false}
-            labelStyling={{
-              marginTop: "5px",
-              background: "var(--background-default) !important",
-            }}
           />
         </Stack>
         <Box mt={2}>
@@ -365,6 +364,13 @@ const ClinetManagment = () => {
           />
         </Box>
       </Box>
+      <Modal
+        open={showDeleteModal}
+        onClose={() => setShowDeleteModal(false)}
+        onConfirm={() => {}}
+        title="Delete device?"
+        subtitle="Are you sure you would like to remove this device?"
+      />
     </Box>
   );
 };

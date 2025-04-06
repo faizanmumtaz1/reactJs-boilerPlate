@@ -1,16 +1,14 @@
-import { Box, Chip, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { IconButton, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
-import {
-  ROUTE_DEVICE_MANAGEMENT_LISTING,
-  ROUTE_REQUEST_PUSH_DATA_LISTING,
-} from "../../utils/constant";
-import InputField from "../../components/common/InputField/InputField";
+import { ROUTE_REQUEST_PUSH_DATA_LISTING } from "../../utils/constant";
 import { useForm } from "react-hook-form";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import Button from "../../components/common/Button/Button";
 import DatePicker from "../../components/common/DatePicker/DatePicker";
+import CommonMultiSelect from "../../components/common/CommonMultiSelect";
+import { useState } from "react";
 
 const clientOptions = [
   {
@@ -23,6 +21,9 @@ const clientOptions = [
 const CreateNewRequest = () => {
   const navigate = useNavigate();
   const { control } = useForm();
+
+  const [associatedServices, setAssociatedServices] = useState([]);
+  const [selectDevice, setSelectDevice] = useState([]);
   return (
     <Box bgcolor="#F8F9FB" width="100%" height="calc(100vh - 64px)">
       <Stack
@@ -50,16 +51,31 @@ const CreateNewRequest = () => {
 
       <Box maxWidth="828px" width="100%" margin="0 auto" mt="36px">
         <Stack flexWrap="wrap" gap="12px" mt="16px">
-          <DatePicker label="Select Scanned Data Date Range" />
-          <CustomSelect
+          <DatePicker
+            label="Select Scanned Data Date Range"
+            // sx={{
+            //   background: "white",
+            // }}
+            sx={{
+              background: "white",
+            }}
+          />
+
+          <CommonMultiSelect
             label="Select Region"
-            options={clientOptions}
-            onChange={() => {}}
-            name="Select Region"
-            id="Select Region"
+            options={clientOptions.map((option) => option.label)}
+            value={associatedServices}
+            onChange={(newValue: any) => setAssociatedServices(newValue)} // <- Update state on change
+            name="associatedServices"
+            id="associated-services-select"
+            fullWidth={true}
+            className=""
             rounded="medium"
             variant="outlined"
             size="large"
+            sx={{
+              background: "white",
+            }}
           />
         </Stack>
         <Stack direction="row" gap="12px" mt="16px">
@@ -72,8 +88,11 @@ const CreateNewRequest = () => {
             rounded="medium"
             variant="outlined"
             size="large"
+            sx={{
+              background: "white",
+            }}
           />
-          <CustomSelect
+          {/* <CustomSelect
             label="Select Device"
             options={clientOptions}
             onChange={() => {}}
@@ -82,6 +101,25 @@ const CreateNewRequest = () => {
             rounded="medium"
             variant="outlined"
             size="large"
+            sx={{
+              background: "white",
+            }}
+          /> */}
+          <CommonMultiSelect
+            label="Select Device"
+            options={clientOptions.map((option) => option.label)}
+            value={selectDevice}
+            onChange={(newValue: any) => setSelectDevice(newValue)} // <- Update state on change
+            name="selectDevice"
+            id="selectDevice"
+            fullWidth={true}
+            className=""
+            rounded="medium"
+            variant="outlined"
+            size="large"
+            sx={{
+              background: "white",
+            }}
           />
         </Stack>
       </Box>

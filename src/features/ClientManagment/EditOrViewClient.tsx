@@ -12,6 +12,7 @@ import SearchBar from "../../components/common/SearchBar/SearchBar";
 import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import EditIcon from "@mui/icons-material/Edit";
+import CommonMultiSelect from "../../components/common/CommonMultiSelect";
 
 const clientData = [
   {
@@ -59,13 +60,18 @@ const clientOptions = [
     label: "Client 1",
     value: "client1",
   },
+  {
+    id: 2,
+    label: "Client 2",
+    value: "client2",
+  },
 ];
 const EditOrViewClient = () => {
   const navigate = useNavigate();
   const { control } = useForm();
 
   const [isEdit, setIsEdit] = useState(false);
-
+  const [associatedServices, setAssociatedServices] = useState([]);
   const [searchParams] = useSearchParams();
   const paramsEdit = searchParams.get("edit") === "true";
 
@@ -143,7 +149,18 @@ const EditOrViewClient = () => {
         </Box>
       </Stack>
 
-      <Box maxWidth="900px" width="100%" margin="0 auto" mt="36px">
+      <Box
+        maxWidth="900px"
+        width="100%"
+        margin="0 auto"
+        pt="36px"
+        sx={{
+          maxHeight: "calc(100vh - 200px)",
+          overflowY: "auto",
+          pb: 5,
+          pr: 5,
+        }}
+      >
         <Stack direction="row" flexWrap="wrap" gap="12px" mt="16px">
           {clientData.map((item) => (
             <>
@@ -189,20 +206,22 @@ const EditOrViewClient = () => {
           ))}
         </Stack>
         <Box mt="12px">
-          <CustomSelect
+          <CommonMultiSelect
             label="Associated Services"
-            options={clientOptions}
-            onChange={() => {}}
+            options={clientOptions.map((option) => option.label)}
+            value={associatedServices} // <- Pass your state here
+            onChange={(newValue: any) => setAssociatedServices(newValue)} // <- Update state on change
             name="associatedServices"
-            id="status-select"
+            id="associated-services-select"
+            disabled={!isEdit}
+            fullWidth={true}
+            className=""
             rounded="medium"
             variant="outlined"
             size="large"
-            fullWidth={true}
             sx={{
               background: "white",
             }}
-            disabled={!isEdit}
           />
         </Box>
         <Box mt="12px">
@@ -227,35 +246,44 @@ const EditOrViewClient = () => {
           Registered Device Details
         </Typography>
 
-        <Stack direction="row" gap="12px" mb={2}>
-          <SearchBar
-            placeholder="Device name, ID"
-            label="Search"
-            variant="outlined"
-            width="100%"
-            rounded="medium"
-            className="container-search-bar"
-            sx={{
-              maxWidth: "300px",
-            }}
-          />
-          <CustomSelect
-            label="Showing"
-            options={clientOptions}
-            onChange={() => {}}
-            name="assignedDevice"
-            id="status-select"
-            rounded="medium"
-            variant="outlined"
-            size="medium"
-            fullWidth={true}
-            formControlStyling={{
-              maxWidth: "130px",
-            }}
-          />
-        </Stack>
+        <Box
+          sx={{
+            p: 2,
+            background: "white",
+            borderRadius: "16px",
+            pt: 3,
+          }}
+        >
+          <Stack direction="row" gap="12px" mb={2}>
+            <SearchBar
+              placeholder="Device name, ID"
+              label="Search"
+              variant="outlined"
+              width="100%"
+              rounded="medium"
+              className="container-search-bar"
+              sx={{
+                maxWidth: "300px",
+              }}
+            />
+            <CustomSelect
+              label="Showing"
+              options={clientOptions}
+              onChange={() => {}}
+              name="assignedDevice"
+              id="status-select"
+              rounded="medium"
+              variant="outlined"
+              size="medium"
+              fullWidth={true}
+              formControlStyling={{
+                maxWidth: "130px",
+              }}
+            />
+          </Stack>
 
-        <RegisteredDeviceTable />
+          <RegisteredDeviceTable />
+        </Box>
       </Box>
 
       <Stack
