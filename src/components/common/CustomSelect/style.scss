@@ -4,6 +4,9 @@
   flex-direction: column;
   gap: 8px;
   &.select-wrapper {
+    &.month-select-wrapper {
+      min-width: 130px;
+    }
     .MuiFormLabel-root {
       color: var(--text-secondary);
       &.select-medium {

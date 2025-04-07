@@ -35,12 +35,13 @@ const Sidebar = () => {
       name: "Home",
       path: ROUTE_MAP,
       icon: <ExploreIcon />,
+      activePaths: [ROUTE_MAP],
     },
     {
       name: "Dashboard",
       path: ROUTE_DASHBOARD,
       icon: <DashboardFillIcon />,
-      activePaths: ["/dashboard"],
+      activePaths: [ROUTE_DASHBOARD],
     },
     {
       name: "Defect Listing",

@@ -318,7 +318,15 @@ const Dashboard = () => {
         <MetricCard title="Devices in Use" value="12" change="-2%" />
         <MetricCard title="Discovered Defects" value="1903" change="+10%" />
       </Box>
-      <Box sx={{ display: "grid", gridTemplateColumns: "3fr 2fr", gap: 2 }}>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "3fr 2fr",
+          gap: 2,
+          maxHeight: "calc(100vh - 248px)",
+          overflowY: "auto",
+        }}
+      >
         <Stack
           direction={"column"}
           className="gray-container-table dashboard-table"
@@ -422,7 +430,16 @@ const Dashboard = () => {
             />
           </Tabs>
 
-          <Box sx={{ mb: 2, width: "100%" }}>
+          <Box
+            sx={{
+              mb: 2,
+              width: "100%",
+              display: "flex",
+              justifyContent: "start",
+              alignItems: "flex-end",
+              gap: 1,
+            }}
+          >
             <Typography variant="h4">1,024</Typography>
             <Typography
               className="text-xs"
@@ -441,7 +458,13 @@ const Dashboard = () => {
           direction={"column"}
           className="gray-container-table dashboard-table"
         >
-          <Stack direction="row" justifyContent="space-between" p={3}>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            px={3}
+            pt={3}
+            pb={2}
+          >
             <Typography variant="h6">Scan Logs</Typography>
             <Stack direction="row" spacing={2}>
               <CustomSelect

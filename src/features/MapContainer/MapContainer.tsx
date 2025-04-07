@@ -139,11 +139,11 @@ const MapContainer = () => {
           defaultValue="age"
           name="severity"
           id="severity-select"
-          fullWidth={true}
+          fullWidth={false}
           className=""
           rounded="medium"
           variant="outlined"
-          WrapperClassName=""
+          WrapperClassName="month-select-wrapper"
           placeholder="Select"
           size="medium"
         />

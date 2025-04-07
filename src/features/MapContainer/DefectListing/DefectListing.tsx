@@ -2,7 +2,10 @@ import { ArrowBackIcon, SearchIcon } from "../../../assets/Images/svg";
 import CustomSelect from "../../../components/common/CustomSelect/CustomSelect";
 import SearchBar from "../../../components/common/SearchBar/SearchBar";
 import Table from "../../../components/common/Table/Table";
+import { Typography } from "@mui/material";
 import "./style.scss";
+import { DeleteIcon } from "../../../assets/Images/svg";
+import Button from "../../../components/common/Button/Button";
 const DefectListingScreen = () => {
   const columns = [
     {
@@ -66,14 +69,22 @@ const DefectListingScreen = () => {
       defect: "Defect 1",
       pathId: "Path 1",
       jobId: "Job 1",
-      severity: "Sever",
+      severity: "Severe",
       pathLength: "Path Length 1",
       scanDate: "Scan Date 1",
       deviceName: "Device Name 1",
       client: "Client 1",
       region: "Region 1",
-      mapView: "Map View 1",
-      actions: "Actions 1",
+      mapView: (
+        <Button variant="text" color="primary" size="small">
+          View on Map
+        </Button>
+      ),
+      actions: (
+        <div className="actions-container">
+          <DeleteIcon />
+        </div>
+      ),
     },
     {
       defect: "Defect 2",
@@ -85,8 +96,16 @@ const DefectListingScreen = () => {
       deviceName: "Device Name 2",
       client: "Client 2",
       region: "Region 2",
-      mapView: "Map View 2",
-      actions: "Actions 2",
+      mapView: (
+        <Button variant="text" color="primary" size="small">
+          View on Map
+        </Button>
+      ),
+      actions: (
+        <div className="actions-container">
+          <DeleteIcon />
+        </div>
+      ),
     },
     {
       defect: "Defect 3",
@@ -98,8 +117,16 @@ const DefectListingScreen = () => {
       deviceName: "Device Name 3",
       client: "Client 3",
       region: "Region 3",
-      mapView: "Map View 3",
-      actions: "Actions 3",
+      mapView: (
+        <Button variant="text" color="primary" size="small">
+          View on Map
+        </Button>
+      ),
+      actions: (
+        <div className="actions-container">
+          <DeleteIcon />
+        </div>
+      ),
     },
     {
       defect: "Defect 4",
@@ -111,8 +138,16 @@ const DefectListingScreen = () => {
       deviceName: "Device Name 4",
       client: "Client 4",
       region: "Region 4",
-      mapView: "Map View 4",
-      actions: "Actions 4",
+      mapView: (
+        <Button variant="text" color="primary" size="small">
+          View on Map
+        </Button>
+      ),
+      actions: (
+        <div className="actions-container">
+          <DeleteIcon />
+        </div>
+      ),
     },
   ];
   const severityOptions = [
@@ -125,7 +160,7 @@ const DefectListingScreen = () => {
     <div className="defect-listing-container">
       <div className="defect-listing-header">
         <ArrowBackIcon />
-        <h5>Defect Listing</h5>
+        <Typography variant="h5">Defect Listing</Typography>
       </div>
       <div className="defect-listing-body">
         <div className="defect-listing-table-container">
