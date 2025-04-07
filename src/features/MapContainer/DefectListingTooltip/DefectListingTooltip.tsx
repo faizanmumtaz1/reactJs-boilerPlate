@@ -1,4 +1,3 @@
-import TooltipCustom from "../../../components/common/Tooltip/TooltipCustom";
 import defectimage from "../../../assets/images/defect.png";
 import "./style.scss";
 import CustomChip from "../../../components/common/CustomChip/CustomChip";

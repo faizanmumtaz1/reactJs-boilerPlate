@@ -31,7 +31,6 @@ import ForgotPassword from "../components/auth/ForgotPassword/ForgotPassword";
 import CreateNewPassword from "../components/auth/CreateNewPassword/CreateNewPassword";
 import DashboardLayout from "../components/Layout/DashboardLayout";
 import MapContainer from "../features/MapContainer/MapContainer";
-import DefectListing from "../features/DefectListing/DefectListing";
 import AddDevice from "../features/DeviceManagement/AddDevice";
 import ClinetManagment from "../features/ClientManagment/ClinetManagment";
 import DeviceManagementListing from "../features/DeviceManagement/DeviceManagementListing";
@@ -52,6 +51,7 @@ import AddNewClientService from "../features/ActiveService/AddNewServiceClient";
 import Dashboard from "../features/Dashboard";
 import RolesAndPermissionsListing from "../features/RolesAndPermissions/RolesAndPermissionsListing";
 import AddNewUser from "../features/RolesAndPermissions/AddNewUser";
+import DefectListingScreen from "../features/MapContainer/DefectListing/DefectListing";
 const AppRoutes = () => {
   return (
     <>
@@ -79,7 +79,7 @@ const AppRoutes = () => {
                 { label: "Defect Listing", href: ROUTE_DEFECT_LISTING },
               ]}
             >
-              <DefectListing />
+              <DefectListingScreen />
             </DashboardLayout>
           }
         ></Route>

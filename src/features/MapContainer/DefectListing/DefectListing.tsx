@@ -1,11 +1,9 @@
-import { ArrowBackIcon, SearchIcon } from "../../assets/Images/svg";
-import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
-import SearchBar from "../../components/common/SearchBar/SearchBar";
-import Table from "../../components/common/Table/Table";
-import DefectListingTooltip from "./DefectListingTooltip/DefectListingTooltip";
+import { ArrowBackIcon, SearchIcon } from "../../../assets/Images/svg";
+import CustomSelect from "../../../components/common/CustomSelect/CustomSelect";
+import SearchBar from "../../../components/common/SearchBar/SearchBar";
+import Table from "../../../components/common/Table/Table";
 import "./style.scss";
-
-const DefectListing = () => {
+const DefectListingScreen = () => {
   const columns = [
     {
       name: "Defect",
@@ -220,4 +218,4 @@ const DefectListing = () => {
   );
 };
 
-export default DefectListing;
+export default DefectListingScreen;

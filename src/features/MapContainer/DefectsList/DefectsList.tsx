@@ -9,6 +9,8 @@ import SearchBar from "../../../components/common/SearchBar/SearchBar";
 import "./style.scss";
 import DashboardChip from "../../../components/common/CustomChip/CustomChip";
 import Button from "../../../components/common/Button/Button";
+import { useNavigate } from "react-router-dom";
+import { ROUTE_DEFECT_LISTING } from "../../../utils/constant";
 const DefectsList = ({
   handleDefectsListClose,
 }: {
@@ -95,8 +97,14 @@ const DefectsList = ({
 
 export default DefectsList;
 const DefectItem = ({ issue }: { issue: any }) => {
+  const navigate = useNavigate();
   return (
-    <div className="defect-item">
+    <div
+      className="defect-item"
+      onClick={() => {
+        navigate(ROUTE_DEFECT_LISTING);
+      }}
+    >
       <div className="defect-item-top">
         <span className="subtitle3">{issue.type}</span>
         <div className="chip-wrapper">
