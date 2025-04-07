@@ -33,8 +33,7 @@ const Breadcrumb = ({ links }: BreadcrumbProps) => {
             key={link.label}
             color="inherit"
             to={link.href || "#"}
-            className="body1 MuiTypography-root"
-            style={{ textDecoration: "none" }}
+            className="body1 MuiTypography-root breadcrumb-link"
           >
             {link.label}
           </Link>

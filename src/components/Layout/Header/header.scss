@@ -25,6 +25,12 @@
       flex-direction: row;
       align-items: center;
       gap: 16px;
+      .breadcrumb-link {
+        text-decoration: none;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
     .header-right {
       display: flex;
