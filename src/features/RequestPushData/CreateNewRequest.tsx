@@ -44,7 +44,7 @@ const CreateNewRequest = () => {
         >
           <ArrowBackIcon sx={{ color: "#000000" }} />
         </IconButton>
-        <Typography variant="h6">Create New Request</Typography>
+        <Typography variant="h5">Create New Request</Typography>
       </Stack>
 
       <Box maxWidth="828px" width="100%" margin="0 auto" mt="36px">

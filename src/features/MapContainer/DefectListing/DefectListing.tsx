@@ -6,7 +6,10 @@ import { Typography } from "@mui/material";
 import "./style.scss";
 import { DeleteIcon } from "../../../assets/Images/svg";
 import Button from "../../../components/common/Button/Button";
+import { ROUTE_MAP } from "../../../utils/constant";
+import { useNavigate } from "react-router-dom";
 const DefectListingScreen = () => {
+  const navigate = useNavigate();
   const columns = [
     {
       name: "Defect",
@@ -159,7 +162,16 @@ const DefectListingScreen = () => {
   return (
     <div className="defect-listing-container">
       <div className="defect-listing-header">
-        <ArrowBackIcon />
+        <Button
+          className="icon-button"
+          size="small"
+          variant="outlined"
+          onClick={() => {
+            navigate(ROUTE_MAP);
+          }}
+        >
+          <ArrowBackIcon />
+        </Button>
         <Typography variant="h5">Defect Listing</Typography>
       </div>
       <div className="defect-listing-body">

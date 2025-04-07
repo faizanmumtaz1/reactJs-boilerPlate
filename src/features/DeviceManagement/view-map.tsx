@@ -225,7 +225,7 @@ const ViewMap = () => {
               onClick={() => setIsDefectsListOpen(!isDefectsListOpen)}
               endIcon={<DefectIcon />}
             >
-              <span>View Defects</span>
+              View Defect
             </Button>
           )}
 
@@ -266,8 +266,8 @@ const PathDetailsItem = ({
   return (
     <div className="path-details-list-item">
       <div className="path-details-list-item-icon">{icon}</div>
-      <span className="text-xxxs path-name">{name}</span>
-      <span className="text-xxs-500 path-value">{value}</span>
+      <Typography className="text-xxxs path-name">{name}</Typography>
+      <Typography className="text-xxs-500 path-value">{value}</Typography>
     </div>
   );
 };

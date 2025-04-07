@@ -220,15 +220,7 @@ const EditOrViewDevice = () => {
       </Stack>
 
       <Box maxWidth="828px" width="100%" margin="0 auto" mt="36px">
-        <Typography
-          variant="h6"
-          fontSize="24px"
-          fontWeight="450"
-          lineHeight="133.4%"
-          color="#000000"
-        >
-          Device Configuration
-        </Typography>
+        <Typography variant="h5">Device Configuration</Typography>
         <Stack direction="row" flexWrap="wrap" gap="12px" mt="16px">
           {deviceData.map((item) => (
             <InputField
@@ -247,16 +239,7 @@ const EditOrViewDevice = () => {
           ))}
         </Stack>
         <Box mt="24px">
-          <Typography
-            variant="h6"
-            fontSize="24px"
-            fontWeight="450"
-            lineHeight="133.4%"
-            color="#000000"
-            mb="16px"
-          >
-            More Details
-          </Typography>
+          <Typography variant="h5">More Details</Typography>
 
           <Stack direction="row" flexWrap="wrap" gap="12px" mt="16px">
             {otherFields.map((item) => (

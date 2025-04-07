@@ -7,6 +7,7 @@ import {
   LocationIcon,
   GlobeWorldIcon,
 } from "../../../assets/Images/svg";
+import { Typography } from "@mui/material";
 const calculationList = [
   {
     label: "WIDTH",
@@ -70,9 +71,13 @@ const DefectListingTooltip = () => {
       </div>
       <div className="defect-listing-tooltip-body">
         <div className="defect-details">
-          <span className="subtitle2">Arres Eye • 4 Feb 2022 • 8:00 am</span>
+          <Typography variant="subtitle2" className="subtitle2">
+            Arres Eye • 4 Feb 2022 • 8:00 am
+          </Typography>
           <div className="defect-top">
-            <h5>Transverse</h5>
+            <Typography variant="h5" className="h5">
+              Transverse
+            </Typography>
             <div className="chip-wrapper">
               <CustomChip label="#28902" size="small" rounded={true} />
               <CustomChip
@@ -115,9 +120,13 @@ const DefectListItem = ({
     <li className="defect-list-item">
       <div className="defect-name-wrapper">
         {icon}
-        <span className="body1">{name}</span>
+        <Typography variant="body1" className="body1" component="span">
+          {name}
+        </Typography>
       </div>
-      <span className="subtitle1">{value}</span>
+      <Typography variant="subtitle1" className="subtitle1" component="span">
+        {value}
+      </Typography>
     </li>
   );
 };
@@ -130,8 +139,17 @@ const CalculationListItem = ({
 }) => {
   return (
     <li className="calculation-list-item">
-      <span className="body1">{label}</span>
-      <span className="subtitle1">{value}</span>
+      <Typography
+        variant="body1"
+        className="overline"
+        component="span"
+        sx={{ color: "var(--text-secondary) !important" }}
+      >
+        {label}
+      </Typography>
+      <Typography className="subtitle3" component="span">
+        {value}
+      </Typography>
     </li>
   );
 };

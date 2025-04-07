@@ -87,7 +87,7 @@ const EditOrViewClient = () => {
     <Box
       bgcolor="#F8F9FB"
       width="100%"
-      height="calc(100vh - 142px)"
+      height={isEdit ? "calc(100vh - 142px)" : "calc(100%)"}
       pb="24px"
       overflow="auto"
     >
@@ -238,33 +238,35 @@ const EditOrViewClient = () => {
         <UserTable />
       </Box>
 
-      <Stack
-        direction="row"
-        justifyContent="end"
-        mt="24px"
-        gap="12px"
-        bgcolor="#fff"
-        p="16px 24px"
-        width="calc(100% - 88px)"
-        position="fixed"
-        bottom="0"
-        // left="0"
-      >
-        <Button
-          variant="outlined"
-          color="secondary"
-          className="rounded-full-button"
+      {isEdit && (
+        <Stack
+          direction="row"
+          justifyContent="end"
+          mt="24px"
+          gap="12px"
+          bgcolor="#fff"
+          p="16px 24px"
+          width="calc(100% - 88px)"
+          position="fixed"
+          bottom="0"
+          // left="0"
         >
-          Cancel
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          className="rounded-full-button"
-        >
-          Save Changes
-        </Button>
-      </Stack>
+          <Button
+            variant="outlined"
+            color="secondary"
+            className="rounded-full-button"
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            className="rounded-full-button"
+          >
+            Save Changes
+          </Button>
+        </Stack>
+      )}
     </Box>
   );
 };

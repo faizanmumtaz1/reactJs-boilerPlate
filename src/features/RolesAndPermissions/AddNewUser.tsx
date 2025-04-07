@@ -59,7 +59,7 @@ const AddNewUser = () => {
         >
           <ArrowBackIcon sx={{ color: "#000000" }} />
         </IconButton>
-        <Typography variant="h6">Add New User</Typography>
+        <Typography variant="h5">Add New User</Typography>
       </Stack>
 
       <Box maxWidth="828px" width="100%" margin="0 auto" mt="36px">

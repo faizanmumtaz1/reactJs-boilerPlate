@@ -115,7 +115,7 @@ export default function AllJobs() {
 
   return (
     <>
-      <Typography mb={2} mt={5} variant="h6">
+      <Typography mb={2} mt={5} variant="h5">
         All Jobs
       </Typography>
       <Box

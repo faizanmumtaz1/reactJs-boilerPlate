@@ -1,4 +1,4 @@
-import { Box, Stack, Tab, Tabs, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import Table from "../../components/common/Table/Table";
 import MetricCard from "./MatricCard";
@@ -10,6 +10,7 @@ import { Chart, registerables } from "chart.js";
 import StatusBadge from "./StatusBadge";
 import SvarityItem from "./SverityItem";
 import { DownloadSmIcon } from "../../assets/Images/svg";
+import CustomTabs from "../../components/common/Tabs";
 Chart.register(...registerables);
 
 const Dashboard = () => {
@@ -323,8 +324,6 @@ const Dashboard = () => {
           display: "grid",
           gridTemplateColumns: "3fr 2fr",
           gap: 2,
-          maxHeight: "calc(100vh - 248px)",
-          overflowY: "auto",
         }}
       >
         <Stack
@@ -404,53 +403,24 @@ const Dashboard = () => {
               fullWidth={false}
             />
           </Box>
-          <Tabs
+          <CustomTabs
+            tabs={[
+              {
+                label: "Discovered Defects",
+                content: <DiscoveredDefects />,
+              },
+              {
+                label: "Defects Per Severity",
+                content: <DefectsPerSeverity />,
+              },
+            ]}
             value={tabValue}
             onChange={handleTabChange}
             sx={{
               "& .MuiTabs-indicator": {},
               width: "100%",
             }}
-          >
-            <Tab
-              label="Discovered Defects"
-              sx={{
-                textTransform: "none",
-                fontWeight: tabValue === 0 ? "bold" : "normal",
-                color: tabValue === 0 ? "#6366F1" : "#757575",
-              }}
-            />
-            <Tab
-              label="Defects Per Severity"
-              sx={{
-                textTransform: "none",
-                fontWeight: tabValue === 1 ? "bold" : "normal",
-                color: tabValue === 1 ? "#6366F1" : "#757575",
-              }}
-            />
-          </Tabs>
-
-          <Box
-            sx={{
-              mb: 2,
-              width: "100%",
-              display: "flex",
-              justifyContent: "start",
-              alignItems: "flex-end",
-              gap: 1,
-            }}
-          >
-            <Typography variant="h4">1,024</Typography>
-            <Typography
-              className="text-xs"
-              sx={{ color: "#4CAF50 !important" }}
-            >
-              +5%
-            </Typography>
-          </Box>
-          <Box sx={{ height: 300, width: "100%" }}>
-            <TrendChart />
-          </Box>
+          />
         </Box>
       </Box>
       <Box sx={{ display: "grid", gridTemplateColumns: "2fr 3fr", gap: 2 }}>
@@ -532,3 +502,51 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
+const DiscoveredDefects = () => {
+  return (
+    <>
+      <Box
+        sx={{
+          mb: 2,
+          width: "100%",
+          display: "flex",
+          justifyContent: "start",
+          alignItems: "flex-end",
+          gap: 1,
+        }}
+      >
+        <Typography variant="h4">1,024</Typography>
+        <Typography className="text-xs" sx={{ color: "#4CAF50 !important" }}>
+          +5%
+        </Typography>
+      </Box>
+      <Box sx={{ height: 300, width: "100%" }}>
+        <TrendChart />
+      </Box>
+    </>
+  );
+};
+const DefectsPerSeverity = () => {
+  return (
+    <>
+      <Box
+        sx={{
+          mb: 2,
+          width: "100%",
+          display: "flex",
+          justifyContent: "start",
+          alignItems: "flex-end",
+          gap: 1,
+        }}
+      >
+        <Typography variant="h4">2032</Typography>
+        <Typography className="text-xs" sx={{ color: "#4CAF50 !important" }}>
+          +32%
+        </Typography>
+      </Box>
+      <Box sx={{ height: 300, width: "100%" }}>
+        <TrendChart />
+      </Box>
+    </>
+  );
+};

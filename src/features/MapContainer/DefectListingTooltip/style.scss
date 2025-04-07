@@ -15,6 +15,7 @@
     align-self: stretch;
     gap: 16px;
     width: 100%;
+    padding-top: 24px;
     .defect-details {
       .subtitle2 {
         color: var(--primary-main);
@@ -74,7 +75,6 @@
           display: flex;
           align-items: center;
           flex-direction: column;
-          gap: 8px;
           width: 100%;
           padding: 0px 16px;
           &:not(:last-child) {

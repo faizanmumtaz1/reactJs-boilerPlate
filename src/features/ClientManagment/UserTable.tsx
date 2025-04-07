@@ -113,7 +113,7 @@ export default function UserTable() {
   return (
     <>
       <Stack mb={2} mt={5} direction="row" justifyContent="space-between">
-        <Typography variant="h6">Users</Typography>
+        <Typography variant="h5">Users</Typography>
         <Button
           sx={{
             borderRadius: "80px",

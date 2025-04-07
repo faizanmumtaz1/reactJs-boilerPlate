@@ -196,7 +196,7 @@ const MapContainer = () => {
             onClick={() => setIsDefectsListOpen(!isDefectsListOpen)}
             endIcon={<DefectIcon />}
           >
-            <span>View Defects</span>
+            View Defects
           </Button>
         )}
 
@@ -235,8 +235,12 @@ const PathDetailsItem = ({
   return (
     <div className="path-details-list-item">
       <div className="path-details-list-item-icon">{icon}</div>
-      <span className="text-xxxs path-name">{name}</span>
-      <span className="text-xxs-500 path-value">{value}</span>
+      <Typography variant="caption" className="text-xxxs path-name">
+        {name}
+      </Typography>
+      <Typography variant="caption" className="text-xxs-500 path-value">
+        {value}
+      </Typography>
     </div>
   );
 };

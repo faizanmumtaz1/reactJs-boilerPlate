@@ -49,8 +49,10 @@ li {
 .profile-wrapper {
   display: flex;
   flex-direction: column;
-  .email-text {
-    color: var(--text-secondary);
+  .MuiTypography-root {
+    &.email-text {
+      color: var(--text-secondary);
+    }
   }
 }
 .gray-container-table {

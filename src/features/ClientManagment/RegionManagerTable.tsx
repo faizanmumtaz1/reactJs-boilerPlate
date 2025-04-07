@@ -1,5 +1,5 @@
 import { Box, IconButton, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
+import { useState } from "react";
 import Table from "../../components/common/Table/Table";
 import SearchBar from "../../components/common/SearchBar/SearchBar";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
@@ -114,7 +114,7 @@ export default function RegionManagerTable() {
   return (
     <>
       <Stack mb={2} mt={5} direction="row" justifyContent="space-between">
-        <Typography variant="h6">Region Manager</Typography>
+        <Typography variant="h5">Region Manager</Typography>
         <Button
           sx={{
             borderRadius: "80px",

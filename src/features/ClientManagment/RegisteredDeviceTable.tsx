@@ -83,7 +83,7 @@ export default function RegisteredDeviceTable() {
 
   return (
     <>
-      <Typography mb={2} mt={5} variant="h6">
+      <Typography mb={2} mt={5} variant="h5">
         Registered Device Details
       </Typography>
 

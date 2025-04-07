@@ -92,15 +92,6 @@ const AddNewClient = () => {
       </Stack>
 
       <Box maxWidth="828px" width="100%" margin="0 auto" mt="36px">
-        <Typography
-          variant="h6"
-          fontSize="24px"
-          fontWeight="450"
-          lineHeight="133.4%"
-          color="#000000"
-        >
-          Device Configuration
-        </Typography>
         <Stack direction="row" flexWrap="wrap" gap="12px" mt="16px">
           {clientData.map((item) => (
             <>

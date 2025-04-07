@@ -17,10 +17,16 @@
     align-self: stretch;
     .header-top {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      align-self: stretch;
+      flex-direction: column;
+      gap: 4px;
       width: 100%;
+      .header-top-title-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+        width: 100%;
+      }
       .defects-list-header-left {
         display: flex;
         align-items: center;
@@ -36,6 +42,8 @@
     flex-direction: column;
     gap: 12px;
     width: 100%;
+    max-height: calc(100vh - 459px);
+    overflow-y: auto;
     .defect-item {
       display: flex;
       padding: 12px;

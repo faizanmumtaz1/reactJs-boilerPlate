@@ -1,14 +1,12 @@
-import React from "react";
 import {
-  Box,
   Typography,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
-  Stack,
 } from "@mui/material";
 import Button from "../Button/Button";
+import "./modal.scss";
 
 interface ModalProps {
   open: boolean;

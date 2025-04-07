@@ -6,6 +6,7 @@ import {
   Avatar,
   ListItemIcon,
   Badge,
+  Typography,
 } from "@mui/material";
 import "./header.scss";
 import { useState } from "react";
@@ -37,7 +38,9 @@ const Header = ({ links }: HeaderProps) => {
           <Breadcrumb links={links} />
         </div>
         <div className="header-right">
-          <span>Software Version 1.0</span>
+          <Typography variant="caption" className="caption">
+            Software Version 1.0
+          </Typography>
           <Button
             variant="outlined"
             className="icon-button"
@@ -123,8 +126,12 @@ const ActionButton = () => {
         <MenuItem onClick={handleClose}>
           <Avatar />
           <div className="profile-wrapper">
-            <span className="subtitle1">John Doe</span>
-            <span className="subtitle2 email-text">john.doe@example.com</span>
+            <Typography variant="subtitle1" className="subtitle1">
+              John Doe
+            </Typography>
+            <Typography variant="body2" className="body2 email-text">
+              john.doe@example.com
+            </Typography>
           </div>
         </MenuItem>
         <Divider />

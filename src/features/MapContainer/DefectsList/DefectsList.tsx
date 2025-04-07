@@ -11,11 +11,13 @@ import DashboardChip from "../../../components/common/CustomChip/CustomChip";
 import Button from "../../../components/common/Button/Button";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_DEFECT_LISTING } from "../../../utils/constant";
+import { Typography } from "@mui/material";
 const DefectsList = ({
   handleDefectsListClose,
 }: {
   handleDefectsListClose: () => void;
 }) => {
+  const navigate = useNavigate();
   const issues = [
     {
       type: "Pothole",
@@ -63,18 +65,36 @@ const DefectsList = ({
     <div className="defects-list-wrapper">
       <div className="defects-list-header">
         <div className="header-top">
-          <div className="defects-list-header-left">
+          <div className="header-top-title-wrapper">
+            <div className="defects-list-header-left">
+              <Button
+                className="icon-button"
+                size="small"
+                onClick={handleDefectsListClose}
+                variant="outlined"
+              >
+                <CrossSmIcon />
+              </Button>
+              <Typography variant="h5">Defects</Typography>
+            </div>
             <Button
               className="icon-button"
               size="small"
-              onClick={handleDefectsListClose}
               variant="outlined"
+              onClick={() => {
+                navigate(ROUTE_DEFECT_LISTING);
+              }}
             >
-              <CrossSmIcon />
+              <ExplandArrowIcon />
             </Button>
-            <h5>Defects</h5>
           </div>
-          <ExplandArrowIcon />
+          <Typography
+            variant="subtitle1"
+            className="subtitle1"
+            sx={{ color: "var(--text-secondary) !important" }}
+          >
+            View all of the defects here
+          </Typography>
         </div>
         <SearchBar
           placeholder="Search"
@@ -106,7 +126,9 @@ const DefectItem = ({ issue }: { issue: any }) => {
       }}
     >
       <div className="defect-item-top">
-        <span className="subtitle3">{issue.type}</span>
+        <Typography classes="subtitle3" className="subtitle3">
+          {issue.type}
+        </Typography>
         <div className="chip-wrapper">
           <DashboardChip label={issue.id} size="small" rounded={true} />
           <DashboardChip
@@ -120,11 +142,15 @@ const DefectItem = ({ issue }: { issue: any }) => {
       <div className="defect-item-bottom">
         <div className="footer-item">
           <TimerDarkIcon />
-          <span className="subtitle2">{issue.dateTime}</span>
+          <Typography variant="subtitle2" className="subtitle2">
+            {issue.dateTime}
+          </Typography>
         </div>
         <div className="footer-item">
           <ScannerDarkIcon />
-          <span className="subtitle2">{issue.detectedBy}</span>
+          <Typography variant="subtitle2" className="subtitle2">
+            {issue.detectedBy}
+          </Typography>
         </div>
       </div>
     </div>
