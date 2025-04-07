@@ -7,7 +7,14 @@ import "./button.scss";
 interface ButtonProps extends MuiButtonProps {
   children: React.ReactNode;
   variant?: "contained" | "text" | "outlined";
-  color?: "primary" | "secondary" | "success" | "error" | "info" | "warning";
+  color?:
+    | "primary"
+    | "secondary"
+    | "success"
+    | "error"
+    | "info"
+    | "warning"
+    | "inherit";
   size?: "small" | "medium" | "large";
   fullWidth?: boolean;
   disabled?: boolean;
@@ -15,6 +22,7 @@ interface ButtonProps extends MuiButtonProps {
   endIcon?: React.ReactNode;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   className?: string;
+  tertiary?: boolean;
   sx?: object;
 }
 
@@ -30,6 +38,7 @@ const Button = ({
   onClick,
   className,
   sx,
+  tertiary,
   ...props
 }: ButtonProps) => {
   return (
@@ -47,6 +56,17 @@ const Button = ({
       sx={{
         textTransform: "none",
         borderRadius: "8px",
+        ...(color === "inherit" &&
+          variant === "outlined" &&
+          tertiary && {
+            backgroundColor: "transparent",
+            color: "var(--secondary-dark) !important",
+            border: "1px solid var(--secondary-states-outlinedBorder)",
+            "&:hover": {
+              backgroundColor: "var(--secondary-dark)",
+              color: "var(--secondary-50) !important",
+            },
+          }),
         ...sx,
       }}
       {...props}
