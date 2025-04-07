@@ -1,6 +1,9 @@
-import { IconButton, Stack, Typography } from "@mui/material";
+import { Box, IconButton, Stack, Typography } from "@mui/material";
 import React from "react";
 import Table from "../../components/common/Table/Table";
+import SearchBar from "../../components/common/SearchBar/SearchBar";
+import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
+import "./style.scss";
 
 export default function RegisteredDeviceTable() {
   const columns = [
@@ -65,16 +68,73 @@ export default function RegisteredDeviceTable() {
     },
   ];
 
+  const clientOptions = [
+    {
+      id: 1,
+      label: "Client 1",
+      value: "client1",
+    },
+    {
+      id: 2,
+      label: "Client 2",
+      value: "client2",
+    },
+  ];
+
   return (
-    <Table
-      columns={columns}
-      data={data}
-      progressPending={false}
-      pagination
-      paginationPerPage={10}
-      paginationRowsPerPageOptions={[10, 20, 30, 40, 50]}
-      onSelectedRowsChange={() => {}}
-      onSort={() => {}}
-    />
+    <>
+      <Typography mb={2} mt={5} variant="h6">
+        Registered Device Details
+      </Typography>
+
+      <Box
+        sx={{
+          p: 2,
+          background: "white",
+          borderRadius: "16px",
+          pt: 3,
+        }}
+      >
+        <Stack direction="row" gap="12px" mb={2}>
+          <SearchBar
+            placeholder="Device name, ID"
+            label="Search"
+            variant="outlined"
+            width="100%"
+            rounded="medium"
+            className="container-search-bar"
+            sx={{
+              maxWidth: "300px",
+            }}
+          />
+          <CustomSelect
+            label="Showing"
+            options={clientOptions}
+            onChange={() => {}}
+            name="assignedDevice"
+            id="status-select"
+            rounded="medium"
+            variant="outlined"
+            size="medium"
+            fullWidth={true}
+            formControlStyling={{
+              maxWidth: "130px",
+            }}
+          />
+        </Stack>
+
+        <Table
+          columns={columns}
+          data={data}
+          progressPending={false}
+          pagination
+          paginationPerPage={10}
+          paginationRowsPerPageOptions={[10, 20, 30, 40, 50]}
+          onSelectedRowsChange={() => {}}
+          onSort={() => {}}
+          className="client-registered-device-details-table"
+        />
+      </Box>
+    </>
   );
 }

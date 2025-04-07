@@ -13,6 +13,8 @@ import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import EditIcon from "@mui/icons-material/Edit";
 import CommonMultiSelect from "../../components/common/CommonMultiSelect";
+import RegionManagerTable from "./RegionManagerTable";
+import UserTable from "./UserTable";
 
 const clientData = [
   {
@@ -231,48 +233,9 @@ const EditOrViewClient = () => {
           />
         </Box>
 
-        <Typography my={2} variant="h6">
-          Registered Device Details
-        </Typography>
-
-        <Box
-          sx={{
-            p: 2,
-            background: "white",
-            borderRadius: "16px",
-            pt: 3,
-          }}
-        >
-          <Stack direction="row" gap="12px" mb={2}>
-            <SearchBar
-              placeholder="Device name, ID"
-              label="Search"
-              variant="outlined"
-              width="100%"
-              rounded="medium"
-              className="container-search-bar"
-              sx={{
-                maxWidth: "300px",
-              }}
-            />
-            <CustomSelect
-              label="Showing"
-              options={clientOptions}
-              onChange={() => {}}
-              name="assignedDevice"
-              id="status-select"
-              rounded="medium"
-              variant="outlined"
-              size="medium"
-              fullWidth={true}
-              formControlStyling={{
-                maxWidth: "130px",
-              }}
-            />
-          </Stack>
-
-          <RegisteredDeviceTable />
-        </Box>
+        <RegisteredDeviceTable />
+        <RegionManagerTable />
+        <UserTable />
       </Box>
 
       <Stack

@@ -6,9 +6,9 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
-  Button,
   Stack,
 } from "@mui/material";
+import Button from "../Button/Button";
 
 interface ModalProps {
   open: boolean;
@@ -87,7 +87,8 @@ export default function Modal({
           }}
           variant="outlined"
           onClick={onConfirm}
-          color="error"
+          color="inherit"
+          tertiary
         >
           Yes
         </Button>
