@@ -51,14 +51,14 @@ h4 {
   color: var(--text-primary, rgba(0, 0, 0, 0.87));
   font-size: 34px;
   font-style: normal;
-  font-weight: 450;
+  font-weight: 400;
   line-height: 123.5%;
   letter-spacing: 0.25px;
   &.MuiTypography-root {
     color: var(--text-primary, rgba(0, 0, 0, 0.87));
     font-size: 34px;
     font-style: normal;
-    font-weight: 450;
+    font-weight: 400;
     line-height: 123.5%;
   }
 }
@@ -307,7 +307,7 @@ h6 {
     color: var(--text-primary, rgba(0, 0, 0, 0.87));
     font-size: 12px;
     font-style: normal;
-    font-weight: 450;
+    font-weight: 400;
     line-height: 166%;
     letter-spacing: 0.4px;
   }
@@ -315,7 +315,7 @@ h6 {
     color: var(--text-primary, rgba(0, 0, 0, 0.87));
     font-size: 12px;
     font-style: normal;
-    font-weight: 450;
+    font-weight: 400;
     line-height: 266%;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -324,7 +324,7 @@ h6 {
     color: var(--text-primary, rgba(0, 0, 0, 0.87));
     font-size: 16px;
     font-style: normal;
-    font-weight: 450;
+    font-weight: 400;
     line-height: 175%;
     letter-spacing: 0.15px;
   }
@@ -348,7 +348,7 @@ h6 {
     color: var(--text-primary, rgba(0, 0, 0, 0.87));
     font-size: 16px;
     font-style: normal;
-    font-weight: 450;
+    font-weight: 400;
     line-height: 150%;
     letter-spacing: 0.15px;
   }
@@ -504,6 +504,14 @@ h6 {
     font-weight: 500;
     line-height: 20px;
   }
+  &.initialsLg {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.14px;
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  }
 }
 @mixin medium-button-text {
   color: var(--text-primary);
@@ -526,7 +534,7 @@ h6 {
   color: var(--text-primary, rgba(0, 0, 0, 0.87));
   font-size: 16px;
   font-style: normal;
-  font-weight: 450;
+  font-weight: 400;
   line-height: 150%;
 }
 @mixin label {
@@ -540,7 +548,7 @@ h6 {
   color: var(--text-secondary, rgba(0, 0, 0, 0.6));
   font-size: 12px;
   font-style: normal;
-  font-weight: 450;
+  font-weight: 400;
   line-height: 12px;
   letter-spacing: 0.15px;
 }

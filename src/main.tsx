@@ -6,6 +6,7 @@ import "./assets/styles/global.scss";
 import "./assets/styles/typography.scss";
 import "./assets/styles/variable.scss";
 import "leaflet/dist/leaflet.css";
+import "./assets/fonts/stylesheet.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
