@@ -25,6 +25,7 @@ import {
   ROUTE_DASHBOARD,
   ROUTE_ROLES_AND_PERMISSIONS_LISTING,
   ROUTE_ADD_NEW_USER,
+  ROUTE_VIEW_MAP,
 } from "../utils/constant";
 import Login from "../components/auth/Login/Login";
 import ForgotPassword from "../components/auth/ForgotPassword/ForgotPassword";
@@ -52,6 +53,7 @@ import Dashboard from "../features/Dashboard";
 import RolesAndPermissionsListing from "../features/RolesAndPermissions/RolesAndPermissionsListing";
 import AddNewUser from "../features/RolesAndPermissions/AddNewUser";
 import DefectListingScreen from "../features/MapContainer/DefectListing/DefectListing";
+import ViewMap from "../features/DeviceManagement/view-map";
 const AppRoutes = () => {
   return (
     <>
@@ -123,6 +125,28 @@ const AppRoutes = () => {
               ]}
             >
               <EditOrViewDevice />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path={ROUTE_VIEW_MAP}
+          element={
+            <DashboardLayout
+              breadcrumbLinks={[
+                {
+                  label: "Device Management Listing",
+                  href: ROUTE_DEVICE_MANAGEMENT_LISTING,
+                },
+                {
+                  label: "Edit Device",
+                  href: ROUTE_EDIT_OR_VIEW_DEVICE,
+                },
+                {
+                  label: "View Map",
+                },
+              ]}
+            >
+              <ViewMap />
             </DashboardLayout>
           }
         />

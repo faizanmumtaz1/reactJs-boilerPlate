@@ -18,7 +18,7 @@ L.Icon.Default.mergeOptions({
 
 const position: LatLngExpression = [51.505, -0.09]; // Default coordinates
 
-const MapView = () => {
+const MapView = ({ style = {} }: { style?: object }) => {
   return (
     <MapContainer
       center={position}
@@ -28,6 +28,7 @@ const MapView = () => {
         height: "100%",
         width: "100%",
         borderRadius: "24px",
+        ...style,
       }}
     >
       <TileLayer

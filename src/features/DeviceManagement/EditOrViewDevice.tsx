@@ -10,6 +10,8 @@ import Button from "../../components/common/Button/Button";
 import EditIcon from "@mui/icons-material/Edit";
 import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
+import MapView from "../MapContainer/Map";
+import AllJobs from "./AllJobs";
 
 const deviceData = [
   {
@@ -113,6 +115,50 @@ const EditOrViewDevice = () => {
   const [searchParams] = useSearchParams();
   const paramsEdit = searchParams.get("edit") === "true";
 
+  const otherFields = [
+    {
+      id: 1,
+      label: "Currently Registered Client/ID",
+      name: "clientId",
+      type: "select",
+      options: clientOptions,
+    },
+    {
+      id: 2,
+      label: "Status",
+      name: "status",
+      type: "select",
+      options: [
+        { label: "Active", value: "active" },
+        { label: "Inactive", value: "inactive" },
+      ],
+    },
+    {
+      id: 3,
+      label: "Total Jobs",
+      name: "totalJobs",
+      type: "number",
+    },
+    {
+      id: 4,
+      label: "Defects Discovered",
+      name: "defectsDiscovered",
+      type: "number",
+    },
+    {
+      id: 5,
+      label: "Recent GPS",
+      name: "recentGps",
+      type: "text",
+    },
+    {
+      id: 6,
+      label: "Region ID",
+      name: "regionId",
+      type: "number",
+    },
+  ];
+
   useEffect(() => {
     if (paramsEdit) {
       setIsEdit(true);
@@ -211,22 +257,53 @@ const EditOrViewDevice = () => {
           >
             More Details
           </Typography>
-          <CustomSelect
-            label="Select a Client"
-            options={clientOptions}
-            onChange={() => {}}
-            name="Select a Client"
-            id="status-select"
-            rounded="medium"
-            variant="outlined"
-            size="large"
-            fullWidth={true}
-            disabled={!isEdit}
-            sx={{
-              background: "white",
-            }}
-          />
+
+          <Stack direction="row" flexWrap="wrap" gap="12px" mt="16px">
+            {otherFields.map((item) => (
+              <>
+                {item.type === "select" ? (
+                  <CustomSelect
+                    label={item.label}
+                    options={clientOptions}
+                    onChange={() => {}}
+                    name={item.name}
+                    id={item.id.toString()}
+                    rounded="medium"
+                    variant="outlined"
+                    size="large"
+                    formControlStyling={{
+                      width: "100%",
+                      maxWidth: "calc(50% - 6px)",
+                    }}
+                    sx={{
+                      background: "white",
+                    }}
+                    disabled={!isEdit}
+                  />
+                ) : (
+                  <InputField
+                    key={item.id}
+                    name={item.name}
+                    control={control}
+                    label={item.label}
+                    type={item.type}
+                    sx={{
+                      width: "100%",
+                      maxWidth: "calc(50% - 6px)",
+                      background: "white",
+                    }}
+                    disabled={!isEdit}
+                  />
+                )}
+              </>
+            ))}
+          </Stack>
         </Box>
+        <Box mt="24px">
+          <MapView style={{ minHeight: "200px" }} />
+        </Box>
+
+        <AllJobs />
       </Box>
 
       {isEdit && (
