@@ -9,24 +9,52 @@ import {
 } from "@mui/material";
 import "./header.scss";
 import { useState } from "react";
+import Button from "../../common/Button/Button";
 import {
   LogoutIcon,
   NotificationIcon,
   SettingGrayIcon,
 } from "../../../assets/Images/svg";
-const Header = () => {
+import Drawer from "../../common/Drawer/index";
+import NotificationDrawer from "../../NotificationDrawer/index";
+import Breadcrumb from "./Breadcrumb/index";
+
+interface BreadcrumbLink {
+  label: string;
+  href?: string;
+}
+
+interface HeaderProps {
+  links: BreadcrumbLink[];
+}
+
+const Header = ({ links }: HeaderProps) => {
+  const [open, setOpen] = useState(false);
   return (
     <div className="header-wrapper">
       <div className="header-content">
-        <div className="header-left"></div>
+        <div className="header-left">
+          <Breadcrumb links={links} />
+        </div>
         <div className="header-right">
           <span>Software Version 1.0</span>
-          <Badge badgeContent={4} color="error">
-            <NotificationIcon />
-          </Badge>
+          <Button
+            variant="outlined"
+            className="icon-button"
+            size="small"
+            onClick={() => setOpen(true)}
+          >
+            <Badge badgeContent={4} color="error">
+              <NotificationIcon />
+            </Badge>
+          </Button>
+
           <ActionButton />
         </div>
       </div>
+      <Drawer open={open} onClose={() => setOpen(false)}>
+        <NotificationDrawer />
+      </Drawer>
     </div>
   );
 };

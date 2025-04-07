@@ -73,7 +73,7 @@ h5 {
     color: var(--text-primary, rgba(0, 0, 0, 0.87));
     font-size: 24px;
     font-style: normal;
-    font-weight: 450;
+    font-weight: normal;
     line-height: 133.4%;
   }
 }
@@ -154,7 +154,7 @@ h6 {
   color: var(--text-primary, rgba(0, 0, 0, 0.87));
   font-size: 14px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: 143%;
   letter-spacing: 0.17px;
 }
@@ -356,7 +356,7 @@ h6 {
     color: var(--text-primary, rgba(0, 0, 0, 0.87));
     font-size: 14px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 143%;
     letter-spacing: 0.17px;
   }
@@ -511,6 +511,14 @@ h6 {
     line-height: 20px;
     letter-spacing: 0.14px;
     color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  }
+  &.timeCaption {
+    color: var(--text-secondary, rgba(0, 0, 0, 0.6));
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 166%;
+    letter-spacing: 0.4px;
   }
 }
 @mixin medium-button-text {

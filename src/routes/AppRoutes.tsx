@@ -73,7 +73,12 @@ const AppRoutes = () => {
         <Route
           path={ROUTE_DEFECT_LISTING}
           element={
-            <DashboardLayout>
+            <DashboardLayout
+              breadcrumbLinks={[
+                { label: "Map", href: ROUTE_MAP },
+                { label: "Defect Listing", href: ROUTE_DEFECT_LISTING },
+              ]}
+            >
               <DefectListing />
             </DashboardLayout>
           }
@@ -89,7 +94,15 @@ const AppRoutes = () => {
         <Route
           path={ROUTE_ADD_DEVICE}
           element={
-            <DashboardLayout>
+            <DashboardLayout
+              breadcrumbLinks={[
+                {
+                  label: "Device Management",
+                  href: ROUTE_DEVICE_MANAGEMENT_LISTING,
+                },
+                { label: "Create New Device", href: ROUTE_ADD_DEVICE },
+              ]}
+            >
               <AddDevice />
             </DashboardLayout>
           }
@@ -97,7 +110,18 @@ const AppRoutes = () => {
         <Route
           path={ROUTE_EDIT_OR_VIEW_DEVICE}
           element={
-            <DashboardLayout>
+            <DashboardLayout
+              breadcrumbLinks={[
+                {
+                  label: "Device Management Listing",
+                  href: ROUTE_DEVICE_MANAGEMENT_LISTING,
+                },
+                {
+                  label: "Edit or View Device",
+                  href: ROUTE_EDIT_OR_VIEW_DEVICE,
+                },
+              ]}
+            >
               <EditOrViewDevice />
             </DashboardLayout>
           }
@@ -113,7 +137,12 @@ const AppRoutes = () => {
         <Route
           path={ROUTE_ADD_NEW_CLIENT}
           element={
-            <DashboardLayout>
+            <DashboardLayout
+              breadcrumbLinks={[
+                { label: "Client Management", href: ROUTE_CLIENT_MANAGEMENT },
+                { label: "Create New Client", href: ROUTE_ADD_NEW_CLIENT },
+              ]}
+            >
               <AddNewClient />
             </DashboardLayout>
           }
@@ -121,7 +150,15 @@ const AppRoutes = () => {
         <Route
           path={ROUTE_EDIT_OR_VIEW_CLIENT}
           element={
-            <DashboardLayout>
+            <DashboardLayout
+              breadcrumbLinks={[
+                { label: "Client Management", href: ROUTE_CLIENT_MANAGEMENT },
+                {
+                  label: "Edit or View Client",
+                  href: ROUTE_EDIT_OR_VIEW_CLIENT,
+                },
+              ]}
+            >
               <EditOrViewClient />
             </DashboardLayout>
           }
@@ -137,14 +174,24 @@ const AppRoutes = () => {
         <Route
           path={ROUTE_EDIT_OR_VIEW_ALERT}
           element={
-            <DashboardLayout>
+            <DashboardLayout
+              breadcrumbLinks={[
+                { label: "Alert Creation", href: ROUTE_ALERT_CREATION },
+                { label: "Edit or View Alert", href: ROUTE_EDIT_OR_VIEW_ALERT },
+              ]}
+            >
               <EditOrViewAlert />
             </DashboardLayout>
           }
         />
         <Route
           element={
-            <DashboardLayout>
+            <DashboardLayout
+              breadcrumbLinks={[
+                { label: "Alert Creation", href: ROUTE_ALERT_CREATION },
+                { label: "Edit or View Alert", href: ROUTE_EDIT_OR_VIEW_ALERT },
+              ]}
+            >
               <EditOrViewClient />
             </DashboardLayout>
           }
@@ -152,7 +199,12 @@ const AppRoutes = () => {
         <Route
           path={ROUTE_ADD_ALERT}
           element={
-            <DashboardLayout>
+            <DashboardLayout
+              breadcrumbLinks={[
+                { label: "Alert Creation", href: ROUTE_ALERT_CREATION },
+                { label: "Add Alert", href: ROUTE_ADD_ALERT },
+              ]}
+            >
               <AddAlert />
             </DashboardLayout>
           }
@@ -160,7 +212,15 @@ const AppRoutes = () => {
         <Route
           path={ROUTE_CREATE_NEW_REQUEST}
           element={
-            <DashboardLayout>
+            <DashboardLayout
+              breadcrumbLinks={[
+                {
+                  label: "Request Push Data",
+                  href: ROUTE_REQUEST_PUSH_DATA_LISTING,
+                },
+                { label: "Create New Request", href: ROUTE_CREATE_NEW_REQUEST },
+              ]}
+            >
               <CreateNewRequest />
             </DashboardLayout>
           }
@@ -241,7 +301,15 @@ const AppRoutes = () => {
         <Route
           path={ROUTE_ADD_NEW_USER}
           element={
-            <DashboardLayout>
+            <DashboardLayout
+              breadcrumbLinks={[
+                {
+                  label: "Roles and Permissions",
+                  href: ROUTE_ROLES_AND_PERMISSIONS_LISTING,
+                },
+                { label: "Add New User", href: ROUTE_ADD_NEW_USER },
+              ]}
+            >
               <AddNewUser />
             </DashboardLayout>
           }

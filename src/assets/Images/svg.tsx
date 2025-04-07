@@ -673,3 +673,20 @@ export const DefectIcon = () => {
     </svg>
   );
 };
+export const ArrowRightIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+    >
+      <path
+        d="M8.08711 5L6.91211 6.175L10.7288 10L6.91211 13.825L8.08711 15L13.0871 10L8.08711 5Z"
+        fill="black"
+        fill-opacity="0.56"
+      />
+    </svg>
+  );
+};
