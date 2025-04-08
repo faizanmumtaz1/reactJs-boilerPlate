@@ -707,3 +707,25 @@ export const DeleteIcon = () => {
     </svg>
   );
 };
+
+export const RedMarkerIcon = () => {
+  return (
+    <svg
+      width="63"
+      height="63"
+      viewBox="0 0 63 63"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="31.265" cy="31.265" r="31.265" fill="#E57373" />
+      <circle
+        cx="31.2625"
+        cy="31.2662"
+        r="9.23739"
+        fill="#BE1E2D"
+        stroke="white"
+        stroke-width="2.84227"
+      />
+    </svg>
+  );
+};
