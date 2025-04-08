@@ -190,24 +190,12 @@ const AddNewService = () => {
           <Typography variant="h6">Associated Clients</Typography>
 
           <Button
-            variant="outline"
-            color="primary"
+            variant="outlined"
+            color="inherit"
             startIcon={<AddIcon />}
+            tertiary
             sx={{
               borderRadius: "80px",
-              color: "#E50096",
-              fontSize: "14px",
-              fontStyle: "normal",
-              fontWeight: "500",
-              lineHeight: "24px",
-              letterSpacing: "0.4px",
-              textTransform: "capitalize",
-              border: "1px solid rgba(229, 0, 150, 0.50)",
-              "&:hover": {
-                border: "1px solid rgba(229, 0, 150, 1)",
-                backgroundColor: "transparent",
-                color: "#E50096",
-              },
             }}
             onClick={() => navigate(ROUTE_ADD_NEW_CLIENT_SERVICE)}
           >
@@ -275,10 +263,18 @@ const AddNewService = () => {
         bottom="0"
         // left="0"
       >
-        <Button variant="outline" color="primary" sx={{ borderRadius: "80px" }}>
+        <Button
+          variant="outlined"
+          color="primary"
+          sx={{ borderRadius: "80px" }}
+        >
           Cancel
         </Button>
-        <Button variant="primary" color="primary" sx={{ borderRadius: "80px" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          sx={{ borderRadius: "80px" }}
+        >
           Create Report
         </Button>
       </Stack>

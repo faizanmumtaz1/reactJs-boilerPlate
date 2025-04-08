@@ -42,10 +42,8 @@ const CustomSelect = ({
   size = "medium",
   sx = {},
   value = "",
-  labelStyling = {},
   disabled = false,
   formControlStyling = {},
-  multiple = false,
 }: CustomSelectProps) => {
   return (
     <>

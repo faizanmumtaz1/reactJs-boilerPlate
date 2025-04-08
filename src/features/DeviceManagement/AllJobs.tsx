@@ -1,11 +1,9 @@
 import { Box, Chip, IconButton, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
+import { useState } from "react";
 import Table from "../../components/common/Table/Table";
 import SearchBar from "../../components/common/SearchBar/SearchBar";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import DeleteIcon from "@mui/icons-material/Delete";
-import Button from "../../components/common/Button/Button";
-import AddIcon from "@mui/icons-material/Add";
 import Modal from "../../components/common/Modal/Modal";
 import { Link } from "react-router-dom";
 import { ROUTE_VIEW_MAP } from "../../utils/constant";

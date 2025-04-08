@@ -3,9 +3,7 @@ import { IconButton, Stack } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_REQUEST_PUSH_DATA_LISTING } from "../../utils/constant";
-import { useForm } from "react-hook-form";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
-import Button from "../../components/common/Button/Button";
 import DatePicker from "../../components/common/DatePicker/DatePicker";
 import { useState } from "react";
 import CommonMultiSelect from "../../components/common/CommonMultiSelect";
@@ -20,7 +18,6 @@ const clientOptions = [
 
 const ViewRequest = () => {
   const navigate = useNavigate();
-  const { control } = useForm();
 
   const [associatedServices, setAssociatedServices] = useState([]);
   const [selectDevice, setSelectDevice] = useState([]);

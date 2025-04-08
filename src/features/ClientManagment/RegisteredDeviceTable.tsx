@@ -1,5 +1,4 @@
-import { Box, IconButton, Stack, Typography } from "@mui/material";
-import React from "react";
+import { Box, Stack, Typography } from "@mui/material";
 import Table from "../../components/common/Table/Table";
 import SearchBar from "../../components/common/SearchBar/SearchBar";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";

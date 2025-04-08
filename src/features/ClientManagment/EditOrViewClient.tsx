@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import Button from "../../components/common/Button/Button";
 import RegisteredDeviceTable from "./RegisteredDeviceTable";
-import SearchBar from "../../components/common/SearchBar/SearchBar";
 import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import EditIcon from "@mui/icons-material/Edit";
