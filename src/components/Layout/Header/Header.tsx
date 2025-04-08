@@ -13,6 +13,7 @@ import { useState } from "react";
 import Button from "../../common/Button/Button";
 import {
   LogoutIcon,
+  MenuIcon,
   NotificationIcon,
   SettingGrayIcon,
 } from "../../../assets/Images/svg";
@@ -27,13 +28,33 @@ interface BreadcrumbLink {
 
 interface HeaderProps {
   links: BreadcrumbLink[];
+  isMobileMenuOpen: boolean;
+  setIsMobileMenuOpen: (open: boolean) => void;
 }
 
-const Header = ({ links }: HeaderProps) => {
+const Header = ({
+  links,
+  isMobileMenuOpen,
+  setIsMobileMenuOpen,
+}: HeaderProps) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className="header-wrapper">
+    <div
+      className={`header-wrapper ${
+        isMobileMenuOpen ? "is-mobile-menu-open" : "mobile-menu-closed"
+      }`}
+    >
       <div className="header-content">
+        <IconButton
+          size="large"
+          edge="start"
+          color="inherit"
+          aria-label="menu"
+          sx={{ mr: 2, display: { xs: "block", sm: "none" } }}
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        >
+          <MenuIcon />
+        </IconButton>
         <div className="header-left">
           <Breadcrumb links={links} />
         </div>

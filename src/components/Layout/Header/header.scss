@@ -12,6 +12,12 @@
   max-width: calc(100% - 88px);
   width: 100%;
   border-bottom: 1px solid var(--divider);
+  transition: all 0.3s ease;
+  @media (max-width: 600px) {
+    &.mobile-menu-closed {
+      max-width: 100%;
+    }
+  }
 
   .header-content {
     display: flex;

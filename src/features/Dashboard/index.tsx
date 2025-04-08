@@ -271,7 +271,14 @@ const Dashboard = () => {
         my: 2,
       }}
     >
-      <Stack direction="row" justifyContent="space-between">
+      <Stack
+        direction={{ xs: "column", sm: "row" }}
+        justifyContent="space-between"
+        spacing={2}
+        sx={{
+          width: "100%",
+        }}
+      >
         <Typography variant="h4">Dashboard</Typography>
         <Stack direction="row" spacing={2}>
           <CustomSelect
@@ -308,7 +315,12 @@ const Dashboard = () => {
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr 1fr 1fr",
+          gridTemplateColumns: {
+            lg: "1fr 1fr 1fr 1fr",
+            md: "1fr 1fr",
+            sm: "1fr 1fr",
+            xs: "1fr 1fr",
+          },
           gap: 2,
           mb: 3,
           mt: 2,
@@ -322,7 +334,11 @@ const Dashboard = () => {
       <Box
         sx={{
           display: "grid",
-          gridTemplateColumns: "3fr 2fr",
+          gridTemplateColumns: {
+            lg: "3fr 2fr",
+            md: "1fr 1fr",
+            sm: "1fr",
+          },
           gap: 2,
         }}
       >
@@ -419,11 +435,25 @@ const Dashboard = () => {
             sx={{
               "& .MuiTabs-indicator": {},
               width: "100%",
+              px: 0,
+            }}
+            panelSx={{
+              px: 0,
             }}
           />
         </Box>
       </Box>
-      <Box sx={{ display: "grid", gridTemplateColumns: "2fr 3fr", gap: 2 }}>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: {
+            lg: "2fr 3fr",
+            md: "1fr 1fr",
+            sm: "1fr",
+          },
+          gap: 2,
+        }}
+      >
         <Stack
           direction={"column"}
           className="gray-container-table dashboard-table"
