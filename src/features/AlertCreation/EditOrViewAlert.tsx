@@ -92,7 +92,7 @@ const EditOrViewAlert = () => {
           {!isEdit && (
             <Button
               size="small"
-              variant="outline"
+              variant="outlined"
               color="inherit"
               startIcon={<EditIcon />}
               sx={{
@@ -210,10 +210,18 @@ const EditOrViewAlert = () => {
         bottom="0"
         // left="0"
       >
-        <Button variant="outline" color="inherit" sx={{ borderRadius: "80px" }}>
+        <Button
+          variant="outlined"
+          color="inherit"
+          sx={{ borderRadius: "80px" }}
+        >
           Cancel
         </Button>
-        <Button variant="primary" color="primary" sx={{ borderRadius: "80px" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          sx={{ borderRadius: "80px" }}
+        >
           Save Changes
         </Button>
       </Stack>

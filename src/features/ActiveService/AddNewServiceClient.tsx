@@ -135,10 +135,18 @@ const AddNewClientService = () => {
         bottom="0"
         // left="0"
       >
-        <Button variant="outline" color="primary" sx={{ borderRadius: "80px" }}>
+        <Button
+          variant="outlined"
+          color="primary"
+          sx={{ borderRadius: "80px" }}
+        >
           Cancel
         </Button>
-        <Button variant="primary" color="primary" sx={{ borderRadius: "80px" }}>
+        <Button
+          variant="contained"
+          color="primary"
+          sx={{ borderRadius: "80px" }}
+        >
           Add New Client
         </Button>
       </Stack>

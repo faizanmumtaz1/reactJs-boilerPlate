@@ -1,11 +1,12 @@
 import { Box, IconButton, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
+import { useState } from "react";
 import Table from "../../components/common/Table/Table";
 import SearchBar from "../../components/common/SearchBar/SearchBar";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "../../components/common/Button/Button";
 import AddIcon from "@mui/icons-material/Add";
+import Modal from "../../components/common/Modal/Modal";
 
 export default function UserTable() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -175,6 +176,15 @@ export default function UserTable() {
           className="client-user-details-table"
         />
       </Box>
+      {showDeleteModal && (
+        <Modal
+          open={showDeleteModal}
+          onClose={() => setShowDeleteModal(false)}
+          onConfirm={() => setShowDeleteModal(false)}
+          title="Delete User"
+          subtitle="Are you sure you want to delete this user?"
+        />
+      )}
     </>
   );
 }
