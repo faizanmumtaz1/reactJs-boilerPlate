@@ -27,7 +27,7 @@ const errorResponseHandler = async (error: any) => {
         originalRequest._retry = true;
         // Clear auth data and redirect to login
         // store.dispatch(logout());
-        window.location.href = '/';
+        // window.location.href = '/';
         return Promise.reject(error);
     }
 
