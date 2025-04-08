@@ -11,8 +11,9 @@ import {
   TimerIcon,
   DefectIcon,
   FilterIcon,
+  ArrowBackIcon,
 } from "../../assets/Images/svg";
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, Divider, IconButton, Typography } from "@mui/material";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import SearchBar from "../../components/common/SearchBar/SearchBar";
 import DefectsList from "./DefectsList/DefectsList";
@@ -201,80 +202,92 @@ const MapContainer = () => {
               sx={{
                 "& .MuiDrawer-paper": {
                   width: '100%',
-                  padding: '24px'
+
                 },
               }}
               open={showFiltersOnMobile} onClose={() => { setShowFiltersOnMobile(false) }}
             >
-              <Box>
+              <Box sx={{
+                display: 'flex',
+                justifyContent: 'start',
+                alignItems: 'center',
+                p: 2,
+                gap: '5px'
+              }}>
+                <IconButton onClick={()=>{setShowFiltersOnMobile(false)}}>
+                  <ArrowBackIcon />
+                </IconButton>
                 <Typography> Filters</Typography>
-                <hr/>
               </Box>
-              <CustomSelect
-                label="Severity"
-                options={severityOptions}
-                onChange={() => { }}
-                defaultValue="age"
-                name="severity"
-                id="severity-select"
-                fullWidth={true}
-                className="mb-2"
-                rounded="medium"
-                variant="outlined"
-                WrapperClassName=""
-                placeholder="Select"
-                size="medium"
-                sx={{ mb: 3 }}
-              />
-              <CustomSelect
-                label="Severity"
-                options={severityOptions}
-                onChange={() => { }}
-                defaultValue="age"
-                name="severity"
-                id="severity-select"
-                fullWidth={true}
-                className=""
-                rounded="medium"
-                variant="outlined"
-                WrapperClassName=""
-                placeholder="Select"
-                size="medium"
-                sx={{ mb: 3 }}
-              />
-              <CustomSelect
-                label="Severity"
-                options={severityOptions}
-                onChange={() => { }}
-                defaultValue="age"
-                name="severity"
-                id="severity-select"
-                fullWidth={true}
-                className=""
-                rounded="medium"
-                variant="outlined"
-                WrapperClassName=""
-                placeholder="Select"
-                size="medium"
-                sx={{ mb: 3 }}
-              />
-              <CustomSelect
-                label="Severity"
-                options={severityOptions}
-                onChange={() => { }}
-                defaultValue="age"
-                name="severity"
-                id="severity-select"
-                fullWidth={false}
-                className=""
-                rounded="medium"
-                variant="outlined"
-                WrapperClassName="month-select-wrapper"
-                placeholder="Select"
-                size="medium"
-                sx={{ mb: 3 }}
-              />
-
+              <Divider />
+              <Box sx={{
+                padding: '24px'
+              }}>
+                <CustomSelect
+                  label="Severity"
+                  options={severityOptions}
+                  onChange={() => { }}
+                  defaultValue="age"
+                  name="severity"
+                  id="severity-select"
+                  fullWidth={true}
+                  className="mb-2"
+                  rounded="medium"
+                  variant="outlined"
+                  WrapperClassName=""
+                  placeholder="Select"
+                  size="medium"
+                  sx={{ mb: 3 }}
+                />
+                <CustomSelect
+                  label="Severity"
+                  options={severityOptions}
+                  onChange={() => { }}
+                  defaultValue="age"
+                  name="severity"
+                  id="severity-select"
+                  fullWidth={true}
+                  className=""
+                  rounded="medium"
+                  variant="outlined"
+                  WrapperClassName=""
+                  placeholder="Select"
+                  size="medium"
+                  sx={{ mb: 3 }}
+                />
+                <CustomSelect
+                  label="Severity"
+                  options={severityOptions}
+                  onChange={() => { }}
+                  defaultValue="age"
+                  name="severity"
+                  id="severity-select"
+                  fullWidth={true}
+                  className=""
+                  rounded="medium"
+                  variant="outlined"
+                  WrapperClassName=""
+                  placeholder="Select"
+                  size="medium"
+                  sx={{ mb: 3 }}
+                />
+                <CustomSelect
+                  label="Severity"
+                  options={severityOptions}
+                  onChange={() => { }}
+                  defaultValue="age"
+                  name="severity"
+                  id="severity-select"
+                  fullWidth={true}
+                  className=""
+                  rounded="medium"
+                  variant="outlined"
+                  WrapperClassName="month-select-wrapper"
+                  placeholder="Select"
+                  size="medium"
+                  sx={{ mb: 3 }}
+                />
+              </Box>
 
               <Box sx={{
                 position: 'fixed',
@@ -286,10 +299,11 @@ const MapContainer = () => {
                 padding: '24px 24px 32px 24px',
                 boxShadow: '0px -5px 13px 0px rgb(184 180 180 / 49%)'
               }}>
-                <Button variant="outlined" fullWidth={true} sx={{borderRadius: '32px'}}>
+                <Button variant="outlined" fullWidth={true} sx={{ borderRadius: '32px' }}>
                   Apply Filters
                 </Button>
               </Box>
+
             </Drawer>
 
 
@@ -297,7 +311,7 @@ const MapContainer = () => {
 
       </div>
       <div className="map-container">
-        {!isItMobile &&  <div className="buttons-wrapper">
+        {!isItMobile && <div className="buttons-wrapper">
           <Button
             variant="outlined"
             color="info"
@@ -330,7 +344,7 @@ const MapContainer = () => {
             Mild
           </Button>
         </div>}
-      
+
         {!isItMobile &&
           <>
             {!isDefectsListOpen && (
