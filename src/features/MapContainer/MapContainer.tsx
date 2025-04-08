@@ -10,16 +10,22 @@ import {
   StraightLineIcon,
   TimerIcon,
   DefectIcon,
+  FilterIcon,
+  ArrowBackIcon,
 } from "../../assets/Images/svg";
-import { Box, Typography } from "@mui/material";
+import { Box, Divider, IconButton, Typography } from "@mui/material";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import SearchBar from "../../components/common/SearchBar/SearchBar";
 import DefectsList from "./DefectsList/DefectsList";
 import MapView from "./Map";
 import Button from "../../components/common/Button/Button";
 import { useState } from "react";
+import useCheckMobileScreen from "../../hooks/useCheckMobileScreen";
+import Drawer from '@mui/material/Drawer';
 const MapContainer = () => {
   const [isDefectsListOpen, setIsDefectsListOpen] = useState(false);
+  const isItMobile = useCheckMobileScreen();
+  const [showFiltersOnMobile, setShowFiltersOnMobile] = useState(false);
   const pathDetails = [
     {
       icon: <AltRouteIcon />,
@@ -77,6 +83,33 @@ const MapContainer = () => {
       <div className="title-container">
         <Typography variant="h4">Map</Typography>
       </div>
+      <div>
+
+        {!isDefectsListOpen && isItMobile && (
+          <Box sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center'
+          }}>
+            <Typography variant="caption" className="text-xs path-name">
+              View defects by simply tapping or  through the defects panel.
+            </Typography>
+
+            <Button
+              variant="outlined"
+              color="info"
+              className="rounded-full-button"
+              sx={{
+              }}
+              onClick={() => setIsDefectsListOpen(!isDefectsListOpen)}
+              endIcon={<DefectIcon />}
+            >
+              View Defects
+            </Button>
+          </Box>
+
+        )}
+      </div>
       <div className="filters-container">
         <SearchBar
           placeholder="Search"
@@ -86,70 +119,199 @@ const MapContainer = () => {
           rounded="medium"
           className="container-search-bar"
           startAdornment={<SearchIcon />}
+
+
         />
-        <CustomSelect
-          label="Severity"
-          options={severityOptions}
-          onChange={() => {}}
-          defaultValue="age"
-          name="severity"
-          id="severity-select"
-          fullWidth={true}
-          className=""
-          rounded="medium"
-          variant="outlined"
-          WrapperClassName=""
-          placeholder="Select"
-          size="medium"
-        />
-        <CustomSelect
-          label="Severity"
-          options={severityOptions}
-          onChange={() => {}}
-          defaultValue="age"
-          name="severity"
-          id="severity-select"
-          fullWidth={true}
-          className=""
-          rounded="medium"
-          variant="outlined"
-          WrapperClassName=""
-          placeholder="Select"
-          size="medium"
-        />
-        <CustomSelect
-          label="Severity"
-          options={severityOptions}
-          onChange={() => {}}
-          defaultValue="age"
-          name="severity"
-          id="severity-select"
-          fullWidth={true}
-          className=""
-          rounded="medium"
-          variant="outlined"
-          WrapperClassName=""
-          placeholder="Select"
-          size="medium"
-        />
-        <CustomSelect
-          label="Severity"
-          options={severityOptions}
-          onChange={() => {}}
-          defaultValue="age"
-          name="severity"
-          id="severity-select"
-          fullWidth={false}
-          className=""
-          rounded="medium"
-          variant="outlined"
-          WrapperClassName="month-select-wrapper"
-          placeholder="Select"
-          size="medium"
-        />
+
+        {isItMobile && <IconButton onClick={() => { setShowFiltersOnMobile(true) }} sx={{
+          backgroundColor: 'rgba(248, 249, 251, 1)',
+          borderRadius: '8px',
+          "&:hover": {
+            backgroundColor: "rgba(248, 249, 251, 1)",
+          },
+        }}> <FilterIcon /> </IconButton>}
+
+        {!isItMobile ?
+          <>
+            <CustomSelect
+              label="Severity"
+              options={severityOptions}
+              onChange={() => { }}
+              defaultValue="age"
+              name="severity"
+              id="severity-select"
+              fullWidth={true}
+              className=""
+              rounded="medium"
+              variant="outlined"
+              WrapperClassName=""
+              placeholder="Select"
+              size="medium"
+            />
+            <CustomSelect
+              label="Severity"
+              options={severityOptions}
+              onChange={() => { }}
+              defaultValue="age"
+              name="severity"
+              id="severity-select"
+              fullWidth={true}
+              className=""
+              rounded="medium"
+              variant="outlined"
+              WrapperClassName=""
+              placeholder="Select"
+              size="medium"
+            />
+            <CustomSelect
+              label="Severity"
+              options={severityOptions}
+              onChange={() => { }}
+              defaultValue="age"
+              name="severity"
+              id="severity-select"
+              fullWidth={true}
+              className=""
+              rounded="medium"
+              variant="outlined"
+              WrapperClassName=""
+              placeholder="Select"
+              size="medium"
+            />
+            <CustomSelect
+              label="Severity"
+              options={severityOptions}
+              onChange={() => { }}
+              defaultValue="age"
+              name="severity"
+              id="severity-select"
+              fullWidth={false}
+              className=""
+              rounded="medium"
+              variant="outlined"
+              WrapperClassName="month-select-wrapper"
+              placeholder="Select"
+              size="medium"
+            />
+
+          </> : <>
+
+
+            <Drawer
+              anchor="right"
+              sx={{
+                "& .MuiDrawer-paper": {
+                  width: '100%',
+
+                },
+              }}
+              open={showFiltersOnMobile} onClose={() => { setShowFiltersOnMobile(false) }}
+            >
+              <Box sx={{
+                display: 'flex',
+                justifyContent: 'start',
+                alignItems: 'center',
+                p: 2,
+                gap: '5px'
+              }}>
+                <IconButton onClick={()=>{setShowFiltersOnMobile(false)}}>
+                  <ArrowBackIcon />
+                </IconButton>
+                <Typography> Filters</Typography>
+              </Box>
+              <Divider />
+              <Box sx={{
+                padding: '24px'
+              }}>
+                <CustomSelect
+                  label="Severity"
+                  options={severityOptions}
+                  onChange={() => { }}
+                  defaultValue="age"
+                  name="severity"
+                  id="severity-select"
+                  fullWidth={true}
+                  className="mb-2"
+                  rounded="medium"
+                  variant="outlined"
+                  WrapperClassName=""
+                  placeholder="Select"
+                  size="medium"
+                  sx={{ mb: 3 }}
+                />
+                <CustomSelect
+                  label="Severity"
+                  options={severityOptions}
+                  onChange={() => { }}
+                  defaultValue="age"
+                  name="severity"
+                  id="severity-select"
+                  fullWidth={true}
+                  className=""
+                  rounded="medium"
+                  variant="outlined"
+                  WrapperClassName=""
+                  placeholder="Select"
+                  size="medium"
+                  sx={{ mb: 3 }}
+                />
+                <CustomSelect
+                  label="Severity"
+                  options={severityOptions}
+                  onChange={() => { }}
+                  defaultValue="age"
+                  name="severity"
+                  id="severity-select"
+                  fullWidth={true}
+                  className=""
+                  rounded="medium"
+                  variant="outlined"
+                  WrapperClassName=""
+                  placeholder="Select"
+                  size="medium"
+                  sx={{ mb: 3 }}
+                />
+                <CustomSelect
+                  label="Severity"
+                  options={severityOptions}
+                  onChange={() => { }}
+                  defaultValue="age"
+                  name="severity"
+                  id="severity-select"
+                  fullWidth={true}
+                  className=""
+                  rounded="medium"
+                  variant="outlined"
+                  WrapperClassName="month-select-wrapper"
+                  placeholder="Select"
+                  size="medium"
+                  sx={{ mb: 3 }}
+                />
+              </Box>
+
+              <Box sx={{
+                position: 'fixed',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                width: '100%',
+                borderRadius: '24px 24px 0 0',
+                padding: '24px 24px 32px 24px',
+                boxShadow: '0px -5px 13px 0px rgb(184 180 180 / 49%)'
+              }}>
+                <Button variant="outlined" fullWidth={true} sx={{ borderRadius: '32px' }}>
+                  Apply Filters
+                </Button>
+              </Box>
+
+            </Drawer>
+
+
+          </>}
+
       </div>
       <div className="map-container">
-        <div className="buttons-wrapper">
+        {!isItMobile && <div className="buttons-wrapper">
           <Button
             variant="outlined"
             color="info"
@@ -181,24 +343,30 @@ const MapContainer = () => {
           >
             Mild
           </Button>
-        </div>
-        {!isDefectsListOpen && (
-          <Button
-            variant="outlined"
-            color="info"
-            className="rounded-full-button"
-            sx={{
-              position: "absolute",
-              top: "16px",
-              left: "48px",
-              zIndex: 1000,
-            }}
-            onClick={() => setIsDefectsListOpen(!isDefectsListOpen)}
-            endIcon={<DefectIcon />}
-          >
-            View Defects
-          </Button>
-        )}
+        </div>}
+
+        {!isItMobile &&
+          <>
+            {!isDefectsListOpen && (
+              <Button
+                variant="outlined"
+                color="info"
+                className="rounded-full-button"
+                sx={{
+                  position: "absolute",
+                  top: "16px",
+                  left: "48px",
+                  zIndex: 1000,
+                }}
+                onClick={() => setIsDefectsListOpen(!isDefectsListOpen)}
+                endIcon={<DefectIcon />}
+              >
+                View Defects
+              </Button>
+            )}
+          </>
+        }
+
 
         {isDefectsListOpen && (
           <DefectsList handleDefectsListClose={handleDefectsListClose} />
@@ -223,6 +391,7 @@ const MapContainer = () => {
 };
 
 export default MapContainer;
+
 const PathDetailsItem = ({
   icon,
   name,
