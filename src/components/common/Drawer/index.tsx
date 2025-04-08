@@ -18,7 +18,10 @@ const Drawer: FC<DrawerProps> = ({ children, onClose, ...props }) => {
       className="drawer-wrapper"
       sx={{
         "& .MuiDrawer-paper": {
-          borderRadius: "24px 0px 0px 24px",
+          borderRadius: {
+            xs: "0px",
+            sm: "24px 0px 0px 24px",
+          },
         },
       }}
     >
