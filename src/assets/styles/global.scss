@@ -39,6 +39,15 @@ li {
   width: 100%;
   align-items: center;
   margin-left: 88px;
+  transition: all 0.3s ease;
+  max-width: calc(100% - 88px);
+  @media (max-width: 600px) {
+    &.mobile-menu-closed {
+      margin-left: 0;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
 }
 .dashboard-layout-content-wrapper {
   width: 100%;

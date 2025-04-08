@@ -716,3 +716,56 @@ export const FilterIcon = () => {
     </svg>
   )
 }
+export const RedMarkerIcon = () => {
+  return (
+    <svg
+      width="63"
+      height="63"
+      viewBox="0 0 63 63"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="31.265" cy="31.265" r="31.265" fill="#E57373" />
+      <circle
+        cx="31.2625"
+        cy="31.2662"
+        r="9.23739"
+        fill="#BE1E2D"
+        stroke="white"
+        stroke-width="2.84227"
+      />
+    </svg>
+  );
+};
+export const MenuIcon = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+    >
+      <path
+        d="M4 18H20C20.55 18 21 17.55 21 17C21 16.45 20.55 16 20 16H4C3.45 16 3 16.45 3 17C3 17.55 3.45 18 4 18ZM4 13H20C20.55 13 21 12.55 21 12C21 11.45 20.55 11 20 11H4C3.45 11 3 11.45 3 12C3 12.55 3.45 13 4 13ZM3 7C3 7.55 3.45 8 4 8H20C20.55 8 21 7.55 21 7C21 6.45 20.55 6 20 6H4C3.45 6 3 6.45 3 7Z"
+        fill="#1F2A37"
+      />
+    </svg>
+  );
+};
+export const CrossIconLight = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="25"
+      height="25"
+      viewBox="0 0 25 25"
+      fill="none"
+    >
+      <path
+        d="M19.75 6.66L18.34 5.25L12.75 10.84L7.16 5.25L5.75 6.66L11.34 12.25L5.75 17.84L7.16 19.25L12.75 13.66L18.34 19.25L19.75 17.84L14.16 12.25L19.75 6.66Z"
+        fill="white"
+      />
+    </svg>
+  );
+};

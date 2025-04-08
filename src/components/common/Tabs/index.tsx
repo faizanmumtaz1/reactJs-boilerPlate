@@ -69,6 +69,9 @@ const CustomTabs: React.FC<CustomTabsProps> = ({
           value={onChange ? value : internalValue}
           onChange={onChange || handleChange}
           aria-label="custom tabs"
+          sx={{
+            p: 0,
+          }}
         >
           {tabs.map((tab, index) => (
             <Tab

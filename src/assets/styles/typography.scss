@@ -521,6 +521,13 @@ h6 {
     letter-spacing: 0.4px;
   }
 }
+.sidebar-item-link-text {
+  color: var(--elevation-outlined, #e0e0e0);
+  font-feature-settings: "liga" off, "clig" off;
+  font-family: var(--fontFamily, "Elza Trial");
+  font-size: var(--_fontSize-1rem, 16px);
+  font-style: normal;
+}
 @mixin medium-button-text {
   color: var(--text-primary);
   font-size: 15px;

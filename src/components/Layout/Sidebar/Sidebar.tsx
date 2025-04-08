@@ -11,6 +11,8 @@ import {
   SettingInputIcon,
   AddLinkIcon,
   CloudUploadIcon,
+  CrossSmIcon,
+  CrossIconLight,
 } from "../../../assets/Images/svg";
 import {
   ROUTE_ADD_DEVICE,
@@ -29,7 +31,12 @@ import {
   ROUTE_DASHBOARD,
   ROUTE_ALERT_CREATION,
 } from "../../../utils/constant";
-const Sidebar = () => {
+import { IconButton, Typography } from "@mui/material";
+interface SidebarProps {
+  isMobileMenuOpen: boolean;
+  setIsMobileMenuOpen: (open: boolean) => void;
+}
+const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }: SidebarProps) => {
   const linksList = [
     {
       name: "Home",
@@ -95,9 +102,24 @@ const Sidebar = () => {
     },
   ];
   return (
-    <div className="sidebar-wrapper">
+    <div
+      className={`sidebar-wrapper ${
+        isMobileMenuOpen ? "mobile-menu-open" : "mobile-menu-close"
+      }`}
+    >
       <div className="sidebar-header">
         <LogoIcon />
+        <IconButton
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          sx={{
+            display: { xs: "flex", sm: "none" },
+            p: 2,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <CrossIconLight />
+        </IconButton>
       </div>
 
       <ul className="sidebar-content">
@@ -114,10 +136,12 @@ const SidebarItem = ({
   path,
   icon,
   activePaths = [],
+  name,
 }: {
   path: string;
   icon: React.ReactNode;
   activePaths?: string[];
+  name: string;
 }) => {
   const location = useLocation();
   const isActive = activePaths.some((activePath) =>
@@ -130,6 +154,16 @@ const SidebarItem = ({
         className={`sidebar-item-link ${isActive ? "active" : ""}`}
       >
         {icon}
+        <Typography
+          variant="body1"
+          className="sidebar-item-link-text"
+          component="span"
+          sx={{
+            display: { xs: "block", sm: "none" },
+          }}
+        >
+          {name}
+        </Typography>
       </Link>
     </li>
   );
