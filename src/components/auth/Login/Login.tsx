@@ -27,8 +27,8 @@ const Login = () => {
   const navigate = useNavigate()
   const handleLogin = async (data: LoginFormValues) => {
 
-    const userData = {
-      userName: data.userName.trim(),
+    const userData:any = {
+      username: data.userName.trim(),
       password: data.password,
     };
 
