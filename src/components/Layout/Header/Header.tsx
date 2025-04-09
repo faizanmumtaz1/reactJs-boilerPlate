@@ -20,6 +20,11 @@ import {
 import Drawer from "../../common/Drawer/index";
 import NotificationDrawer from "../../NotificationDrawer/index";
 import Breadcrumb from "./Breadcrumb/index";
+import toastHelper from "../../../utils/toastifyHelper";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../redux/slices/authSlice";
+import { useNavigate } from "react-router-dom";
+import { ROUTE_HOME } from "../../../utils/constant";
 
 interface BreadcrumbLink {
   label: string;
@@ -38,11 +43,12 @@ const Header = ({
   setIsMobileMenuOpen,
 }: HeaderProps) => {
   const [open, setOpen] = useState(false);
+
+
   return (
     <div
-      className={`header-wrapper ${
-        isMobileMenuOpen ? "is-mobile-menu-open" : "mobile-menu-closed"
-      }`}
+      className={`header-wrapper ${isMobileMenuOpen ? "is-mobile-menu-open" : "mobile-menu-closed"
+        }`}
     >
       <div className="header-content">
         <IconButton
@@ -92,10 +98,20 @@ const ActionButton = () => {
     setAnchorEl(event.currentTarget);
     setOpen(true);
   };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleClose = () => {
     setOpen(false);
     setAnchorEl(null);
   };
+
+
+  const handleLogout = () => {
+    dispatch(logout());
+    toastHelper.success("Logout successfully");
+    navigate(ROUTE_HOME);
+  };
+
   return (
     <div className="action-button-wrapper">
       <IconButton
@@ -162,7 +178,7 @@ const ActionButton = () => {
           </ListItemIcon>
           Settings
         </MenuItem>
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <LogoutIcon />
           </ListItemIcon>
@@ -172,3 +188,5 @@ const ActionButton = () => {
     </div>
   );
 };
+
+

@@ -27,7 +27,7 @@ const errorResponseHandler = async (error: any) => {
         originalRequest._retry = true;
         // Clear auth data and redirect to login
         // store.dispatch(logout());
-        window.location.href = '/';
+        // window.location.href = '/';
         return Promise.reject(error);
     }
 
@@ -40,8 +40,8 @@ export const getAxiosInstance = (config: AxiosRequestConfig = {}): AxiosInstance
         baseURL: import.meta.env.VITE_REACT_APP_BASE_API_URL,  // Set base URL from environment variables
         ...config,
         headers: {
-            'Content-Type': 'application/json',
-          },        
+            'Content-Type': 'multipart/form-data',
+        },        
     });
 
     // Attach interceptors
