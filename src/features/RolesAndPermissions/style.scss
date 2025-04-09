@@ -1,0 +1,13 @@
+.roles-and-permissions-table {
+
+    & .rdt_TableRow {
+        cursor: default;
+    }
+    & .rdt_TableCol,
+    & .rdt_Pagination,
+    & .rdt_TableCell {
+        background-color: var(--background-default) !important;
+    }
+       
+
+}

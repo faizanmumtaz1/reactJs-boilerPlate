@@ -1,0 +1,9 @@
+.device-management-table {
+  & .rdt_TableCol, & .rdt_Pagination, & .rdt_TableCell {
+    background-color: var(--background-default) !important;
+  }
+
+  & .rdt_TableCell {
+    cursor: pointer !important;
+  }
+}

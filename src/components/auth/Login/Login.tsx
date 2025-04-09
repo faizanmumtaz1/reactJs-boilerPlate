@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Box, Paper, Typography } from '@mui/material';
+import { Box, CircularProgress, Paper, Typography } from '@mui/material';
 import InputField from '../../common/InputField/InputField';
 import Button from '../../common/Button/Button';
 import { loginSchema } from '../../../schemas/loginSchema';
@@ -8,48 +8,68 @@ import { LoginFormValues } from '../../../utils/types';
 import Logo from '../../../assets/images/logo.png';
 import { ROUTE_FORGET_PASSWORD, ROUTE_MAP } from '../../../utils/constant';
 import { Link, useNavigate } from 'react-router';
-
-
-// Define the validation schema using Yup
-
-
-// Define type based on the schema
-
+import useMutateLogin from '../../../react-query-hooks/useMutateLogin';
+import toastHelper from '../../../utils/toastifyHelper';
+import { useDispatch } from 'react-redux';
+import { login } from '../../../redux/slices/authSlice';
 
 const Login = () => {
   const { control, handleSubmit } = useForm<LoginFormValues>({
     resolver: yupResolver(loginSchema),
-    mode: 'onChange',
+    mode: "onChange",
     defaultValues: {
-      email: '',
+      userName: '',
       password: '',
     },
   });
-  
-const navigate = useNavigate()
-  const onSubmit = (data: LoginFormValues) => {
-    console.log('Form submitted:', data);
-    // Handle login logic here
+
+  const { mutateAsync, isLoading } = useMutateLogin();
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const handleLogin = async (data: LoginFormValues) => {
+
+    const userData:any = {
+      username: data.userName.trim(),
+      password: data.password,
+    };
+
+    try {
+      const response = await mutateAsync(userData);
+      toastHelper.success("Login Successfully");
+      dispatch(login({ ...response}));
+      navigate(ROUTE_MAP)
+    } catch (error: any) {
+      const errorMessage =
+        error?.response?.data?.detail || "Something went wrong";
+      toastHelper.error(errorMessage);
+    }
   };
 
   return (
     <Box
       sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '100vh',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
       }}
     >
       <Paper
         sx={{
-          p: 4,
-          width: '100%',
-          maxWidth: 400,
-          boxShadow: 'none',
+          p: 0,
+          width: "100%",
+          maxWidth: 552,
+          boxShadow: "none",
         }}
       >
-        <Box sx={{ display: 'flex', justifyContent: 'left', alignItems: 'center', mb: 3 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "left",
+            alignItems: "center",
+            mb: 2,
+          }}
+        >
           <img src={Logo} alt="logo" height={50} />
         </Box>
 
@@ -60,10 +80,10 @@ const navigate = useNavigate()
           Please enter your credentials to get started.
         </Typography>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(handleLogin)}>
           <InputField
             control={control}
-            name="email"
+            name="userName"
             label="Email"
             type="text"
             sx={{ mb: 2 }}
@@ -81,16 +101,16 @@ const navigate = useNavigate()
 
           <Button
             type="submit"
-            variant="primary"
+            color="primary"
             fullWidth
             size="large"
             sx={{
               borderRadius: '25px',
               mt: 2
             }}
-            onClick={()=>{navigate(ROUTE_MAP)}}
+            disabled={isLoading}
           >
-            Log In
+            {isLoading ? <CircularProgress  size={20}/> : 'Log In'}
           </Button>
         </form>
       </Paper>

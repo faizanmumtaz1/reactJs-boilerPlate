@@ -1,0 +1,105 @@
+@import "../../../assets/styles/typography.scss";
+.MuiChip-root {
+  &.dashboard-chip {
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-transform: capitalize;
+    &.MuiChip-filled {
+      background-color: var(--action-selected);
+      color: var(--text-primary);
+
+      &.MuiChip-colorPrimary {
+        background-color: var(--teal-300);
+        color: var(--black);
+      }
+      &.MuiChip-colorSecondary {
+        background-color: var(--action-selected);
+        color: var(--text-primary);
+      }
+
+      &.MuiChip-colorSuccess {
+        background-color: var(--success-selected);
+        color: var(--success-dark);
+      }
+      &.MuiChip-colorWarning {
+        background-color: rgba(255, 167, 38, 0.1);
+        color: #ffa726;
+      }
+
+      &.MuiChip-colorError {
+        background-color: var(--error-selected);
+        color: var(--error-dark);
+      }
+
+      &.MuiChip-colorLightWarning {
+        background-color: rgba(255, 230, 166, 0.4);
+        color: #8c6200;
+      }
+      &.MuiChip-colorLightInfo {
+        background-color: rgba(166, 236, 255, 0.4);
+        color: #215e6f;
+      }
+
+      &.MuiChip-colorLightSuccess {
+        background-color: rgba(130, 178, 52, 0.2);
+        color: #598118;
+      }
+
+      &.rounded-full {
+        border-radius: 100px;
+      }
+    }
+
+    &.MuiChip-outlined {
+      border: 1px solid rgba(30, 123, 140, 0.5);
+      background-color: transparent;
+
+      &.MuiChip-colorPrimary {
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      &.MuiChip-colorSecondary {
+        border-color: rgba(86, 156, 169, 0.5);
+        color: var(--black);
+      }
+
+      &.MuiChip-colorSuccess {
+        border-color: #4bb543;
+        color: #4bb543;
+      }
+
+      &.MuiChip-colorError {
+        border-color: #ff4c4c;
+        color: #ff4c4c;
+      }
+
+      &.MuiChip-colorWarning {
+        border-color: #ffa726;
+        color: #ffa726;
+      }
+    }
+
+    .MuiChip-label {
+      padding: 0 4px;
+    }
+
+    .MuiChip-deleteIcon {
+      margin-right: 4px;
+      font-size: 18px;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+
+    &.MuiChip-sizeSmall {
+      padding: 4px 6px;
+      @include text-xxs-500;
+    }
+  }
+}

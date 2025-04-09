@@ -1,0 +1,177 @@
+.map-wrapper {
+  display: flex;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+  padding: 0px 24px 16px 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
+  .title-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 16px;
+    width: 100%;
+    margin-top: 16px;
+  }
+  .filters-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+  .map-container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-radius: 29.859px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    .buttons-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      z-index: 1000;
+      .view-defects-button {
+        &:hover {
+          background-color: var(--blueGrey-50);
+          color: var(--text-primary);
+        }
+      }
+    }
+    .view-defects-button {
+      &:hover {
+        background-color: var(--blueGrey-50);
+        color: var(--text-primary);
+      }
+    }
+  }
+  .map-controls-container {
+    display: flex;
+    padding: 12px 16px;
+    align-items: center;
+    gap: 23px;
+    align-self: stretch;
+    background-color: var(--blueGrey-50);
+    .path-details-container {
+      display: flex;
+      padding: 12px 0px;
+      justify-content: space-between;
+      align-items: center;
+      flex: 1 0 0;
+      border-radius: 16px;
+      background: rgba(71, 57, 116, 0.08);
+      width: 40%;
+      .path-details-list {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        width: 100%;
+        .path-details-list-item {
+          display: flex;
+          gap: 2px;
+          flex-direction: column;
+          flex: 1 0 0;
+          align-items: center;
+          .path-name {
+            color: var(--text-secondary);
+            text-transform: uppercase;
+          }
+        }
+      }
+      @media (max-width:767.98px) {
+        width: 100%;
+     }
+    }
+    .svarity-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      width: 60%;
+      .svarity-item {
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        gap: 16px;
+        align-self: stretch;
+        width: 100%;
+
+        .progress-bar {
+          display: flex;
+          width: 100%;
+          border-radius: 8px;
+          overflow: hidden;
+        }
+
+        .progress-segment {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          transition: width 0.3s ease;
+          padding: 8px;
+
+          .segment-label {
+            white-space: nowrap;
+          }
+        }
+        // Severity colors
+        .severity-high {
+          background-color: #f4c2c2; // Light red/pink
+        }
+
+        .severity-medium {
+          background-color: #fff2a0; // Light yellow
+        }
+
+        .severity-low {
+          background-color: #c8e6c9; // Light green
+        }
+
+        .severity-na {
+          background-color: #e0e0e0; // Light gray
+        }
+
+        // Classification colors
+        .classification-po {
+          background-color: #f4c2c2; // Light red/pink
+        }
+
+        .classification-lo {
+          background-color: #fff2a0; // Light yellow
+        }
+
+        .classification-tr {
+          background-color: #ffcc80; // Light orange/yellow
+        }
+
+        .classification-wh {
+          background-color: #d1c4e9; // Light purple
+        }
+
+        .classification-al {
+          background-color: #e0e0e0; // Light gray
+        }
+      }
+      @media (max-width:767.98px) {
+        width: 100%;
+     }
+    }
+    @media (max-width:767.98px) {
+       flex-direction: column;
+       align-items: start;
+    }
+  }
+}
+.leaflet-popup-content {
+  width: auto !important;
+  margin: 24px !important;
+}

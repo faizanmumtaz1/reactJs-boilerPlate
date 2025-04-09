@@ -1,0 +1,676 @@
+h1 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 96px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 116.7%;
+  letter-spacing: -1.5px;
+  &.MuiTypography-root {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 96px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 116.7%;
+    letter-spacing: -1.5px;
+  }
+}
+
+h2 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 120%;
+  letter-spacing: -0.5px;
+  &.MuiTypography-root {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 120%;
+    letter-spacing: -0.5px;
+  }
+}
+
+h3 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 116.7%;
+  &.MuiTypography-root {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 450;
+    line-height: 116.7%;
+  }
+}
+
+h4 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 123.5%;
+  letter-spacing: 0.25px;
+  &.MuiTypography-root {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 123.5%;
+  }
+}
+
+h5 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 133.4%;
+  &.MuiTypography-root {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 24px;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 133.4%;
+  }
+}
+h6 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+  letter-spacing: 0.15px;
+  &.MuiTypography-root {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 160%;
+    letter-spacing: 0.15px;
+  }
+}
+.initialsLg {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 20px;
+  letter-spacing: 0.14px;
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+}
+.caption {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 166%;
+  letter-spacing: 0.4px;
+}
+.overline {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 266%;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.subtitle1 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 175%;
+  letter-spacing: 0.15px;
+}
+.subtitle2 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+}
+.subtitle3 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  letter-spacing: 0.15px;
+}
+.body1 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 450;
+  line-height: 150%;
+  letter-spacing: 0.15px;
+}
+.body2 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 143%;
+  letter-spacing: 0.17px;
+}
+
+.text-xl {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.text-xl-500 {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.text-xl-600 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.text-xl-700 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.text-l {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.text-l-500 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.text-l-600 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.text-l-700 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.text-m {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.text-m-500 {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.text-m-600 {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.text-s {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+}
+.text-s-500 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+}
+.text-s-600 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+}
+.text-s-700 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.text-xs {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0.16px;
+}
+
+.text-xs-500 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: 0.16px;
+}
+.text-xs-600 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.16px;
+}
+
+.text-xxs {
+  color: var(--text-secondary, rgba(0, 0, 0, 0.6));
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 166%;
+  letter-spacing: 0.4px;
+}
+.text-xxs-500 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.6));
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.text-xxxs {
+  color: var(--text-secondary, rgba(0, 0, 0, 0.6));
+
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px; /* 140% */
+}
+.label {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+.MuiTypography-root {
+  &.caption {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 166%;
+    letter-spacing: 0.4px;
+  }
+  &.overline {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 266%;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  &.subtitle1 {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 175%;
+    letter-spacing: 0.15px;
+  }
+  &.subtitle2 {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 157%;
+    letter-spacing: 0.1px;
+  }
+  &.subtitle3 {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    letter-spacing: 0.15px;
+  }
+  &.body1 {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: 0.15px;
+  }
+  &.body2 {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 143%;
+    letter-spacing: 0.17px;
+  }
+
+  &.text-xl {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  &.text-xl-500 {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  &.text-xl-600 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &.text-xl-700 {
+    font-size: 18px;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &.text-l {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  &.text-l-500 {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  &.text-l-600 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &.text-l-700 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &.text-m {
+    font-size: 15px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  &.text-m-500 {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  &.text-m-600 {
+    font-size: 15px;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &.text-s {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+  }
+  &.text-s-500 {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: normal;
+  }
+  &.text-s-600 {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: normal;
+  }
+  &.text-s-700 {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: normal;
+  }
+
+  &.text-xs {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0.16px;
+  }
+
+  &.text-xs-500 {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+    letter-spacing: 0.16px;
+  }
+  &.text-xs-600 {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.16px;
+  }
+
+  &.text-xxs {
+    color: var(--text-secondary, rgba(0, 0, 0, 0.6));
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 166%;
+    letter-spacing: 0.4px;
+  }
+  &.text-xxs-500 {
+    color: var(--text-primary, rgba(0, 0, 0, 0.6));
+    font-size: 12px;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  &.text-xxxs {
+    color: var(--text-secondary, rgba(0, 0, 0, 0.6));
+
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14px; /* 140% */
+  }
+  &.label {
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+  }
+  &.initialsLg {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.14px;
+    color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  }
+  &.timeCaption {
+    color: var(--text-secondary, rgba(0, 0, 0, 0.6));
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 166%;
+    letter-spacing: 0.4px;
+  }
+}
+.sidebar-item-link-text {
+  color: var(--elevation-outlined, #e0e0e0);
+  font-feature-settings: "liga" off, "clig" off;
+  font-family: var(--fontFamily, "Elza Trial");
+  font-size: var(--_fontSize-1rem, 16px);
+  font-style: normal;
+  white-space: nowrap;
+}
+@mixin medium-button-text {
+  color: var(--text-primary);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
+  letter-spacing: 0.46px;
+  text-transform: capitalize;
+}
+@mixin subtitle2 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 157%;
+  letter-spacing: 0.1px;
+}
+@mixin body1 {
+  color: var(--text-primary, rgba(0, 0, 0, 0.87));
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+@mixin label {
+  color: var(--text-secondary, rgba(0, 0, 0, 0.6));
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+@mixin subtitle1 {
+  color: var(--text-secondary, rgba(0, 0, 0, 0.6));
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 0.15px;
+}
+
+@mixin h5 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.2px;
+}
+
+@mixin text-xl {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: normal;
+}
+@mixin h6-600 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.18px;
+}
+
+@mixin text-l {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: normal;
+}
+@mixin text-l-500 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: normal;
+}
+@mixin text-m {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@mixin text-m-500 {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: normal;
+}
+@mixin text-m-600 {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+@mixin text-s {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@mixin text-s-500 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+@mixin text-s-600 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+@mixin text-xs {
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: 0.46px;
+  text-transform: capitalize;
+}
+
+@mixin text-xs-500 {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+@mixin text-xs-600 {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: normal;
+}
+
+@mixin text-xxs {
+  color: var(--text-secondary, rgba(0, 0, 0, 0.6));
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 166%;
+  letter-spacing: 0.4px;
+}
+@mixin text-xxs-500 {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+@mixin text-xxxs {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
