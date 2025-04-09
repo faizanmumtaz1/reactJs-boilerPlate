@@ -61,38 +61,4 @@ function App() {
   )
 }
 
-
-{/* import { BrowserRouter } from "react-router-dom";
-import "./App.scss";
-import AppRoutes from "./routes/AppRoutes"; */}
-
-
-{/* function App() {
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: "#35326D",
-      },
-      background: {
-        default: "#f8f9fb",
-      },
-      text: {
-        primary: "rgba(0, 0, 0, 0.87)",
-        secondary: "rgba(0, 0, 0, 0.6)",
-      },
-    },
-  });
-  return (
-    <>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <BrowserRouter>
-          <ThemeProvider theme={theme}>
-            <AppRoutes />
-        
-        </BrowserRouter>
-      </LocalizationProvider>
-    </>
-  );
-} */}
-
 export default App; 
