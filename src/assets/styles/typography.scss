@@ -527,6 +527,7 @@ h6 {
   font-family: var(--fontFamily, "Elza Trial");
   font-size: var(--_fontSize-1rem, 16px);
   font-style: normal;
+  white-space: nowrap;
 }
 @mixin medium-button-text {
   color: var(--text-primary);

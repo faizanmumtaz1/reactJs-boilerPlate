@@ -139,13 +139,19 @@ const NotificationDrawer = () => {
         padding: 0,
         py: 3,
         display: "flex",
-        width: "487px",
+        width: {
+          xs: "100%",
+          sm: "487px",
+        },
         height: "100vh",
         overflowY: "auto",
         flexDirection: "column",
         alignItems: "flex-start",
         gap: "12px",
-        borderRadius: "24px 0px 0px 24px",
+        borderRadius: {
+          xs: "0px",
+          sm: "24px 0px 0px 24px",
+        },
         background: "var(--white)",
       }}
     >

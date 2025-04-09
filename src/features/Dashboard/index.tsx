@@ -280,7 +280,8 @@ const Dashboard = () => {
         }}
       >
         <Typography variant="h4">Dashboard</Typography>
-        <Stack direction="row" spacing={2}>
+
+        <Stack direction="row" spacing={2} className="filters-container">
           <CustomSelect
             label="Created by"
             options={severityOptions}
