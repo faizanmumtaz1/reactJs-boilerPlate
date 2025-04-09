@@ -40,7 +40,7 @@ const Login = () => {
       navigate(ROUTE_MAP)
     } catch (error: any) {
       const errorMessage =
-        error?.response?.data?.message || "Something went wrong";
+        error?.response?.data?.detail || "Something went wrong";
       toastHelper.error(errorMessage);
     }
   };
