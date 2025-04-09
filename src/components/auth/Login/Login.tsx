@@ -10,13 +10,13 @@ import { ROUTE_FORGET_PASSWORD, ROUTE_MAP } from '../../../utils/constant';
 import { Link, useNavigate } from 'react-router';
 import useMutateLogin from '../../../react-query-hooks/useMutateLogin';
 import toastHelper from '../../../utils/toastifyHelper';
-
-
+import { useDispatch } from 'react-redux';
+import { login } from '../../../redux/slices/authSlice';
 
 const Login = () => {
   const { control, handleSubmit } = useForm<LoginFormValues>({
     resolver: yupResolver(loginSchema),
-    mode: 'onChange',
+    mode: "onChange",
     defaultValues: {
       userName: '',
       password: '',
@@ -24,7 +24,8 @@ const Login = () => {
   });
 
   const { mutateAsync, isLoading } = useMutateLogin();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
   const handleLogin = async (data: LoginFormValues) => {
 
     const userData:any = {
@@ -35,7 +36,7 @@ const Login = () => {
     try {
       const response = await mutateAsync(userData);
       toastHelper.success("Login Successfully");
-      // dispatch(login({ ...response, email }));
+      dispatch(login({ ...response}));
       navigate(ROUTE_MAP)
     } catch (error: any) {
       const errorMessage =
@@ -47,21 +48,28 @@ const Login = () => {
   return (
     <Box
       sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '100vh',
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "100vh",
       }}
     >
       <Paper
         sx={{
-          p: 4,
-          width: '100%',
-          maxWidth: 400,
-          boxShadow: 'none',
+          p: 0,
+          width: "100%",
+          maxWidth: 552,
+          boxShadow: "none",
         }}
       >
-        <Box sx={{ display: 'flex', justifyContent: 'left', alignItems: 'center', mb: 3 }}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "left",
+            alignItems: "center",
+            mb: 2,
+          }}
+        >
           <img src={Logo} alt="logo" height={50} />
         </Box>
 
@@ -93,7 +101,7 @@ const Login = () => {
 
           <Button
             type="submit"
-            variant="primary"
+            color="primary"
             fullWidth
             size="large"
             sx={{

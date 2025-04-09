@@ -1,0 +1,65 @@
+.svarity-item-jobs {
+  display: flex;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 16px;
+  align-self: stretch;
+  width: 100%;
+
+  .progress-bar {
+    display: flex;
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .progress-segment {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transition: width 0.3s ease;
+    padding: 8px;
+
+    .segment-label {
+      white-space: nowrap;
+    }
+  }
+  // Severity colors
+  .severity-high {
+    background-color: #f4c2c2; // Light red/pink
+  }
+
+  .severity-medium {
+    background-color: #fff2a0; // Light yellow
+  }
+
+  .severity-low {
+    background-color: #c8e6c9; // Light green
+  }
+
+  .severity-na {
+    background-color: #e0e0e0; // Light gray
+  }
+
+  // Classification colors
+  .classification-po {
+    background-color: #f4c2c2; // Light red/pink
+  }
+
+  .classification-lo {
+    background-color: #fff2a0; // Light yellow
+  }
+
+  .classification-tr {
+    background-color: #ffcc80; // Light orange/yellow
+  }
+
+  .classification-wh {
+    background-color: #d1c4e9; // Light purple
+  }
+
+  .classification-al {
+    background-color: #e0e0e0; // Light gray
+  }
+}
