@@ -1,4 +1,4 @@
-import { Box, Chip, Stack, Typography } from "@mui/material";
+import { Box, Chip, Stack, Typography, useTheme } from "@mui/material";
 
 export default function SingleBox({
   details = [],
@@ -18,6 +18,7 @@ export default function SingleBox({
     if (chip.startsWith("#")) return "filled";
     return "outlined";
   };
+
   return (
     <Box
       sx={{
@@ -50,8 +51,27 @@ export default function SingleBox({
         </Stack>
       </Stack>
       {details.map((detail, index) => (
-        <Stack gap={1} mt="12px" key={index} direction="row">
-          <Typography sx={{ minWidth: 145 }} variant="body2">
+        <Stack
+          gap={1}
+          mt="12px"
+          key={index}
+          direction="row"
+          sx={{
+            justifyContent: {
+              xs: "space-between",
+              md: "flex-start",
+            },
+          }}
+        >
+          <Typography
+            sx={{
+              minWidth: {
+                xs: 145,
+                sm: "unset",
+              },
+            }}
+            variant="body2"
+          >
             {detail.heading}
           </Typography>
           <Typography

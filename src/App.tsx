@@ -1,18 +1,16 @@
-import { BrowserRouter } from 'react-router-dom'
-import './App.scss'
-import AppRoutes from './routes/AppRoutes'
+import { BrowserRouter } from "react-router-dom";
+import "./App.scss";
+import AppRoutes from "./routes/AppRoutes";
 import { Provider } from "react-redux";
 import { QueryCache, QueryClient, QueryClientProvider } from "react-query";
 import { store } from "./redux/store";
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
 function App() {
-
-
   const queryClient = new QueryClient({
     queryCache: new QueryCache({
       onError: (error: any, query: any) => {
@@ -58,7 +56,7 @@ function App() {
         <ToastContainer />
       </QueryClientProvider>
     </>
-  )
+  );
 }
 
-export default App; 
+export default App;
