@@ -26,6 +26,8 @@ const MapContainer = () => {
   const [isDefectsListOpen, setIsDefectsListOpen] = useState(false);
   const isItMobile = useCheckMobileScreen();
   const [showFiltersOnMobile, setShowFiltersOnMobile] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   const pathDetails = [
     {
       icon: <AltRouteIcon />,
@@ -119,8 +121,6 @@ const MapContainer = () => {
           rounded="medium"
           className="container-search-bar"
           startAdornment={<SearchIcon />}
-
-
         />
 
         {isItMobile && <IconButton onClick={() => { setShowFiltersOnMobile(true) }} sx={{
@@ -308,10 +308,7 @@ const MapContainer = () => {
                   Apply Filters
                 </Button>
               </Box>
-
             </Drawer>
-
-
           </>}
 
       </div>
@@ -374,9 +371,9 @@ const MapContainer = () => {
 
 
         {isDefectsListOpen && (
-          <DefectsList handleDefectsListClose={handleDefectsListClose} />
+          <DefectsList handleDefectsListClose={handleDefectsListClose}       onClick={() => setIsPopupOpen(true)}/>
         )}
-        <MapView />
+        <MapView openPopup={isPopupOpen}  setOpenPopup={setIsPopupOpen} />
       </div>
       <div className="map-controls-container">
         <div className="path-details-container">
@@ -418,6 +415,7 @@ const PathDetailsItem = ({
     </div>
   );
 };
+
 const SvarityItem = ({
   data,
 }: {

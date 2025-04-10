@@ -14,8 +14,10 @@ import { ROUTE_DEFECT_LISTING } from "../../../utils/constant";
 import { Typography } from "@mui/material";
 const DefectsList = ({
   handleDefectsListClose,
+  onClick,
 }: {
   handleDefectsListClose: () => void;
+  onClick: () => void;
 }) => {
   const navigate = useNavigate();
   const issues = [
@@ -108,7 +110,7 @@ const DefectsList = ({
       </div>
       <div className="defects-list-body">
         {issues.map((issue) => (
-          <DefectItem key={issue.id} issue={issue} />
+          <DefectItem key={issue.id} issue={issue} onClick={onClick} />
         ))}
       </div>
     </div>
@@ -116,14 +118,11 @@ const DefectsList = ({
 };
 
 export default DefectsList;
-const DefectItem = ({ issue }: { issue: any }) => {
-  const navigate = useNavigate();
+const DefectItem = ({ issue, onClick }: { issue: any, onClick: () => void }) => {
   return (
     <div
       className="defect-item"
-      onClick={() => {
-        navigate(ROUTE_DEFECT_LISTING);
-      }}
+      onClick={onClick}
     >
       <div className="defect-item-top">
         <Typography classes="subtitle3" className="subtitle3">
