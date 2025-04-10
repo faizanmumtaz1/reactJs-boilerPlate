@@ -75,6 +75,16 @@ li {
   }
   &.dashboard-table {
     background-color: var(--primary-states-selected);
+    .dashboard-table-scroll {
+      .table-common {
+        max-height: 332px;
+        overflow-y: auto;
+      }
+    }
+    .dashboard-table-scroll-scanned {
+      max-height: calc(100% - 80px);
+      overflow-y: auto;
+    }
 
     .rdt_TableHeadRow,
     .rdt_Pagination,

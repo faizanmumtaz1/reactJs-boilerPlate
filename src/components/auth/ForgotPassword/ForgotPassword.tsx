@@ -1,11 +1,10 @@
 import { Box, Paper, Stack, Typography } from "@mui/material";
-import Logo from "../../../assets/images/logo.png";
 import { useForm } from "react-hook-form";
 import InputField from "../../common/InputField/InputField";
 import Button from "../../common/Button/Button";
 import { ROUTE_CREATE_NEW_PASSWORD } from "../../../utils/constant";
 import { useNavigate } from "react-router-dom";
-
+import { LogoIconLogin } from "../../../assets/Images/svg";
 const ForgotPassword = () => {
   const navigate = useNavigate();
   const { control, handleSubmit } = useForm({
@@ -45,7 +44,7 @@ const ForgotPassword = () => {
             mb: 2,
           }}
         >
-          <img src={Logo} alt="logo" height={50} />
+          <LogoIconLogin />
         </Box>
         <Stack direction="column" p={2}>
           <Typography variant="h5">Forgot Password</Typography>

@@ -21,7 +21,9 @@ import MapView from "./Map";
 import Button from "../../components/common/Button/Button";
 import { useState } from "react";
 import useCheckMobileScreen from "../../hooks/useCheckMobileScreen";
-import Drawer from '@mui/material/Drawer';
+import Drawer from "@mui/material/Drawer";
+import SvarityItem from "./SaverityItem";
+import PathDetailsItem from "./PathDetailitem";
 const MapContainer = () => {
   const [isDefectsListOpen, setIsDefectsListOpen] = useState(false);
   const isItMobile = useCheckMobileScreen();
@@ -56,6 +58,7 @@ const MapContainer = () => {
   const handleDefectsListClose = () => {
     setIsDefectsListOpen(false);
   };
+
   // Severity data
   const severityData = [
     { label: "1 - 250", percentage: 5, color: "severity-high" },
@@ -83,60 +86,67 @@ const MapContainer = () => {
       <div className="title-container">
         <Typography variant="h4">Map</Typography>
       </div>
-      <div>
 
-        {!isDefectsListOpen && isItMobile && (
-          <Box sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center'
-          }}>
-            <Typography variant="caption" className="text-xs path-name">
-              View defects by simply tapping or  through the defects panel.
-            </Typography>
+      {!isDefectsListOpen && isItMobile && (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="caption" className="text-xs path-name">
+            View defects by simply tapping or through the defects panel.
+          </Typography>
 
-            <Button
-              variant="outlined"
-              color="info"
-              className="rounded-full-button"
-              sx={{
-              }}
-              onClick={() => setIsDefectsListOpen(!isDefectsListOpen)}
-              endIcon={<DefectIcon />}
-            >
-              View Defects
-            </Button>
-          </Box>
+          <Button
+            variant="outlined"
+            color="info"
+            className="rounded-full-button"
+            sx={{}}
+            onClick={() => setIsDefectsListOpen(!isDefectsListOpen)}
+            endIcon={<DefectIcon />}
+          >
+            View Defects
+          </Button>
+        </Box>
+      )}
 
-        )}
-      </div>
       <div className="filters-container">
         <SearchBar
-          placeholder="Search"
+          placeholder="Search for area rods etc"
           label="Search"
           variant="outlined"
           width="100%"
           rounded="medium"
           className="container-search-bar"
           startAdornment={<SearchIcon />}
-
-
         />
 
-        {isItMobile && <IconButton onClick={() => { setShowFiltersOnMobile(true) }} sx={{
-          backgroundColor: 'rgba(248, 249, 251, 1)',
-          borderRadius: '8px',
-          "&:hover": {
-            backgroundColor: "rgba(248, 249, 251, 1)",
-          },
-        }}> <FilterIcon /> </IconButton>}
+        {isItMobile && (
+          <IconButton
+            onClick={() => {
+              setShowFiltersOnMobile(true);
+            }}
+            sx={{
+              backgroundColor: "rgba(248, 249, 251, 1)",
+              borderRadius: "8px",
+              "&:hover": {
+                backgroundColor: "rgba(248, 249, 251, 1)",
+              },
+            }}
+          >
+            {" "}
+            <FilterIcon />{" "}
+          </IconButton>
+        )}
 
-        {!isItMobile ?
+        {!isItMobile ? (
           <>
             <CustomSelect
-              label="Severity"
+              label="Client Selection"
               options={severityOptions}
-              onChange={() => { }}
+              onChange={() => {}}
               defaultValue="age"
               name="severity"
               id="severity-select"
@@ -149,9 +159,9 @@ const MapContainer = () => {
               size="medium"
             />
             <CustomSelect
-              label="Severity"
+              label="Region"
               options={severityOptions}
-              onChange={() => { }}
+              onChange={() => {}}
               defaultValue="age"
               name="severity"
               id="severity-select"
@@ -164,9 +174,9 @@ const MapContainer = () => {
               size="medium"
             />
             <CustomSelect
-              label="Severity"
+              label="Defect Type"
               options={severityOptions}
-              onChange={() => { }}
+              onChange={() => {}}
               defaultValue="age"
               name="severity"
               id="severity-select"
@@ -179,9 +189,9 @@ const MapContainer = () => {
               size="medium"
             />
             <CustomSelect
-              label="Severity"
+              label="Showing"
               options={severityOptions}
-              onChange={() => { }}
+              onChange={() => {}}
               defaultValue="age"
               name="severity"
               id="severity-select"
@@ -193,40 +203,49 @@ const MapContainer = () => {
               placeholder="Select"
               size="medium"
             />
-
-          </> : <>
-
-
+          </>
+        ) : (
+          <>
             <Drawer
               anchor="right"
               sx={{
                 "& .MuiDrawer-paper": {
-                  width: '100%',
-
+                  width: "100%",
                 },
               }}
-              open={showFiltersOnMobile} onClose={() => { setShowFiltersOnMobile(false) }}
+              open={showFiltersOnMobile}
+              onClose={() => {
+                setShowFiltersOnMobile(false);
+              }}
             >
-              <Box sx={{
-                display: 'flex',
-                justifyContent: 'start',
-                alignItems: 'center',
-                p: 2,
-                gap: '5px'
-              }}>
-                <IconButton onClick={()=>{setShowFiltersOnMobile(false)}}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "start",
+                  alignItems: "center",
+                  p: 2,
+                  gap: "5px",
+                }}
+              >
+                <IconButton
+                  onClick={() => {
+                    setShowFiltersOnMobile(false);
+                  }}
+                >
                   <ArrowBackIcon />
                 </IconButton>
                 <Typography> Filters</Typography>
               </Box>
               <Divider />
-              <Box sx={{
-                padding: '24px'
-              }}>
+              <Box
+                sx={{
+                  padding: "24px",
+                }}
+              >
                 <CustomSelect
                   label="Severity"
                   options={severityOptions}
-                  onChange={() => { }}
+                  onChange={() => {}}
                   defaultValue="age"
                   name="severity"
                   id="severity-select"
@@ -242,7 +261,7 @@ const MapContainer = () => {
                 <CustomSelect
                   label="Severity"
                   options={severityOptions}
-                  onChange={() => { }}
+                  onChange={() => {}}
                   defaultValue="age"
                   name="severity"
                   id="severity-select"
@@ -258,7 +277,7 @@ const MapContainer = () => {
                 <CustomSelect
                   label="Severity"
                   options={severityOptions}
-                  onChange={() => { }}
+                  onChange={() => {}}
                   defaultValue="age"
                   name="severity"
                   id="severity-select"
@@ -274,7 +293,7 @@ const MapContainer = () => {
                 <CustomSelect
                   label="Severity"
                   options={severityOptions}
-                  onChange={() => { }}
+                  onChange={() => {}}
                   defaultValue="age"
                   name="severity"
                   id="severity-select"
@@ -289,63 +308,68 @@ const MapContainer = () => {
                 />
               </Box>
 
-              <Box sx={{
-                position: 'fixed',
-                bottom: 0,
-                left: 0,
-                right: 0,
-                width: '100%',
-                borderRadius: '24px 24px 0 0',
-                padding: '24px 24px 32px 24px',
-                boxShadow: '0px -5px 13px 0px rgb(184 180 180 / 49%)'
-              }}>
-                <Button variant="outlined" fullWidth={true} sx={{ borderRadius: '32px' }}>
+              <Box
+                sx={{
+                  position: "fixed",
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  width: "100%",
+                  borderRadius: "24px 24px 0 0",
+                  padding: "24px 24px 32px 24px",
+                  boxShadow: "0px -5px 13px 0px rgb(184 180 180 / 49%)",
+                }}
+              >
+                <Button
+                  variant="outlined"
+                  fullWidth={true}
+                  sx={{ borderRadius: "32px" }}
+                >
                   Apply Filters
                 </Button>
               </Box>
-
             </Drawer>
-
-
-          </>}
-
+          </>
+        )}
       </div>
       <div className="map-container">
-        {!isItMobile && <div className="buttons-wrapper">
-          <Button
-            variant="outlined"
-            color="info"
-            className="rounded-full-button"
-          >
-            All
-          </Button>
-          <Button
-            variant="outlined"
-            color="info"
-            className="rounded-full-button"
-            startIcon={<ExtremelySvereIcon />}
-          >
-            Extremely Svere
-          </Button>
-          <Button
-            variant="outlined"
-            color="info"
-            className="rounded-full-button"
-            startIcon={<ModerateIcon />}
-          >
-            Moderate
-          </Button>
-          <Button
-            variant="outlined"
-            color="info"
-            className="rounded-full-button"
-            startIcon={<MildIcon />}
-          >
-            Mild
-          </Button>
-        </div>}
+        {!isItMobile && (
+          <div className="buttons-wrapper">
+            <Button
+              variant="outlined"
+              color="info"
+              className="rounded-full-button"
+            >
+              All
+            </Button>
+            <Button
+              variant="outlined"
+              color="info"
+              className="rounded-full-button"
+              startIcon={<ExtremelySvereIcon />}
+            >
+              Extremely Svere
+            </Button>
+            <Button
+              variant="outlined"
+              color="info"
+              className="rounded-full-button"
+              startIcon={<ModerateIcon />}
+            >
+              Moderate
+            </Button>
+            <Button
+              variant="outlined"
+              color="info"
+              className="rounded-full-button"
+              startIcon={<MildIcon />}
+            >
+              Mild
+            </Button>
+          </div>
+        )}
 
-        {!isItMobile &&
+        {!isItMobile && (
           <>
             {!isDefectsListOpen && (
               <Button
@@ -365,8 +389,26 @@ const MapContainer = () => {
               </Button>
             )}
           </>
-        }
-
+        )}
+        {!isItMobile && (
+          <>
+            {!isDefectsListOpen && (
+              <Button
+                variant="outlined"
+                color="info"
+                className="rounded-full-button"
+                sx={{
+                  position: "absolute",
+                  bottom: "16px",
+                  left: "48px",
+                  zIndex: 1000,
+                }}
+              >
+                View On Street Map
+              </Button>
+            )}
+          </>
+        )}
 
         {isDefectsListOpen && (
           <DefectsList handleDefectsListClose={handleDefectsListClose} />
@@ -382,8 +424,46 @@ const MapContainer = () => {
           </ul>
         </div>
         <div className="svarity-container">
-          <SvarityItem data={severityData} />
-          <SvarityItem data={classificationData} />
+          <div className="svarity-item-wrapper">
+            <CustomSelect
+              options={severityOptions}
+              onChange={() => {}}
+              name="status"
+              id="status-select"
+              rounded="none"
+              variant="standard"
+              size="small"
+              fullWidth={false}
+              className="svarity-select"
+              WrapperClassName="svarity-select-wrapper"
+              sx={{
+                "& .MuiOutlinedInput-notchedOutline": {
+                  border: "none",
+                },
+              }}
+            />
+            <SvarityItem data={severityData} />
+          </div>
+          <div className="svarity-item-wrapper">
+            <CustomSelect
+              options={severityOptions}
+              onChange={() => {}}
+              name="status"
+              id="status-select"
+              rounded="none"
+              variant="standard"
+              size="small"
+              fullWidth={false}
+              className="svarity-select"
+              WrapperClassName="svarity-select-wrapper"
+              sx={{
+                "& .MuiOutlinedInput-notchedOutline": {
+                  border: "none",
+                },
+              }}
+            />
+            <SvarityItem data={classificationData} />
+          </div>
         </div>
       </div>
     </div>
@@ -391,46 +471,3 @@ const MapContainer = () => {
 };
 
 export default MapContainer;
-
-const PathDetailsItem = ({
-  icon,
-  name,
-  value,
-}: {
-  icon: React.ReactNode;
-  name: string;
-  value: string;
-}) => {
-  return (
-    <div className="path-details-list-item">
-      <div className="path-details-list-item-icon">{icon}</div>
-      <Typography variant="caption" className="text-xxxs path-name">
-        {name}
-      </Typography>
-      <Typography variant="caption" className="text-xxs-500 path-value">
-        {value}
-      </Typography>
-    </div>
-  );
-};
-const SvarityItem = ({
-  data,
-}: {
-  data: { label: string; percentage: number; color: string }[];
-}) => {
-  return (
-    <div className="svarity-item">
-      <Box className="progress-bar">
-        {data.map((item, index) => (
-          <Box
-            key={`severity-${index}`}
-            className={`progress-segment ${item.color}`}
-            sx={{ width: `${item.percentage}%` }}
-          >
-            <span className="caption segment-label">{item.label}</span>
-          </Box>
-        ))}
-      </Box>
-    </div>
-  );
-};

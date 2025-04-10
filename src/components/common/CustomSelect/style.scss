@@ -7,6 +7,34 @@
     &.month-select-wrapper {
       min-width: 130px;
     }
+    &.svarity-select-wrapper {
+      min-width: 150px;
+      .MuiInputBase-root {
+        margin-top: 0px;
+        &::before,
+        &::after {
+          border: none;
+        }
+      }
+      .notranslate {
+        color: var(--text-secondary);
+        position: relative;
+        width: 100%;
+        &::before {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          height: 25px;
+          width: 100%;
+          min-width: 130px;
+          transform: none;
+          font-size: 12px;
+          font-weight: 400;
+          content: "Select";
+          z-index: 1000;
+        }
+      }
+    }
     .MuiFormLabel-root {
       color: var(--text-secondary);
       &.select-medium {
@@ -31,7 +59,7 @@
       &.MuiSelect-standard {
         background-color: rgba(255, 255, 255, 0.9);
         border-radius: 100px;
-        border: 1px solid var(--Teal-Teal-200, #c7dee2);
+        border: none;
       }
 
       &.MuiOutlinedInput-root {
