@@ -1,5 +1,4 @@
-// components/MapView.tsx
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
 import { LatLngExpression, DivIcon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -9,8 +8,9 @@ import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import DefectListingTooltip from "../DefectListingTooltip/DefectListingTooltip";
 import ReactDOMServer from "react-dom/server";
 import { RedMarkerIcon } from "../../../assets/Images/svg";
+import { useRef, useEffect } from 'react';
 
-// Fix marker icons not showing correctly in some builds
+
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: markerIcon2x,
@@ -28,7 +28,29 @@ const redMarkerIcon = new DivIcon({
 
 const position: LatLngExpression = [51.505, -0.09]; // Default coordinates
 
-const MapView = ({ style = {} }: { style?: object }) => {
+// Create a new component to handle map events
+const MapEventHandler = ({ setOpenPopup }: { setOpenPopup: (value: boolean) => void }) => {
+  useMapEvents({
+    click: () => {
+      setOpenPopup(false);
+    },
+  });
+  return null;
+};
+
+const MapView = ({ style = {}, openPopup = false, setOpenPopup }: { 
+  style?: object, 
+  openPopup?: boolean,
+  setOpenPopup: (value: boolean) => void 
+}) => {
+  const markerRef = useRef(null);
+
+  useEffect(() => {
+    if (openPopup && markerRef.current) {
+      markerRef.current.openPopup();
+    }
+  }, [openPopup]);
+
   return (
     <MapContainer
       center={position}
@@ -41,12 +63,13 @@ const MapView = ({ style = {} }: { style?: object }) => {
         ...style,
       }}
     >
+      <MapEventHandler setOpenPopup={setOpenPopup} />
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={position} icon={redMarkerIcon}>
-        <Popup>
+      <Marker position={position} icon={redMarkerIcon} ref={markerRef}>
+        <Popup onClose={() => setOpenPopup(false)} closeButton={false}>
           <DefectListingTooltip />
         </Popup>
       </Marker>
