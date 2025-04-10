@@ -9,6 +9,11 @@ interface Notification {
   message: string;
 }
 
+
+interface NotificationDrawerProps {
+  handleCloseNotificationDrawer: () => void;
+}
+
 const notifications: Notification[] = [
   {
     avatar: "A",
@@ -132,7 +137,7 @@ const notifications: Notification[] = [
   },
 ];
 
-const NotificationDrawer = () => {
+const NotificationDrawer: React.FC<NotificationDrawerProps> = ({ handleCloseNotificationDrawer }) => {
   return (
     <Box
       sx={{
@@ -157,7 +162,7 @@ const NotificationDrawer = () => {
     >
       <Stack direction="row" justifyContent="space-between" width="100%" px={3}>
         <Typography variant="h5">Notification</Typography>
-        <Button variant="outlined" className="icon-button" size="small">
+        <Button variant="outlined" className="icon-button" size="small" onClick={handleCloseNotificationDrawer}>
           <CrossSmIcon />
         </Button>
       </Stack>

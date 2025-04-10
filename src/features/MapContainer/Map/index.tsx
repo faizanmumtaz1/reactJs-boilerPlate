@@ -21,8 +21,8 @@ L.Icon.Default.mergeOptions({
 const redMarkerIcon = new DivIcon({
   html: ReactDOMServer.renderToString(<RedMarkerIcon />),
   className: "", // removes default leaflet styles
-  iconSize: [63, 63],
-  iconAnchor: [31.5, 63], // adjust if needed to align point
+  iconSize: [24, 24],
+  iconAnchor: [31.5, 24], // adjust if needed to align point
   popupAnchor: [0, -63],
 });
 
