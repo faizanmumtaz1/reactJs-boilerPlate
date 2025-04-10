@@ -1,7 +1,11 @@
+import React, { useState, useCallback } from "react";
 import DataTable, { TableColumn } from "react-data-table-component";
-import { Box } from "@mui/material";
+import { Box, Checkbox, IconButton, Typography } from "@mui/material";
 import "./table.scss";
 import DashboardChip from "../CustomChip/CustomChip";
+import { DeleteIcon } from "../../../assets/Images/svg";
+import Modal from "../Modal/Modal";
+
 interface TableProps<T> {
   columns: TableColumn<T>[];
   data: T[];
@@ -56,6 +60,29 @@ const Table = <T extends object>({
   className,
   onRowClicked,
 }: TableProps<T>) => {
+  const [selectedRows, setSelectedRows] = useState<T[]>([]);
+  const [showModal, setShowModal] = useState(false);
+  const handleSelectedRowsChange = useCallback(
+    (state: { selectedRows: T[] }) => {
+      setSelectedRows(state.selectedRows);
+      if (onSelectedRowsChange) {
+        onSelectedRowsChange(state);
+      }
+    },
+    [onSelectedRowsChange]
+  );
+
+  const getDeleteAction = () => {
+    if (selectedRows.length > 0) {
+      return (
+        <IconButton color="secondary" onClick={() => setShowModal(true)}>
+          <DeleteIcon />
+        </IconButton>
+      );
+    }
+    return null;
+  };
+
   // Transform columns to handle severity chip rendering
   const transformedColumns = columns.map((column) => {
     if (
@@ -86,7 +113,8 @@ const Table = <T extends object>({
         paginationPerPage={paginationPerPage}
         paginationRowsPerPageOptions={paginationRowsPerPageOptions}
         selectableRows={selectableRows}
-        onSelectedRowsChange={onSelectedRowsChange}
+        onSelectedRowsChange={handleSelectedRowsChange}
+        contextActions={getDeleteAction()}
         onSort={onSort}
         sortServer
         className="table-common"
@@ -101,7 +129,18 @@ const Table = <T extends object>({
         responsive
         persistTableHead
         onRowClicked={onRowClicked}
+        selectableRowsComponent={Checkbox as unknown as React.ReactNode}
+        actions={getDeleteAction()}
       />
+      {showModal && (
+        <Modal
+          open={showModal}
+          onClose={() => setShowModal(false)}
+          onConfirm={() => {}}
+          title="Delete rows"
+          subtitle="Are you sure you would like to remove these rows?"
+        />
+      )}
     </Box>
   );
 };

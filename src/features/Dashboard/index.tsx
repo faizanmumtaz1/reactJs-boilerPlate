@@ -841,7 +841,7 @@ const Dashboard = () => {
             flexDirection: "column",
             alignItems: "flex-start",
             gap: "24px",
-            flex: "1 0 0",
+            // flex: "1 0 0",
             borderRadius: "16px",
             border: "1.5px solid rgba(0, 0, 0, 0.00)",
             background: "rgba(71, 57, 116, 0.08)",

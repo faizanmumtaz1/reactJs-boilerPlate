@@ -55,11 +55,21 @@ const ClinetManagment = () => {
       selector: (row: any) => row.inviteStatus,
       sortable: true,
     },
-    {
-      name: <Typography>No. of Registered Devices</Typography>,
-      selector: (row: any) => row.registeredDevices,
-      sortable: true,
-    },
+    ...(tabValue === 0
+      ? [
+          {
+            name: <Typography>No. of Registered Devices</Typography>,
+            selector: (row: any) => row.registeredDevices,
+            sortable: true,
+          },
+        ]
+      : [
+          {
+            name: <Typography>No. of Users</Typography>,
+            selector: (row: any) => row.noOfUsers,
+            sortable: true,
+          },
+        ]),
     {
       name: <Typography>Assigned Region</Typography>,
       selector: (row: any) => row.assignedRegion,
@@ -102,6 +112,7 @@ const ClinetManagment = () => {
         />
       ),
       registeredDevices: <Typography variant="body2">75</Typography>,
+      noOfUsers: <Typography variant="body2">75</Typography>,
       assignedRegion: <Typography variant="body2">Nottingham</Typography>,
       actions: (
         <Stack direction="row" spacing={2}>
@@ -155,6 +166,7 @@ const ClinetManagment = () => {
         />
       ),
       registeredDevices: <Typography variant="body2">73</Typography>,
+      noOfUsers: <Typography variant="body2">73</Typography>,
       assignedRegion: <Typography variant="body2">Nottingham</Typography>,
       actions: (
         <Stack direction="row" spacing={2}>
@@ -208,6 +220,7 @@ const ClinetManagment = () => {
         />
       ),
       registeredDevices: <Typography variant="body2">73</Typography>,
+      noOfUsers: <Typography variant="body2">73</Typography>,
       assignedRegion: <Typography variant="body2">Nottingham</Typography>,
       actions: (
         <Stack direction="row" spacing={2}>

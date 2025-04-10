@@ -12,8 +12,10 @@ import DefectItem from "./DefectItem";
 import { useNavigate } from "react-router-dom";
 const DefectsList = ({
   handleDefectsListClose,
+  onClick,
 }: {
   handleDefectsListClose: () => void;
+  onClick: () => void;
 }) => {
   const issues = [
     {
@@ -106,7 +108,7 @@ const DefectsList = ({
       </div>
       <div className="defects-list-body">
         {issues.map((issue) => (
-          <DefectItem key={issue.id} issue={issue} />
+          <DefectItem key={issue.id} issue={issue} onClick={onClick} />
         ))}
       </div>
     </div>

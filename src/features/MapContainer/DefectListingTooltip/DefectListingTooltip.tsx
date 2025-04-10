@@ -60,7 +60,10 @@ const defectList = [
 
 const DefectListingTooltip = () => {
   return (
-    <div className="defect-listing-tooltip-wrapper">
+    <div
+      className="defect-listing-tooltip-wrapper"
+      style={{ zIndex: 1000, height: "100%", minHeight: "550px" }}
+    >
       <div className="defect-listing-tooltip-header">
         <div className="image-wrapper">
           <img src={defectimage} alt="defect" />

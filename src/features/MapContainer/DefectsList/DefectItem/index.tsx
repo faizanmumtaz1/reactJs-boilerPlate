@@ -1,9 +1,15 @@
 import { Typography } from "@mui/material";
 import DashboardChip from "../../../../components/common/CustomChip/CustomChip";
 import { ScannerDarkIcon, TimerDarkIcon } from "../../../../assets/Images/svg";
-const DefectItem = ({ issue }: { issue: any }) => {
+const DefectItem = ({
+  issue,
+  onClick,
+}: {
+  issue: any;
+  onClick: () => void;
+}) => {
   return (
-    <div className="defect-item">
+    <div className="defect-item" onClick={onClick}>
       <div className="defect-item-top">
         <Typography classes="subtitle3" className="subtitle3">
           {issue.type}

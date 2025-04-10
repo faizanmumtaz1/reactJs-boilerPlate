@@ -43,7 +43,7 @@ const Header = ({
   setIsMobileMenuOpen,
 }: HeaderProps) => {
   const [open, setOpen] = useState(false);
-
+  const handleCloseNotificationDrawer = () => setOpen(false);
 
   return (
     <div
@@ -83,7 +83,7 @@ const Header = ({
         </div>
       </div>
       <Drawer open={open} onClose={() => setOpen(false)}>
-        <NotificationDrawer />
+        <NotificationDrawer handleCloseNotificationDrawer={handleCloseNotificationDrawer}/>
       </Drawer>
     </div>
   );
@@ -160,7 +160,7 @@ const ActionButton = () => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose}>
+        {/* <MenuItem onClick={handleClose}>
           <Avatar />
           <div className="profile-wrapper">
             <Typography variant="subtitle1" className="subtitle1">
@@ -177,7 +177,7 @@ const ActionButton = () => {
             <SettingGrayIcon />
           </ListItemIcon>
           Settings
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem onClick={handleLogout}>
           <ListItemIcon>
             <LogoutIcon />

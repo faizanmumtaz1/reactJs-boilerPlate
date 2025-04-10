@@ -28,6 +28,8 @@ const MapContainer = () => {
   const [isDefectsListOpen, setIsDefectsListOpen] = useState(false);
   const isItMobile = useCheckMobileScreen();
   const [showFiltersOnMobile, setShowFiltersOnMobile] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
   const pathDetails = [
     {
       icon: <AltRouteIcon />,
@@ -37,22 +39,22 @@ const MapContainer = () => {
     {
       icon: <StraightLineIcon />,
       name: "Length",
-      value: "8877",
+      value: "20.54 km",
     },
     {
       icon: <ScanWifiIcon />,
       name: "Defects",
-      value: "8877",
+      value: "4388",
     },
     {
       icon: <AddPathIcon />,
       name: "ROADS COVERED",
-      value: "8877",
+      value: "45%",
     },
     {
       icon: <TimerIcon />,
       name: "DURATION",
-      value: "8877",
+      value: "49 Min 26 Sec",
     },
   ];
   const handleDefectsListClose = () => {
@@ -189,17 +191,27 @@ const MapContainer = () => {
               size="medium"
             />
             <CustomSelect
-              label="Showing"
+              label="Device"
               options={severityOptions}
               onChange={() => {}}
-              defaultValue="age"
-              name="severity"
-              id="severity-select"
-              fullWidth={false}
+              name="device"
               className=""
               rounded="medium"
               variant="outlined"
-              WrapperClassName="month-select-wrapper"
+              placeholder="Select"
+              size="medium"
+              fullWidth={true}
+            />
+            <CustomSelect
+              label="Showing"
+              options={severityOptions}
+              onChange={() => {}}
+              name="showing"
+              id="showing"
+              fullWidth={true}
+              className=""
+              rounded="medium"
+              variant="outlined"
               placeholder="Select"
               size="medium"
             />
@@ -348,7 +360,7 @@ const MapContainer = () => {
               className="rounded-full-button"
               startIcon={<ExtremelySvereIcon />}
             >
-              Extremely Svere
+              Extremely severe
             </Button>
             <Button
               variant="outlined"
@@ -411,9 +423,12 @@ const MapContainer = () => {
         )}
 
         {isDefectsListOpen && (
-          <DefectsList handleDefectsListClose={handleDefectsListClose} />
+          <DefectsList
+            handleDefectsListClose={handleDefectsListClose}
+            onClick={() => setIsPopupOpen(true)}
+          />
         )}
-        <MapView />
+        <MapView openPopup={isPopupOpen} setOpenPopup={setIsPopupOpen} />
       </div>
       <div className="map-controls-container">
         <div className="path-details-container">

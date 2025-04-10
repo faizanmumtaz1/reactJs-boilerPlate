@@ -31,7 +31,6 @@
     height: 100%;
     position: relative;
     border-radius: 24px;
-    overflow: hidden;
     min-height: 700px;
     .buttons-wrapper {
       display: flex;
@@ -183,11 +182,6 @@
   width: auto !important;
   margin: 24px !important;
 }
-.leaflet-container {
-  height: 100%;
-  overflow: hidden;
-}
-.leaflet-container {
-  height: 100%;
-  overflow: visible;
+.leaflet-popup-content-wrapper {
+  min-width: 535px;
 }
