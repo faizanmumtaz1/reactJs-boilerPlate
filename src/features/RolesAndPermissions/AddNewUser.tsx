@@ -6,6 +6,7 @@ import { ROUTE_ROLES_AND_PERMISSIONS_LISTING } from "../../utils/constant";
 import InputField from "../../components/common/InputField/InputField";
 import { useForm } from "react-hook-form";
 import Button from "../../components/common/Button/Button";
+import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 
 const clientData = [
   {
@@ -30,7 +31,11 @@ const clientData = [
     id: 4,
     label: "Role",
     name: "role",
-    type: "text",
+    type: "select",
+    options: [
+      { id: 1, label: "Admin", value: "admin" },
+      { id: 2, label: "User", value: "user" },
+    ],
   },
 ];
 
@@ -66,18 +71,38 @@ const AddNewUser = () => {
         <Stack direction="row" flexWrap="wrap" gap="12px" mt="16px">
           {clientData.map((item) => (
             <>
-              <InputField
-                key={item.id}
-                name={item.name}
-                control={control}
-                label={item.label}
-                type={item.type}
-                sx={{
-                  width: "100%",
-                  maxWidth: "calc(50% - 6px)",
-                  background: "white",
-                }}
-              />
+              {item.type === "select" ? (
+                <CustomSelect
+                  label={item.label}
+                  options={item.options || []}
+                  onChange={() => {}}
+                  name={item.name}
+                  id={item.id.toString()}
+                  rounded="medium"
+                  variant="outlined"
+                  size="large"
+                  formControlStyling={{
+                    width: "100%",
+                    maxWidth: "calc(50% - 6px)",
+                  }}
+                  sx={{
+                    background: "white",
+                  }}
+                />
+              ) : (
+                <InputField
+                  key={item.id}
+                  name={item.name}
+                  control={control}
+                  label={item.label}
+                  type={item.type}
+                  sx={{
+                    width: "100%",
+                    maxWidth: "calc(50% - 6px)",
+                    background: "white",
+                  }}
+                />
+              )}
             </>
           ))}
         </Stack>
