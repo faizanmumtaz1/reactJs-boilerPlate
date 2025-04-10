@@ -18,6 +18,7 @@ import "./style.scss";
 import { useState } from "react";
 import Modal from "../../components/common/Modal/Modal";
 import SingleBox from "../../components/common/SingleBox/SingleBox";
+import DeviceMobileFilters from "./DeviceMobileFilters";
 
 type StatusColor = "error" | "success" | "warning" | "default";
 
@@ -112,7 +113,7 @@ const DeviceManagementListing = () => {
       name: (
         <>
           <Typography variant="body2">{data.name}</Typography>
-          <Typography variant="body2">#{data.deviceId}</Typography>
+          <Typography variant="body2">{data.deviceId}</Typography>
         </>
       ),
       deviceId: <Typography variant="body2">{data.deviceId}</Typography>,
@@ -350,6 +351,14 @@ const DeviceManagementListing = () => {
             }}
           />
         </Box>
+      </Box>
+      {/* Mobile View */}
+      <Box
+        sx={{
+          display: { xs: "block", md: "none" },
+        }}
+      >
+        <DeviceMobileFilters />
       </Box>
       {/* buttons=
       {{

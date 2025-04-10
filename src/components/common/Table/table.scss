@@ -3,11 +3,15 @@
   .table-common {
     .rdt_TableHead {
       .rdt_TableCol {
-        height: 56px;
         padding: 16px 16px;
-        background-color: var(--library-clickableLayer);
-        * {
+        background-color: var(--library-clickableLayer);    
           @include subtitle2;
+        white-space: nowrap;
+        &:first-child {
+            min-width: 58px;
+          }
+        .MuiCheckbox-root{
+          padding: 0;
         }
       }
     }
@@ -17,7 +21,12 @@
         cursor: default;
 
         @include subtitle2;
-
+        &:first-child{
+          min-width: 58px;
+        }
+  .MuiCheckbox-root {
+      padding: 0;
+    }
        
       }
     }
