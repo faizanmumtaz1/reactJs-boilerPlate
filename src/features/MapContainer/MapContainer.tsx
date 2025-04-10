@@ -35,22 +35,22 @@ const MapContainer = () => {
     {
       icon: <StraightLineIcon />,
       name: "Length",
-      value: "8877",
+      value: "20.54 km",
     },
     {
       icon: <ScanWifiIcon />,
       name: "Defects",
-      value: "8877",
+      value: "4388",
     },
     {
       icon: <AddPathIcon />,
       name: "ROADS COVERED",
-      value: "8877",
+      value: "45%",
     },
     {
       icon: <TimerIcon />,
       name: "DURATION",
-      value: "8877",
+      value: "49 Min 26 Sec",
     },
   ];
   const handleDefectsListClose = () => {
@@ -134,12 +134,11 @@ const MapContainer = () => {
         {!isItMobile ?
           <>
             <CustomSelect
-              label="Severity"
+              label="Client Selection"
               options={severityOptions}
               onChange={() => { }}
-              defaultValue="age"
-              name="severity"
-              id="severity-select"
+              name="clientSelection"
+              id="client-selection"
               fullWidth={true}
               className=""
               rounded="medium"
@@ -149,12 +148,11 @@ const MapContainer = () => {
               size="medium"
             />
             <CustomSelect
-              label="Severity"
+              label="Region"
               options={severityOptions}
               onChange={() => { }}
-              defaultValue="age"
-              name="severity"
-              id="severity-select"
+              name="region"
+              id="region"
               fullWidth={true}
               className=""
               rounded="medium"
@@ -164,12 +162,11 @@ const MapContainer = () => {
               size="medium"
             />
             <CustomSelect
-              label="Severity"
+              label="Defect Type"
               options={severityOptions}
               onChange={() => { }}
-              defaultValue="age"
-              name="severity"
-              id="severity-select"
+              name="defectType"
+              id="defect-type"
               fullWidth={true}
               className=""
               rounded="medium"
@@ -179,24 +176,32 @@ const MapContainer = () => {
               size="medium"
             />
             <CustomSelect
-              label="Severity"
+              label="Device"
               options={severityOptions}
               onChange={() => { }}
-              defaultValue="age"
-              name="severity"
-              id="severity-select"
-              fullWidth={false}
+              name="device"
               className=""
               rounded="medium"
               variant="outlined"
-              WrapperClassName="month-select-wrapper"
+              placeholder="Select"
+              size="medium"
+              fullWidth={true}
+            />
+             <CustomSelect
+              label="Showing"
+              options={severityOptions}
+              onChange={() => { }}
+              name="showing"
+              id="showing"
+              fullWidth={true}
+              className=""
+              rounded="medium"
+              variant="outlined"
               placeholder="Select"
               size="medium"
             />
 
           </> : <>
-
-
             <Drawer
               anchor="right"
               sx={{
@@ -325,7 +330,7 @@ const MapContainer = () => {
             className="rounded-full-button"
             startIcon={<ExtremelySvereIcon />}
           >
-            Extremely Svere
+            Extremely severe
           </Button>
           <Button
             variant="outlined"

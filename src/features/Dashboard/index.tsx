@@ -283,11 +283,11 @@ const Dashboard = () => {
 
         <Stack direction="row" spacing={2} className="filters-container">
           <CustomSelect
-            label="Created by"
+            label="Client"
             options={severityOptions}
             onChange={() => {}}
-            name="status"
-            id="status-select"
+            name="client"
+            id="select-client"
             rounded="medium"
             variant="outlined"
             size="medium"
@@ -298,11 +298,11 @@ const Dashboard = () => {
             className="white-select"
           />
           <CustomSelect
-            label="Created by"
+            label="Region"
             options={severityOptions}
             onChange={() => {}}
             name="status"
-            id="status-select"
+            id="select-region"
             rounded="medium"
             variant="outlined"
             size="medium"
@@ -387,7 +387,7 @@ const Dashboard = () => {
             flexDirection: "column",
             alignItems: "flex-start",
             gap: "24px",
-            flex: "1 0 0",
+            // flex: "1 0 0",
             borderRadius: "16px",
             border: "1.5px solid rgba(0, 0, 0, 0.00)",
             background: "rgba(71, 57, 116, 0.08)",

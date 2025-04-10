@@ -1,4 +1,4 @@
-import { Link, matchPath, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./sidebar.scss";
 import {
   LogoIcon,
@@ -11,7 +11,6 @@ import {
   SettingInputIcon,
   AddLinkIcon,
   CloudUploadIcon,
-  CrossSmIcon,
   CrossIconLight,
 } from "../../../assets/Images/svg";
 import {
@@ -31,7 +30,9 @@ import {
   ROUTE_DASHBOARD,
   ROUTE_ALERT_CREATION,
 } from "../../../utils/constant";
-import { IconButton, Typography } from "@mui/material";
+import { IconButton } from "@mui/material";
+import useCheckMobileScreen from "../../../hooks/useCheckMobileScreen";
+import { SidebarItem } from "./SidebarItem";
 interface SidebarProps {
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: (open: boolean) => void;
@@ -101,14 +102,21 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }: SidebarProps) => {
       activePaths: [ROUTE_REQUEST_PUSH_DATA_LISTING, ROUTE_CREATE_NEW_REQUEST],
     },
   ];
+
+  const isItMobile = useCheckMobileScreen();
+  const handleCloseSidebar = () => {
+    setIsMobileMenuOpen(false);
+  }
   return (
     <div
-      className={`sidebar-wrapper ${
-        isMobileMenuOpen ? "mobile-menu-open" : "mobile-menu-close"
-      }`}
+      className={`sidebar-wrapper ${isMobileMenuOpen ? "mobile-menu-open" : "mobile-menu-close"
+        }`}
     >
       <div className="sidebar-header">
-        <LogoIcon />
+        <Link to={ROUTE_MAP}>
+          <LogoIcon />
+        </Link>
+
         <IconButton
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           sx={{
@@ -122,49 +130,22 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }: SidebarProps) => {
         </IconButton>
       </div>
 
-      <ul className="sidebar-content">
-        {linksList.map((link) => (
-          <SidebarItem key={link.name} {...link} />
-        ))}
-      </ul>
+      {!isItMobile ?
+        <ul className="sidebar-content">
+          {linksList.map((link) => (
+            <SidebarItem key={link.name} {...link} />
+          ))}
+        </ul> :
+        <ul className="sidebar-content">
+          {linksList.map((link) => (
+            <SidebarItem key={link.name} {...link} handleCloseSidebar={handleCloseSidebar} />
+          ))}
+        </ul>
+      }
+
     </div>
   );
 };
 
 export default Sidebar;
-const SidebarItem = ({
-  path,
-  icon,
-  activePaths = [],
-  name,
-}: {
-  path: string;
-  icon: React.ReactNode;
-  activePaths?: string[];
-  name: string;
-}) => {
-  const location = useLocation();
-  const isActive = activePaths.some((activePath) =>
-    matchPath({ path: activePath, end: false }, location.pathname)
-  );
-  return (
-    <li className="sidebar-item">
-      <Link
-        to={path}
-        className={`sidebar-item-link ${isActive ? "active" : ""}`}
-      >
-        {icon}
-        <Typography
-          variant="body1"
-          className="sidebar-item-link-text"
-          component="span"
-          sx={{
-            display: { xs: "block", sm: "none" },
-          }}
-        >
-          {name}
-        </Typography>
-      </Link>
-    </li>
-  );
-};
+
