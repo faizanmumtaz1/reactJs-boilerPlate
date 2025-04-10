@@ -1,13 +1,15 @@
 import { Box, Paper, Stack, Typography } from "@mui/material";
-import Logo from "../../../assets/images/logo.png";
 import InputField from "../../common/InputField/InputField";
 import Button from "../../common/Button/Button";
 import { useForm } from "react-hook-form";
 import { createNewPasswordschema } from "../../../schemas/createNewPasswordSchema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { createPasswordFormValues } from "../../../utils/types";
-
+import { LogoIconLogin } from "../../../assets/Images/svg";
+import { useNavigate } from "react-router-dom";
+import { ROUTE_HOME } from "../../../utils/constant";
 const CreateNewPassword = () => {
+  const navigate = useNavigate();
   const { control, handleSubmit } = useForm<createPasswordFormValues>({
     resolver: yupResolver(createNewPasswordschema),
     mode: "onChange",
@@ -20,6 +22,7 @@ const CreateNewPassword = () => {
   const handleCreatePassword = (data: createPasswordFormValues) => {
     console.log("Form submitted:", data);
     // Handle login logic here
+    navigate(ROUTE_HOME);
   };
 
   return (
@@ -47,7 +50,7 @@ const CreateNewPassword = () => {
             mb: 2,
           }}
         >
-          <img src={Logo} alt="logo" height={50} />
+          <LogoIconLogin />
         </Box>
         <Stack direction="column" p={2}>
           <Typography variant="h5">Create New Password.</Typography>
@@ -59,8 +62,8 @@ const CreateNewPassword = () => {
               name="password"
               label="New password here"
               type="password"
-              sx={{ mb: 2 }}
-              helperText={
+              sx={{ mb: "4px" }}
+              helperTextInput={
                 "Create a strong password with at least 8 characters, including uppercase and lowercase letters, a number, and a special character (e.g., !@#$%). "
               }
             />

@@ -1,4 +1,10 @@
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMapEvents,
+} from "react-leaflet";
 import { LatLngExpression, DivIcon } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
@@ -8,8 +14,7 @@ import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import DefectListingTooltip from "../DefectListingTooltip/DefectListingTooltip";
 import ReactDOMServer from "react-dom/server";
 import { RedMarkerIcon } from "../../../assets/Images/svg";
-import { useRef, useEffect } from 'react';
-
+import { useRef, useEffect } from "react";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -23,13 +28,17 @@ const redMarkerIcon = new DivIcon({
   className: "", // removes default leaflet styles
   iconSize: [24, 24],
   iconAnchor: [31.5, 24], // adjust if needed to align point
-  popupAnchor: [0, -63],
+  popupAnchor: [-5, -30],
 });
 
 const position: LatLngExpression = [51.505, -0.09]; // Default coordinates
 
 // Create a new component to handle map events
-const MapEventHandler = ({ setOpenPopup }: { setOpenPopup: (value: boolean) => void }) => {
+const MapEventHandler = ({
+  setOpenPopup,
+}: {
+  setOpenPopup: (value: boolean) => void;
+}) => {
   useMapEvents({
     click: () => {
       setOpenPopup(false);
@@ -38,25 +47,29 @@ const MapEventHandler = ({ setOpenPopup }: { setOpenPopup: (value: boolean) => v
   return null;
 };
 
-const MapView = ({ style = {}, openPopup = false, setOpenPopup }: { 
-  style?: object, 
-  openPopup?: boolean,
-  setOpenPopup: (value: boolean) => void 
+const MapView = ({
+  style = {},
+  openPopup = false,
+  setOpenPopup,
+}: {
+  style?: object;
+  openPopup?: boolean;
+  setOpenPopup: (value: boolean) => void;
 }) => {
   const markerRef = useRef(null);
 
   useEffect(() => {
     if (openPopup && markerRef.current) {
-      markerRef.current.openPopup();
+      markerRef?.current?.openPopup();
     }
   }, [openPopup]);
 
   return (
     <MapContainer
       center={position}
-      zoom={13}
+      zoom={23}
       style={{
-        minHeight: "500px",
+        minHeight: "700px",
         height: "100%",
         width: "100%",
         borderRadius: "24px",
@@ -69,7 +82,15 @@ const MapView = ({ style = {}, openPopup = false, setOpenPopup }: {
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker position={position} icon={redMarkerIcon} ref={markerRef}>
-        <Popup onClose={() => setOpenPopup(false)} closeButton={false}>
+        <Popup
+          onClose={() => setOpenPopup(false)}
+          closeButton={false}
+          autoPan={true} // <-- Add this
+          keepInView={true}
+          className="leaflet-popup-outside"
+          pane="popupPane"
+          position={position}
+        >
           <DefectListingTooltip />
         </Popup>
       </Marker>

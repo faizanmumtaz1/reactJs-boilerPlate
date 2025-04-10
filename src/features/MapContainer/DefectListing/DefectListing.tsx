@@ -187,7 +187,22 @@ const DefectListingScreen = () => {
               startAdornment={<SearchIcon />}
             />
             <CustomSelect
-              label="Severity"
+              label="Client"
+              options={severityOptions}
+              onChange={() => {}}
+              defaultValue="age"
+              name="severity"
+              id="severity-select"
+              fullWidth={true}
+              className=""
+              rounded="medium"
+              variant="outlined"
+              WrapperClassName=""
+              placeholder="Select"
+              size="medium"
+            />
+            <CustomSelect
+              label="Defect Type"
               options={severityOptions}
               onChange={() => {}}
               defaultValue="age"
@@ -217,7 +232,7 @@ const DefectListingScreen = () => {
               size="medium"
             />
             <CustomSelect
-              label="Severity"
+              label="Device"
               options={severityOptions}
               onChange={() => {}}
               defaultValue="age"
@@ -232,7 +247,7 @@ const DefectListingScreen = () => {
               size="medium"
             />
             <CustomSelect
-              label="Severity"
+              label="Showing"
               options={severityOptions}
               onChange={() => {}}
               defaultValue="age"

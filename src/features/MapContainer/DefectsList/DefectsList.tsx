@@ -1,17 +1,15 @@
 import {
   CrossSmIcon,
   ExplandArrowIcon,
-  ScannerDarkIcon,
   SearchIcon,
-  TimerDarkIcon,
 } from "../../../assets/Images/svg";
 import SearchBar from "../../../components/common/SearchBar/SearchBar";
 import "./style.scss";
-import DashboardChip from "../../../components/common/CustomChip/CustomChip";
 import Button from "../../../components/common/Button/Button";
-import { useNavigate } from "react-router-dom";
 import { ROUTE_DEFECT_LISTING } from "../../../utils/constant";
 import { Typography } from "@mui/material";
+import DefectItem from "./DefectItem";
+import { useNavigate } from "react-router-dom";
 const DefectsList = ({
   handleDefectsListClose,
   onClick,
@@ -19,7 +17,6 @@ const DefectsList = ({
   handleDefectsListClose: () => void;
   onClick: () => void;
 }) => {
-  const navigate = useNavigate();
   const issues = [
     {
       type: "Pothole",
@@ -39,7 +36,7 @@ const DefectsList = ({
     },
     {
       type: "Crack",
-      id: "#82901",
+      id: "#829012",
       severity: "Mild",
       severityColor: "success",
       dateTime: "1/12/34 00:88:00",
@@ -47,7 +44,7 @@ const DefectsList = ({
     },
     {
       type: "Chip",
-      id: "#21903",
+      id: "#219034",
       severity: "Minor",
       severityColor: "error",
       dateTime: "1/12/34 00:88:00",
@@ -55,13 +52,14 @@ const DefectsList = ({
     },
     {
       type: "Rutting",
-      id: "#32901",
+      id: "#329021",
       severity: "Severe",
       severityColor: "success",
       dateTime: "1/12/34 00:88:00",
       detectedBy: "Arres Eye",
     },
   ];
+  const navigate = useNavigate();
 
   return (
     <div className="defects-list-wrapper">
@@ -118,40 +116,3 @@ const DefectsList = ({
 };
 
 export default DefectsList;
-const DefectItem = ({ issue, onClick }: { issue: any, onClick: () => void }) => {
-  return (
-    <div
-      className="defect-item"
-      onClick={onClick}
-    >
-      <div className="defect-item-top">
-        <Typography classes="subtitle3" className="subtitle3">
-          {issue.type}
-        </Typography>
-        <div className="chip-wrapper">
-          <DashboardChip label={issue.id} size="small" rounded={true} />
-          <DashboardChip
-            label={issue.severity}
-            size="small"
-            rounded={true}
-            color={issue.severityColor}
-          />
-        </div>
-      </div>
-      <div className="defect-item-bottom">
-        <div className="footer-item">
-          <TimerDarkIcon />
-          <Typography variant="subtitle2" className="subtitle2">
-            {issue.dateTime}
-          </Typography>
-        </div>
-        <div className="footer-item">
-          <ScannerDarkIcon />
-          <Typography variant="subtitle2" className="subtitle2">
-            {issue.detectedBy}
-          </Typography>
-        </div>
-      </div>
-    </div>
-  );
-};

@@ -24,7 +24,7 @@ const TrendChart = () => {
             datasets: [
               {
                 label: "Discovered Defects",
-                data: [200, 400, 300, 350, 250, 500, 450, 400, 350, 500],
+                data: [200, 400, 500, 400, 350, 500, 150, 200, 150, 50],
                 borderColor: "#FF84B7",
                 backgroundColor: "rgba(255, 132, 183, 0.2)",
                 tension: 0.4,

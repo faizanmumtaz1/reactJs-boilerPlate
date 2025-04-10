@@ -15,6 +15,24 @@ Chart.register(...registerables);
 
 const Dashboard = () => {
   const [tabValue, setTabValue] = useState(0);
+  const pushDataSelect = [
+    { label: "This week", value: "This week" },
+    { label: "This month", value: "This month" },
+    { label: "This year", value: "This year" },
+    { label: "All time", value: "All time" },
+  ];
+  const createdBySelect = [
+    { label: "John Doe", value: "John Doe" },
+    { label: "Jane Doe", value: "Jane Doe" },
+    { label: "John Smith", value: "John Smith" },
+    { label: "Jane Smith", value: "Jane Smith" },
+  ];
+  const regionSelect = [
+    { label: "New York", value: "New York" },
+    { label: "Los Angeles", value: "Los Angeles" },
+    { label: "Chicago", value: "Chicago" },
+    { label: "Houston", value: "Houston" },
+  ];
 
   const handleTabChange = (_: React.SyntheticEvent, newValue: number) => {
     setTabValue(newValue);
@@ -60,6 +78,255 @@ const Dashboard = () => {
   ];
 
   const data = [
+    {
+      clientName: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">John</Typography>
+          <DashboardChip label="#9202" size="small" rounded={true} />
+        </Box>
+      ),
+      noOfJobs: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "14px",
+              fontWeight: "400",
+              lineHeight: "20px",
+              color: "var(--text-primary)",
+              whiteSpace: "pre-wrap",
+            }}
+          >
+            12
+          </Typography>
+        </Stack>
+      ),
+      status: <StatusBadge status="Submitted" />,
+      pushData: (
+        <Button
+          variant="outlined"
+          color="primary"
+          size="small"
+          className="rounded-full-button"
+        >
+          Push Data to "{"3rd Party name here"}"
+        </Button>
+      ),
+    },
+    {
+      clientName: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">John</Typography>
+          <DashboardChip label="#9202" size="small" rounded={true} />
+        </Box>
+      ),
+      noOfJobs: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography variant="body2">12</Typography>
+        </Stack>
+      ),
+      status: <StatusBadge status="QA" />,
+      pushData: (
+        <Button
+          variant="outlined"
+          color="primary"
+          size="small"
+          className="rounded-full-button"
+        >
+          Push Data to "{"3rd Party name here"}"
+        </Button>
+      ),
+    },
+    {
+      clientName: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">John</Typography>
+          <DashboardChip label="#9202" size="small" rounded={true} />
+        </Box>
+      ),
+      noOfJobs: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography variant="body2">12</Typography>
+        </Stack>
+      ),
+      status: <StatusBadge status="Completed" />,
+      pushData: (
+        <Button
+          variant="outlined"
+          color="primary"
+          size="small"
+          className="rounded-full-button"
+        >
+          Push Data to "{"3rd Party name here"}"
+        </Button>
+      ),
+    },
+    {
+      clientName: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">John</Typography>
+          <DashboardChip label="#9202" size="small" rounded={true} />
+        </Box>
+      ),
+      noOfJobs: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "14px",
+              fontWeight: "400",
+              lineHeight: "20px",
+              color: "var(--text-primary)",
+              whiteSpace: "pre-wrap",
+            }}
+          >
+            12
+          </Typography>
+        </Stack>
+      ),
+      status: <StatusBadge status="Submitted" />,
+      pushData: (
+        <Button
+          variant="outlined"
+          color="primary"
+          size="small"
+          className="rounded-full-button"
+        >
+          Push Data to "{"3rd Party name here"}"
+        </Button>
+      ),
+    },
+    {
+      clientName: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">John</Typography>
+          <DashboardChip label="#9202" size="small" rounded={true} />
+        </Box>
+      ),
+      noOfJobs: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography variant="body2">12</Typography>
+        </Stack>
+      ),
+      status: <StatusBadge status="QA" />,
+      pushData: (
+        <Button
+          variant="outlined"
+          color="primary"
+          size="small"
+          className="rounded-full-button"
+        >
+          Push Data to "{"3rd Party name here"}"
+        </Button>
+      ),
+    },
+    {
+      clientName: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">John</Typography>
+          <DashboardChip label="#9202" size="small" rounded={true} />
+        </Box>
+      ),
+      noOfJobs: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography variant="body2">12</Typography>
+        </Stack>
+      ),
+      status: <StatusBadge status="Completed" />,
+      pushData: (
+        <Button
+          variant="outlined"
+          color="primary"
+          size="small"
+          className="rounded-full-button"
+        >
+          Push Data to "{"3rd Party name here"}"
+        </Button>
+      ),
+    },
+    {
+      clientName: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">John</Typography>
+          <DashboardChip label="#9202" size="small" rounded={true} />
+        </Box>
+      ),
+      noOfJobs: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "14px",
+              fontWeight: "400",
+              lineHeight: "20px",
+              color: "var(--text-primary)",
+              whiteSpace: "pre-wrap",
+            }}
+          >
+            12
+          </Typography>
+        </Stack>
+      ),
+      status: <StatusBadge status="Submitted" />,
+      pushData: (
+        <Button
+          variant="outlined"
+          color="primary"
+          size="small"
+          className="rounded-full-button"
+        >
+          Push Data to "{"3rd Party name here"}"
+        </Button>
+      ),
+    },
+    {
+      clientName: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">John</Typography>
+          <DashboardChip label="#9202" size="small" rounded={true} />
+        </Box>
+      ),
+      noOfJobs: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography variant="body2">12</Typography>
+        </Stack>
+      ),
+      status: <StatusBadge status="QA" />,
+      pushData: (
+        <Button
+          variant="outlined"
+          color="primary"
+          size="small"
+          className="rounded-full-button"
+        >
+          Push Data to "{"3rd Party name here"}"
+        </Button>
+      ),
+    },
+    {
+      clientName: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">John</Typography>
+          <DashboardChip label="#9202" size="small" rounded={true} />
+        </Box>
+      ),
+      noOfJobs: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography variant="body2">12</Typography>
+        </Stack>
+      ),
+      status: <StatusBadge status="Completed" />,
+      pushData: (
+        <Button
+          variant="outlined"
+          color="primary"
+          size="small"
+          className="rounded-full-button"
+        >
+          Push Data to "{"3rd Party name here"}"
+        </Button>
+      ),
+    },
     {
       clientName: (
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -206,6 +473,151 @@ const Dashboard = () => {
       ),
       download: <DownloadSmIcon />,
     },
+    {
+      scanNo: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">#78183</Typography>
+        </Box>
+      ),
+      region: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "14px",
+              fontWeight: "400",
+              lineHeight: "20px",
+              color: "var(--text-primary)",
+              whiteSpace: "pre-wrap",
+            }}
+          >
+            Middle East
+          </Typography>
+        </Stack>
+      ),
+      noOfDefects: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography variant="body2">12</Typography>
+        </Stack>
+      ),
+      download: <DownloadSmIcon />,
+    },
+    {
+      scanNo: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">#78183</Typography>
+        </Box>
+      ),
+      region: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "14px",
+              fontWeight: "400",
+              lineHeight: "20px",
+              color: "var(--text-primary)",
+              whiteSpace: "pre-wrap",
+            }}
+          >
+            Middle East
+          </Typography>
+        </Stack>
+      ),
+      noOfDefects: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography variant="body2">12</Typography>
+        </Stack>
+      ),
+      download: <DownloadSmIcon />,
+    },
+    {
+      scanNo: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">#78183</Typography>
+        </Box>
+      ),
+      region: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "14px",
+              fontWeight: "400",
+              lineHeight: "20px",
+              color: "var(--text-primary)",
+              whiteSpace: "pre-wrap",
+            }}
+          >
+            Middle East
+          </Typography>
+        </Stack>
+      ),
+      noOfDefects: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography variant="body2">12</Typography>
+        </Stack>
+      ),
+      download: <DownloadSmIcon />,
+    },
+    {
+      scanNo: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">#78183</Typography>
+        </Box>
+      ),
+      region: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "14px",
+              fontWeight: "400",
+              lineHeight: "20px",
+              color: "var(--text-primary)",
+              whiteSpace: "pre-wrap",
+            }}
+          >
+            Middle East
+          </Typography>
+        </Stack>
+      ),
+      noOfDefects: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography variant="body2">12</Typography>
+        </Stack>
+      ),
+      download: <DownloadSmIcon />,
+    },
+    {
+      scanNo: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">#78183</Typography>
+        </Box>
+      ),
+      region: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: "14px",
+              fontWeight: "400",
+              lineHeight: "20px",
+              color: "var(--text-primary)",
+              whiteSpace: "pre-wrap",
+            }}
+          >
+            Middle East
+          </Typography>
+        </Stack>
+      ),
+      noOfDefects: (
+        <Stack direction="row" spacing={0.5} alignItems="center">
+          <Typography variant="body2">12</Typography>
+        </Stack>
+      ),
+      download: <DownloadSmIcon />,
+    },
   ];
   const jobDetailsColumns = [
     {
@@ -255,14 +667,52 @@ const Dashboard = () => {
         </Button>
       ),
     },
+    {
+      jobId: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">#81982</Typography>
+        </Box>
+      ),
+      classification: <SvarityItem data={classificationData} />,
+      severity: <SvarityItem data={classificationData} />,
+      noOfDefects: (
+        <Button variant="text" color="primary" size="small">
+          View on Map
+        </Button>
+      ),
+    },
+    {
+      jobId: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">#81982</Typography>
+        </Box>
+      ),
+      classification: <SvarityItem data={classificationData} />,
+      severity: <SvarityItem data={classificationData} />,
+      noOfDefects: (
+        <Button variant="text" color="primary" size="small">
+          View on Map
+        </Button>
+      ),
+    },
+    {
+      jobId: (
+        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+          <Typography variant="body2">#81982</Typography>
+        </Box>
+      ),
+      classification: <SvarityItem data={classificationData} />,
+      severity: <SvarityItem data={classificationData} />,
+      noOfDefects: (
+        <Button variant="text" color="primary" size="small">
+          View on Map
+        </Button>
+      ),
+    },
   ];
-
-  const severityOptions = [
-    { label: "1 - 250", value: "1-250" },
-    { label: "3 - 856 (20%)", value: "3-856" },
-    { label: "5 - 3124 (71%)", value: "5-3124" },
-    { label: "N/A...", value: "N/A..." },
-  ];
+  const handlePushDataSelect = (e: any) => {
+    console.log(e);
+  };
   return (
     <Box
       sx={{
@@ -284,10 +734,11 @@ const Dashboard = () => {
         <Stack direction="row" spacing={2} className="filters-container">
           <CustomSelect
             label="Client"
-            options={severityOptions}
+            options={createdBySelect}
             onChange={() => {}}
             name="client"
-            id="select-client"
+            id="client-select"
+            value={createdBySelect[0].value}
             rounded="medium"
             variant="outlined"
             size="medium"
@@ -299,10 +750,11 @@ const Dashboard = () => {
           />
           <CustomSelect
             label="Region"
-            options={severityOptions}
+            options={regionSelect}
             onChange={() => {}}
-            name="status"
-            id="select-region"
+            name="region"
+            id="region-select"
+            value={regionSelect[0].value}
             rounded="medium"
             variant="outlined"
             size="medium"
@@ -356,12 +808,13 @@ const Dashboard = () => {
             <Stack direction="row" spacing={2}>
               <CustomSelect
                 label="Showing"
-                options={severityOptions}
-                onChange={() => {}}
+                options={pushDataSelect}
+                onChange={(e) => handlePushDataSelect(e)}
                 name="status"
                 id="status-select"
                 rounded="medium"
                 variant="outlined"
+                value={pushDataSelect[1].value}
                 size="medium"
                 sx={{
                   minWidth: "180px",
@@ -378,12 +831,13 @@ const Dashboard = () => {
             pagination={false}
             selectableRows={false}
             onSort={() => {}}
+            className="dashboard-table-scroll"
           />
         </Stack>
         <Box
           sx={{
             display: "flex",
-            padding: "24px 24px 48px 24px",
+            padding: "24px",
             flexDirection: "column",
             alignItems: "flex-start",
             gap: "24px",
@@ -406,12 +860,13 @@ const Dashboard = () => {
             </Typography>
             <CustomSelect
               label="Showing"
-              options={severityOptions}
-              onChange={() => {}}
+              options={pushDataSelect}
+              onChange={(e) => handlePushDataSelect(e)}
               name="month"
               id="month-select"
               rounded="medium"
               variant="outlined"
+              value={pushDataSelect[2].value}
               size="medium"
               sx={{
                 minWidth: "180px",
@@ -440,6 +895,7 @@ const Dashboard = () => {
             }}
             panelSx={{
               px: 0,
+              pb: 0,
             }}
           />
         </Box>
@@ -458,6 +914,10 @@ const Dashboard = () => {
         <Stack
           direction={"column"}
           className="gray-container-table dashboard-table"
+          sx={{
+            maxHeight: "232px",
+            overflow: "hidden",
+          }}
         >
           <Stack
             direction="row"
@@ -470,12 +930,13 @@ const Dashboard = () => {
             <Stack direction="row" spacing={2}>
               <CustomSelect
                 label="Showing"
-                options={severityOptions}
-                onChange={() => {}}
+                options={pushDataSelect}
+                onChange={(e) => handlePushDataSelect(e)}
                 name="status"
                 id="status-select"
                 rounded="medium"
                 variant="outlined"
+                value={pushDataSelect[2].value}
                 size="medium"
                 sx={{
                   minWidth: "180px",
@@ -492,23 +953,29 @@ const Dashboard = () => {
             pagination={false}
             selectableRows={false}
             onSort={() => {}}
+            className="dashboard-table-scroll-scanned"
           />
         </Stack>
         <Stack
           direction={"column"}
           className="gray-container-table dashboard-table"
+          sx={{
+            maxHeight: "232px",
+            overflow: "hidden",
+          }}
         >
           <Stack direction="row" justifyContent="space-between" p={3}>
             <Typography variant="h6">Job Details</Typography>
             <Stack direction="row" spacing={2}>
               <CustomSelect
                 label="Showing"
-                options={severityOptions}
-                onChange={() => {}}
+                options={pushDataSelect}
+                onChange={(e) => handlePushDataSelect(e)}
                 name="status"
                 id="status-select"
                 rounded="medium"
                 variant="outlined"
+                value={pushDataSelect[2].value}
                 size="medium"
                 sx={{
                   minWidth: "180px",
@@ -525,6 +992,7 @@ const Dashboard = () => {
             pagination={false}
             selectableRows={false}
             onSort={() => {}}
+            className="dashboard-table-scroll-scanned"
           />
         </Stack>
       </Box>
@@ -551,7 +1019,7 @@ const DiscoveredDefects = () => {
           +5%
         </Typography>
       </Box>
-      <Box sx={{ height: 300, width: "100%" }}>
+      <Box sx={{ width: "100%", height: 175 }}>
         <TrendChart />
       </Box>
     </>
@@ -575,7 +1043,7 @@ const DefectsPerSeverity = () => {
           +32%
         </Typography>
       </Box>
-      <Box sx={{ height: 300, width: "100%" }}>
+      <Box sx={{ height: 175, width: "100%" }}>
         <TrendChart />
       </Box>
     </>
