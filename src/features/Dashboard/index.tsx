@@ -1,4 +1,11 @@
-import { Box, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Divider,
+  Drawer,
+  IconButton,
+  Stack,
+  Typography,
+} from "@mui/material";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import Table from "../../components/common/Table/Table";
 import MetricCard from "./MatricCard";
@@ -9,12 +16,20 @@ import TrendChart from "./TrendChart";
 import { Chart, registerables } from "chart.js";
 import StatusBadge from "./StatusBadge";
 import SvarityItem from "./SverityItem";
-import { DownloadSmIcon } from "../../assets/Images/svg";
+import {
+  ArrowBackIcon,
+  DownloadSmIcon,
+  FilterIcon,
+} from "../../assets/Images/svg";
 import CustomTabs from "../../components/common/Tabs";
+import useCheckMobileScreen from "../../hooks/useCheckMobileScreen";
 Chart.register(...registerables);
 
 const Dashboard = () => {
+  const isItMobile = useCheckMobileScreen();
   const [tabValue, setTabValue] = useState(0);
+  const [showFiltersOnMobile, setShowFiltersOnMobile] = useState(false);
+
   const pushDataSelect = [
     { label: "This week", value: "This week" },
     { label: "This month", value: "This month" },
@@ -717,53 +732,185 @@ const Dashboard = () => {
     <Box
       sx={{
         width: "100%",
-        px: 3,
-        my: 2,
+        px: { xs: 2, md: 3 },
+        my: { xs: 2, md: 3 },
       }}
     >
       <Stack
         direction={{ xs: "column", sm: "row" }}
         justifyContent="space-between"
-        spacing={2}
+        spacing={{ xs: 1, md: 2 }}
         sx={{
           width: "100%",
         }}
       >
-        <Typography variant="h4">Dashboard</Typography>
+        {isItMobile && (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <Typography
+              variant="body1"
+              color="var(--text-secondary) !important"
+            >
+              View all of important data in one look.
+            </Typography>
+            <IconButton
+              onClick={() => {
+                setShowFiltersOnMobile(true);
+              }}
+              sx={{
+                backgroundColor: "rgba(248, 249, 251, 1)",
+                borderRadius: "8px",
+                "&:hover": {
+                  backgroundColor: "rgba(248, 249, 251, 1)",
+                },
+              }}
+            >
+              <FilterIcon />
+            </IconButton>
+          </Box>
+        )}
 
-        <Stack direction="row" spacing={2} className="filters-container">
-          <CustomSelect
-            label="Client"
-            options={createdBySelect}
-            onChange={() => {}}
-            name="client"
-            id="client-select"
-            value={createdBySelect[0].value}
-            rounded="medium"
-            variant="outlined"
-            size="medium"
+        {!isItMobile ? (
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+            width="100%"
+          >
+            <Typography variant="h4">Dashboard</Typography>
+
+            <Stack direction="row" spacing={2} className="filters-container">
+              <CustomSelect
+                label="Client"
+                options={createdBySelect}
+                onChange={() => {}}
+                name="client"
+                id="client-select"
+                value={createdBySelect[0].value}
+                rounded="medium"
+                variant="outlined"
+                size="medium"
+                sx={{
+                  minWidth: "180px",
+                }}
+                fullWidth={false}
+                className="white-select"
+              />
+              <CustomSelect
+                label="Region"
+                options={regionSelect}
+                onChange={() => {}}
+                name="region"
+                id="region-select"
+                value={regionSelect[0].value}
+                rounded="medium"
+                variant="outlined"
+                size="medium"
+                sx={{
+                  minWidth: "180px",
+                }}
+                fullWidth={false}
+              />
+            </Stack>
+          </Stack>
+        ) : (
+          <Drawer
+            anchor="right"
             sx={{
-              minWidth: "180px",
+              "& .MuiDrawer-paper": {
+                width: "100%",
+              },
             }}
-            fullWidth={false}
-            className="white-select"
-          />
-          <CustomSelect
-            label="Region"
-            options={regionSelect}
-            onChange={() => {}}
-            name="region"
-            id="region-select"
-            value={regionSelect[0].value}
-            rounded="medium"
-            variant="outlined"
-            size="medium"
-            sx={{
-              minWidth: "180px",
+            open={showFiltersOnMobile}
+            onClose={() => {
+              setShowFiltersOnMobile(false);
             }}
-            fullWidth={false}
-          />
-        </Stack>
+          >
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "start",
+                alignItems: "center",
+                p: 2,
+                gap: "5px",
+              }}
+            >
+              <IconButton
+                onClick={() => {
+                  setShowFiltersOnMobile(false);
+                }}
+              >
+                <ArrowBackIcon />
+              </IconButton>
+              <Typography> Filters</Typography>
+            </Box>
+            <Divider />
+            <Box
+              sx={{
+                padding: "24px",
+              }}
+            >
+              <CustomSelect
+                label="Client"
+                options={createdBySelect}
+                onChange={() => {}}
+                name="client"
+                id="client-select"
+                value={createdBySelect[0].value}
+                rounded="medium"
+                variant="outlined"
+                size="medium"
+                sx={{
+                  minWidth: "180px",
+                  mb: 2,
+                }}
+                fullWidth={true}
+                className="white-select"
+              />
+              <CustomSelect
+                label="Region"
+                options={regionSelect}
+                onChange={() => {}}
+                name="region"
+                id="region-select"
+                value={regionSelect[0].value}
+                rounded="medium"
+                variant="outlined"
+                size="medium"
+                sx={{
+                  minWidth: "180px",
+                }}
+                fullWidth={true}
+              />
+            </Box>
+            <Box
+              sx={{
+                position: "fixed",
+                bottom: 0,
+                left: 0,
+                right: 0,
+                width: "100%",
+                borderRadius: "24px 24px 0 0",
+                padding: "24px 24px 32px 24px",
+                boxShadow: "0px -5px 13px 0px rgb(184 180 180 / 49%)",
+              }}
+            >
+              <Button
+                variant="outlined"
+                fullWidth={true}
+                sx={{ borderRadius: "32px" }}
+              >
+                Apply Filters
+              </Button>
+            </Box>
+          </Drawer>
+        )}
       </Stack>
       <Box
         sx={{
@@ -801,9 +948,14 @@ const Dashboard = () => {
           sx={{
             height: "100%",
             mt: 0,
+            display: { xs: "none", md: "flex" },
           }}
         >
-          <Stack direction="row" justifyContent="space-between" p={3}>
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            p={{ xs: 2, md: 3 }}
+          >
             <Typography variant="h6">Data Push Request</Typography>
             <Stack direction="row" spacing={2}>
               <CustomSelect
@@ -896,6 +1048,17 @@ const Dashboard = () => {
             panelSx={{
               px: 0,
               pb: 0,
+            }}
+            tabSx={{
+              fontSize: { xs: "12px", md: "14px" },
+              fontStyle: "normal",
+              fontWeight: "500",
+              lineHeight: "24px",
+              letterSpacing: "0.4px",
+              textTransform: "capitalize",
+              padding: "9px 16px",
+              flex: "1 0 0",
+              whiteSpace: "nowrap",
             }}
           />
         </Box>

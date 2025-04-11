@@ -283,7 +283,7 @@ const EditOrViewDevice = () => {
           </Stack>
         </Box>
         <Box mt="24px">
-          <MapView style={{ minHeight: "200px" }} />
+          <MapView style={{ minHeight: "200px" }} setOpenPopup={() => {}} />
         </Box>
 
         <AllJobs />
