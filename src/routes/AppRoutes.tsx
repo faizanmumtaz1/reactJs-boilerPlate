@@ -87,7 +87,9 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute
               element={
-                <DashboardLayout>
+                <DashboardLayout
+                  breadcrumbLinks={[{ label: "Map", href: ROUTE_MAP }]}
+                >
                   <MapContainer />
                 </DashboardLayout>
               }
@@ -116,7 +118,14 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute
               element={
-                <DashboardLayout>
+                <DashboardLayout
+                  breadcrumbLinks={[
+                    {
+                      label: "Device Management",
+                      href: ROUTE_DEVICE_MANAGEMENT_LISTING,
+                    },
+                  ]}
+                >
                   <DeviceManagementListing />
                 </DashboardLayout>
               }
@@ -197,7 +206,14 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute
               element={
-                <DashboardLayout>
+                <DashboardLayout
+                  breadcrumbLinks={[
+                    {
+                      label: "Client Management",
+                      href: ROUTE_CLIENT_MANAGEMENT,
+                    },
+                  ]}
+                >
                   <ClinetManagment />
                 </DashboardLayout>
               }
@@ -409,7 +425,11 @@ const AppRoutes = () => {
           element={
             <ProtectedRoute
               element={
-                <DashboardLayout>
+                <DashboardLayout
+                  breadcrumbLinks={[
+                    { label: "Dashboard", href: ROUTE_DASHBOARD },
+                  ]}
+                >
                   <Dashboard />
                 </DashboardLayout>
               }

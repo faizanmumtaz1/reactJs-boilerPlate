@@ -15,11 +15,12 @@
   overflow-y: auto;
   z-index: 999;
   transition: all 0.3s ease;
-  @media (max-width: 600px) {
+  @media (max-width: 768.98px) {
     &.mobile-menu-open {
       width: 317px;
       justify-content: flex-start;
       align-items: flex-start;
+      z-index: 1100;
     }
     &.mobile-menu-close {
       width: 0px;
@@ -44,11 +45,14 @@
       align-items: start;
     }
     .sidebar-item {
+      width: 100%;
       .sidebar-item-link {
         display: flex;
         margin-bottom: 16px;
-        padding: 8px;    
-        @media (max-width: 600px) {
+        padding: 8px;
+        width: 100%;
+        text-decoration: none;
+        @media (max-width: 768.98px) {
           padding: 16px;
         }
         justify-content: flex-start;

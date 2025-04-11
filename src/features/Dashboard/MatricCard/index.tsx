@@ -12,7 +12,7 @@ const MetricCard = ({
   return (
     <Paper
       sx={{
-        p: 3,
+        p: { xs: 2, md: 3 },
         borderRadius: 4,
         height: "100%",
         backgroundColor: "var(--primary-states-selected)",
@@ -21,7 +21,7 @@ const MetricCard = ({
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        gap: 2,
+        gap: { xs: 1, md: 2 },
         maxHeight: "155px",
       }}
     >
@@ -34,7 +34,12 @@ const MetricCard = ({
           gap: 1,
         }}
       >
-        <Typography variant="h4">{value}</Typography>
+        <Typography
+          variant="h4"
+          sx={{ fontSize: { xs: "24px !important", md: "34px" } }}
+        >
+          {value}
+        </Typography>
         <Typography
           className={`text-xs`}
           sx={{

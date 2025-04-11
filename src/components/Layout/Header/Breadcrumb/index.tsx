@@ -11,6 +11,9 @@ interface BreadcrumbProps {
 }
 
 const Breadcrumb = ({ links }: BreadcrumbProps) => {
+  if (links.length === 1) {
+    return null;
+  }
   return (
     <Breadcrumbs separator={<ArrowRightIcon />} aria-label="breadcrumb">
       {links.map((link, index) => {
