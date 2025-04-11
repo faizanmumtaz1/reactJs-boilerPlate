@@ -85,9 +85,11 @@ const MapContainer = () => {
   ];
   return (
     <div className="map-wrapper">
-      <div className="title-container">
-        <Typography variant="h4">Map</Typography>
-      </div>
+      {!isItMobile && (
+        <div className="title-container">
+          <Typography variant="h4">Map</Typography>
+        </div>
+      )}
 
       {!isDefectsListOpen && isItMobile && (
         <Stack
@@ -98,6 +100,7 @@ const MapContainer = () => {
           sx={{
             width: "100%",
             padding: " 0px 24px 16px 24px",
+            marginTop: "16px",
           }}
         >
           <Typography sx={{ fontSize: 14 }} color="text.secondary">
