@@ -15,7 +15,13 @@ const PathDetailsItem = ({
       <Typography variant="caption" className="text-xxxs path-name">
         {name}
       </Typography>
-      <Typography variant="caption" className="text-xxs-500 path-value">
+      <Typography
+        sx={{
+          textAlign: "center",
+        }}
+        variant="caption"
+        className="text-xxs-500 path-value"
+      >
         {value}
       </Typography>
     </div>
