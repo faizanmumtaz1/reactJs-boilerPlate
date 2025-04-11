@@ -14,8 +14,8 @@ const DefectsList = ({
   handleDefectsListClose,
   onClick,
 }: {
-  handleDefectsListClose: () => void;
-  onClick: () => void;
+  handleDefectsListClose?: () => void;
+  onClick?: () => void;
 }) => {
   const issues = [
     {

@@ -5,8 +5,8 @@ const DefectItem = ({
   issue,
   onClick,
 }: {
-  issue: any;
-  onClick: () => void;
+  issue?: any;
+  onClick?: () => void;
 }) => {
   return (
     <div className="defect-item" onClick={onClick}>

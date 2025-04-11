@@ -15,6 +15,7 @@ import DefectListingTooltip from "../DefectListingTooltip/DefectListingTooltip";
 import ReactDOMServer from "react-dom/server";
 import { RedMarkerIcon } from "../../../assets/Images/svg";
 import { useRef, useEffect } from "react";
+import useCheckMobileScreen from "../../../hooks/useCheckMobileScreen";
 
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -41,7 +42,7 @@ const MapEventHandler = ({
 }) => {
   useMapEvents({
     click: () => {
-      setOpenPopup(false);
+      setOpenPopup(true);
     },
   });
   return null;
@@ -59,6 +60,7 @@ const MapView = ({
   setOpenPopup,
 }: MapViewProps) => {
   const markerRef = useRef<L.Marker | null>(null);
+  const isItMobile = useCheckMobileScreen();
 
   useEffect(() => {
     if (openPopup && markerRef.current) {
@@ -67,35 +69,47 @@ const MapView = ({
   }, [openPopup]);
 
   return (
-    <MapContainer
-      center={position}
-      zoom={23}
-      style={{
-        minHeight: "700px",
-        height: "100%",
-        width: "100%",
-        borderRadius: "24px",
-        ...style,
-      }}
-    >
-      <MapEventHandler setOpenPopup={setOpenPopup} />
-      <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={position} icon={redMarkerIcon} ref={markerRef}>
-        <Popup
-          closeButton={false}
-          autoPan={true}
-          keepInView={true}
-          className="leaflet-popup-outside"
-          pane="popupPane"
-          position={position}
-        >
+    <>
+      <MapContainer
+        center={position}
+        zoom={23}
+        style={{
+          minHeight: "700px",
+          height: "100%",
+          width: "100%",
+          borderRadius: "24px",
+          ...style,
+        }}
+      >
+        <MapEventHandler setOpenPopup={setOpenPopup} />
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={position} icon={redMarkerIcon} ref={markerRef}>
+          {!isItMobile && (
+            <Popup
+              // onClose={() => setOpenPopup(false)}
+              closeButton={false}
+              autoPan={true} // <-- Add this
+              keepInView={true}
+              className="leaflet-popup-outside"
+              pane="popupPane"
+              position={position}
+            >
+              <DefectListingTooltip />
+            </Popup>
+          )}
+        </Marker>
+      </MapContainer>
+
+      {isItMobile && openPopup && (
+        <div className="defect-popup-mobile-wrapper">
+          <div className="toggle-line" onClick={() => setOpenPopup(false)} />
           <DefectListingTooltip />
-        </Popup>
-      </Marker>
-    </MapContainer>
+        </div>
+      )}
+    </>
   );
 };
 
