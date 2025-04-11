@@ -20,7 +20,7 @@ const severityOptions = [
   { label: "N/A...", value: "N/A..." },
 ];
 
-export default function DeviceMobileFilters() {
+export default function ClientMobileFilters() {
   const [showFiltersOnMobile, setShowFiltersOnMobile] = useState(false);
 
   return (
@@ -95,12 +95,12 @@ export default function DeviceMobileFilters() {
           }}
         >
           <CustomSelect
-            label="Status"
+            label="Client"
             options={severityOptions}
             onChange={() => {}}
             defaultValue="age"
-            name="status"
-            id="status-select"
+            name="client"
+            id="client-select"
             fullWidth={true}
             className="mb-2"
             rounded="medium"
@@ -111,12 +111,28 @@ export default function DeviceMobileFilters() {
             sx={{ mb: 3 }}
           />
           <CustomSelect
-            label="Region"
+            label="Status"
             options={severityOptions}
             onChange={() => {}}
             defaultValue="age"
-            name="region"
-            id="region-select"
+            name="status"
+            id="status-select"
+            fullWidth={true}
+            className=""
+            rounded="medium"
+            variant="outlined"
+            WrapperClassName=""
+            placeholder="Select"
+            size="medium"
+            sx={{ mb: 3 }}
+          />
+          <CustomSelect
+            label="Device"
+            options={severityOptions}
+            onChange={() => {}}
+            defaultValue="age"
+            name="device"
+            id="device-select"
             fullWidth={true}
             className=""
             rounded="medium"
