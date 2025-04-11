@@ -250,6 +250,13 @@ const DeviceManagementListing = () => {
     { label: "5 - 3124 (71%)", value: "5-3124" },
     { label: "N/A...", value: "N/A..." },
   ];
+
+  const formatKeyToHeading = (key: string): string => {
+    return key
+      .replace(/([A-Z])/g, " $1") // insert space before capital letters
+      .replace(/^./, (str) => str.toUpperCase()); // capitalize first letter
+  };
+
   return (
     <Box
       sx={{
@@ -378,7 +385,7 @@ const DeviceManagementListing = () => {
             details={Object.keys(item)
               .filter((key) => key !== "statusColor")
               .map((key) => ({
-                heading: key,
+                heading: formatKeyToHeading(key),
                 value: String(item[key as keyof typeof item]),
               }))}
             title={item.name}

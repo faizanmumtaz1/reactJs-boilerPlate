@@ -19,40 +19,67 @@ import "./style.scss";
 import { useState } from "react";
 import Modal from "../../components/common/Modal/Modal";
 import Button from "../../components/common/Button/Button";
+import SingleBox from "../../components/common/SingleBox/SingleBox";
+import ClientMobileFilters from "./ClientMobileFilters";
+
+type ClientData = {
+  name: string;
+  deviceId: string;
+  email: string;
+  clientName: string;
+  clientId: string;
+  remainingMiles: number;
+  inviteStatus: string;
+  inviteStatusColor: "success" | "error" | "warning" | "info" | "default"; // Based on MUI <Chip> colors
+  registeredDevices: number;
+  noOfUsers: number;
+  assignedRegion: string;
+};
+
+type ClientRow = {
+  name: React.ReactNode;
+  email: React.ReactNode;
+  client: React.ReactNode;
+  remainingMiles: React.ReactNode;
+  inviteStatus: React.ReactNode;
+  registeredDevices?: React.ReactNode; // optional based on tabValue
+  noOfUsers?: React.ReactNode; // optional based on tabValue
+  assignedRegion: React.ReactNode;
+  actions: React.ReactNode;
+};
 
 const ClinetManagment = () => {
   const navigate = useNavigate();
 
   const [tabValue, setTabValue] = useState(0);
 
-  const columns = [
+  const columns: {
+    name: React.ReactNode;
+    selector: (row: ClientRow) => React.ReactNode;
+    sortable?: boolean;
+  }[] = [
     {
       name: (
-        <Typography
-          sx={{
-            whiteSpace: "nowrap",
-          }}
-          variant="body2"
-        >
+        <Typography sx={{ whiteSpace: "nowrap" }} variant="body2">
           Name/Device ID
         </Typography>
       ),
-      selector: (row: any) => row.name,
+      selector: (row) => row.name,
       sortable: true,
     },
     {
       name: <Typography>Email</Typography>,
-      selector: (row: any) => row.email,
+      selector: (row) => row.email,
       sortable: true,
     },
     {
       name: <Typography>Remaining Miles</Typography>,
-      selector: (row: any) => row.remainingMiles,
+      selector: (row) => row.remainingMiles,
       sortable: true,
     },
     {
       name: <Typography>Invite Status</Typography>,
-      selector: (row: any) => row.inviteStatus,
+      selector: (row) => row.inviteStatus,
       sortable: true,
     },
     ...(tabValue === 0
@@ -72,58 +99,66 @@ const ClinetManagment = () => {
         ]),
     {
       name: <Typography>Assigned Region</Typography>,
-      selector: (row: any) => row.assignedRegion,
+      selector: (row) => row.assignedRegion,
       sortable: true,
     },
     {
       name: <Typography>Actions</Typography>,
-      selector: (row: any) => row.actions,
-      sortable: true,
+      selector: (row) => row.actions,
     },
   ];
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
-  const data = [
-    {
+  const createClientData = (data: ClientData) => {
+    return {
       name: (
         <>
-          <Typography variant="body2">Arma Eye</Typography>
-          <Typography variant="body2">#71913</Typography>
+          <Typography variant="body2">{data.name}</Typography>
+          <Typography variant="body2">{data.deviceId}</Typography>
         </>
       ),
-      email: <Typography variant="body2">john@gmail.com</Typography>,
+      email: <Typography variant="body2">{data.email}</Typography>,
       client: (
         <Stack direction="row" spacing={0.5} alignItems="center">
-          <Typography variant="body2">James</Typography>
-          <Chip color="default" sx={{ height: "25px" }} label="#1001" />
+          <Typography variant="body2">{data.clientName}</Typography>
+          <Chip
+            color="default"
+            sx={{ height: "25px" }}
+            label={`#${data.clientId}`}
+          />
         </Stack>
       ),
-      remainingMiles: <Typography variant="body2">73</Typography>,
+      remainingMiles: (
+        <Typography variant="body2">{data.remainingMiles}</Typography>
+      ),
       inviteStatus: (
         <Chip
           variant="outlined"
-          sx={{
-            height: "18px",
-            p: "10px",
-          }}
-          label={tabValue === 0 ? "Invite Sent" : "Archived"}
-          color={tabValue === 0 ? "warning" : "error"}
+          sx={{ height: "18px", p: "10px" }}
+          label={tabValue === 0 ? data.inviteStatus : "Archived"}
+          color={tabValue === 0 ? data.inviteStatusColor : "error"}
         />
       ),
-      registeredDevices: <Typography variant="body2">75</Typography>,
-      noOfUsers: <Typography variant="body2">75</Typography>,
-      assignedRegion: <Typography variant="body2">Nottingham</Typography>,
+      registeredDevices: (
+        <Typography variant="body2">{data.registeredDevices}</Typography>
+      ),
+      noOfUsers: <Typography variant="body2">{data.noOfUsers}</Typography>,
+      assignedRegion: (
+        <Typography variant="body2">{data.assignedRegion}</Typography>
+      ),
       actions: (
         <Stack direction="row" spacing={2}>
           <IconButton
-            onClick={() => navigate(`/edit-or-view-client/123?edit=true`)}
+            onClick={() =>
+              navigate(`/edit-or-view-client/${data.clientId}?edit=true`)
+            }
           >
             <ModeEditOutlineIcon
               sx={{
                 width: "18px",
-                color: "var(--text-active)",
                 height: "18px",
+                color: "var(--text-active)",
               }}
             />
           </IconButton>
@@ -131,124 +166,71 @@ const ClinetManagment = () => {
             <DeleteIcon
               sx={{
                 width: "18px",
-                color: "var(--text-active)",
                 height: "18px",
+                color: "var(--text-active)",
               }}
             />
           </IconButton>
         </Stack>
       ),
+    };
+  };
+
+  const rawData = [
+    {
+      name: "Arma Eye",
+      deviceId: "#71913",
+      email: "john@gmail.com",
+      clientName: "James",
+      clientId: "1001",
+      remainingMiles: 73,
+      inviteStatus: tabValue === 0 ? "Invite Sent" : "Archived",
+      inviteStatusColor: "warning",
+      ...(tabValue === 0 && {
+        registeredDevices: 75,
+      }),
+      ...(tabValue === 1 && {
+        noOfUsers: 75,
+      }),
+      assignedRegion: "Nottingham",
     },
     {
-      name: (
-        <>
-          <Typography variant="body2">Arma Eye</Typography>
-          <Typography variant="body2">#71913</Typography>
-        </>
-      ),
-      email: <Typography variant="body2">john@gmail.com</Typography>,
-      client: (
-        <Stack direction="row" spacing={0.5} alignItems="center">
-          <Typography variant="body2">James</Typography>
-          <Chip color="default" sx={{ height: "25px" }} label="#1001" />
-        </Stack>
-      ),
-      remainingMiles: <Typography variant="body2">72</Typography>,
-      inviteStatus: (
-        <Chip
-          variant="outlined"
-          sx={{
-            height: "18px",
-            p: "10px",
-          }}
-          label={tabValue === 0 ? "Active" : "Archived"}
-          color={tabValue === 0 ? "success" : "error"}
-        />
-      ),
-      registeredDevices: <Typography variant="body2">73</Typography>,
-      noOfUsers: <Typography variant="body2">73</Typography>,
-      assignedRegion: <Typography variant="body2">Nottingham</Typography>,
-      actions: (
-        <Stack direction="row" spacing={2}>
-          <IconButton
-            onClick={() => navigate(`/edit-or-view-client/123?edit=true`)}
-          >
-            <ModeEditOutlineIcon
-              sx={{
-                width: "18px",
-                color: "var(--text-active)",
-                height: "18px",
-              }}
-            />
-          </IconButton>
-          <IconButton onClick={() => setShowDeleteModal(true)}>
-            <DeleteIcon
-              sx={{
-                width: "18px",
-                color: "var(--text-active)",
-                height: "18px",
-              }}
-            />
-          </IconButton>
-        </Stack>
-      ),
+      name: "Arma Eye",
+      deviceId: "#71913",
+      email: "john@gmail.com",
+      clientName: "James",
+      clientId: "1001",
+      remainingMiles: 72,
+      inviteStatus: tabValue === 0 ? "Active" : "Archived",
+      inviteStatusColor: "success",
+      ...(tabValue === 0 && {
+        registeredDevices: 73,
+      }),
+      ...(tabValue === 1 && {
+        noOfUsers: 73,
+      }),
+      assignedRegion: "Nottingham",
     },
     {
-      name: (
-        <>
-          <Typography variant="body2">Arma Eye</Typography>
-          <Typography variant="body2">#71913</Typography>
-        </>
-      ),
-      email: <Typography variant="body2">john@gmail.com</Typography>,
-      client: (
-        <Stack direction="row" spacing={0.5} alignItems="center">
-          <Typography variant="body2">James</Typography>
-          <Chip color="default" sx={{ height: "25px" }} label="#1001" />
-        </Stack>
-      ),
-      remainingMiles: <Typography variant="body2">73</Typography>,
-      inviteStatus: (
-        <Chip
-          variant="outlined"
-          sx={{
-            height: "18px",
-            p: "10px",
-          }}
-          label={tabValue === 0 ? "Invite Sent" : "Archived"}
-          color={tabValue === 0 ? "warning" : "error"}
-        />
-      ),
-      registeredDevices: <Typography variant="body2">73</Typography>,
-      noOfUsers: <Typography variant="body2">73</Typography>,
-      assignedRegion: <Typography variant="body2">Nottingham</Typography>,
-      actions: (
-        <Stack direction="row" spacing={2}>
-          <IconButton
-            onClick={() => navigate(`/edit-or-view-client/123?edit=true`)}
-          >
-            <ModeEditOutlineIcon
-              sx={{
-                width: "18px",
-                color: "var(--text-active)",
-                height: "18px",
-              }}
-            />
-          </IconButton>
-          <IconButton onClick={() => setShowDeleteModal(true)}>
-            <DeleteIcon
-              sx={{
-                width: "18px",
-                color: "var(--text-active)",
-                height: "18px",
-              }}
-            />
-          </IconButton>
-        </Stack>
-      ),
-      // actions: <EditIcon />,
+      name: "Arma Eye",
+      deviceId: "#71913",
+      email: "john@gmail.com",
+      clientName: "James",
+      clientId: "1001",
+      remainingMiles: 73,
+      inviteStatus: tabValue === 0 ? "Invite Sent" : "Archived",
+      inviteStatusColor: "warning",
+      ...(tabValue === 0 && {
+        registeredDevices: 73,
+      }),
+      ...(tabValue === 1 && {
+        noOfUsers: 73,
+      }),
+      assignedRegion: "Nottingham",
     },
   ];
+
+  const data: any = rawData.map((item: any) => createClientData(item));
 
   const severityOptions = [
     { label: "1 - 250", value: "1-250" },
@@ -256,6 +238,13 @@ const ClinetManagment = () => {
     { label: "5 - 3124 (71%)", value: "5-3124" },
     { label: "N/A...", value: "N/A..." },
   ];
+
+  const formatKeyToHeading = (key: string): string => {
+    return key
+      .replace(/([A-Z])/g, " $1") // insert space before capital letters
+      .replace(/^./, (str) => str.toUpperCase()); // capitalize first letter
+  };
+
   return (
     <Box
       sx={{
@@ -269,6 +258,9 @@ const ClinetManagment = () => {
         justifyContent="space-between"
         alignItems="center"
         pb={2}
+        sx={{
+          display: { xs: "none", md: "flex" },
+        }}
       >
         <Typography variant="h4">Client Management</Typography>
         <Button
@@ -313,6 +305,7 @@ const ClinetManagment = () => {
           mt: 2,
           paddingBottom: 0,
           pt: 3,
+          display: { xs: "none", md: "block" },
         }}
       >
         <Stack direction="row" justifyContent="start" spacing={2}>
@@ -361,7 +354,7 @@ const ClinetManagment = () => {
         </Stack>
         <Box mt={2}>
           <Table
-            columns={columns}
+            columns={columns as any}
             data={data}
             progressPending={false}
             pagination
@@ -377,6 +370,35 @@ const ClinetManagment = () => {
           />
         </Box>
       </Box>
+      <Box
+        sx={{
+          display: { xs: "block", md: "none" },
+        }}
+      >
+        <ClientMobileFilters />
+      </Box>
+      <Stack
+        sx={{
+          display: { xs: "block", md: "none" },
+        }}
+        direction="column"
+        spacing={2}
+        my={2}
+      >
+        {rawData.map((item, index) => (
+          <SingleBox
+            details={Object.keys(item)
+              .filter((key) => key !== "inviteStatusColor")
+              .map((key) => ({
+                heading: formatKeyToHeading(key),
+                value: String(item[key as keyof typeof item]),
+              }))}
+            title={item.name}
+            key={index}
+            chips={[item.deviceId, item.inviteStatus]}
+          />
+        ))}
+      </Stack>
       <Modal
         open={showDeleteModal}
         onClose={() => setShowDeleteModal(false)}

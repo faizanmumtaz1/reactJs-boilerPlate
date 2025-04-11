@@ -10,8 +10,9 @@ export default function SingleBox({
   chips: string[];
 }) {
   const getColor = (chip: string) => {
-    if (chip === "Active") return "success";
-    if (chip === "Inactive") return "error";
+    if (chip === "Active" || chip === "Active") return "success";
+    if (chip === "Inactive" || chip === "Archived") return "error";
+    if (chip === "Invite Sent") return "warning";
     return "default";
   };
   const getVariant = (chip: string) => {
