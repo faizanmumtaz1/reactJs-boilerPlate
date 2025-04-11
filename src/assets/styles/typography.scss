@@ -67,7 +67,7 @@ h5 {
   color: var(--text-primary, rgba(0, 0, 0, 0.87));
   font-size: 24px;
   font-style: normal;
-  font-weight: 450;
+  font-weight: 400;
   line-height: 133.4%;
   &.MuiTypography-root {
     color: var(--text-primary, rgba(0, 0, 0, 0.87));
@@ -91,6 +91,10 @@ h6 {
     font-weight: 500;
     line-height: 160%;
     letter-spacing: 0.15px;
+    @media (max-width: 600px) {
+      font-size: 17px;
+      font-weight: 400;
+    }
   }
 }
 .initialsLg {
@@ -511,6 +515,10 @@ h6 {
     line-height: 20px;
     letter-spacing: 0.14px;
     color: var(--text-primary, rgba(0, 0, 0, 0.87));
+    @media (max-width: 600px) {
+      font-size: 14px;
+      letter-spacing: 0.17px;
+    }
   }
   &.timeCaption {
     color: var(--text-secondary, rgba(0, 0, 0, 0.6));
@@ -519,6 +527,16 @@ h6 {
     font-weight: 400;
     line-height: 166%;
     letter-spacing: 0.4px;
+  }
+  &.sidebar-item-link-text {
+    color: var(--elevation-outlined, #e0e0e0);
+    font-size: 16px;
+    font-style: normal;
+    white-space: nowrap;
+    font-weight: 400;
+    text-transform: capitalize;
+    text-decoration: none;
+    width: 100%;
   }
 }
 .sidebar-item-link-text {

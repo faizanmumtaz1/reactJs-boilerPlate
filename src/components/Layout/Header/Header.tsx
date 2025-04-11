@@ -14,6 +14,7 @@ import {
   LogoutIcon,
   MenuIcon,
   NotificationIcon,
+  // SettingGrayIcon,
 } from "../../../assets/Images/svg";
 import Drawer from "../../common/Drawer/index";
 import NotificationDrawer from "../../NotificationDrawer/index";
@@ -23,7 +24,7 @@ import { useDispatch } from "react-redux";
 import { logout } from "../../../redux/slices/authSlice";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_HOME } from "../../../utils/constant";
-
+import useCheckMobileScreen from "../../../hooks/useCheckMobileScreen";
 interface BreadcrumbLink {
   label: string;
   href?: string;
@@ -40,9 +41,10 @@ const Header = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }: HeaderProps) => {
+  const isItMobile = useCheckMobileScreen();
   const [open, setOpen] = useState(false);
   const handleCloseNotificationDrawer = () => setOpen(false);
-
+  console.log(links);
   return (
     <div
       className={`header-wrapper ${
@@ -50,23 +52,34 @@ const Header = ({
       }`}
     >
       <div className="header-content">
-        <IconButton
-          size="large"
-          edge="start"
-          color="inherit"
-          aria-label="menu"
-          sx={{ mr: 2, display: { xs: "block", sm: "none" } }}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          <MenuIcon />
-        </IconButton>
-        <div className="header-left">
-          <Breadcrumb links={links} />
-        </div>
-        <div className="header-right">
-          <Typography variant="caption" className="caption">
-            Software Version 1.0
+        {isItMobile && (
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 0 }}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <MenuIcon />
+          </IconButton>
+        )}
+        {!isItMobile && (
+          <div className="header-left">
+            <Breadcrumb links={links} />
+          </div>
+        )}
+        {isItMobile && (
+          <Typography variant="h5" component="h5">
+            {links && links.length >= 1 ? links[0].label : ""}
           </Typography>
+        )}
+        <div className="header-right">
+          {!isItMobile && (
+            <Typography variant="caption" className="caption">
+              Software Version 1.0
+            </Typography>
+          )}
           <Button
             variant="outlined"
             className="icon-button"
@@ -77,8 +90,7 @@ const Header = ({
               <NotificationIcon />
             </Badge>
           </Button>
-
-          <ActionButton />
+          {!isItMobile && <ActionButton />}
         </div>
       </div>
       <Drawer open={open} onClose={() => setOpen(false)}>

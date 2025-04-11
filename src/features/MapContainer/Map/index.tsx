@@ -47,20 +47,22 @@ const MapEventHandler = ({
   return null;
 };
 
+interface MapViewProps {
+  style?: object;
+  openPopup?: boolean;
+  setOpenPopup: (value: boolean) => void;
+}
+
 const MapView = ({
   style = {},
   openPopup = false,
-  setOpenPopup = () => {},
-}: {
-  style?: object;
-  openPopup?: boolean;
-  setOpenPopup?: (value: boolean) => void;
-}) => {
+  setOpenPopup,
+}: MapViewProps) => {
   const markerRef = useRef<L.Marker | null>(null);
 
   useEffect(() => {
     if (openPopup && markerRef.current) {
-      markerRef.current.openPopup();
+      (markerRef.current as L.Marker).openPopup();
     }
   }, [openPopup]);
 
@@ -83,9 +85,8 @@ const MapView = ({
       />
       <Marker position={position} icon={redMarkerIcon} ref={markerRef}>
         <Popup
-          // onClose={() => setOpenPopup(false)}
           closeButton={false}
-          autoPan={true} // <-- Add this
+          autoPan={true}
           keepInView={true}
           className="leaflet-popup-outside"
           pane="popupPane"

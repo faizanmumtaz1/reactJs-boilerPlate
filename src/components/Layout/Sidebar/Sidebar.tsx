@@ -40,19 +40,21 @@ interface SidebarProps {
 const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }: SidebarProps) => {
   const linksList = [
     {
-      name: "Home",
+      name: "Map",
       path: ROUTE_MAP,
       icon: <ExploreIcon />,
       activePaths: [ROUTE_MAP],
+      isItMobile: true,
     },
     {
       name: "Dashboard",
       path: ROUTE_DASHBOARD,
       icon: <DashboardFillIcon />,
       activePaths: [ROUTE_DASHBOARD],
+      isItMobile: true,
     },
     {
-      name: "Defect Listing",
+      name: "Client Management",
       path: ROUTE_CLIENT_MANAGEMENT,
       icon: <PersonFillIcon />,
       activePaths: [
@@ -60,6 +62,7 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }: SidebarProps) => {
         ROUTE_ADD_NEW_CLIENT,
         ROUTE_EDIT_OR_VIEW_CLIENT,
       ],
+      isItMobile: true,
     },
     {
       name: "Device Management",
@@ -70,82 +73,97 @@ const Sidebar = ({ isMobileMenuOpen, setIsMobileMenuOpen }: SidebarProps) => {
         ROUTE_EDIT_OR_VIEW_DEVICE,
         ROUTE_ADD_DEVICE,
       ],
+      isItMobile: true,
     },
     {
       name: "Alert Creation",
       path: ROUTE_ALERT_CREATION,
       icon: <NotificationEditIcon />,
       activePaths: [ROUTE_ALERT_CREATION],
+      isItMobile: false,
     },
     {
       name: "Lock",
       path: ROUTE_ROLES_AND_PERMISSIONS_LISTING,
       icon: <LockPersonIcon />,
       activePaths: [ROUTE_ROLES_AND_PERMISSIONS_LISTING, ROUTE_ADD_NEW_USER],
+      isItMobile: false,
     },
     {
       name: "Reports",
       path: ROUTE_REPORTS,
       icon: <SettingInputIcon />,
       activePaths: [ROUTE_REPORTS],
+      isItMobile: false,
     },
     {
       name: "Active Service",
       path: ROUTE_ACTIVE_SERVICE,
       icon: <AddLinkIcon />,
       activePaths: [ROUTE_ACTIVE_SERVICE],
+      isItMobile: false,
     },
     {
       name: "Cloud Upload",
       path: ROUTE_REQUEST_PUSH_DATA_LISTING,
       icon: <CloudUploadIcon />,
       activePaths: [ROUTE_REQUEST_PUSH_DATA_LISTING, ROUTE_CREATE_NEW_REQUEST],
+      isItMobile: false,
     },
   ];
 
   const isItMobile = useCheckMobileScreen();
   const handleCloseSidebar = () => {
     setIsMobileMenuOpen(false);
-  }
+  };
   return (
     <div
-      className={`sidebar-wrapper ${isMobileMenuOpen ? "mobile-menu-open" : "mobile-menu-close"
-        }`}
+      className={`sidebar-wrapper ${
+        isMobileMenuOpen ? "mobile-menu-open" : "mobile-menu-close"
+      }`}
     >
       <div className="sidebar-header">
         <Link to={ROUTE_MAP}>
           <LogoIcon />
         </Link>
 
-        <IconButton
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          sx={{
-            display: { xs: "flex", sm: "none" },
-            p: 2,
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <CrossIconLight />
-        </IconButton>
+        {isItMobile && (
+          <IconButton
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            sx={{
+              display: "flex",
+              p: 2,
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <CrossIconLight />
+          </IconButton>
+        )}
       </div>
 
-      {!isItMobile ?
+      {!isItMobile ? (
         <ul className="sidebar-content">
           {linksList.map((link) => (
             <SidebarItem key={link.name} {...link} />
           ))}
-        </ul> :
-        <ul className="sidebar-content">
-          {linksList.map((link) => (
-            <SidebarItem key={link.name} {...link} handleCloseSidebar={handleCloseSidebar} />
-          ))}
         </ul>
-      }
-
+      ) : (
+        <ul className="sidebar-content">
+          {linksList.map(
+            (link) =>
+              link.isItMobile && (
+                <SidebarItem
+                  key={link.name}
+                  {...link}
+                  handleCloseSidebar={handleCloseSidebar}
+                />
+              )
+          )}
+        </ul>
+      )}
     </div>
   );
 };
 
 export default Sidebar;
-
