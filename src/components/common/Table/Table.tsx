@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import DataTable, { TableColumn } from "react-data-table-component";
-import { Box, Checkbox, IconButton, Typography } from "@mui/material";
+import { Box, Checkbox, IconButton } from "@mui/material";
 import "./table.scss";
 import DashboardChip from "../CustomChip/CustomChip";
 import { DeleteIcon } from "../../../assets/Images/svg";

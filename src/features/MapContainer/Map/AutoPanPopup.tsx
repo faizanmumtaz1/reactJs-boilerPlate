@@ -5,11 +5,11 @@ import { Popup } from "react-leaflet";
 const AutoPanPopup = ({
   position,
   children,
-  isOpen,
-}: {
+}: // isOpen = false,
+{
   position?: any;
   children: any;
-  isOpen: boolean;
+  isOpen?: boolean;
 }) => {
   const map = useMap();
 

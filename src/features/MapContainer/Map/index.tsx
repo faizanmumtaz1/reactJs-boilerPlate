@@ -50,17 +50,17 @@ const MapEventHandler = ({
 const MapView = ({
   style = {},
   openPopup = false,
-  setOpenPopup,
+  setOpenPopup = () => {},
 }: {
   style?: object;
   openPopup?: boolean;
-  setOpenPopup: (value: boolean) => void;
+  setOpenPopup?: (value: boolean) => void;
 }) => {
-  const markerRef = useRef(null);
+  const markerRef = useRef<L.Marker | null>(null);
 
   useEffect(() => {
     if (openPopup && markerRef.current) {
-      markerRef?.current?.openPopup();
+      markerRef.current.openPopup();
     }
   }, [openPopup]);
 
@@ -83,7 +83,7 @@ const MapView = ({
       />
       <Marker position={position} icon={redMarkerIcon} ref={markerRef}>
         <Popup
-          onClose={() => setOpenPopup(false)}
+          // onClose={() => setOpenPopup(false)}
           closeButton={false}
           autoPan={true} // <-- Add this
           keepInView={true}

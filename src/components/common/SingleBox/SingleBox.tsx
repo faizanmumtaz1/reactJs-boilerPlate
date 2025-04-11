@@ -1,4 +1,4 @@
-import { Box, Chip, Stack, Typography, useTheme } from "@mui/material";
+import { Box, Chip, Stack, Typography } from "@mui/material";
 
 export default function SingleBox({
   details = [],

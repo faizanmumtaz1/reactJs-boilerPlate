@@ -2,7 +2,6 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Divider,
   Avatar,
   ListItemIcon,
   Badge,
@@ -15,7 +14,6 @@ import {
   LogoutIcon,
   MenuIcon,
   NotificationIcon,
-  SettingGrayIcon,
 } from "../../../assets/Images/svg";
 import Drawer from "../../common/Drawer/index";
 import NotificationDrawer from "../../NotificationDrawer/index";
@@ -47,8 +45,9 @@ const Header = ({
 
   return (
     <div
-      className={`header-wrapper ${isMobileMenuOpen ? "is-mobile-menu-open" : "mobile-menu-closed"
-        }`}
+      className={`header-wrapper ${
+        isMobileMenuOpen ? "is-mobile-menu-open" : "mobile-menu-closed"
+      }`}
     >
       <div className="header-content">
         <IconButton
@@ -83,7 +82,9 @@ const Header = ({
         </div>
       </div>
       <Drawer open={open} onClose={() => setOpen(false)}>
-        <NotificationDrawer handleCloseNotificationDrawer={handleCloseNotificationDrawer}/>
+        <NotificationDrawer
+          handleCloseNotificationDrawer={handleCloseNotificationDrawer}
+        />
       </Drawer>
     </div>
   );
@@ -104,7 +105,6 @@ const ActionButton = () => {
     setOpen(false);
     setAnchorEl(null);
   };
-
 
   const handleLogout = () => {
     dispatch(logout());
@@ -188,5 +188,3 @@ const ActionButton = () => {
     </div>
   );
 };
-
-
