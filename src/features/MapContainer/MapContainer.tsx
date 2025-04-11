@@ -13,7 +13,14 @@ import {
   FilterIcon,
   ArrowBackIcon,
 } from "../../assets/Images/svg";
-import { Box, Divider, IconButton, Typography } from "@mui/material";
+import {
+  Box,
+  Divider,
+  IconButton,
+  InputBase,
+  Stack,
+  Typography,
+} from "@mui/material";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import SearchBar from "../../components/common/SearchBar/SearchBar";
 import DefectsList from "./DefectsList/DefectsList";
@@ -90,28 +97,37 @@ const MapContainer = () => {
       </div>
 
       {!isDefectsListOpen && isItMobile && (
-        <Box
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
+          gap={1}
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
+            width: "100%",
+            padding: " 0px 24px 16px 24px",
           }}
         >
-          <Typography variant="caption" className="text-xs path-name">
+          <Typography sx={{ fontSize: 14 }} color="text.secondary">
             View defects by simply tapping or through the defects panel.
           </Typography>
 
           <Button
             variant="outlined"
-            color="info"
+            color="secondary"
             className="rounded-full-button"
-            sx={{}}
+            sx={{
+              minWidth: 146,
+              padding: "6px 16px",
+              marginLeft: "auto",
+              maxHeight: 45,
+            }}
             onClick={() => setIsDefectsListOpen(!isDefectsListOpen)}
             endIcon={<DefectIcon />}
+            size="small"
           >
             View Defects
           </Button>
-        </Box>
+        </Stack>
       )}
 
       <div className="filters-container">
@@ -138,8 +154,7 @@ const MapContainer = () => {
               },
             }}
           >
-            {" "}
-            <FilterIcon />{" "}
+            <FilterIcon />
           </IconButton>
         )}
 
@@ -438,6 +453,7 @@ const MapContainer = () => {
             ))}
           </ul>
         </div>
+
         <div className="svarity-container">
           <div className="svarity-item-wrapper">
             <CustomSelect
