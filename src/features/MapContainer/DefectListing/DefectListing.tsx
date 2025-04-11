@@ -172,7 +172,7 @@ const DefectListingScreen = () => {
         >
           <ArrowBackIcon />
         </Button>
-        <Typography variant="h5">Defect Listing</Typography>
+        <Typography variant="h5">Defects Listing</Typography>
       </div>
       <div className="defect-listing-body">
         <div className="defect-listing-table-container">

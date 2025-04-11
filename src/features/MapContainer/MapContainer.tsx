@@ -78,10 +78,10 @@ const MapContainer = () => {
     { label: "AL - ...", percentage: 8, color: "classification-al" },
   ];
   const severityOptions = [
-    { label: "1 - 250", value: "1-250" },
-    { label: "3 - 856 (20%)", value: "3-856" },
-    { label: "5 - 3124 (71%)", value: "5-3124" },
-    { label: "N/A...", value: "N/A..." },
+    { label: "Severity (1-Hight, 5- Low)", value: "1-250" },
+    { label: "Severity (1-Hight, 5- Low)", value: "3-856" },
+    { label: "Severity (1-Hight, 5- Low)", value: "5-3124" },
+    { label: "Severity (1-Hight, 5- Low)", value: "N/A..." },
   ];
   return (
     <div className="map-wrapper">
@@ -445,12 +445,13 @@ const MapContainer = () => {
               onChange={() => {}}
               name="status"
               id="status-select"
+              value={severityOptions[0].value}
               rounded="none"
               variant="standard"
               size="small"
               fullWidth={false}
               className="svarity-select"
-              WrapperClassName="svarity-select-wrapper"
+              WrapperClassName="svarity-select-wrapper svarity-select-wrapper-top"
               sx={{
                 "& .MuiOutlinedInput-notchedOutline": {
                   border: "none",

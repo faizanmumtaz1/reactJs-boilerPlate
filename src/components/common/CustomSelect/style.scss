@@ -16,6 +16,9 @@
           border: none;
         }
       }
+      &.svarity-select-wrapper-top {
+        min-width: 185px;
+      }
       .notranslate {
         color: var(--text-secondary);
         position: relative;
@@ -30,7 +33,7 @@
           transform: none;
           font-size: 12px;
           font-weight: 400;
-          content: "Select";
+          content: "Classification";
           z-index: 1000;
         }
       }
