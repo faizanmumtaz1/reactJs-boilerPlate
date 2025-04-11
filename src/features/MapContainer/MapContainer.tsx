@@ -19,7 +19,7 @@ import SearchBar from "../../components/common/SearchBar/SearchBar";
 import DefectsList from "./DefectsList/DefectsList";
 import MapView from "./Map";
 import Button from "../../components/common/Button/Button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useCheckMobileScreen from "../../hooks/useCheckMobileScreen";
 import Drawer from "@mui/material/Drawer";
 import SvarityItem from "./SaverityItem";
@@ -29,6 +29,13 @@ const MapContainer = () => {
   const isItMobile = useCheckMobileScreen();
   const [showFiltersOnMobile, setShowFiltersOnMobile] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [showDetails, setShowDetails] = useState(false);
+
+  useEffect(() => {
+    if (!isItMobile) {
+      setShowDetails(true);
+    }
+  }, [isItMobile]);
 
   const pathDetails = [
     {
@@ -439,9 +446,19 @@ const MapContainer = () => {
             onClick={() => setIsPopupOpen(true)}
           />
         )}
-        <MapView openPopup={isPopupOpen} setOpenPopup={setIsPopupOpen} />
+        <MapView
+          style={{
+            borderRadius: isItMobile ? "0px" : "24px",
+          }}
+          openPopup={isPopupOpen}
+          setOpenPopup={setIsPopupOpen}
+        />
       </div>
       <div className="map-controls-container">
+        <div
+          className="toggle-line"
+          onClick={() => setShowDetails((prev) => !prev)}
+        />
         <div className="path-details-container">
           <ul className="path-details-list">
             {pathDetails.map((item) => (
@@ -450,49 +467,51 @@ const MapContainer = () => {
           </ul>
         </div>
 
-        <div className="svarity-container">
-          <div className="svarity-item-wrapper">
-            <CustomSelect
-              options={severityOptions}
-              onChange={() => {}}
-              name="status"
-              id="status-select"
-              value={severityOptions[0].value}
-              rounded="none"
-              variant="standard"
-              size="small"
-              fullWidth={false}
-              className="svarity-select"
-              WrapperClassName="svarity-select-wrapper svarity-select-wrapper-top"
-              sx={{
-                "& .MuiOutlinedInput-notchedOutline": {
-                  border: "none",
-                },
-              }}
-            />
-            <SvarityItem data={severityData} />
+        {showDetails && (
+          <div className="svarity-container">
+            <div className="svarity-item-wrapper">
+              <CustomSelect
+                options={severityOptions}
+                onChange={() => {}}
+                name="status"
+                id="status-select"
+                value={severityOptions[0].value}
+                rounded="none"
+                variant="standard"
+                size="small"
+                fullWidth={false}
+                className="svarity-select"
+                WrapperClassName="svarity-select-wrapper svarity-select-wrapper-top"
+                sx={{
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    border: "none",
+                  },
+                }}
+              />
+              <SvarityItem data={severityData} />
+            </div>
+            <div className="svarity-item-wrapper">
+              <CustomSelect
+                options={severityOptions}
+                onChange={() => {}}
+                name="status"
+                id="status-select"
+                rounded="none"
+                variant="standard"
+                size="small"
+                fullWidth={false}
+                className="svarity-select"
+                WrapperClassName="svarity-select-wrapper"
+                sx={{
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    border: "none",
+                  },
+                }}
+              />
+              <SvarityItem data={classificationData} />
+            </div>
           </div>
-          <div className="svarity-item-wrapper">
-            <CustomSelect
-              options={severityOptions}
-              onChange={() => {}}
-              name="status"
-              id="status-select"
-              rounded="none"
-              variant="standard"
-              size="small"
-              fullWidth={false}
-              className="svarity-select"
-              WrapperClassName="svarity-select-wrapper"
-              sx={{
-                "& .MuiOutlinedInput-notchedOutline": {
-                  border: "none",
-                },
-              }}
-            />
-            <SvarityItem data={classificationData} />
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );
