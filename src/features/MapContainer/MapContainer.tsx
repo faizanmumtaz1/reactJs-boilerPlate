@@ -13,14 +13,7 @@ import {
   FilterIcon,
   ArrowBackIcon,
 } from "../../assets/Images/svg";
-import {
-  Box,
-  Divider,
-  IconButton,
-  InputBase,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Divider, IconButton, Stack, Typography } from "@mui/material";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import SearchBar from "../../components/common/SearchBar/SearchBar";
 import DefectsList from "./DefectsList/DefectsList";

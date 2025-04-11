@@ -211,9 +211,12 @@ const ViewMap = () => {
           )}
 
           {isDefectsListOpen && (
-            <DefectsList handleDefectsListClose={handleDefectsListClose} />
+            <DefectsList
+              handleDefectsListClose={handleDefectsListClose}
+              onClick={() => {}}
+            />
           )}
-          <MapView />
+          <MapView setOpenPopup={() => {}} />
         </div>
         {/* <div className="map-controls-container">
         <div className="path-details-container">
