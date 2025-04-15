@@ -4,44 +4,35 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_ROLES_AND_PERMISSIONS_LISTING } from "../../utils/constant";
 import InputField from "../../components/common/InputField/InputField";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import Button from "../../components/common/Button/Button";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { AddUserFormValues } from "../../utils/types";
+import { addNewUserSchema } from "../../schemas/addNewUserSchema";
 
-const clientData = [
-  {
-    id: 1,
-    label: "Username",
-    name: "username",
-    type: "text",
-  },
-  {
-    id: 2,
-    label: "Email",
-    name: "email",
-    type: "email",
-  },
-  {
-    id: 3,
-    label: "Phone Number",
-    name: "phoneNumber",
-    type: "tel",
-  },
-  {
-    id: 4,
-    label: "Role",
-    name: "role",
-    type: "select",
-    options: [
-      { id: 1, label: "Admin", value: "admin" },
-      { id: 2, label: "User", value: "user" },
-    ],
-  },
-];
 
 const AddNewUser = () => {
   const navigate = useNavigate();
-  const { control } = useForm();
+  const { control, handleSubmit } = useForm<AddUserFormValues>({
+    resolver: yupResolver(addNewUserSchema),
+    mode: "onChange",
+    defaultValues: {
+      userName: "",
+      email: "",
+      phoneNumber: "",
+      roleDescription: ""
+    },
+  });
+
+  const handleAddUser = (data: AddUserFormValues) => {
+    console.log('Form Values:', {
+      userName: data.userName,
+      email: data.email,
+      phoneNumber: data.phoneNumber,
+      roleDescription: data.roleDescription
+    });
+  }
   return (
     <Box bgcolor="#F8F9FB" width="100%" height="calc(100vh - 64px)">
       <Stack
@@ -66,36 +57,47 @@ const AddNewUser = () => {
         </IconButton>
         <Typography variant="h5">Add New User</Typography>
       </Stack>
+      <form onSubmit={handleSubmit(handleAddUser)}>
+        <Box maxWidth="828px" width="100%" margin="0 auto" mt="36px">
+          <Stack direction="row" flexWrap="wrap" gap="12px" mt="16px">
+            <InputField
+              control={control}
+              name="userName"
+              label="Email"
+              type="text"
+              sx={{ mb: 2 }}
+            />
+            <InputField
+              control={control}
+              name="email"
+              label="Email"
+              type="text"
+              sx={{ mb: 2 }}
+            />
+            <InputField
+              control={control}
+              name="phoneNumber"
+              label="Phone Number"
+              type="text"
+              sx={{ mb: 2 }}
+            />
 
-      <Box maxWidth="828px" width="100%" margin="0 auto" mt="36px">
-        <Stack direction="row" flexWrap="wrap" gap="12px" mt="16px">
-          {clientData.map((item) => (
-            <>
-              {item.type === "select" ? (
+            <Controller
+              name="roleDescription"
+              control={control}
+              render={({ field, fieldState: { error } }) => (
                 <CustomSelect
-                  label={item.label}
-                  options={item.options || []}
-                  onChange={() => {}}
-                  name={item.name}
-                  id={item.id.toString()}
-                  rounded="medium"
-                  variant="outlined"
-                  size="large"
-                  formControlStyling={{
-                    width: "100%",
-                    maxWidth: "calc(50% - 6px)",
-                  }}
-                  sx={{
-                    background: "white",
-                  }}
-                />
-              ) : (
-                <InputField
-                  key={item.id}
-                  name={item.name}
-                  control={control}
-                  label={item.label}
-                  type={item.type}
+                  label="Role"
+                  options={[
+                    { label: "Admin", value: "admin" },
+                    { label: "User", value: "user" },
+                    { label: "Manager", value: "manager" },
+                    { label: "Supervisor", value: "supervisor" }
+                  ]}
+                  onChange={field.onChange}
+                  value={field.value}
+                  error={!!error}
+                  helperText={error?.message}
                   sx={{
                     width: "100%",
                     maxWidth: "calc(50% - 6px)",
@@ -103,38 +105,39 @@ const AddNewUser = () => {
                   }}
                 />
               )}
-            </>
-          ))}
-        </Stack>
-      </Box>
+            />
 
-      <Stack
-        direction="row"
-        justifyContent="end"
-        mt="24px"
-        gap="12px"
-        bgcolor="#fff"
-        p="16px 24px"
-        width="calc(100% - 88px)"
-        position="fixed"
-        bottom="0"
+          </Stack>
+        </Box>
+
+        <Stack
+          direction="row"
+          justifyContent="end"
+          mt="24px"
+          gap="12px"
+          bgcolor="#fff"
+          p="16px 24px"
+          width="calc(100% - 88px)"
+          position="fixed"
+          bottom="0"
         // left="0"
-      >
-        <Button
-          variant="outlined"
-          color="secondary"
-          className="rounded-full-button"
         >
-          Cancel
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          className="rounded-full-button"
-        >
-          Invite User
-        </Button>
-      </Stack>
+          <Button
+            variant="outlined"
+            color="secondary"
+            className="rounded-full-button"
+          >
+            Cancel
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
+            className="rounded-full-button"
+          >
+            Invite User
+          </Button>
+        </Stack>
+      </form>
     </Box>
   );
 };
