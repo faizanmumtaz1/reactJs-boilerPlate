@@ -4,7 +4,9 @@ class CustomerAPI extends BaseAPIService {
     login = (data: any) => {
         return this.post("/login", data);
     };
-
+    getUserList = () => {
+        return this.get("/users/");
+    };
 }
 
 export const customerAPI = new CustomerAPI();

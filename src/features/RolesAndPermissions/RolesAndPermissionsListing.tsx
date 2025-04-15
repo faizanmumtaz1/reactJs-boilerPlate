@@ -21,9 +21,12 @@ import "./style.scss";
 import { useState } from "react";
 import Modal from "../../components/common/Modal/Modal";
 import RolesAndPermissionsTable from "./RolesAndPermissionsTable";
+import useGetAllUsers from "../../react-query-hooks/useGetAllUsers";
 
 const RolesAndPermissionsListing = () => {
   const navigate = useNavigate();
+  const {data: usersData} = useGetAllUsers();
+  console.log(usersData, 'heheheh')
 
   const [tabValue, setTabValue] = useState(0);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
