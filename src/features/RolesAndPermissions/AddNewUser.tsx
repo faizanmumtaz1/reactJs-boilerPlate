@@ -11,7 +11,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { AddNewUserInput } from "../../schemas/addNewUserSchema";
 import { addNewUserSchema } from "../../schemas/addNewUserSchema";
 import { useMutateAddUser } from "../../react-query-hooks/useMutateAddUser";
-import { toast } from "react-toastify";
+import toastHelper from "../../utils/toastifyHelper";
 const AddNewUser = () => {
   const navigate = useNavigate();
   const { mutateAsync } = useMutateAddUser();
@@ -45,10 +45,10 @@ const AddNewUser = () => {
       const response = await mutateAsync(userData);
       console.log("response", response);
       navigate(ROUTE_ROLES_AND_PERMISSIONS_LISTING);
-      toast.success("User added successfully");
+      toastHelper.success("User added successfully");
     } catch (error) {
       console.log("error", error);
-      toast.error("User addition failed");
+      toastHelper.error("User addition failed");
     }
   };
   return (
