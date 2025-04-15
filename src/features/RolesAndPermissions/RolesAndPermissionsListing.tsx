@@ -27,8 +27,8 @@ import { useForm } from "react-hook-form";
 const RolesAndPermissionsListing = () => {
   const navigate = useNavigate();
   const { control } = useForm();
-  const {data: usersData} = useGetAllUsers();
-  console.log(usersData, 'heheheh')
+  const { data: usersData } = useGetAllUsers();
+  console.log(usersData, "heheheh");
 
   const [tabValue, setTabValue] = useState(0);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -62,11 +62,21 @@ const RolesAndPermissionsListing = () => {
     {
       name: <Typography variant="body2">Actions</Typography>,
       selector: (row: any) => row.actions,
+      cell: () => (
+        <Stack direction="row" spacing={1}>
+          <IconButton>
+            <ModeEditOutlineIcon sx={{ fontSize: 18 }} />
+          </IconButton>
+          <IconButton>
+            <DeleteIcon sx={{ fontSize: 18 }} />
+          </IconButton>
+        </Stack>
+      ),
     },
   ];
 
-  const data = [
-    {
+  const data = usersData?.map((user: any) => {
+    return {
       name: (
         <Stack direction="row" spacing={1} alignItems="center">
           <Avatar
@@ -74,9 +84,11 @@ const RolesAndPermissionsListing = () => {
             src="/assets/images/man.jpeg"
           />
           <Box>
-            <Typography variant="body2">Name</Typography>
+            <Typography variant="body2">
+              {user.forename} {user.surname}
+            </Typography>
             <Typography variant="body2" color="text.secondary">
-              jamed@gmail.com
+              {user.email}
             </Typography>
           </Box>
         </Stack>
@@ -85,8 +97,8 @@ const RolesAndPermissionsListing = () => {
       status: (
         <Chip
           sx={{ cursor: "default" }}
-          label="Active"
-          color="success"
+          label={user.is_active ? "Active" : "Inactive"}
+          color={user.is_active ? "success" : "error"}
           variant="outlined"
         />
       ),
@@ -102,115 +114,9 @@ const RolesAndPermissionsListing = () => {
           }}
         />
       ),
-      dateAdded: <Typography variant="body2">Jun 23, 23</Typography>,
-      actions: (
-        <Stack direction="row" spacing={1}>
-          <IconButton>
-            <ModeEditOutlineIcon sx={{ fontSize: 18 }} />
-          </IconButton>
-          <IconButton>
-            <DeleteIcon sx={{ fontSize: 18 }} />
-          </IconButton>
-        </Stack>
-      ),
-    },
-    {
-      name: (
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Avatar
-            sx={{ width: 32, height: 32 }}
-            src="/assets/images/man.jpeg"
-          />
-          <Box>
-            <Typography variant="body2">Alice</Typography>
-            <Typography variant="body2" color="text.secondary">
-              alice@gmail.com
-            </Typography>
-          </Box>
-        </Stack>
-      ),
-      contactNo: <Typography variant="body2">012 9201 3820</Typography>,
-      status: (
-        <Chip
-          sx={{ cursor: "default" }}
-          label="Inactive"
-          color="error"
-          variant="outlined"
-        />
-      ),
-      role: (
-        <Chip
-          label="Super Admin"
-          sx={{
-            backgroundColor: "var(--secondary-50)",
-            color: "var(--secondary-dark)",
-            borderRadius: "8px",
-            border: "1px solid var(--secondary-dark)",
-            cursor: "default",
-          }}
-        />
-      ),
-      dateAdded: <Typography variant="body2">Aug 12, 23</Typography>,
-      actions: (
-        <Stack direction="row" spacing={1}>
-          <IconButton>
-            <ModeEditOutlineIcon sx={{ fontSize: 18 }} />
-          </IconButton>
-          <IconButton>
-            <DeleteIcon sx={{ fontSize: 18 }} />
-          </IconButton>
-        </Stack>
-      ),
-    },
-    {
-      name: (
-        <Stack direction="row" spacing={1} alignItems="center">
-          <Avatar
-            sx={{ width: 32, height: 32 }}
-            src="/assets/images/man.jpeg"
-          />
-          <Box>
-            <Typography variant="body2">Alice</Typography>
-            <Typography variant="body2" color="text.secondary">
-              alice@gmail.com
-            </Typography>
-          </Box>
-        </Stack>
-      ),
-      contactNo: <Typography variant="body2">012 9201 3820</Typography>,
-      status: (
-        <Chip
-          sx={{ cursor: "default" }}
-          label="Pending"
-          color="warning"
-          variant="outlined"
-        />
-      ),
-      role: (
-        <Chip
-          label="Super Admin"
-          sx={{
-            backgroundColor: "var(--secondary-50)",
-            color: "var(--secondary-dark)",
-            borderRadius: "8px",
-            border: "1px solid var(--secondary-dark)",
-            cursor: "default",
-          }}
-        />
-      ),
-      dateAdded: <Typography variant="body2">Aug 12, 23</Typography>,
-      actions: (
-        <Stack direction="row" spacing={1}>
-          <IconButton>
-            <ModeEditOutlineIcon sx={{ fontSize: 18 }} />
-          </IconButton>
-          <IconButton>
-            <DeleteIcon sx={{ fontSize: 18 }} />
-          </IconButton>
-        </Stack>
-      ),
-    },
-  ];
+      dateAdded: <Typography variant="body2">{user.email_verified}</Typography>,
+    };
+  });
 
   const severityOptions = [
     { label: "1 - 250", value: "1-250" },
@@ -218,6 +124,7 @@ const RolesAndPermissionsListing = () => {
     { label: "5 - 3124 (71%)", value: "5-3124" },
     { label: "N/A...", value: "N/A..." },
   ];
+
   return (
     <Box
       sx={{

@@ -19,35 +19,28 @@ const AddNewUser = () => {
     resolver: yupResolver(addNewUserSchema),
     mode: "onChange",
     defaultValues: {
-      userName: "",
+      forename: "",
+      surname: "",
       email: "",
-      phoneNumber: "",
-      roleDescription: undefined,
+      organisation_name: "",
+      is_active: false,
+      password: "",
+      role_name: undefined,
     },
   });
 
   const handleAddUser = async (data: AddNewUserInput) => {
-    const { phoneNumber, ...rest } = data;
     const userData = {
-      ...rest,
-      forename: data.userName,
-      surname: data.userName,
-      email: data.email,
-      is_active: true,
+      ...data,
       email_verified: "2025-04-15T10:24:59.151Z",
-      password: "123456",
-      organisation_name: "Arres",
-      role_name: data.roleDescription,
     };
     console.log("userData", userData);
 
     try {
-      const response = await mutateAsync(userData);
-      console.log("response", response);
+      await mutateAsync(userData);
       navigate(ROUTE_ROLES_AND_PERMISSIONS_LISTING);
       toastHelper.success("User added successfully");
     } catch (error) {
-      console.log("error", error);
       toastHelper.error("User addition failed");
     }
   };
@@ -80,8 +73,15 @@ const AddNewUser = () => {
           <Stack direction="row" flexWrap="wrap" gap="12px" mt="16px">
             <InputField
               control={control}
-              name="userName"
-              label="Username"
+              name="forename"
+              label="Forename"
+              type="text"
+              sx={{ mb: 2 }}
+            />
+            <InputField
+              control={control}
+              name="surname"
+              label="Surname"
               type="text"
               sx={{ mb: 2 }}
             />
@@ -92,17 +92,38 @@ const AddNewUser = () => {
               type="email"
               sx={{ mb: 2 }}
             />
-            <InputField
-              control={control}
-              name="phoneNumber"
-              label="Phone Number"
-              type="number"
-              sx={{ mb: 2 }}
-            />
-
             <CustomSelect
               control={control}
-              name="roleDescription"
+              name="is_active"
+              variant="outlined"
+              rounded="medium"
+              size="large"
+              label="Is Active"
+              options={[
+                { label: "Active", value: "true" },
+                { label: "Inactive", value: "false" },
+              ]}
+              sx={{
+                width: "100%",
+              }}
+            />
+            <InputField
+              control={control}
+              name="password"
+              label="Password"
+              type="password"
+              sx={{ mb: 2 }}
+            />
+            <InputField
+              control={control}
+              name="organisation_name"
+              label="Organisation Name"
+              type="text"
+              sx={{ mb: 2 }}
+            />
+            <CustomSelect
+              control={control}
+              name="role_name"
               variant="outlined"
               rounded="medium"
               size="large"
