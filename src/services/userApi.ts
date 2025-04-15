@@ -8,7 +8,7 @@ class CustomerAPI extends BaseAPIService {
         return this.get("/users/");
     };
     addNewUser = (data: any) => {
-        return this.post("/users", data);
+        return this.post("/users/", data);
     };
 }
 
