@@ -12,7 +12,7 @@ import { ArrowBackIcon, FilterIcon } from "../../assets/Images/svg";
 import Button from "../../components/common/Button/Button";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import { useState } from "react";
-
+import { useForm } from "react-hook-form";
 const severityOptions = [
   { label: "1 - 250", value: "1-250" },
   { label: "3 - 856 (20%)", value: "3-856" },
@@ -22,7 +22,7 @@ const severityOptions = [
 
 export default function ClientMobileFilters() {
   const [showFiltersOnMobile, setShowFiltersOnMobile] = useState(false);
-
+  const { control } = useForm();
   return (
     <>
       <Box display="flex" alignItems="center" my={1}>
@@ -97,7 +97,7 @@ export default function ClientMobileFilters() {
           <CustomSelect
             label="Client"
             options={severityOptions}
-            onChange={() => {}}
+            control={control}
             defaultValue="age"
             name="client"
             id="client-select"
@@ -110,10 +110,11 @@ export default function ClientMobileFilters() {
             size="medium"
             sx={{ mb: 3 }}
           />
+
           <CustomSelect
             label="Status"
             options={severityOptions}
-            onChange={() => {}}
+            control={control}
             defaultValue="age"
             name="status"
             id="status-select"
@@ -129,7 +130,7 @@ export default function ClientMobileFilters() {
           <CustomSelect
             label="Device"
             options={severityOptions}
-            onChange={() => {}}
+            control={control}
             defaultValue="age"
             name="device"
             id="device-select"
@@ -145,7 +146,7 @@ export default function ClientMobileFilters() {
           <CustomSelect
             label="Date Range"
             options={severityOptions}
-            onChange={() => {}}
+            control={control}
             defaultValue="age"
             name="date-range"
             id="date-range-select"

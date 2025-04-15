@@ -37,13 +37,8 @@ const defectTypeOptions = [
 
 const AddNewReport = () => {
   const [defectType, setDefectType] = React.useState<string[]>([]);
-  const [defectSeverity, setDefectSeverity] = React.useState<string>("");
-
   const handleDefectTypeChange = (value: string[]) => {
     setDefectType(value);
-  };
-  const handleDefectSeverityChange = (value: string) => {
-    setDefectSeverity(value);
   };
   const navigate = useNavigate();
   const { control } = useForm();
@@ -125,7 +120,7 @@ const AddNewReport = () => {
           <CustomSelect
             label="Select Scanned Device (optional)"
             options={clientOptions}
-            onChange={() => {}}
+            control={control}
             name="scannedDevice"
             id="scanned-device-select"
             rounded="medium"
@@ -136,11 +131,10 @@ const AddNewReport = () => {
           <CustomSelect
             label="Select Report Format"
             options={clientOptions}
-            onChange={handleDefectSeverityChange}
+            control={control}
             name="reportFormat"
             id="report-format-select"
             rounded="medium"
-            value={defectSeverity}
             variant="outlined"
             size="large"
             fullWidth={true}

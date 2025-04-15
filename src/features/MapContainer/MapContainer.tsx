@@ -24,7 +24,9 @@ import useCheckMobileScreen from "../../hooks/useCheckMobileScreen";
 import Drawer from "@mui/material/Drawer";
 import SvarityItem from "./SaverityItem";
 import PathDetailsItem from "./PathDetailitem";
+import { useForm } from "react-hook-form";
 const MapContainer = () => {
+  const { control } = useForm();
   const [isDefectsListOpen, setIsDefectsListOpen] = useState(false);
   const isItMobile = useCheckMobileScreen();
   const [showFiltersOnMobile, setShowFiltersOnMobile] = useState(false);
@@ -166,7 +168,7 @@ const MapContainer = () => {
             <CustomSelect
               label="Client Selection"
               options={severityOptions}
-              onChange={() => {}}
+              control={control}
               defaultValue="age"
               name="severity"
               id="severity-select"
@@ -181,7 +183,7 @@ const MapContainer = () => {
             <CustomSelect
               label="Region"
               options={severityOptions}
-              onChange={() => {}}
+              control={control}
               defaultValue="age"
               name="severity"
               id="severity-select"
@@ -196,7 +198,7 @@ const MapContainer = () => {
             <CustomSelect
               label="Defect Type"
               options={severityOptions}
-              onChange={() => {}}
+              control={control}
               defaultValue="age"
               name="severity"
               id="severity-select"
@@ -211,7 +213,7 @@ const MapContainer = () => {
             <CustomSelect
               label="Device"
               options={severityOptions}
-              onChange={() => {}}
+              control={control}
               name="device"
               className=""
               rounded="medium"
@@ -223,7 +225,7 @@ const MapContainer = () => {
             <CustomSelect
               label="Showing"
               options={severityOptions}
-              onChange={() => {}}
+              control={control}
               name="showing"
               id="showing"
               fullWidth={true}
@@ -275,7 +277,7 @@ const MapContainer = () => {
                 <CustomSelect
                   label="Severity"
                   options={severityOptions}
-                  onChange={() => {}}
+                  control={control}
                   defaultValue="age"
                   name="severity"
                   id="severity-select"
@@ -291,7 +293,7 @@ const MapContainer = () => {
                 <CustomSelect
                   label="Severity"
                   options={severityOptions}
-                  onChange={() => {}}
+                  control={control}
                   defaultValue="age"
                   name="severity"
                   id="severity-select"
@@ -307,7 +309,7 @@ const MapContainer = () => {
                 <CustomSelect
                   label="Severity"
                   options={severityOptions}
-                  onChange={() => {}}
+                  control={control}
                   defaultValue="age"
                   name="severity"
                   id="severity-select"
@@ -323,7 +325,7 @@ const MapContainer = () => {
                 <CustomSelect
                   label="Severity"
                   options={severityOptions}
-                  onChange={() => {}}
+                  control={control}
                   defaultValue="age"
                   name="severity"
                   id="severity-select"
@@ -472,10 +474,9 @@ const MapContainer = () => {
             <div className="svarity-item-wrapper">
               <CustomSelect
                 options={severityOptions}
-                onChange={() => {}}
+                control={control}
                 name="status"
                 id="status-select"
-                value={severityOptions[0].value}
                 rounded="none"
                 variant="standard"
                 size="small"
@@ -493,7 +494,7 @@ const MapContainer = () => {
             <div className="svarity-item-wrapper">
               <CustomSelect
                 options={severityOptions}
-                onChange={() => {}}
+                control={control}
                 name="status"
                 id="status-select"
                 rounded="none"

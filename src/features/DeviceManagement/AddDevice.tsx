@@ -160,11 +160,11 @@ const AddDevice = () => {
             More Details
           </Typography>
           <CustomSelect
-            label="Select a Client"
+            label="Client Name"
             options={clientOptions}
-            onChange={() => {}}
-            name="Select a Client"
-            id="status-select"
+            control={control}
+            name="clientName"
+            id="clientName-select"
             rounded="medium"
             variant="outlined"
             size="large"

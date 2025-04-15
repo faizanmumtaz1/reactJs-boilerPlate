@@ -219,20 +219,19 @@ const AddNewService = () => {
               width="300px"
               placeholder="Name, client, ID..."
             />
-
             <CustomSelect
               label="Month"
               options={monthOptions}
-              onChange={() => {}}
+              control={control}
               name="month"
               id="month-select"
               rounded="medium"
               variant="outlined"
-              size="medium"
+              size="large"
+              fullWidth={true}
               sx={{
-                minWidth: "180px",
+                background: "white",
               }}
-              fullWidth={false}
             />
           </Stack>
           <Box>

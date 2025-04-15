@@ -7,9 +7,11 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_ADD_ALERT } from "../../utils/constant";
+import { useForm } from "react-hook-form";
 
 const AlertCreation = () => {
   const navigate = useNavigate();
+  const { control } = useForm();
   const columns = [
     {
       name: (
@@ -341,45 +343,45 @@ const AlertCreation = () => {
             <CustomSelect
               label="Type Of Issues"
               options={severityOptions}
-              onChange={() => {}}
-              name="status"
-              id="status-select"
+              control={control}
+              name="clientName"
+              id="clientName-select"
               rounded="medium"
               variant="outlined"
-              size="medium"
+              size="large"
+              fullWidth={true}
               sx={{
-                minWidth: "180px",
+                background: "white",
               }}
-              fullWidth={false}
             />
             <CustomSelect
               label="Devices"
               options={severityOptions}
-              onChange={() => {}}
-              name="region"
-              id="region-select"
+              control={control}
+              name="clientName"
+              id="clientName-select"
               rounded="medium"
               variant="outlined"
-              size="medium"
+              size="large"
+              fullWidth={true}
               sx={{
-                minWidth: "180px",
+                background: "white",
               }}
-              fullWidth={false}
             />
           </Stack>
           <CustomSelect
             label="Month"
             options={severityOptions}
-            onChange={() => {}}
+            control={control}
             name="month"
-            id="month-select  "
+            id="month-select"
             rounded="medium"
             variant="outlined"
-            size="medium"
+            size="large"
+            fullWidth={true}
             sx={{
-              minWidth: "130px",
+              background: "white",
             }}
-            fullWidth={false}
           />
         </Stack>
         <Box>

@@ -21,7 +21,7 @@ import Modal from "../../components/common/Modal/Modal";
 import Button from "../../components/common/Button/Button";
 import SingleBox from "../../components/common/SingleBox/SingleBox";
 import ClientMobileFilters from "./ClientMobileFilters";
-
+import { useForm } from "react-hook-form";
 type ClientData = {
   name: string;
   deviceId: string;
@@ -50,7 +50,7 @@ type ClientRow = {
 
 const ClinetManagment = () => {
   const navigate = useNavigate();
-
+  const { control } = useForm();
   const [tabValue, setTabValue] = useState(0);
 
   const columns: {
@@ -322,7 +322,7 @@ const ClinetManagment = () => {
           <CustomSelect
             label="Status"
             options={severityOptions}
-            onChange={() => {}}
+            control={control}
             name="status"
             id="status-select"
             rounded="medium"
@@ -338,7 +338,7 @@ const ClinetManagment = () => {
           <CustomSelect
             label="Region"
             options={severityOptions}
-            onChange={() => {}}
+            control={control}
             name="region"
             id="region-select"
             rounded="medium"
