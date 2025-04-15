@@ -4,35 +4,53 @@ import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_ROLES_AND_PERMISSIONS_LISTING } from "../../utils/constant";
 import InputField from "../../components/common/InputField/InputField";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import Button from "../../components/common/Button/Button";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { AddUserFormValues } from "../../utils/types";
+import { AddNewUserInput } from "../../schemas/addNewUserSchema";
 import { addNewUserSchema } from "../../schemas/addNewUserSchema";
-
-
+import { useMutateAddUser } from "../../react-query-hooks/useMutateAddUser";
+import toastHelper from "../../utils/toastifyHelper";
 const AddNewUser = () => {
   const navigate = useNavigate();
-  const { control, handleSubmit } = useForm<AddUserFormValues>({
+  const { mutateAsync } = useMutateAddUser();
+  const { control, handleSubmit } = useForm<AddNewUserInput>({
     resolver: yupResolver(addNewUserSchema),
     mode: "onChange",
     defaultValues: {
       userName: "",
       email: "",
       phoneNumber: "",
-      roleDescription: ""
+      roleDescription: undefined,
     },
   });
 
-  const handleAddUser = (data: AddUserFormValues) => {
-    console.log('Form Values:', {
-      userName: data.userName,
+  const handleAddUser = async (data: AddNewUserInput) => {
+    const { phoneNumber, ...rest } = data;
+    const userData = {
+      ...rest,
+      forename: data.userName,
+      surname: data.userName,
       email: data.email,
-      phoneNumber: data.phoneNumber,
-      roleDescription: data.roleDescription
-    });
-  }
+      is_active: true,
+      email_verified: "2025-04-15T10:24:59.151Z",
+      password: "123456",
+      organisation_name: "Arres",
+      role_name: data.roleDescription,
+    };
+    console.log("userData", userData);
+
+    try {
+      const response = await mutateAsync(userData);
+      console.log("response", response);
+      navigate(ROUTE_ROLES_AND_PERMISSIONS_LISTING);
+      toastHelper.success("User added successfully");
+    } catch (error) {
+      console.log("error", error);
+      toastHelper.error("User addition failed");
+    }
+  };
   return (
     <Box bgcolor="#F8F9FB" width="100%" height="calc(100vh - 64px)">
       <Stack
@@ -63,7 +81,7 @@ const AddNewUser = () => {
             <InputField
               control={control}
               name="userName"
-              label="Email"
+              label="Username"
               type="text"
               sx={{ mb: 2 }}
             />
@@ -71,42 +89,34 @@ const AddNewUser = () => {
               control={control}
               name="email"
               label="Email"
-              type="text"
+              type="email"
               sx={{ mb: 2 }}
             />
             <InputField
               control={control}
               name="phoneNumber"
               label="Phone Number"
-              type="text"
+              type="number"
               sx={{ mb: 2 }}
             />
 
-            <Controller
-              name="roleDescription"
+            <CustomSelect
               control={control}
-              render={({ field, fieldState: { error } }) => (
-                <CustomSelect
-                  label="Role"
-                  options={[
-                    { label: "Admin", value: "admin" },
-                    { label: "User", value: "user" },
-                    { label: "Manager", value: "manager" },
-                    { label: "Supervisor", value: "supervisor" }
-                  ]}
-                  onChange={field.onChange}
-                  value={field.value}
-                  error={!!error}
-                  helperText={error?.message}
-                  sx={{
-                    width: "100%",
-                    maxWidth: "calc(50% - 6px)",
-                    background: "white",
-                  }}
-                />
-              )}
+              name="roleDescription"
+              variant="outlined"
+              rounded="medium"
+              size="large"
+              label="Role"
+              options={[
+                { label: "Admin", value: "admin" },
+                { label: "User", value: "user" },
+                { label: "Manager", value: "manager" },
+                { label: "Supervisor", value: "supervisor" },
+              ]}
+              sx={{
+                width: "100%",
+              }}
             />
-
           </Stack>
         </Box>
 
@@ -120,7 +130,7 @@ const AddNewUser = () => {
           width="calc(100% - 88px)"
           position="fixed"
           bottom="0"
-        // left="0"
+          // left="0"
         >
           <Button
             variant="outlined"
@@ -133,6 +143,7 @@ const AddNewUser = () => {
             variant="contained"
             color="primary"
             className="rounded-full-button"
+            type="submit"
           >
             Invite User
           </Button>

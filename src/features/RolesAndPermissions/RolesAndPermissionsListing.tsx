@@ -22,9 +22,11 @@ import { useState } from "react";
 import Modal from "../../components/common/Modal/Modal";
 import RolesAndPermissionsTable from "./RolesAndPermissionsTable";
 import useGetAllUsers from "../../react-query-hooks/useGetAllUsers";
+import { useForm } from "react-hook-form";
 
 const RolesAndPermissionsListing = () => {
   const navigate = useNavigate();
+  const { control } = useForm();
   const {data: usersData} = useGetAllUsers();
   console.log(usersData, 'heheheh')
 
@@ -285,7 +287,7 @@ const RolesAndPermissionsListing = () => {
             <CustomSelect
               label="Status"
               options={severityOptions}
-              onChange={() => {}}
+              control={control}
               name="status"
               id="status-select"
               rounded="medium"
@@ -301,7 +303,7 @@ const RolesAndPermissionsListing = () => {
             <CustomSelect
               label="Role"
               options={severityOptions}
-              onChange={() => {}}
+              control={control}
               name="region"
               id="region-select"
               rounded="medium"

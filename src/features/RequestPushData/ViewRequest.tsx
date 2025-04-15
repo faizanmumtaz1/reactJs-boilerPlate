@@ -7,7 +7,7 @@ import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import DatePicker from "../../components/common/DatePicker/DatePicker";
 import { useState } from "react";
 import CommonMultiSelect from "../../components/common/CommonMultiSelect";
-
+import { useForm } from "react-hook-form";
 const clientOptions = [
   {
     id: 1,
@@ -18,7 +18,7 @@ const clientOptions = [
 
 const ViewRequest = () => {
   const navigate = useNavigate();
-
+  const { control } = useForm();
   const [associatedServices, setAssociatedServices] = useState([]);
   const [selectDevice, setSelectDevice] = useState([]);
   return (
@@ -62,19 +62,7 @@ const ViewRequest = () => {
               background: "white",
             }}
           />
-          {/* <CustomSelect
-            label="Select Region"
-            options={clientOptions}
-            onChange={() => {}}
-            name="Select Region"
-            id="Select Region"
-            rounded="medium"
-            variant="outlined"
-            size="large"
-            sx={{
-              background: "white",
-            }}
-          /> */}
+
           <CommonMultiSelect
             label="Select Region"
             options={clientOptions.map((option) => option.label)}
@@ -96,7 +84,7 @@ const ViewRequest = () => {
           <CustomSelect
             label="Select Region Manager"
             options={clientOptions}
-            onChange={() => {}}
+            control={control}
             name="Select Region"
             id="Select Region"
             rounded="medium"

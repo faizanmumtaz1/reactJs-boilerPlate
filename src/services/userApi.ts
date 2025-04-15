@@ -7,6 +7,9 @@ class CustomerAPI extends BaseAPIService {
     getUserList = () => {
         return this.get("/users/");
     };
+    addNewUser = (data: any) => {
+        return this.post("/users", data);
+    };
 }
 
 export const customerAPI = new CustomerAPI();

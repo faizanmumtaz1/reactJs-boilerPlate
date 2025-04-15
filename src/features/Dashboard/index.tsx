@@ -23,9 +23,11 @@ import {
 } from "../../assets/Images/svg";
 import CustomTabs from "../../components/common/Tabs";
 import useCheckMobileScreen from "../../hooks/useCheckMobileScreen";
+import { useForm } from "react-hook-form";
 Chart.register(...registerables);
 
 const Dashboard = () => {
+  const { control } = useForm();
   const isItMobile = useCheckMobileScreen();
   const [tabValue, setTabValue] = useState(0);
   const [showFiltersOnMobile, setShowFiltersOnMobile] = useState(false);
@@ -725,9 +727,7 @@ const Dashboard = () => {
       ),
     },
   ];
-  const handlePushDataSelect = (e: any) => {
-    console.log(e);
-  };
+
   return (
     <Box
       sx={{
@@ -789,10 +789,9 @@ const Dashboard = () => {
               <CustomSelect
                 label="Client"
                 options={createdBySelect}
-                onChange={() => {}}
+                control={control}
                 name="client"
                 id="client-select"
-                value={createdBySelect[0].value}
                 rounded="medium"
                 variant="outlined"
                 size="medium"
@@ -805,10 +804,9 @@ const Dashboard = () => {
               <CustomSelect
                 label="Region"
                 options={regionSelect}
-                onChange={() => {}}
+                control={control}
                 name="region"
                 id="region-select"
-                value={regionSelect[0].value}
                 rounded="medium"
                 variant="outlined"
                 size="medium"
@@ -859,10 +857,9 @@ const Dashboard = () => {
               <CustomSelect
                 label="Client"
                 options={createdBySelect}
-                onChange={() => {}}
+                control={control}
                 name="client"
                 id="client-select"
-                value={createdBySelect[0].value}
                 rounded="medium"
                 variant="outlined"
                 size="medium"
@@ -876,10 +873,9 @@ const Dashboard = () => {
               <CustomSelect
                 label="Region"
                 options={regionSelect}
-                onChange={() => {}}
+                control={control}
                 name="region"
                 id="region-select"
-                value={regionSelect[0].value}
                 rounded="medium"
                 variant="outlined"
                 size="medium"
@@ -961,12 +957,11 @@ const Dashboard = () => {
               <CustomSelect
                 label="Showing"
                 options={pushDataSelect}
-                onChange={(e) => handlePushDataSelect(e)}
+                control={control}
                 name="status"
                 id="status-select"
                 rounded="medium"
                 variant="outlined"
-                value={pushDataSelect[1].value}
                 size="medium"
                 sx={{
                   minWidth: "180px",
@@ -1013,12 +1008,11 @@ const Dashboard = () => {
             <CustomSelect
               label="Showing"
               options={pushDataSelect}
-              onChange={(e) => handlePushDataSelect(e)}
+              control={control}
               name="month"
               id="month-select"
               rounded="medium"
               variant="outlined"
-              value={pushDataSelect[2].value}
               size="medium"
               sx={{
                 minWidth: "180px",
@@ -1094,12 +1088,11 @@ const Dashboard = () => {
               <CustomSelect
                 label="Showing"
                 options={pushDataSelect}
-                onChange={(e) => handlePushDataSelect(e)}
+                control={control}
                 name="status"
                 id="status-select"
                 rounded="medium"
                 variant="outlined"
-                value={pushDataSelect[2].value}
                 size="medium"
                 sx={{
                   minWidth: "180px",
@@ -1133,12 +1126,11 @@ const Dashboard = () => {
               <CustomSelect
                 label="Showing"
                 options={pushDataSelect}
-                onChange={(e) => handlePushDataSelect(e)}
+                control={control}
                 name="status"
                 id="status-select"
                 rounded="medium"
                 variant="outlined"
-                value={pushDataSelect[2].value}
                 size="medium"
                 sx={{
                   minWidth: "180px",

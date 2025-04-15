@@ -3,8 +3,10 @@ import Table from "../../components/common/Table/Table";
 import SearchBar from "../../components/common/SearchBar/SearchBar";
 import CustomSelect from "../../components/common/CustomSelect/CustomSelect";
 import "./style.scss";
+import { useForm } from "react-hook-form";
 
 export default function RegisteredDeviceTable() {
+  const { control } = useForm();
   const columns = [
     {
       name: (
@@ -109,7 +111,7 @@ export default function RegisteredDeviceTable() {
           <CustomSelect
             label="Showing"
             options={clientOptions}
-            onChange={() => {}}
+            control={control}
             name="assignedDevice"
             id="status-select"
             rounded="medium"

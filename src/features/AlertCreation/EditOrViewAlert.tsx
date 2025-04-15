@@ -170,26 +170,30 @@ const EditOrViewAlert = () => {
           <CustomSelect
             label="Defect Type"
             options={clientOptions}
-            onChange={() => {}}
+            control={control}
             name="defectType"
-            id="defect-type-select"
+            id="defectType-select"
             rounded="medium"
             variant="outlined"
             size="large"
             fullWidth={true}
-            disabled={!isEdit}
+            sx={{
+              background: "white",
+            }}
           />
           <CustomSelect
             label="Defect Severity"
             options={clientOptions}
-            onChange={() => {}}
+            control={control}
             name="defectSeverity"
-            id="defect-severity-select"
+            id="defectSeverity-select"
             rounded="medium"
             variant="outlined"
             size="large"
             fullWidth={true}
-            disabled={!isEdit}
+            sx={{
+              background: "white",
+            }}
           />
         </Stack>
         <CommonCheckbox

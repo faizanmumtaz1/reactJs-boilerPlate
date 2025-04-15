@@ -7,8 +7,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_ADD_NEW_REPORT } from "../../utils/constant";
+import { useForm } from "react-hook-form";
 
 const ReportsListing = () => {
+  const { control } = useForm();
   const navigate = useNavigate();
   const columns = [
     {
@@ -331,7 +333,7 @@ const ReportsListing = () => {
             <CustomSelect
               label="Created by"
               options={severityOptions}
-              onChange={() => {}}
+              control={control}
               name="status"
               id="status-select"
               rounded="medium"
@@ -346,7 +348,7 @@ const ReportsListing = () => {
           <CustomSelect
             label="Month"
             options={severityOptions}
-            onChange={() => {}}
+            control={control}
             name="region"
             id="region-select"
             rounded="medium"

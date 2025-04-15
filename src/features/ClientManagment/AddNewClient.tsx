@@ -99,25 +99,16 @@ const AddNewClient = () => {
                 <CustomSelect
                   label={item.label}
                   options={clientOptions}
-                  onChange={() => {}}
+                  control={control}
                   name={item.name}
                   id={item.id.toString()}
                   rounded="medium"
                   variant="outlined"
                   size="large"
-                  formControlStyling={{
-                    width: "100%",
-                    maxWidth: "calc(50% - 6px)",
-                  }}
+                  fullWidth={true}
                   sx={{
                     background: "white",
                   }}
-                  // sx={{
-                  //   minHeight: "60px !important",
-                  // }}
-                  // labelStyling={{
-                  //   background: "red !important",
-                  // }}
                 />
               ) : (
                 <InputField
@@ -158,9 +149,9 @@ const AddNewClient = () => {
           <CustomSelect
             label="Assigned Device"
             options={clientOptions}
-            onChange={() => {}}
+            control={control}
             name="assignedDevice"
-            id="status-select"
+            id="assignedDevice-select"
             rounded="medium"
             variant="outlined"
             size="large"

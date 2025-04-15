@@ -8,8 +8,10 @@ import { DeleteIcon } from "../../../assets/Images/svg";
 import Button from "../../../components/common/Button/Button";
 import { ROUTE_MAP } from "../../../utils/constant";
 import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
 const DefectListingScreen = () => {
   const navigate = useNavigate();
+  const { control } = useForm();
   const columns = [
     {
       name: "Defect",
@@ -189,7 +191,7 @@ const DefectListingScreen = () => {
             <CustomSelect
               label="Client"
               options={severityOptions}
-              onChange={() => {}}
+              control={control}
               defaultValue="age"
               name="severity"
               id="severity-select"
@@ -204,7 +206,7 @@ const DefectListingScreen = () => {
             <CustomSelect
               label="Defect Type"
               options={severityOptions}
-              onChange={() => {}}
+              control={control}
               defaultValue="age"
               name="severity"
               id="severity-select"
@@ -219,7 +221,7 @@ const DefectListingScreen = () => {
             <CustomSelect
               label="Severity"
               options={severityOptions}
-              onChange={() => {}}
+              control={control}
               defaultValue="age"
               name="severity"
               id="severity-select"
@@ -234,7 +236,7 @@ const DefectListingScreen = () => {
             <CustomSelect
               label="Device"
               options={severityOptions}
-              onChange={() => {}}
+              control={control}
               defaultValue="age"
               name="severity"
               id="severity-select"
@@ -249,7 +251,7 @@ const DefectListingScreen = () => {
             <CustomSelect
               label="Showing"
               options={severityOptions}
-              onChange={() => {}}
+              control={control}
               defaultValue="age"
               name="severity"
               id="severity-select"

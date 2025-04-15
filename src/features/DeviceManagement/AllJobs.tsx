@@ -7,9 +7,11 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Modal from "../../components/common/Modal/Modal";
 import { Link } from "react-router-dom";
 import { ROUTE_VIEW_MAP } from "../../utils/constant";
+import { useForm } from "react-hook-form";
 
 export default function AllJobs() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const { control } = useForm();
 
   const columns = [
     {
@@ -140,7 +142,7 @@ export default function AllJobs() {
           <CustomSelect
             label="Showing"
             options={clientOptions}
-            onChange={() => {}}
+            control={control}
             name="assignedDevice"
             id="status-select"
             rounded="medium"

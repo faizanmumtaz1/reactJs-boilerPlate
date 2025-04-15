@@ -7,9 +7,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddIcon from "@mui/icons-material/Add";
 import { useNavigate } from "react-router-dom";
 import { ROUTE_ADD_NEW_SERVICE } from "../../utils/constant";
-
+import { useForm } from "react-hook-form";
 const ActiveServiceListing = () => {
   const navigate = useNavigate();
+  const { control } = useForm();
   const columns = [
     {
       name: (
@@ -137,7 +138,7 @@ const ActiveServiceListing = () => {
           <CustomSelect
             label="Created by"
             options={severityOptions}
-            onChange={() => {}}
+            control={control}
             name="status"
             id="status-select"
             rounded="medium"
@@ -151,7 +152,7 @@ const ActiveServiceListing = () => {
           <CustomSelect
             label="Devices"
             options={severityOptions}
-            onChange={() => {}}
+            control={control}
             name="region"
             id="region-select"
             rounded="medium"

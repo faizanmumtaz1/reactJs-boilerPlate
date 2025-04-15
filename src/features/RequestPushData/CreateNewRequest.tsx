@@ -8,7 +8,7 @@ import Button from "../../components/common/Button/Button";
 import DatePicker from "../../components/common/DatePicker/DatePicker";
 import CommonMultiSelect from "../../components/common/CommonMultiSelect";
 import { useState } from "react";
-
+import { useForm } from "react-hook-form";
 const clientOptions = [
   {
     id: 1,
@@ -19,7 +19,7 @@ const clientOptions = [
 
 const CreateNewRequest = () => {
   const navigate = useNavigate();
-
+  const { control } = useForm();
   const [associatedServices, setAssociatedServices] = useState([]);
   const [selectDevice, setSelectDevice] = useState([]);
   return (
@@ -77,7 +77,7 @@ const CreateNewRequest = () => {
           <CustomSelect
             label="Select Region Manager"
             options={clientOptions}
-            onChange={() => {}}
+            control={control}
             name="Select Region"
             id="Select Region"
             rounded="medium"
