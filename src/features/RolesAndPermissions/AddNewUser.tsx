@@ -45,7 +45,7 @@ const AddNewUser = () => {
     }
   };
   return (
-    <Box bgcolor="#F8F9FB" width="100%" height="calc(100vh - 64px)">
+    <Box bgcolor="#F8F9FB" width="100%" paddingBottom={"102px"}>
       <Stack
         direction="row"
         gap="16px"
@@ -151,6 +151,7 @@ const AddNewUser = () => {
           width="calc(100% - 88px)"
           position="fixed"
           bottom="0"
+          zIndex={"1"}
           // left="0"
         >
           <Button

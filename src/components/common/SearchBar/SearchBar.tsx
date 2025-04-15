@@ -14,6 +14,7 @@ interface SearchBarProps {
   startAdornment?: React.ReactNode;
   sx?: object;
   disabled?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const SearchBar = ({
@@ -28,6 +29,7 @@ const SearchBar = ({
   startAdornment,
   sx = {},
   disabled = false,
+  onChange,
 }: SearchBarProps) => {
   return (
     <Box
@@ -51,6 +53,7 @@ const SearchBar = ({
         }}
         variant={variant}
         size={size}
+        onChange={onChange}
         className={`search-bar-input search-rounded-${rounded} search-${size}`}
         sx={{
           width: "100%",
