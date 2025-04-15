@@ -248,7 +248,7 @@ const EditOrViewDevice = () => {
                   <CustomSelect
                     label={item.label}
                     options={clientOptions}
-                    onChange={() => {}}
+                    control={control}
                     name={item.name}
                     id={item.id.toString()}
                     rounded="medium"

@@ -158,7 +158,7 @@ const EditOrViewClient = () => {
                 <CustomSelect
                   label={item.label}
                   options={clientOptions}
-                  onChange={() => {}}
+                  control={control}
                   name={item.name}
                   id={item.id.toString()}
                   rounded="medium"
@@ -218,7 +218,7 @@ const EditOrViewClient = () => {
           <CustomSelect
             label="Assigned Device"
             options={clientOptions}
-            onChange={() => {}}
+            control={control}
             name="assignedDevice"
             id="status-select"
             rounded="medium"

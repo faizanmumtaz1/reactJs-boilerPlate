@@ -38,14 +38,11 @@ const defectTypeOptions = [
 
 const AddAlert = () => {
   const [defectType, setDefectType] = React.useState<string[]>([]);
-  const [defectSeverity, setDefectSeverity] = React.useState<string>("");
 
   const handleDefectTypeChange = (value: string[]) => {
     setDefectType(value);
   };
-  const handleDefectSeverityChange = (value: string) => {
-    setDefectSeverity(value);
-  };
+
   const navigate = useNavigate();
   const { control } = useForm();
   return (
@@ -124,27 +121,32 @@ const AddAlert = () => {
 
         <Stack mt="24px" direction="row" gap="12px">
           <CustomSelect
-            label="Defect Type"
+            label="Client Name"
             options={clientOptions}
-            onChange={() => {}}
-            name="defectType"
-            id="defect-type-select"
+            control={control}
+            name="clientName"
+            id="clientName-select"
             rounded="medium"
             variant="outlined"
             size="large"
             fullWidth={true}
+            sx={{
+              background: "white",
+            }}
           />
           <CustomSelect
-            label="Defect Severity"
+            label="Client Name"
             options={clientOptions}
-            onChange={handleDefectSeverityChange}
-            name="defectSeverity"
-            id="defect-severity-select"
+            control={control}
+            name="clientName"
+            id="clientName-select"
             rounded="medium"
-            value={defectSeverity}
             variant="outlined"
             size="large"
             fullWidth={true}
+            sx={{
+              background: "white",
+            }}
           />
         </Stack>
         <CommonCheckbox label="Send this alert whenever the criteria are met." />

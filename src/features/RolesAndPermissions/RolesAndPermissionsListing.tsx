@@ -21,10 +21,11 @@ import "./style.scss";
 import { useState } from "react";
 import Modal from "../../components/common/Modal/Modal";
 import RolesAndPermissionsTable from "./RolesAndPermissionsTable";
+import { useForm } from "react-hook-form";
 
 const RolesAndPermissionsListing = () => {
   const navigate = useNavigate();
-
+  const { control } = useForm();
   const [tabValue, setTabValue] = useState(0);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -282,7 +283,7 @@ const RolesAndPermissionsListing = () => {
             <CustomSelect
               label="Status"
               options={severityOptions}
-              onChange={() => {}}
+              control={control}
               name="status"
               id="status-select"
               rounded="medium"
@@ -298,7 +299,7 @@ const RolesAndPermissionsListing = () => {
             <CustomSelect
               label="Role"
               options={severityOptions}
-              onChange={() => {}}
+              control={control}
               name="region"
               id="region-select"
               rounded="medium"

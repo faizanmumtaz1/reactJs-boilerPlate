@@ -19,7 +19,7 @@ import { useState } from "react";
 import Modal from "../../components/common/Modal/Modal";
 import SingleBox from "../../components/common/SingleBox/SingleBox";
 import DeviceMobileFilters from "./DeviceMobileFilters";
-
+import { useForm } from "react-hook-form";
 type StatusColor = "error" | "success" | "warning" | "default";
 
 interface DeviceData {
@@ -51,6 +51,7 @@ interface DeviceRow {
 
 const DeviceManagementListing = () => {
   const navigate = useNavigate();
+  const { control } = useForm();
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
   const columns: {
@@ -308,7 +309,7 @@ const DeviceManagementListing = () => {
           <CustomSelect
             label="Status"
             options={severityOptions}
-            onChange={() => {}}
+            control={control}
             name="status"
             id="status-select"
             rounded="medium"
@@ -324,7 +325,7 @@ const DeviceManagementListing = () => {
           <CustomSelect
             label="Region"
             options={severityOptions}
-            onChange={() => {}}
+            control={control}
             name="region"
             id="region-select"
             rounded="medium"

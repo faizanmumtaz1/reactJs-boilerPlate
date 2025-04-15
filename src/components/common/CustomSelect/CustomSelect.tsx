@@ -1,17 +1,18 @@
 import { FormControl, InputLabel, Select, MenuItem } from "@mui/material";
+import { Control, Controller, FieldValues, Path } from "react-hook-form";
 import "./style.scss";
+
 interface Option {
   value: string;
   label: string;
 }
 
-interface CustomSelectProps {
+interface CustomSelectProps<T extends FieldValues> {
   label?: string;
   defaultValue?: string;
-  name?: string;
+  name: Path<T>;
   id?: string;
   options: Option[];
-  onChange: (event: any) => void;
   fullWidth?: boolean;
   className?: string;
   rounded?: "full" | "none" | "medium";
@@ -20,20 +21,19 @@ interface CustomSelectProps {
   placeholder?: string;
   size?: "small" | "medium" | "large";
   sx?: object;
-  value?: string | number;
   labelStyling?: object;
   disabled?: boolean;
   formControlStyling?: object;
   multiple?: boolean;
+  control: Control<T>;
 }
 
-const CustomSelect = ({
+const CustomSelect = <T extends FieldValues>({
   label,
   defaultValue,
   name,
   id,
   options,
-  onChange,
   fullWidth = true,
   className,
   rounded = "full",
@@ -41,49 +41,53 @@ const CustomSelect = ({
   WrapperClassName,
   size = "medium",
   sx = {},
-  value = "",
   disabled = false,
   formControlStyling = {},
-}: CustomSelectProps) => {
+  control,
+}: CustomSelectProps<T>) => {
   return (
-    <>
-      <FormControl
-        fullWidth={fullWidth}
-        className={`${WrapperClassName} select-wrapper`}
-        sx={{
-          ...formControlStyling,
-        }}
-      >
-        <InputLabel id={id} className={`select-label select-${size}`}>
-          {label}
-        </InputLabel>
-        <Select
-          labelId={id}
-          label={label}
-          variant={variant}
-          disabled={disabled}
-          onChange={onChange}
-          value={value || defaultValue}
-          className={`select-common ${className} select-${size} select-rounded-${rounded}`}
-          inputProps={{
-            name: name,
-            id: id,
-          }}
+    <Controller
+      name={name}
+      control={control}
+      render={({ field }) => (
+        <FormControl
+          fullWidth={fullWidth}
+          className={`${WrapperClassName} select-wrapper`}
           sx={{
-            ...sx,
-            "& .MuiOutlinedInput-notchedOutline": {
-              textOverflow: "ellipsis",
-            },
+            ...formControlStyling,
           }}
         >
-          {options.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </>
+          <InputLabel id={id} className={`select-label select-${size}`}>
+            {label}
+          </InputLabel>
+          <Select
+            {...field}
+            labelId={id}
+            label={label}
+            variant={variant}
+            disabled={disabled}
+            defaultValue={defaultValue}
+            className={`select-common ${className} select-${size} select-rounded-${rounded}`}
+            inputProps={{
+              name: name,
+              id: id,
+            }}
+            sx={{
+              ...sx,
+              "& .MuiOutlinedInput-notchedOutline": {
+                textOverflow: "ellipsis",
+              },
+            }}
+          >
+            {options.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      )}
+    />
   );
 };
 

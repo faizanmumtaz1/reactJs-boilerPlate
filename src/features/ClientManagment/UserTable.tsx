@@ -7,10 +7,10 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "../../components/common/Button/Button";
 import AddIcon from "@mui/icons-material/Add";
 import Modal from "../../components/common/Modal/Modal";
-
+import { useForm } from "react-hook-form";
 export default function UserTable() {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-
+  const { control } = useForm();
   const columns = [
     {
       name: <Typography sx={{ whiteSpace: "nowrap" }}>Name/ID</Typography>,
@@ -151,7 +151,7 @@ export default function UserTable() {
           <CustomSelect
             label="Showing"
             options={clientOptions}
-            onChange={() => {}}
+            control={control}
             name="assignedDevice"
             id="status-select"
             rounded="medium"
