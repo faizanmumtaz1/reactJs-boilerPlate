@@ -27,8 +27,8 @@ export const authSlice = createSlice({
     login: (state, action) => {
       state.token = action.payload.access_token;
       state.isAuthenticated = true;
+      state.userRole = action.payload.user_role;
       localStorage.setItem("token", action.payload.access_token);
-
     },
 
     logout: (state) => {

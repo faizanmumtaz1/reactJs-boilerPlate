@@ -14,13 +14,17 @@ import useGetAllUsers from "../../react-query-hooks/useGetAllUsers";
 import { useForm } from "react-hook-form";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
+import { debounce, uniqBy } from "lodash";
+import Button from "../../components/common/Button/Button";
 const AllUsersTable = () => {
-  const { control, watch } = useForm();
+  const { control, watch, reset, setValue } = useForm();
   const { data: usersData, isLoading: isUsersLoading } = useGetAllUsers();
   const [filteredUsersData, setFilteredUsersData] = useState(usersData);
   const selectedStatus = watch("status");
   const selectedRole = watch("role");
+  const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     if (!usersData) return;
 
@@ -125,6 +129,12 @@ const AllUsersTable = () => {
       );
     });
     setFilteredUsersData(filteredUsers);
+    setIsLoading(false);
+  };
+  const debouncedSearch = useMemo(() => debounce(handleSearch, 200), []);
+  const handleChange = (value: string) => {
+    setIsLoading(true);
+    debouncedSearch(value);
   };
 
   return (
@@ -145,7 +155,7 @@ const AllUsersTable = () => {
           rounded="medium"
           width="300px"
           onChange={(e) => {
-            handleSearch(e.target.value);
+            handleChange(e.target.value);
           }}
           placeholder="Name, client, ID..."
           sx={{
@@ -154,10 +164,10 @@ const AllUsersTable = () => {
         />
         <CustomSelect
           label="Status"
-          options={[
-            { label: "Active", value: "active" },
-            { label: "Inactive", value: "inactive" },
-          ]}
+          options={uniqBy(usersData, "is_active").map((user: any) => ({
+            label: user.is_active ? "Active" : "Inactive",
+            value: user.is_active ? "active" : "inactive",
+          }))}
           control={control}
           name="status"
           id="status-select"
@@ -173,12 +183,10 @@ const AllUsersTable = () => {
         />
         <CustomSelect
           label="Role"
-          options={[
-            { label: "Admin", value: "admin" },
-            { label: "User", value: "user" },
-            { label: "Super Admin", value: "super admin" },
-            { label: "Guest", value: "guest" },
-          ]}
+          options={uniqBy(usersData, "role.name").map((user: any) => ({
+            label: user.role.name,
+            value: user.role.name,
+          }))}
           control={control}
           name="role"
           id="role-select"
@@ -192,9 +200,23 @@ const AllUsersTable = () => {
           }}
           fullWidth={false}
         />
+        {(selectedStatus || selectedRole) && (
+          <Button
+            variant="text"
+            color="info"
+            onClick={() => {
+              setFilteredUsersData(usersData);
+              setValue("status", "");
+              setValue("role", "");
+              reset();
+            }}
+          >
+            Clear Filters
+          </Button>
+        )}
       </Stack>
       <Box mt={2}>
-        {isUsersLoading ? (
+        {isUsersLoading || isLoading ? (
           <Loader size={50} />
         ) : (
           <Table
