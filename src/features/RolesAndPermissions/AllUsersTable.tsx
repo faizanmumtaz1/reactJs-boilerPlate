@@ -18,7 +18,13 @@ import { useState, useEffect, useMemo } from "react";
 import { debounce, uniqBy } from "lodash";
 import Button from "../../components/common/Button/Button";
 const AllUsersTable = () => {
-  const { control, watch, reset, setValue } = useForm();
+  const { control, watch, reset } = useForm({
+    defaultValues:{
+      status: '',
+      role: ''
+    }
+  });
+
   const { data: usersData, isLoading: isUsersLoading } = useGetAllUsers();
   const [filteredUsersData, setFilteredUsersData] = useState(usersData);
   const selectedStatus = watch("status");
@@ -27,7 +33,6 @@ const AllUsersTable = () => {
 
   useEffect(() => {
     if (!usersData) return;
-
     let filteredUsers = usersData;
     if (selectedStatus) {
       filteredUsers = filteredUsers.filter((user: any) => {
@@ -41,9 +46,31 @@ const AllUsersTable = () => {
         return user.role.name.toLowerCase() === selectedRole.toLowerCase();
       });
     }
-
     setFilteredUsersData(filteredUsers);
   }, [usersData, selectedStatus, selectedRole]);
+
+
+  const handleSearch = (value: string) => {
+    const filteredUsers = usersData.filter((user: any) => {
+      return (
+        user.forename.toLowerCase().includes(value.toLowerCase()) ||
+        user.surname.toLowerCase().includes(value.toLowerCase())
+      );
+    });
+    setFilteredUsersData(filteredUsers);
+    setIsLoading(false);
+  };
+
+  const debouncedSearch = useMemo(() => debounce(handleSearch, 200), []);
+  const handleChange = (value: string) => {
+    setIsLoading(true);
+    debouncedSearch(value);
+  };
+
+  const handleClearFilters = () =>{
+    setFilteredUsersData(usersData);
+    reset();
+  }
 
   const columns = [
     {
@@ -121,21 +148,7 @@ const AllUsersTable = () => {
       ),
     },
   ];
-  const handleSearch = (value: string) => {
-    const filteredUsers = usersData.filter((user: any) => {
-      return (
-        user.forename.toLowerCase().includes(value.toLowerCase()) ||
-        user.surname.toLowerCase().includes(value.toLowerCase())
-      );
-    });
-    setFilteredUsersData(filteredUsers);
-    setIsLoading(false);
-  };
-  const debouncedSearch = useMemo(() => debounce(handleSearch, 200), []);
-  const handleChange = (value: string) => {
-    setIsLoading(true);
-    debouncedSearch(value);
-  };
+
 
   return (
     <Box
@@ -204,12 +217,7 @@ const AllUsersTable = () => {
           <Button
             variant="text"
             color="info"
-            onClick={() => {
-              setFilteredUsersData(usersData);
-              setValue("status", "");
-              setValue("role", "");
-              reset();
-            }}
+            onClick={handleClearFilters}
           >
             Clear Filters
           </Button>

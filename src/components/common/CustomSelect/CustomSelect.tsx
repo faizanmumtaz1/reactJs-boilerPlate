@@ -65,7 +65,7 @@ const CustomSelect = <T extends FieldValues>({
             labelId={id}
             label={label}
             variant={variant}
-            value={field.value || undefined}
+            value={field.value === "" ? "" : field.value || undefined}
             disabled={disabled}
             defaultValue={defaultValue}
             className={`select-common ${className} select-${size} select-rounded-${rounded}`}
