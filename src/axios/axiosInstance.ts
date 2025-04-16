@@ -42,7 +42,7 @@ export const getAxiosInstance = (
     baseURL: import.meta.env.VITE_REACT_APP_BASE_API_URL, // Set base URL from environment variables
     ...config,
     headers: {
-      "Content-Type": "multipart/form-data",
+        "Content-Type": "application/json",
     },
   });
 

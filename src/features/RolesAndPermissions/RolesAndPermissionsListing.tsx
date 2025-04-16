@@ -28,8 +28,6 @@ const RolesAndPermissionsListing = () => {
   const navigate = useNavigate();
   const { control } = useForm();
   const { data: usersData } = useGetAllUsers();
-  console.log(usersData, "heheheh");
-
   const [tabValue, setTabValue] = useState(0);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -104,7 +102,7 @@ const RolesAndPermissionsListing = () => {
       ),
       role: (
         <Chip
-          label="Super Admin"
+          label={user.role.name}
           sx={{
             backgroundColor: "var(--secondary-50)",
             color: "var(--secondary-dark)",
