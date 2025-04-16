@@ -25,24 +25,21 @@ const AddNewUser = () => {
       organisation_name: "",
       is_active: false,
       password: "",
-      // role_name: undefined,
+      role_name: undefined,
     },
   });
 
   const handleAddUser = async (data: AddNewUserInput) => {
     const userData = {
       ...data,
-      role_name: 'Admin',
       email_verified: "2025-04-15T10:24:59.151Z",
     };
-    console.log("userData", userData);
-
     try {
-      await mutateAsync(userData);
+    await mutateAsync(userData);
       navigate(ROUTE_ROLES_AND_PERMISSIONS_LISTING);
       toastHelper.success("User added successfully");
-    } catch (error) {
-      toastHelper.error("User addition failed");
+    } catch (error:any) {
+      toastHelper.error(error?.response?.data?.detail);
     }
   };
   return (

@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosInstance } from "axios";
-// import { store } from '../redux/store';
-// import { logout } from '../redux/slices/authSlice';
+import { store } from '../redux/store';
+import { logout } from '../redux/slices/authSlice';
 
 // Request Interceptor
 const requestHandler = (request: any) => {
@@ -25,9 +25,8 @@ const errorResponseHandler = async (error: any) => {
   // If the error is 401 and we haven't retried yet
   if (error.response?.status === 401 && !originalRequest._retry) {
     originalRequest._retry = true;
-    // Clear auth data and redirect to login
-    // store.dispatch(logout());
-    // window.location.href = '/';
+    store.dispatch(logout());
+    window.location.href = '/';
     return Promise.reject(error);
   }
 

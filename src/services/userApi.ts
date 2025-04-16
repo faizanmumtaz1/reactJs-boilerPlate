@@ -12,11 +12,7 @@ class CustomerAPI extends BaseAPIService {
         return this.get("/users/");
     };
     addNewUser = (data: any) => {
-        return this.post("/users/", data,{
-            headers: {
-                "Content-Type": "application/json",
-              }
-        });
+        return this.post("/users/", data);
     };
 }
 
