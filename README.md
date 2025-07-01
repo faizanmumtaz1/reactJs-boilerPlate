@@ -14,6 +14,7 @@ This repository contains a pre-configured React project structure to standardize
 /utils
 /Routes
 ```
+# /components
 Reusable React components are used throughout the application (e.g., buttons, modals, input fields) to maintain consistency and avoid duplication.
 
 # /assets
