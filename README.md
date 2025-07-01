@@ -15,9 +15,7 @@ Edit
 /services
 /utils
 /Routes
-✅ Folder Descriptions
-/components
-Reusable React components used throughout the application (e.g., buttons, modals, input fields) to maintain consistency and avoid duplication.
+Reusable React components are used throughout the application (e.g., buttons, modals, input fields) to maintain consistency and avoid duplication.
 
 /assets
 Contains static files:
