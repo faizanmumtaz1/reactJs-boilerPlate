@@ -99,17 +99,26 @@ or
 
 # 💡 Contribution Guidelines
 ✅ Follow the folder structure while adding new features.
+
 ✅ Use React Query hooks for API calls wherever possible.
-✅ Place reusable UI in /components.
+
+✅ Place reusable UI components inside /components.
+
 ✅ Keep API URLs inside /services/urls.ts and use /services/baseApi.ts for requests.
+
 ✅ Use consistent naming conventions for hooks and components.
-✅ Add meaningful commit messages.
+
+✅ Add meaningful commit messages for clarity and traceability.
 
 # 🛡️ Best Practices
 ✅ Keep components small and reusable.
+
 ✅ Use React Query for data fetching instead of manually managing loading states in Redux where possible.
+
 ✅ Use .env files for environment variables.
+
 ✅ Ensure TypeScript types are properly defined (if using TypeScript).
+
 ✅ Format code using Prettier before pushing.
 
 # 🤝 Support
@@ -120,5 +129,7 @@ Ping in the team Slack for clarifications.
 # 🏁 Summary
 This boilerplate ensures:
 ✅ Fast project bootstrapping.
+
 ✅ Clean, scalable structure for medium to large React applications.
+
 ✅ Team consistency and productivity.
