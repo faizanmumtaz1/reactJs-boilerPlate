@@ -77,18 +77,18 @@ Prettier & ESLint for consistent formatting and linting.
 
 # 🚀 Getting Started
 1️⃣ Clone the repository:
-git clone <repo-url>
-cd <project-folder>
+`git clone <repo-url>`
+`cd <project-folder>`
 
 2️⃣ Install dependencies:
-npm install
+`npm install`
 or
-yarn install
+`yarn install`
 
 3️⃣ Run the app:
-npm start
+`npm start`
 or
-yarn start
+`yarn start`
 
 # 💡 Contribution Guidelines
 ✅ Follow the folder structure while adding new features.
