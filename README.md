@@ -1,7 +1,7 @@
 🚀 React Project Boilerplate
 This repository contains a pre-configured React project structure to standardize development across all team projects, ensuring clean architecture, scalability, and consistency.
 
-📂 Project Structure
+# 📂 Project Structure
 bash
 Copy
 Edit
