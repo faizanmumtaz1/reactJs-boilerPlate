@@ -2,10 +2,7 @@
 This repository contains a pre-configured React project structure to standardize development across all team projects, ensuring clean architecture, scalability, and consistency.
 
 # 📂 Project Structure
-bash
-Copy
-Edit
-/components
+`/components
 /assets
 /axios
 /hooks
@@ -14,7 +11,7 @@ Edit
 /redux
 /services
 /utils
-/Routes
+/Routes`
 Reusable React components are used throughout the application (e.g., buttons, modals, input fields) to maintain consistency and avoid duplication.
 
 # /assets
