@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { customerAPI } from "../services/userApi";
+import { customerAPI } from "../services/urls";
 
 const getAllUsers = async () => {
     const response = await customerAPI.getUserList();

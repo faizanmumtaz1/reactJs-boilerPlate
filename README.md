@@ -1,54 +1,118 @@
-# React + TypeScript + Vite
+🚀 React Project Boilerplate
+This repository contains a pre-configured React project structure to standardize development across all team projects, ensuring clean architecture, scalability, and consistency.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📂 Project Structure
+bash
+Copy
+Edit
+/components
+/assets
+/axios
+/hooks
+/pages
+/react-query-hooks
+/redux
+/services
+/utils
+/Routes
+✅ Folder Descriptions
+/components
+Reusable React components used throughout the application (e.g., buttons, modals, input fields) to maintain consistency and avoid duplication.
 
-Currently, two official plugins are available:
+/assets
+Contains static files:
+Images
+Icons
+SVGs
+Fonts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+/axios
+Configured Axios interceptors for:
+Attaching tokens to requests automatically.
+Handling global request/response behaviors.
+Centralized error handling for HTTP requests.
 
-## Expanding the ESLint configuration
+/hooks
+Custom reusable React hooks for shared logic across the app, improving readability and modularity.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+/pages
+Contains all page-level components, mapped to routes (e.g., Home, Dashboard, Login).
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+/react-query-hooks
+Custom React Query hooks for API interactions:
+Each API has its own hook file for clarity and separation of concerns.
+Follows React Query best practices for caching, loading, and error states.
+Example: useGetUsers.ts, useCreatePost.ts.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+/redux
+Includes:
+Slices: State management logic using Redux Toolkit.
+Store: Centralized Redux store for predictable state management when needed alongside React Query.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+/services
+Manages API configuration:
+urls.ts: Exports all API endpoints using a URL class for centralized management.
+baseApi.ts: Defines REST API patterns (GET, POST, PUT, DELETE) with Axios, maintaining consistent API interaction patterns.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+/utils
+Utility functions and constants:
+constants.ts – Global constants used across the app.
+helper.ts – Utility helper functions.
+types.ts – Type definitions/interfaces.
+toastifyHelper.ts – Helper functions for showing notifications using React-Toastify.
+
+/Routes
+Manages application routing cleanly:
+AppRoutes – Defines the app’s routing structure.
+PublicRoutes – Handles public routes accessible without authentication.
+ProtectedRoutes – Manages routes requiring authentication and role-based access.
+
+⚙️ Tech Stack
+React
+React Router Dom for routing.
+Axios for HTTP requests with interceptors.
+React Query for efficient data fetching, caching, and auto refetching.
+Redux Toolkit for global state management when required.
+TypeScript for static type checking (if applicable).
+React Toastify for notifications.
+Prettier & ESLint for consistent formatting and linting.
+
+🚀 Getting Started
+1️⃣ Clone the repository:
+git clone <repo-url>
+cd <project-folder>
+
+2️⃣ Install dependencies:
+npm install
+# or
+yarn install
+
+3️⃣ Run the app:
+npm start
+# or
+yarn start
+💡 Contribution Guidelines
+✅ Follow the folder structure while adding new features.
+✅ Use React Query hooks for API calls wherever possible.
+✅ Place reusable UI in /components.
+✅ Keep API URLs inside /services/urls.ts and use /services/baseApi.ts for requests.
+✅ Use consistent naming conventions for hooks and components.
+✅ Add meaningful commit messages.
+
+🛡️ Best Practices
+✅ Keep components small and reusable.
+✅ Use React Query for data fetching instead of manually managing loading states in Redux where possible.
+✅ Use .env files for environment variables.
+✅ Ensure TypeScript types are properly defined (if using TypeScript).
+✅ Format code using Prettier before pushing.
+
+🤝 Support
+If you face any issues with the boilerplate, feel free to:
+Create an issue in the repository.
+Ping in the team Slack for clarifications.
+
+🏁 Summary
+This boilerplate ensures:
+✅ Fast project bootstrapping.
+✅ Clean, scalable structure for medium to large React applications.
+✅ Team consistency and productivity.

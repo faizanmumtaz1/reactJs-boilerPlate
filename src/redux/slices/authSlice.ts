@@ -8,6 +8,7 @@ interface AuthState {
   firstName: string | null;
   lastName: string | null;
   email: string | null;
+  userPermissions: string[];
 }
 
 const initialState: AuthState = {
@@ -18,6 +19,7 @@ const initialState: AuthState = {
   firstName: null,
   lastName: null,
   email: null,
+  userPermissions: [],
 };
 
 export const authSlice = createSlice({
@@ -25,27 +27,10 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
-      state.token = action.payload.access_token;
-      state.isAuthenticated = true;
-      state.userRole = action.payload.user_role;
-      localStorage.setItem("token", action.payload.access_token);
-    },
-
-    logout: (state) => {
-      state.token = null;
-      state.isAuthenticated = false;
-      localStorage.removeItem("token");
-    },
-
-    restoreSession: (state) => {
-      const token = localStorage.getItem("token");
-      if (token) {
-        state.token = token;
-        state.isAuthenticated = true;
-      }
+      //  your code here
     },
   },
 });
 
-export const { login, logout, restoreSession } = authSlice.actions;
+export const { login } = authSlice.actions;
 export default authSlice.reducer;
