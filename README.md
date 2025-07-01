@@ -66,14 +66,21 @@ PublicRoutes – Handles public routes accessible without authentication.
 ProtectedRoutes – Manages routes requiring authentication and role-based access.
 
 # ⚙️ Tech Stack
-React
-React Router Dom for routing.
-Axios for HTTP requests with interceptors.
-React Query for efficient data fetching, caching, and auto refetching.
-Redux Toolkit for global state management when required.
-TypeScript for static type checking (if applicable).
-React Toastify for notifications.
-Prettier & ESLint for consistent formatting and linting.
+React – Core library for building user interfaces.
+
+React Router Dom – For client-side routing.
+
+Axios – For HTTP requests with interceptors.
+
+React Query – Efficient data fetching, caching, and auto-refetching.
+
+Redux Toolkit – Global state management when required.
+
+TypeScript (if applicable) – Static type checking for safer code.
+
+React Toastify – User notifications.
+
+Prettier & ESLint – Consistent code formatting and linting.
 
 # 🚀 Getting Started
 1️⃣ Clone the repository:
