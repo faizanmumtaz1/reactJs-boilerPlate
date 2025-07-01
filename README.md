@@ -128,6 +128,7 @@ Ping in the team Slack for clarifications.
 
 # 🏁 Summary
 This boilerplate ensures:
+
 ✅ Fast project bootstrapping.
 
 ✅ Clean, scalable structure for medium to large React applications.
